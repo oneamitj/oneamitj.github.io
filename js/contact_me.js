@@ -21,14 +21,18 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "././mail/contact_me.php",
+                url: "https://email-amitj.herokuapp.com",
                 type: "POST",
-                data: {
+                beforeSend: function(request) {
+                    request.setRequestHeader("authKey", "l3ts-sEnd-ma!l");
+                  },
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    from: email,
                     name: name,
                     phone: phone,
-                    email: email,
-                    message: message
-                },
+                    msg: message
+                }),
                 cache: false,
                 success: function() {
                     // Enable button & show success message
@@ -52,7 +56,7 @@ $(function() {
                     $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. \nPlease email me to wannamit@gmail.com with subject starting with `Portfolio Contact:` so that mail is not spamed. \n Heartly sorry for the inconvinence.");
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
-                    $('#contactForm').trigger("reset");
+                    // $('#contactForm').trigger("reset");
                 },
             })
         },
