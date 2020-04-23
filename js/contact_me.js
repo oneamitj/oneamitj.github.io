@@ -8,6 +8,7 @@ $(function() {
         submitSuccess: function($form, event) {
             // Prevent spam click and default submit behaviour
             $("#btnSubmit").attr("disabled", true);
+            $("#btnSubmit").html('<img style="height: 20px; width: 20px;" src="img/spin.gif" class="img-responsive img-centered" alt="" id="loading-spinner">')
             event.preventDefault();
             
             // get values from FORM
@@ -37,6 +38,7 @@ $(function() {
                 success: function() {
                     // Enable button & show success message
                     $("#btnSubmit").attr("disabled", false);
+                    $("#btnSubmit").html('Send')
                     $('#success').html("<div class='alert alert-success'>");
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
@@ -50,6 +52,8 @@ $(function() {
                 },
                 error: function() {
                     // Fail message
+                    $("#btnSubmit").attr("disabled", false);
+                    $("#btnSubmit").html('Send')
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
