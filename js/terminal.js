@@ -51,23 +51,23 @@ class Terminal {
     async showWelcome() {
         const welcomeText = `
 ╔═══════════════════════════════════════════════╗
-║                    WELCOME TO AMIT'S SYSTEM                           ║
-║                                                                       ║
-║        🚀 DevOps Engineer & GenAI Solution Architect 🤖              ║
-║                    @ Leapfrog Technology Inc.                         ║
-║               https://www.linkedin.com/in/oneamitj                    ║
-║                                                                       ║
-║  System initialized... Loading portfolio data...                      ║
-║  AWS Services: ████████████████████████████████ 100%  ║
-║  GenAI Models: ████████████████████████████████ 100%  ║
-║  DevOps Tools: ████████████████████████████████ 100%  ║
-║  Compliance:   ████████████████████████████████ 100%  ║
-║                                                                       ║
-║  🎯 8+ Years Experience | 🎓 B.E. Computer Science                   ║
-║  📍 Kathmandu, Nepal                                                 ║
-║                                                                       ║
-║  Type 'help' to see available commands                                ║
-║  Type 'about' to learn more about me                                  ║
+║                    WELCOME TO AMIT'S SYSTEM
+║
+║        🚀 DevOps Engineer & GenAI Solution Architect 🤖
+║                    @ Leapfrog Technology Inc.
+║               https://www.linkedin.com/in/oneamitj
+║
+║  System initialized... Loading portfolio data...
+║  AWS Services: ████████████████████████████████ 100%
+║  GenAI Models: ████████████████████████████████ 100%
+║  DevOps Tools: ████████████████████████████████ 100%
+║  Compliance:   ████████████████████████████████ 100%
+║
+║  🎯 8+ Years Experience | 🎓 B.E. Computer Science
+║  📍 Kathmandu, Nepal
+║
+║  Type 'help' to see available commands
+║  Type 'about' to learn more about me
 ╚═══════════════════════════════════════════════╝
 
 Boot sequence complete. Ready for commands...
@@ -291,7 +291,7 @@ Tip: Use arrow keys to navigate command history
     async showAbout() {
         const aboutText = `
 ╔═══════════════════════════════════════════════╗
-║                          ABOUT AMIT JOSHI                             ║
+║                          ABOUT AMIT JOSHI
 ╚═══════════════════════════════════════════════╝
 
 🚀 Dynamic DevOps and GenAI Solution Architect
@@ -371,7 +371,7 @@ while maintaining the highest standards of security and compliance.
     async displayAllSkills(skills) {
         let skillsText = `
 ╔═══════════════════════════════════════════════╗
-║                        TECHNICAL SKILLS                               ║
+║                        TECHNICAL SKILLS
 ╚═══════════════════════════════════════════════╝
 
 `;
@@ -421,7 +421,7 @@ while maintaining the highest standards of security and compliance.
         
         let categoryText = `
 ╔═══════════════════════════════════════════════╗
-║                        ${displayName.padStart(35)}                          ║
+║                        ${displayName.padStart(35)}
 ╚═══════════════════════════════════════════════╝
 
 `;
@@ -453,7 +453,7 @@ while maintaining the highest standards of security and compliance.
             
             let projectText = `
 ╔═══════════════════════════════════════════════╗
-║                      PORTFOLIO PROJECTS                               ║
+║                      PORTFOLIO PROJECTS
 ╚═══════════════════════════════════════════════╝
 
 🌟 FEATURED PROJECTS:
@@ -497,7 +497,7 @@ while maintaining the highest standards of security and compliance.
             
             let expText = `
 ╔═══════════════════════════════════════════════╗
-║                    PROFESSIONAL EXPERIENCE                            ║
+║                    PROFESSIONAL EXPERIENCE
 ╚═══════════════════════════════════════════════╝
 
 🎯 CURRENT ROLE:
@@ -543,7 +543,7 @@ Key Achievements:
     async showContact() {
         const contactText = `
 ╔═══════════════════════════════════════════════╗
-║                        CONTACT INFO                                   ║
+║                        CONTACT INFO
 ╚═══════════════════════════════════════════════╝
 
 📧 Email:     one.amitj@gmail.com
@@ -753,18 +753,18 @@ Quick Facts:
 🎮 EASTER EGG ACTIVATED! 🎮
 
     ╔═════════════════════════════════╗
-    ║          RETRO GAME OVER                         ║
-    ║                                                  ║
-    ║    🕹️  ACHIEVEMENT UNLOCKED! 🕹️                 ║
-    ║                                                  ║
-    ║  You found the secret command!                   ║
-    ║                                                  ║
-    ║  🏆 Master Terminal Navigator 🏆                ║
-    ║                                                  ║
-    ║  Score: 1337 points                              ║
-    ║  Level: DevOps Wizard                            ║
-    ║                                                  ║
-    ║    Press any key to continue...                  ║
+    ║          RETRO GAME OVER
+    ║
+    ║    🕹️  ACHIEVEMENT UNLOCKED! 🕹️
+    ║
+    ║  You found the secret command!
+    ║
+    ║  🏆 Master Terminal Navigator 🏆
+    ║
+    ║  Score: 1337 points
+    ║  Level: DevOps Wizard
+    ║
+    ║    Press any key to continue...
     ╚═════════════════════════════════╝
 
 Fun fact: This portfolio was built with pure vanilla JS,
@@ -776,7 +776,7 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
     async showAchievements() {
         const achievementsText = `
 ╔═══════════════════════════════════════════════╗
-║                      KEY ACHIEVEMENTS                                 ║
+║                      KEY ACHIEVEMENTS
 ╚═══════════════════════════════════════════════╝
 
 📈 PERFORMANCE & SCALE:
@@ -820,7 +820,7 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
     async showAwards() {
         const awardsText = `
 ╔═══════════════════════════════════════════════╗
-║                    AWARDS & RECOGNITION                               ║
+║                    AWARDS & RECOGNITION
 ╚═══════════════════════════════════════════════╝
 
 🏆 COMPETITION WINS:
@@ -859,7 +859,7 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
     async showCertifications() {
         const certificationsText = `
 ╔═══════════════════════════════════════════════╗
-║                    CERTIFICATIONS & LEARNING                          ║
+║                    CERTIFICATIONS & LEARNING
 ╚═══════════════════════════════════════════════╝
 
 🎓 PROFESSIONAL CERTIFICATIONS:
