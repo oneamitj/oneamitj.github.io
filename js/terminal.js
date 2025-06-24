@@ -83,7 +83,7 @@ Boot sequence complete. Ready for commands...
 `;
         
         await this.typeText(welcomeText, 3);
-        this.showPrompt();
+        // this.showPrompt();
     }
 
     async typeText(text, speed = 15) {
@@ -148,7 +148,7 @@ Boot sequence complete. Ready for commands...
                 await this.executeCommand(command);
             }
             
-            this.showPrompt();
+            // this.showPrompt();
             this.updateMainPrompt(); // Update the main prompt after each command
         } else if (e.key === 'ArrowUp') {
             e.preventDefault();
