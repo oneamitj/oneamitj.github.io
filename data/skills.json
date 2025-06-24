@@ -7,11 +7,11 @@
   "devops_tools": [
     { "name": "Terraform", "level": "Expert", "icon": "🏗️", "years": "6+ years" },
     { "name": "Docker", "level": "Expert", "icon": "🐳", "years": "7+ years" },
-    { "name": "Kubernetes", "level": "Expert", "icon": "⚙️", "years": "5+ years" },
-    { "name": "Ansible", "level": "Advanced", "icon": "🔧", "years": "4+ years" },
-    { "name": "Jenkins", "level": "Advanced", "icon": "🔨", "years": "5+ years" },
-    { "name": "GitHub Actions", "level": "Expert", "icon": "🚀", "years": "4+ years" },
-    { "name": "CloudFormation", "level": "Advanced", "icon": "📋", "years": "4+ years" }
+    { "name": "Kubernetes", "level": "Expert", "icon": "⚙️", "years": "3+ years" },
+    { "name": "Ansible", "level": "Advanced", "icon": "🔧", "years": "1+ years" },
+    { "name": "Jenkins", "level": "Advanced", "icon": "🔨", "years": "1+ years" },
+    { "name": "GitHub Actions", "level": "Expert", "icon": "🚀", "years": "5+ years" },
+    { "name": "CloudFormation", "level": "Advanced", "icon": "📋", "years": "5+ years" }
   ],
   "programming_languages": [
     { "name": "Python", "level": "Expert", "icon": "🐍", "years": "8+ years" },
@@ -23,9 +23,9 @@
     { "name": "Prometheus", "level": "Advanced", "icon": "📊", "years": "4+ years" },
     { "name": "Grafana", "level": "Advanced", "icon": "📈", "years": "4+ years" },
     { "name": "ELK Stack", "level": "Advanced", "icon": "🔍", "years": "3+ years" },
-    { "name": "CloudFlare", "level": "Advanced", "icon": "🛡️", "years": "3+ years" },
+    { "name": "CloudFlare", "level": "Advanced", "icon": "🛡️", "years": "8+ years" },
     { "name": "Vanta", "level": "Intermediate", "icon": "🔒", "years": "2+ years" },
-    { "name": "Certbot", "level": "Advanced", "icon": "🔐", "years": "4+ years" }
+    { "name": "Certbot", "level": "Advanced", "icon": "🔐", "years": "5+ years" }
   ],
   "infrastructure_automation": [
     { "name": "Nginx", "level": "Expert", "icon": "🌐", "years": "6+ years" },
@@ -36,7 +36,7 @@
   "genai_technologies": [
     { "name": "OpenAI GPT", "level": "Expert", "icon": "🤖", "years": "2+ years" },
     { "name": "Anthropic Claude", "level": "Expert", "icon": "🧠", "years": "1+ years" },
-    { "name": "AWS Bedrock", "level": "Advanced", "icon": "🔮", "years": "1+ years" },
+    { "name": "AWS Bedrock", "level": "Advanced", "icon": "🔮", "years": "2+ years" },
     { "name": "Azure AI", "level": "Advanced", "icon": "✨", "years": "1+ years" },
     { "name": "Llama Models", "level": "Advanced", "icon": "🦙", "years": "1+ years" },
     { "name": "RAG Systems", "level": "Expert", "icon": "🔗", "years": "1+ years" },

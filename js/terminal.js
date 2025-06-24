@@ -18,7 +18,6 @@ class Terminal {
     // Clock functionality for Nepal Time (NPT, UTC+5:45)
     startClock() {
         this.updateClock();
-        // Update every second
         setInterval(() => this.updateClock(), 1000);
     }
 
