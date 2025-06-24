@@ -1,0 +1,140 @@
+{
+  "featured_projects": [
+    {
+      "name": "Learning List - GenAI Alignment Checker",
+      "description": "GenAI-powered alignment checker tool that improves the educational alignment standard checking process, reducing manual work by 90% and improving turn-around time for EdTech products.",
+      "technologies": ["GPT-4", "Python", "Azure AI Foundry", "Prompt Engineering", "EdTech"],
+      "period": "Nov 2024 - Present",
+      "company": "Leapfrog Technology, Inc.",
+      "achievements": [
+        "Automated time-consuming manual alignment checking process",
+        "Reduced review time from hours to minutes (90% efficiency gain)",
+        "Improved accuracy of educational standard compliance verification",
+        "Enhanced EdTech product development workflow"
+      ],
+      "category": "GenAI/EdTech",
+      "url": "https://learninglist.com/"
+    },
+    {
+      "name": "Addy Healthcare - HIPAA Compliant AI Platform",
+      "description": "Healthcare back-office automation with AI-driven efficiency. Built a HIPAA-compliant, multi-tenant serverless system with data isolation and rapid tenant onboarding.",
+      "technologies": ["AWS Bedrock", "Anthropic Claude", "AWS Lambda", "HIPAA Compliance", "Multi-tenant Architecture"],
+      "period": "Mar 2024 - Jun 2025",
+      "company": "Leapfrog Technology, Inc.",
+      "achievements": [
+        "Built HIPAA-compliant multi-tenant serverless system with data isolation",
+        "Automated referral processing reducing administrative burden",
+        "Improved patient care through AI-driven workflows",
+        "Implemented rapid tenant onboarding system"
+      ],
+      "category": "Healthcare/AI",
+      "url": "https://addyhealth.com/"
+    },
+    {
+      "name": "GenAI R&D Platform",
+      "description": "Plug-and-play solution for creating LLM-based chatbots targeting development, enhancing customer interactions. Optimized GenAI product performance by 40% and achieved 50% cost reduction.",
+      "technologies": ["Amazon Bedrock", "Anthropic Claude", "RAG", "Python", "AWS Lambda", "OpenSearch", "Prompt Engineering"],
+      "period": "Feb 2024 - May 2024",
+      "company": "Leapfrog Technology, Inc.",
+      "achievements": [
+        "Optimized GenAI product performance by 40%",
+        "Achieved 50% cost reduction in GenAI operations",
+        "Built scalable RAG-based chatbot framework",
+        "Established company's GenAI development services",
+        "Created reusable LLM integration patterns"
+      ],
+      "category": "GenAI/R&D"
+    },
+    {
+      "name": "Evoke Medical Care - Remote Device Monitoring",
+      "description": "Full suite software solution for remote device monitoring including CIED quarterly checks, HF/fluid monitoring, and RPM data and hardware management.",
+      "technologies": ["AWS", "Terraform", "Kubernetes", "Amazon EKS", "AWS Lambda"],
+      "period": "Apr 2023 - Sep 2023",
+      "company": "Leapfrog Technology, Inc.",
+      "achievements": [
+        "Designed scalable medical device monitoring infrastructure",
+        "Implemented secure data processing pipelines for medical devices",
+        "Ensured regulatory compliance for medical data handling",
+        "Built real-time monitoring dashboards for healthcare providers"
+      ],
+      "category": "Healthcare/DevOps",
+      "url": "https://evokemedical.com/"
+    },
+    {
+      "name": "Mindera - Skin Atlas Data Warehouse",
+      "description": "Comprehensive data warehouse and ETL pipelines for importing data from multiple sources with machine learning algorithm support. Scaled product to handle 500% more data sources (from 8 to 40+ external connections).",
+      "technologies": ["AWS Lambda", "AWS Glue", "ETL", "Hybrid Cloud", "Amazon ECS", "Amazon RDS", "AWS Amplify"],
+      "period": "Mar 2021 - Aug 2022",
+      "company": "Leapfrog Technology, Inc.",
+      "achievements": [
+        "Built comprehensive data warehouse solution",
+        "Designed ETL pipelines for multi-source data integration",
+        "Scaled data processing to handle 500% more data sources (8 to 40+)",
+        "Enabled ML algorithm integration for therapeutic response identification",
+        "Implemented hybrid cloud architecture with seamless database integration"
+      ],
+      "category": "Data/Analytics"
+    },
+    {
+      "name": "NxVision - Business Intelligence Platform",
+      "description": "Data visualization platform that grabs data from all Nurix data sources and provides a single interface to view, manage, and create meaningful reports for tracking Business Milestones.",
+      "technologies": ["AWS CloudFormation", "Elastic Load Balancing", "Amazon ECS", "Data Visualization"],
+      "period": "Feb 2021 - Aug 2022",
+      "company": "Leapfrog Technology, Inc.",
+      "achievements": [
+        "Built unified data visualization platform",
+        "Integrated multiple data sources into single interface",
+        "Enabled business milestone tracking and reporting",
+        "Improved deployment frequency by 400% (monthly to weekly)"
+      ],
+      "category": "Business Intelligence"
+    }
+  ],
+  "other_projects": [
+    {
+      "name": "Vyaguta - Internal LMS",
+      "description": "Leapfrog's internal Learning Management System portal with cost optimization focus.",
+      "technologies": ["AWS", "AWS Lambda", "Amazon RDS", "Cost Optimization"],
+      "period": "Jan 2023 - Apr 2023"
+    },
+    {
+      "name": "Poker Game Mobile Application",
+      "description": "Multiplayer poker game mobile application deployed on Google Cloud Platform.",
+      "technologies": ["GCP", "Google App Engine", "Mobile Development"],
+      "period": "Jun 2021 - Feb 2022"
+    },
+    {
+      "name": "Project Deployment System",
+      "description": "Container service integration with reverse proxy, service discovery, and more for easy project deployment. Reduced deployment time by 20% and new service onboarding by 90%.",
+      "technologies": ["Docker", "Go", "Service Discovery", "Reverse Proxy"],
+      "period": "Oct 2017 - Dec 2018"
+    },
+    {
+      "name": "Blockchain Reward System",
+      "description": "Ethereum-based reward management system for generating and distributing different types of rewards to users with Android app integration.",
+      "technologies": ["Solidity", "Ethereum", "Android", "ERC20", "ERC721"],
+      "period": "Aug 2018 - Dec 2018"
+    },
+    {
+      "name": "CityCoin (ERC) Cryptocurrency",
+      "description": "Proof of Concept for Ethereum-based ERC721 and ERC20 cryptocurrency implementation.",
+      "technologies": ["Ethereum", "Solidity", "ERC20", "ERC721"],
+      "period": "Jul 2018 - Aug 2018"
+    },
+    {
+      "name": "KPI Analytics Dashboard",
+      "description": "Combination of different tools and time-series data to show Key Performance Monitoring system.",
+      "technologies": ["Time-series Database", "Analytics", "Monitoring"],
+      "period": "Mar 2020 - Apr 2020"
+    }
+  ],
+  "achievements": [
+    "Led AWS efforts, earning APN Advanced membership and growing certified engineers from 4 to 20+",
+    "Improved a product performance by 10x (100+ pages to 1000+ pages)",
+    "Reduced deployment time by 20% and new service onboarding by more than 90%",
+    "Decreased AWS-based product costs by 30%",
+    "Streamlined CI/CD, boosting deployment frequency by 400%",
+    "Re-architected ETL pipeline from time-based to near real-time processing",
+    "Expanded DevOps team from 5 to 20+ members"
+  ]
+}

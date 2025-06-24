@@ -1,0 +1,137 @@
+body {
+    background-color: #0d0d0d;
+    color: #00ff41;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* CRT Monitor Effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+#terminal {
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #0d0d0d;
+    border: 2px solid #00ff41;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 65, 0.5),
+        inset 0 0 20px rgba(0, 255, 65, 0.1);
+    overflow-y: auto;
+    position: relative;
+}
+
+#output {
+    color: #00ff41;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.8);
+}
+
+#input {
+    background: transparent;
+    border: none;
+    color: #00ff41;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    outline: none;
+    width: 100%;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.8);
+}
+
+.prompt {
+    color: #ff00ff;
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.8);
+}
+
+.cursor {
+    display: inline-block;
+    width: 12px;
+    height: 20px;
+    background-color: #00ff41;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.error {
+    color: #ff0040;
+    text-shadow: 0 0 5px rgba(255, 0, 64, 0.8);
+}
+
+.success {
+    color: #40ff00;
+    text-shadow: 0 0 5px rgba(64, 255, 0, 0.8);
+}
+
+.highlight {
+    color: #ffff00;
+    text-shadow: 0 0 5px rgba(255, 255, 0, 0.8);
+}
+
+/* Scrollbar styling */
+#terminal::-webkit-scrollbar {
+    width: 8px;
+}
+
+#terminal::-webkit-scrollbar-track {
+    background: #0d0d0d;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+    background: #00ff41;
+    border-radius: 4px;
+}
+
+#terminal::-webkit-scrollbar-thumb:hover {
+    background: #00cc33;
+}
+
+.crt-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.crt-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 255, 0, 0.1);
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    animation: scanlines 0.5s infinite;
+}
+
+@keyframes scanlines {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}

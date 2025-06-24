@@ -1,0 +1,232 @@
+/* Main styles for the retro DevOps portfolio */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: #0d0d0d;
+    color: #00ff41;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    line-height: 1.4;
+    background-image: 
+        radial-gradient(circle at 25% 25%, #003300 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, #001100 0%, transparent 50%);
+    background-attachment: fixed;
+}
+
+/* Main terminal container */
+#terminal {
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+    border: 2px solid #00ff41;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 65, 0.5),
+        inset 0 0 20px rgba(0, 255, 65, 0.1);
+    position: relative;
+}
+
+/* Output area */
+#output {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 20px;
+    white-space: pre-wrap;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+/* Input container styling */
+.input-container {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #00ff41;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.input-container .prompt {
+    color: #ff00ff;
+    font-weight: bold;
+    margin-right: 5px;
+    flex-shrink: 0;
+}
+
+/* Input styling */
+#input {
+    background: transparent;
+    border: none;
+    color: #00ff41;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    outline: none;
+    flex: 1;
+    padding: 0;
+}
+
+.input-container .cursor {
+    margin-left: 3px;
+}
+
+/* Clock styling */
+.input-container .clock {
+    color: #00ccff;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    margin-left: auto;
+    padding-left: 20px;
+    opacity: 0.8;
+    text-shadow: 0 0 5px #00ccff;
+    flex-shrink: 0;
+}
+
+/* Text color classes */
+.prompt {
+    color: #ff00ff;
+    font-weight: bold;
+}
+
+.error {
+    color: #ff0040;
+}
+
+.success {
+    color: #40ff00;
+}
+
+.highlight {
+    color: #ffff00;
+}
+
+.warning {
+    color: #ff8800;
+}
+
+.info {
+    color: #00aaff;
+}
+
+/* Cursor animation */
+.cursor {
+    display: inline-block;
+    width: 12px;
+    height: 20px;
+    background-color: #00ff41;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Scrollbar styling */
+#output::-webkit-scrollbar {
+    width: 8px;
+}
+
+#output::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#output::-webkit-scrollbar-thumb {
+    background: #00ff41;
+    border-radius: 4px;
+}
+
+#output::-webkit-scrollbar-thumb:hover {
+    background: #00cc33;
+}
+
+/* Text effects */
+.glow {
+    text-shadow: 0 0 5px currentColor;
+}
+
+.strong-glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* ASCII art styling */
+.ascii-art {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: pre;
+}
+
+/* Links */
+a {
+    color: #00aaff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #40ccff;
+    text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    #terminal {
+        padding: 10px;
+        border-width: 1px;
+    }
+    
+    #input {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    .ascii-art {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    
+    #terminal {
+        padding: 5px;
+    }
+    
+    .ascii-art {
+        font-size: 10px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    #terminal {
+        border: 2px solid black;
+        box-shadow: none;
+    }
+    
+    #input {
+        display: none;
+    }
+}

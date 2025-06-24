@@ -1,0 +1,183 @@
+{
+  "current_role": {
+    "title": "Solution Architect, DevOps",
+    "company": "Leapfrog Technology Inc.",
+    "location": "Kathmandu, Nepal",
+    "period": "Dec 2023 - Present",
+    "duration": "1 year 7 months",
+    "description": "Leading technical solutions from concept to deployment with focus on GenAI integration and cloud-native architecture. Designing secure, scalable, reliable, compliant and cost-effective infrastructure solutions.",
+    "key_achievements": [
+      "Built HIPAA-compliant, multi-tenant serverless system with data isolation and rapid tenant onboarding",
+      "Improved product performance by 10x (100+ pages to 1000+ pages)",
+      "Optimized GenAI product performance by 40% and achieved cost reduction by 50%",
+      "Researched GenAI models to establish the company's GenAI development services",
+      "Spearheaded development of GenAI products, driving innovation and efficiency",
+      "Led AWS efforts, earning APN Advanced membership and growing certified engineers from 4 to 20+",
+      "Improved EdTech products turn-around time by automating manual work using GenAI"
+    ]
+  },
+  "experience_timeline": [
+    {
+      "title": "Solutions Architect",
+      "company": "Addy Healthcare",
+      "period": "Jun 2024 - Jun 2025",
+      "duration": "1 year",
+      "type": "Contract/Consulting",
+      "highlights": [
+        "AI/LLM and DevOps application solutions",
+        "Healthcare back-office automation with AI-driven efficiency",
+        "HIPAA-compliant architecture design and implementation"
+      ]
+    },
+    {
+      "title": "Principal Engineer, DevOps",
+      "company": "Leapfrog Technology Inc.",
+      "period": "Dec 2021 - Dec 2023",
+      "duration": "2 years 1 month",
+      "highlights": [
+        "Designed and implemented system/project architecture (mostly AWS)",
+        "Managed and built DevOps team from 5 to 20+ members",
+        "Created company-wide standards for DevOps tasks and documentation",
+        "Scaled product to handle 500% more data sources (8 to 40+ external connections)",
+        "Streamlined CI/CD, boosting deployment frequency by 400% (monthly to weekly)",
+        "Conducted compliance audits for HIPAA, SOC2, and other standards",
+        "Re-architected ETL pipeline from time-based to near real-time processing",
+        "Planned infrastructure cost and performance optimizations"
+      ]
+    },
+    {
+      "title": "Lead Engineer, DevOps",
+      "company": "Leapfrog Technology Inc.",
+      "period": "Dec 2020 - Dec 2021",
+      "duration": "1 year 1 month",
+      "highlights": [
+        "Delivered DevOps solutions ensuring high availability and minimal downtime",
+        "Reduced deployment time by 20% for microservices-based products",
+        "Reduced new service onboarding time by more than 90%",
+        "Built hybrid cloud setup with seamless in-house database integration",
+        "Improved existing AWS-based product to decrease costs by 30%",
+        "Automated deployment pipelines for microservices architecture",
+        "Created company-wide documentation standards for DevOps processes"
+      ]
+    },
+    {
+      "title": "Engineering Manager",
+      "company": "Smart Ideas Pvt. Ltd. (HamroPatro)",
+      "period": "Jul 2020 - Dec 2020",
+      "duration": "6 months",
+      "highlights": [
+        "Oversaw research and development for blockchain and microservices-based products",
+        "Developed service discovery and deployment system using Go and Docker",
+        "Led engineering team and strategic technology decisions"
+      ]
+    },
+    {
+      "title": "Sr. Research Engineer / Team Lead",
+      "company": "Smart Ideas Pvt. Ltd. (HamroPatro)",
+      "period": "Jul 2018 - Jul 2020",
+      "duration": "2 years 1 month",
+      "highlights": [
+        "Led development of blockchain-based solutions and Ethereum applications",
+        "Developed server monitoring systems using Prometheus and Grafana",
+        "Research and implementation of blockchain, reverse proxy, search engine, NLP technologies",
+        "Built reward management system using Solidity and Ethereum",
+        "Created ERC20 and ERC721 cryptocurrency implementations"
+      ]
+    },
+    {
+      "title": "Research Engineer",
+      "company": "Smart Ideas Pvt. Ltd. (HamroPatro)",
+      "period": "Jul 2017 - Jul 2018",
+      "duration": "1 year 1 month",
+      "highlights": [
+        "Researched different technologies required for product development",
+        "Worked with blockchain, Docker, load balancing, and microservices",
+        "Developed project deployment system with container services"
+      ]
+    },
+    {
+      "title": "Software Engineer",
+      "company": "Javra Software Pvt. Ltd.",
+      "period": "Feb 2017 - Jun 2017",
+      "duration": "5 months",
+      "highlights": [
+        "Apache Solr Engineer and Progress 4GL Developer",
+        "Enhanced eCommerce search functionality with fuzzy search",
+        "Implemented multilingual support for search systems"
+      ]
+    },
+    {
+      "title": "Jr. Software Engineer",
+      "company": "Javra Software Pvt. Ltd.",
+      "period": "May 2016 - Jan 2017",
+      "duration": "9 months",
+      "highlights": [
+        "Apache Solr and Progress ABL Engineer",
+        "Developed search and indexing solutions",
+        "Worked on eCommerce platform enhancements"
+      ]
+    },
+    {
+      "title": "Intern - Ruby Developer",
+      "company": "Cloud Factory",
+      "period": "May 2015 - Aug 2015",
+      "duration": "4 months",
+      "highlights": [
+        "Ruby on Rails development",
+        "First professional software development experience",
+        "Web application development and maintenance"
+      ]
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Engineering in Computer Science",
+    "university": "Kathmandu University",
+    "year": "2015",
+    "specialization": "Artificial Intelligence",
+    "duration": "2011 - 2015"
+  },
+  "certifications": [
+    {
+      "name": "Self-Awareness: Leading with Emotional Intelligence",
+      "issuer": "Dale Carnegie Digital",
+      "date": "Jan 2022"
+    },
+    {
+      "name": "Secrets of Motivation",
+      "issuer": "Dale Carnegie Digital", 
+      "date": "Jan 2022"
+    }
+  ],
+  "awards": [
+    {
+      "name": "Ncell App Camp 2014 (Corporate Solutions Winner)",
+      "issuer": "Ncell",
+      "date": "Dec 2014",
+      "description": "Nation level app development competition. Developed 'Opinio', an app to help corporate decision making by analyzing data from social media."
+    },
+    {
+      "name": "Global Startup Weekend Kathmandu (Winner)",
+      "issuer": "Techstars",
+      "date": "Nov 2014",
+      "description": "Built a sentiment analysis API which helps business in analyzing the sentiments of their customer."
+    }
+  ],
+  "career_summary": {
+    "total_experience": "8+ years",
+    "specializations": [
+      "Cloud Architecture (AWS Expert)",
+      "DevOps Engineering", 
+      "GenAI/LLM Integration",
+      "Infrastructure as Code",
+      "Team Leadership",
+      "Compliance (HIPAA/SOC2)"
+    ],
+    "key_metrics": [
+      "Led team growth from 4 to 20+ certified engineers",
+      "Achieved 40% performance improvement and 50% cost reduction in GenAI products",
+      "Scaled systems to handle 500% more data sources",
+      "Reduced deployment times by 20% and onboarding by 90%",
+      "Improved CI/CD frequency by 400%"
+    ]
+  }
+}
