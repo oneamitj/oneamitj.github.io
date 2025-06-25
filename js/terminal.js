@@ -62,7 +62,7 @@ class Terminal {
 ║  DevOps Tools: ████████████████████████████████ 100%
 ║  Compliance:   ████████████████████████████████ 100%
 ║
-║  🎯 8+ Years Experience | 🎓 B.E. Computer Science
+║  🎯 10+ Years Experience | 🎓 B.E. Computer  Engineering
 ║  📍 Kathmandu, Nepal
 ║
 ║  Type 'help' to see available commands
@@ -73,7 +73,7 @@ Boot sequence complete. Ready for commands...
 
 🌟 Quick Facts:
 • AWS Expert
-• Led team growth from 4 to 20+ AWS certified engineers
+• Led team growth from 4 to 25+ AWS certified engineers
 • Optimized GenAI products: 40% performance ↑, 50% cost ↓
 • Drove technical solutions from concept to deployment
 • Spearheaded the development of GenAI products,
@@ -296,9 +296,9 @@ Tip: Use arrow keys to navigate command history
 🚀 Dynamic DevOps and GenAI Solution Architect
 
 📍 Location: Kathmandu, Bāgmatī, Nepal
-🎓 Education: B.E. Computer Science, Kathmandu University (2015)
+🎓 Education: B.E. Computer Engineering, Kathmandu University (2015)
 💼 Current Role: Solution Architect @ Leapfrog Technology Inc.
-⏱️ Experience: 8+ years in DevOps & Cloud Engineering
+⏱️ Experience: 10+ years in DevOps & Cloud Engineering
 
 🌟 Professional Summary:
 ═════════════════════════════════════════════════
@@ -317,7 +317,7 @@ while cutting costs by 50%.
 🏆 Key Achievements:
 ═════════════════════════════════════════════════
 • Led AWS efforts earning APN Advanced membership
-• Grew certified engineers from 4 to 20+ team members
+• Grew certified engineers from 4 to 25+ team members
 • Improved product performance by 10x (100+ to 1000+ pages)
 • Optimized GenAI costs by 50% while boosting performance by 40%
 • Scaled data processing by 500% (8 to 40+ external connections)
@@ -388,7 +388,7 @@ while maintaining the highest standards of security and compliance.
         for (const [category, items] of Object.entries(skills)) {
             const displayName = categoryDisplayNames[category] || category.toUpperCase().replace('_', ' ');
             skillsText += `\n🔧 ${displayName}:\n`;
-            skillsText += '━'.repeat(60) + '\n';
+            skillsText += '━'.repeat(49) + '\n';
             
             items.forEach(skill => {
                 const stars = skill.level === 'Expert' ? '★★★★★' : 
