@@ -62,7 +62,7 @@ class Terminal {
 ║  DevOps Tools: ████████████████████████████████ 100%
 ║  Compliance:   ████████████████████████████████ 100%
 ║
-║  🎯 10+ Years Experience | 🎓 B.E. Computer  Engineering
+║  🎯 10+ Years Experience | 🎓 B.E. Computer Engineering
 ║  📍 Kathmandu, Nepal
 ║
 ║  Type 'help' to see available commands
@@ -172,6 +172,12 @@ Boot sequence complete. Ready for commands...
         const command = parts[0].toLowerCase();
         const args = parts.slice(1);
 
+        // Check for --help flag
+        if (args.includes('--help') || args.includes('-h')) {
+            await this.showCommandHelp(command);
+            return;
+        }
+
         try {
             switch (command) {
                 case 'help':
@@ -214,6 +220,20 @@ Boot sequence complete. Ready for commands...
                         await this.showError('cat: missing file operand');
                     }
                     break;
+                case 'resume':
+                    if (args.includes('--download')) {
+                        await this.downloadResume();
+                    } else {
+                        await this.showResume();
+                    }
+                    break;
+                case 'cv':
+                    if (args.includes('--download')) {
+                        await this.downloadResume();
+                    } else {
+                        await this.showResume();
+                    }
+                    break;
                 case 'easter':
                     await this.showEasterEgg();
                     break;
@@ -246,6 +266,493 @@ Boot sequence complete. Ready for commands...
         }
     }
 
+    async downloadResume() {
+        const downloadText = `
+📥 Initializing resume download...
+
+╔═══════════════════════════════════════════════╗
+║                    DOWNLOADING RESUME
+╚═══════════════════════════════════════════════╝
+
+📄 File: AmitJ_CV.pdf
+📊 Size: ~1.2 MB
+🔗 Source: ./data/AmitJ_CV.pdf
+
+📋 Resume Contents:
+• Professional Experience (10+ years)
+• Technical Skills & Certifications  
+• Key Achievements & Metrics
+• Project Portfolio
+• Contact Information
+
+💡 Tip: Use 'resume' (without --download) to view content in terminal
+`;
+        
+        await this.typeText(downloadText, 10);
+        
+        // Trigger actual file download
+        try {
+            const link = document.createElement('a');
+            link.href = './data/AmitJ_CV.pdf';
+            link.download = 'AmitJ_CV.pdf';
+            link.target = '_blank';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show success message
+            await this.typeText(`
+🎉 Resume download initiated! Check your downloads folder.
+
+⬇️  Download progress:
+████████████████████████████████████████ 100%
+
+✅ Download completed successfully!
+📂 File saved to your default download location.`);
+
+        } catch (error) {
+            await this.showError('Download failed. Please try again or contact me directly.');
+        }
+    }
+
+    async catFile(filename) {
+        const files = {
+            'about.txt': () => this.showAbout(),
+            'contact.txt': () => this.showContact(),
+            'achievements.txt': () => this.showAchievements(),
+            'awards.txt': () => this.showAwards(),
+            'linkedin.url': () => this.openLinkedIn(),
+            'github.url': () => this.openGitHub(),
+            'resume.pdf': () => this.showResume()
+        };
+
+        if (files[filename]) {
+            await files[filename]();
+        } else {
+            await this.showError(`cat: ${filename}: No such file or directory`);
+        }
+    }
+
+    async showResume() {
+        const resumeText = `
+╔═══════════════════════════════════════════════╗
+║                            AMIT JOSHI
+║      AWS | Terraform | CI/CD | Docker | GenAI | Python
+╚═══════════════════════════════════════════════╝
+
+🌐 LinkedIn: https://www.linkedin.com/in/oneamitj
+📧 Email: one.amitj@gmail.com
+🐙 GitHub: https://github.com/oneamitj
+
+💡 Tip: Use 'resume --download' to download PDF version
+
+═══════════════════════════════════════════════════════════════════
+
+📋 PROFESSIONAL SUMMARY
+═══════════════════════════════════════════════════════════════════
+
+Dynamic DevOps and GenAI developer with deep expertise in AWS, 
+Terraform, Kubernetes, and modern CI/CD pipelines, alongside hands-on 
+experience in developing and optimizing LLM workflows and integrating 
+cloud-native GenAI solutions. 
+
+Proven ability to design scalable, secure, and cost-efficient 
+infrastructures, including HIPAA-compliant and multi-tenant systems. 
+Skilled at leading cross-functional teams, driving GenAI innovation, 
+and improving product performance by up to 40% while cutting costs by 50%. 
+
+Strong background in compliance (SOC2, HIPAA), infrastructure automation, 
+and scaling complex systems. Passionate about leveraging cutting-edge 
+tools to ensure seamless deployment, operational excellence, and high 
+availability.
+
+═══════════════════════════════════════════════════════════════════
+
+🛠️  CORE SKILLS
+═══════════════════════════════════════════════════════════════════
+
+☁️  Cloud Platforms:
+    • AWS (Expert), GCP, Azure
+
+🔧 DevOps Tools:
+    • Terraform, Docker, Kubernetes, Ansible, Jenkins, GitHub Actions
+
+⚙️  Infrastructure Automation:
+    • CloudFormation, Prometheus, Grafana
+
+💻 Programming Languages:
+    • Python, Bash, Go
+
+🔒 Monitoring & Security:
+    • ELK Stack, Vanta, CloudFlare, Certbot
+
+🌐 Other Technologies:
+    • Nginx, HAProxy, Envoy Proxy, PostgreSQL
+
+🤖 GenAI:
+    • OpenAI, Claude, Llama, Azure AI, AWS Bedrock, RAG, Prompt Engineering
+
+📋 Compliance:
+    • HIPAA, SOC2
+
+═══════════════════════════════════════════════════════════════════
+
+💼 PROFESSIONAL EXPERIENCE
+═══════════════════════════════════════════════════════════════════
+
+🏢 LEAPFROG TECHNOLOGY INC.
+
+🎯 Solution Architect, DevOps | Dec 2023 - Present
+   • Drove technical solutions from concept to deployment
+   • Built HIPAA-compliant, multi-tenant serverless system with data isolation
+   • Improved performance of a product by 10x (100+ pages to 1000+ pages)
+   • Optimized GenAI product performance by 40% and cost reduction by 50%
+   • Researched GenAI models to establish company's GenAI development services
+   • Spearheaded development of GenAI products, driving innovation and efficiency
+   • Improved EdTech products turn-around time using GenAI automation
+   • Led AWS efforts, earning APN Advanced membership
+   • Grew certified engineers from 4 to 20+
+
+🎯 Principal Engineer, DevOps | Dec 2021 - Dec 2023
+   • Engineered multi-stage deployment architectures for diverse projects
+   • Expanded DevOps team from 5 to 20+, enhancing skills and roles
+   • Scaled a product to handle 500% more data sources (8 to 40+ connections)
+   • Streamlined CI/CD, boosting deployment frequency by 400%
+   • Conducted compliance audits for HIPAA, SOC2, and other standards
+   • Re-architected ETL pipeline from time-based to near real-time processing
+
+🎯 Lead Engineer, DevOps | Dec 2020 - Dec 2021
+   • Delivered DevOps solutions ensuring high availability and minimal downtime
+   • Reduced deployment time by 20% for microservice-based product
+   • Reduced new service onboarding time by 90%
+   • Built hybrid cloud setup with seamless in-house database integration
+   • Decreased AWS product costs by 30%
+   • Automated deployment pipelines for microservices architecture
+   • Created company-wide documentation standards for DevOps processes
+
+🏢 SMART IDEAS PVT. LTD. (HAMROPATRO)
+
+🎯 Engineering Manager | Jul 2020 - Dec 2020
+   • Oversaw R&D for blockchain and microservices-based products
+   • Developed service discovery and deployment system using Go and Docker
+
+🎯 Research Engineer/Sr. Research Engineer/Team Lead | Jul 2017 - Jun 2020
+   • Led development of blockchain-based solutions and Ethereum applications
+   • Developed server monitoring systems using Prometheus and Grafana
+
+🏢 JAVRA SOFTWARE PVT. LTD.
+
+🎯 Software Engineer | May 2016 - June 2017
+   • Enhanced eCommerce search functionality with fuzzy search
+   • Added multilingual support
+
+═══════════════════════════════════════════════════════════════════
+
+🎓 EDUCATION
+═══════════════════════════════════════════════════════════════════
+
+Bachelor of Engineering in Computer Science
+Kathmandu University, 2015
+
+═══════════════════════════════════════════════════════════════════
+
+📝 References and recommendations available upon request
+
+💡 For more details, visit: https://www.linkedin.com/in/oneamitj
+📥 Use 'resume --download' to get the PDF version
+`;
+        
+        await this.typeText(resumeText, 8);
+    }
+
+    async showCommandHelp(command) {
+        const helpDocs = {
+            help: {
+                usage: 'help [--help]',
+                description: 'Display available commands and their descriptions',
+                examples: [
+                    'help                 # Show all available commands',
+                    'help --help          # Show this help message'
+                ]
+            },
+            about: {
+                usage: 'about [--help]',
+                description: 'Display professional summary and biography',
+                examples: [
+                    'about                # Show complete professional profile',
+                    'about --help         # Show this help message'
+                ]
+            },
+            skills: {
+                usage: 'skills [category] [--help]',
+                description: 'Display technical skills and expertise',
+                options: [
+                    'category             # Show specific skill category'
+                ],
+                categories: [
+                    'cloud_platforms      # AWS, GCP, Azure expertise',
+                    'devops_tools         # Terraform, Docker, Kubernetes',
+                    'programming_languages # Python, Bash, Go, JavaScript',
+                    'genai_technologies   # OpenAI, Claude, Bedrock',
+                    'monitoring_security  # Prometheus, Grafana, ELK',
+                    'infrastructure_automation # IaC and automation tools',
+                    'compliance           # HIPAA, SOC2 standards'
+                ],
+                examples: [
+                    'skills               # Show all skills with categories',
+                    'skills cloud_platforms # Show only cloud platform skills',
+                    'skills --help        # Show this help message'
+                ]
+            },
+            projects: {
+                usage: 'projects [filter] [--help]',
+                description: 'Display portfolio projects and achievements',
+                options: [
+                    'filter               # Filter projects by type (future feature)'
+                ],
+                examples: [
+                    'projects             # Show all featured and notable projects',
+                    'projects --help      # Show this help message'
+                ]
+            },
+            experience: {
+                usage: 'experience [--help]',
+                description: 'Display professional work history and timeline',
+                examples: [
+                    'experience           # Show complete work history',
+                    'experience --help    # Show this help message'
+                ]
+            },
+            contact: {
+                usage: 'contact [--help]',
+                description: 'Display contact information and availability',
+                examples: [
+                    'contact              # Show all contact details',
+                    'contact --help       # Show this help message'
+                ]
+            },
+            ls: {
+                usage: 'ls [--help]',
+                description: 'List directory contents and available files',
+                examples: [
+                    'ls                   # List current directory contents',
+                    'ls --help           # Show this help message'
+                ]
+            },
+            pwd: {
+                usage: 'pwd [--help]',
+                description: 'Print working directory (show current path)',
+                examples: [
+                    'pwd                  # Show current directory path',
+                    'pwd --help          # Show this help message'
+                ]
+            },
+            cd: {
+                usage: 'cd [directory] [--help]',
+                description: 'Change current directory',
+                options: [
+                    'directory            # Target directory to navigate to'
+                ],
+                directories: [
+                    '~, home              # Go to home directory',
+                    'skills               # Navigate to skills directory',
+                    'projects             # Navigate to projects directory',
+                    'about                # Navigate to about directory',
+                    '..                   # Go to parent directory',
+                    '/                    # Go to root directory'
+                ],
+                examples: [
+                    'cd                   # Go to home directory',
+                    'cd skills            # Go to skills directory',
+                    'cd ..                # Go to parent directory',
+                    'cd --help           # Show this help message'
+                ]
+            },
+            cat: {
+                usage: 'cat <filename> [--help]',
+                description: 'Display file contents',
+                options: [
+                    'filename             # Required: name of file to display'
+                ],
+                files: [
+                    'about.txt            # Professional summary',
+                    'contact.txt          # Contact information',
+                    'achievements.txt     # Key career achievements',
+                    'awards.txt           # Awards and recognition',
+                    'resume.pdf           # Complete resume/CV',
+                    'linkedin.url         # LinkedIn profile link',
+                    'github.url           # GitHub profile link'
+                ],
+                examples: [
+                    'cat about.txt        # Display professional summary',
+                    'cat resume.pdf       # Display complete resume',
+                    'cat achievements.txt # Show career achievements',
+                    'cat --help          # Show this help message'
+                ]
+            },
+            resume: {
+                usage: 'resume [--download] [--help]',
+                description: 'Display complete resume with professional experience and skills',
+                options: [
+                    '--download           # Download PDF version of resume'
+                ],
+                examples: [
+                    'resume               # Show complete resume in terminal',
+                    'resume --download    # Download PDF version',
+                    'resume --help        # Show this help message'
+                ]
+            },
+            cv: {
+                usage: 'cv [--download] [--help]',
+                description: 'Display complete curriculum vitae (same as resume)',
+                options: [
+                    '--download           # Download PDF version of CV'
+                ],
+                examples: [
+                    'cv                   # Show complete CV in terminal',
+                    'cv --download        # Download PDF version',
+                    'cv --help            # Show this help message'
+                ]
+            },
+            whoami: {
+                usage: 'whoami [--help]',
+                description: 'Display current user information and quick introduction',
+                examples: [
+                    'whoami               # Show quick user profile',
+                    'whoami --help        # Show this help message'
+                ]
+            },
+            clear: {
+                usage: 'clear [--help]',
+                description: 'Clear the terminal screen',
+                examples: [
+                    'clear                # Clear terminal output',
+                    'clear --help         # Show this help message'
+                ]
+            },
+            achievements: {
+                usage: 'achievements [--help]',
+                description: 'Display key career achievements and metrics',
+                examples: [
+                    'achievements         # Show all career achievements',
+                    'achievements --help  # Show this help message'
+                ]
+            },
+            awards: {
+                usage: 'awards [--help]',
+                description: 'Display competition wins and professional recognition',
+                examples: [
+                    'awards               # Show awards and recognition',
+                    'awards --help        # Show this help message'
+                ]
+            },
+            certifications: {
+                usage: 'certifications [--help]',
+                description: 'Display professional certifications and learning',
+                examples: [
+                    'certifications       # Show all certifications',
+                    'certifications --help # Show this help message'
+                ]
+            },
+            linkedin: {
+                usage: 'linkedin [--help]',
+                description: 'Display LinkedIn profile information and stats',
+                examples: [
+                    'linkedin             # Show LinkedIn profile info',
+                    'linkedin --help      # Show this help message'
+                ]
+            },
+            github: {
+                usage: 'github [--help]',
+                description: 'Display GitHub profile and repository information',
+                examples: [
+                    'github               # Show GitHub profile info',
+                    'github --help        # Show this help message'
+                ]
+            },
+            sudo: {
+                usage: 'sudo <command> [--help]',
+                description: 'Attempt to run commands with elevated privileges (easter egg)',
+                examples: [
+                    'sudo rm -rf /        # Try dangerous command (safe)',
+                    'sudo --help          # Show this help message'
+                ]
+            },
+            easter: {
+                usage: 'easter [--help]',
+                description: 'Activate hidden easter egg',
+                examples: [
+                    'easter               # Reveal the easter egg',
+                    'easter --help        # Show this help message'
+                ]
+            },
+            matrix: {
+                usage: 'matrix [--help]',
+                description: 'Enter the Matrix (special effect)',
+                examples: [
+                    'matrix               # Enter the Matrix',
+                    'matrix --help        # Show this help message'
+                ]
+            }
+        };
+        
+        const helpInfo = helpDocs[command];
+        if (!helpInfo) {
+            await this.showError(`No help available for command: ${command}`);
+            return;
+        }
+
+        let helpText = `
+╔═══════════════════════════════════════════════╗
+║                    COMMAND HELP: ${command.toUpperCase().padEnd(16)}
+╚═══════════════════════════════════════════════╝
+
+📖 USAGE:
+${helpInfo.usage}
+
+📝 DESCRIPTION:
+${helpInfo.description}
+`;
+
+        if (helpInfo.options) {
+            helpText += `\n🔧 OPTIONS:\n`;
+            helpInfo.options.forEach(option => {
+                helpText += `${option}\n`;
+            });
+        }
+
+        if (helpInfo.categories) {
+            helpText += `\n📂 AVAILABLE CATEGORIES:\n`;
+            helpInfo.categories.forEach(category => {
+                helpText += `${category}\n`;
+            });
+        }
+
+        if (helpInfo.directories) {
+            helpText += `\n📁 AVAILABLE DIRECTORIES:\n`;
+            helpInfo.directories.forEach(dir => {
+                helpText += `${dir}\n`;
+            });
+        }
+
+        if (helpInfo.files) {
+            helpText += `\n📄 AVAILABLE FILES:\n`;
+            helpInfo.files.forEach(file => {
+                helpText += `${file}\n`;
+            });
+        }
+
+        helpText += `\n💡 EXAMPLES:\n`;
+        helpInfo.examples.forEach(example => {
+            helpText += `${example}\n`;
+        });
+
+        helpText += `\n🎯 TIP: Most commands support --help or -h for detailed information`;
+
+        await this.typeText(helpText, 8);
+    }
+
     async showHelp() {
         const helpText = `
 Available Commands:
@@ -268,6 +775,12 @@ Available Commands:
    achievements - Key career achievements and metrics
    awards      - Competition wins and recognition
    certifications - Professional certifications
+
+📄 Resume/CV:
+   resume      - Display resume in terminal
+   resume --download - Download PDF resume
+   cv          - Display CV in terminal (same as resume)
+   cv --download - Download PDF CV
 
 🔗 Links:
    linkedin    - Open LinkedIn profile
@@ -590,7 +1103,7 @@ Feel free to reach out for:
 
         // Show different content based on current path
         if (this.currentPath === '/home/amit') {
-            dirText += `drwxr-xr-x  about/            � Professional summary
+            dirText += `drwxr-xr-x  about/            📁 Professional summary
 drwxr-xr-x  skills/           📂 Technical skills directory
 drwxr-xr-x  projects/         📂 Portfolio projects  
 drwxr-xr-x  experience/       📂 Work history
@@ -601,7 +1114,7 @@ drwxr-xr-x  contact/          📂 Contact information
 -rwxr-xr-x  linkedin.url      🔗 LinkedIn profile
 -rwxr-xr-x  github.url        🔗 GitHub repositories
 -rwxr-xr-x  easter.exe        🎮 Hidden easter egg
--rwxr-xr-x  matrix.exe        � Enter the Matrix
+-rwxr-xr-x  matrix.exe        🔮 Enter the Matrix
 
 Total: 12 items`;
         } else if (this.currentPath === '/home/amit/skills') {
@@ -616,7 +1129,7 @@ Total: 12 items`;
 Total: 7 items`;
         } else if (this.currentPath === '/home/amit/projects') {
             dirText += `drwxr-xr-x  ..                📂 Parent directory
-drwxr-xr-x  learning-list/    � GenAI Alignment Checker
+drwxr-xr-x  learning-list/    📂 GenAI Alignment Checker
 drwxr-xr-x  addy-healthcare/  📂 HIPAA-compliant AI Platform
 drwxr-xr-x  genai-platform/   📂 GenAI R&D Platform
 drwxr-xr-x  evoke-medical/    📂 Remote Device Monitoring
@@ -634,7 +1147,7 @@ Total: 4 items`;
         } else {
             // For other directories, show generic content
             dirText += `drwxr-xr-x  ..                📂 Parent directory
--rw-r--r--  info.txt          � Directory information
+-rw-r--r--  info.txt          📄 Directory information
 
 💡 Use 'cd ..' to go back or 'cd ~' to go home
 Total: 2 items`;
