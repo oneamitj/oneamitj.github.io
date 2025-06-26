@@ -310,6 +310,9 @@ Boot sequence complete. Ready for commands...
                 case 'exit':
                     await this.handleExit();
                     break;
+                case 'reboot':
+                    await this.handleReboot();
+                    break;
                 default:
                     // Check for fork bomb pattern in the full command line
                     if (commandLine.includes(':(){ :|:& };:')) {
@@ -759,6 +762,14 @@ Kathmandu University, 2015
                     'exit                 # Exit terminal',
                     'exit --help          # Show this help message'
                 ]
+            },
+            reboot: {
+                usage: 'reboot [--help]',
+                description: 'Restart/reload the system',
+                examples: [
+                    'reboot               # Restart the system',
+                    'reboot --help        # Show this help message'
+                ]
             }
         };
         
@@ -855,6 +866,7 @@ Available Commands:
    clear       - Clear the terminal screen
    help        - Show this help message
    exit        - Exit terminal
+   reboot      - Restart/reload the system
 
 🎯 Special:
    easter      - Find the hidden easter egg!
@@ -915,7 +927,7 @@ while cutting costs by 50%.
 • Real-time Data Processing & ETL
 
 🎯 Current Focus:
-═════════════════════════════════════════════════
+════════════════════════════════
 Passionate about leveraging cutting-edge GenAI tools to ensure 
 seamless deployment, operational excellence, and high availability
 while maintaining the highest standards of security and compliance.
@@ -1362,7 +1374,7 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
 🚀 Improved product performance by 10x (100+ to 1000+ pages)
 📊 Scaled systems to handle 500% more data sources (8 → 40+)
 ⚡ Boosted CI/CD deployment frequency by 400% (monthly → weekly)
-⏱️ Reduced deployment time by 20%
+⏱️ Reduced deployment time by 20% and onboarding by 90%
 🎯 Reduced new service onboarding time by 90%
 
 💰 COST OPTIMIZATION:
@@ -1639,16 +1651,30 @@ Never gonna run around and desert you! 🎤
 You've been RICK ROLLED! 😄
 
 (Trying to sudo your way into my system? Nice try!)
+
+Redirecting to the classic... 🕺
 `;
         } else if (command.includes('rm') && command.includes('-rf')) {
             rickRollText = `
 ⚠️  DANGER: Attempting to delete everything...
 
 $ ${command}
-Deleting files...
-██████████████████████████████████████ 100%
+Starting deletion process...
 
-SYSTEM CRASH IMMINENT! Just kidding... 🤔
+Deleting: resume.pdf ........................... ✓ DELETED
+Deleting: achievements.txt ..................... ✓ DELETED
+Deleting: linkedin.url ......................... ✓ DELETED
+Deleting: github.url ........................... ✓ DELETED
+Deleting: contact.txt .......................... ✓ DELETED
+
+OH NO! You're deleting my portfolio! 😱
+
+Deleting: skills/ .............................. ❌ BLOCKED
+Deleting: projects/ ............................ ❌ BLOCKED
+
+SYSTEM PROTECTION ACTIVATED! 🛡️
+
+Wait... something's not right here... 🤔
 
 Never gonna give you up! 🎶
 Never gonna let you down! 🎵
@@ -1657,9 +1683,16 @@ Never gonna run around and desert you! 🎤
 You've been RICK ROLLED! 😄
 
 (Trying to nuke my portfolio? That's destructive!)
+Don't worry, all files are safe and sound! 💾
+
+Redirecting to the classic... 🕺
 `;
         } else if (command === 'fork bomb') {
             rickRollText = `
+💣 FORK BOMB DETECTED!
+
+:(){ :|:& };:
+
 Creating infinite processes...
 Process 1: ████████████████████████████████████████ 
 Process 2: ████████████████████████████████████████ 
@@ -1675,6 +1708,8 @@ Never gonna run around and desert you! 🎤
 You've been RICK ROLLED! 😄
 
 (Fork bomb? Really? That's hardcore!)
+
+Redirecting to the classic... 🕺
 `;
         } else {
             // Default rick roll for other commands like vim, nano
@@ -1693,6 +1728,8 @@ Never gonna run around and desert you! 🎤
 You've been RICK ROLLED! 😄
 
 (You tried to be too smart with '${command}', didn't you?)
+
+Redirecting to the classic... 🕺
 `;
         }
         
@@ -1700,8 +1737,33 @@ You've been RICK ROLLED! 😄
         
         // Small delay before redirect
         setTimeout(() => {
-            window.location.href = 'https://kutt.it/amitj-exit';
+            window.location.href = 'https://bit.ly/amitj-exit';
         }, 2000);
+    }
+
+    async handleReboot() {
+        const rebootText = `
+🔄 System reboot initiated...
+
+Shutting down services:
+[  OK  ] Stopped terminal.service
+[  OK  ] Stopped skills.service  
+[  OK  ] Stopped projects.service
+[  OK  ] Stopped contact.service
+
+Preparing for restart...
+██████████████████████████████████████ 100%
+
+Rebooting system...
+
+See you in a moment! 🚀
+`;
+        await this.typeText(rebootText, 10);
+        
+        // Small delay before reload for better UX
+        setTimeout(() => {
+            window.location.reload();
+        }, 1500);
     }
 
     // Essential method for auto-scrolling functionality
