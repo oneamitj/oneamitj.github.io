@@ -9,6 +9,8 @@ class Terminal {
         this.currentPath = '/home/amit';
         this.commandHistory = [];
         this.historyIndex = -1;
+        this.isTyping = false; // Track if we're currently typing
+        this.shouldStop = false; // Flag to stop typing
         
         this.init();
         this.showWelcome();
@@ -86,13 +88,20 @@ Boot sequence complete. Ready for commands...
     }
 
     async typeText(text, speed = 15) {
+        this.isTyping = true;
+        this.shouldStop = false;
+        
         const lines = text.split('\n');
         for (const line of lines) {
+            if (this.shouldStop) break;
+            
             const div = document.createElement('div');
             this.output.appendChild(div);
             
             let charCount = 0;
             for (const char of line) {
+                if (this.shouldStop) break;
+                
                 div.textContent += char;
                 charCount++;
                 await this.sleep(speed);
@@ -105,6 +114,8 @@ Boot sequence complete. Ready for commands...
             // Always scroll at end of each line
             this.scrollToBottom();
         }
+        
+        this.isTyping = false;
         this.scrollToBottom();
     }
 
@@ -128,9 +139,25 @@ Boot sequence complete. Ready for commands...
     // }
 
     async handleInput(e) {
+        // Handle Ctrl+C to stop typing
+        if (e.ctrlKey && e.key === 'c') {
+            e.preventDefault();
+            if (this.isTyping) {
+                this.stopTyping();
+                return;
+            }
+        }
+
         if (e.key === 'Enter') {
             const command = this.input.value.trim();
             this.input.value = '';
+            
+            // Stop any ongoing typing from previous command
+            if (this.isTyping) {
+                this.stopTyping('silent');
+                // Add a small delay to ensure the stopTyping completes
+                await this.sleep(50);
+            }
             
             if (command) {
                 this.commandHistory.push(command);
@@ -165,6 +192,20 @@ Boot sequence complete. Ready for commands...
                 this.input.value = '';
             }
         }
+    }
+
+    stopTyping() {
+        this.shouldStop = true;
+        this.isTyping = false;
+        
+        // Add the ^C indicator only if this was triggered by Ctrl+C
+        // We'll modify this to be more selective about when to show ^C
+        if (arguments.length === 0 || arguments[0] !== 'silent') {
+            const interruptDiv = document.createElement('div');
+            interruptDiv.textContent = '^C';
+            this.output.appendChild(interruptDiv);
+        }
+        this.scrollToBottom();
     }
 
     async executeCommand(commandLine) {
@@ -258,6 +299,13 @@ Boot sequence complete. Ready for commands...
                 case 'matrix':
                     await this.showMatrix();
                     break;
+                case 'stop':
+                    if (this.isTyping) {
+                        this.stopTyping();
+                    } else {
+                        await this.typeText('\nNothing to stop. No command is currently running.\n');
+                    }
+                    break;
                 default:
                     await this.showError(`Command not found: ${command}. Type 'help' for available commands.`);
             }
@@ -347,10 +395,10 @@ Boot sequence complete. Ready for commands...
 
 💡 Tip: Use 'resume --download' to download PDF version
 
-═══════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════
 
 📋 PROFESSIONAL SUMMARY
-═══════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════
 
 Dynamic DevOps and GenAI developer with deep expertise in AWS, 
 Terraform, Kubernetes, and modern CI/CD pipelines, alongside hands-on 
@@ -367,10 +415,10 @@ and scaling complex systems. Passionate about leveraging cutting-edge
 tools to ensure seamless deployment, operational excellence, and high 
 availability.
 
-═══════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════
 
 🛠️  CORE SKILLS
-═══════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════
 
 ☁️  Cloud Platforms:
     • AWS (Expert), GCP, Azure
@@ -396,10 +444,10 @@ availability.
 📋 Compliance:
     • HIPAA, SOC2
 
-═══════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════
 
 💼 PROFESSIONAL EXPERIENCE
-═══════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════
 
 🏢 LEAPFROG TECHNOLOGY INC.
 
@@ -447,15 +495,15 @@ availability.
    • Enhanced eCommerce search functionality with fuzzy search
    • Added multilingual support
 
-═══════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════
 
 🎓 EDUCATION
-═══════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════
 
 Bachelor of Engineering in Computer Science
 Kathmandu University, 2015
 
-═══════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════
 
 📝 References and recommendations available upon request
 
@@ -1570,7 +1618,7 @@ The Matrix is everywhere... even in DevOps! 🤖
 
     clearScreen() {
         this.output.innerHTML = '';
-        this.showPrompt();
+        // this.showPrompt();
     }
 }
 
