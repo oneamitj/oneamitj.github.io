@@ -1651,8 +1651,6 @@ Never gonna run around and desert you! 🎤
 You've been RICK ROLLED! 😄
 
 (Trying to sudo your way into my system? Nice try!)
-
-Redirecting to the classic... 🕺
 `;
         } else if (command.includes('rm') && command.includes('-rf')) {
             rickRollText = `
@@ -1684,8 +1682,6 @@ You've been RICK ROLLED! 😄
 
 (Trying to nuke my portfolio? That's destructive!)
 Don't worry, all files are safe and sound! 💾
-
-Redirecting to the classic... 🕺
 `;
         } else if (command === 'fork bomb') {
             rickRollText = `
@@ -1708,8 +1704,6 @@ Never gonna run around and desert you! 🎤
 You've been RICK ROLLED! 😄
 
 (Fork bomb? Really? That's hardcore!)
-
-Redirecting to the classic... 🕺
 `;
         } else {
             // Default rick roll for other commands like vim, nano
@@ -1728,8 +1722,6 @@ Never gonna run around and desert you! 🎤
 You've been RICK ROLLED! 😄
 
 (You tried to be too smart with '${command}', didn't you?)
-
-Redirecting to the classic... 🕺
 `;
         }
         
@@ -1737,7 +1729,7 @@ Redirecting to the classic... 🕺
         
         // Small delay before redirect
         setTimeout(() => {
-            window.location.href = 'https://bit.ly/amitj-exit';
+            window.location.href = 'https://kutt.it/amitj-exit';
         }, 2000);
     }
 
