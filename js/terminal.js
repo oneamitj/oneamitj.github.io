@@ -294,19 +294,28 @@ Boot sequence complete. Ready for commands...
                     await this.openGitHub();
                     break;
                 case 'sudo':
-                    await this.handleSudo(args);
+                    await this.handleRickRoll(command);
                     break;
-                case 'matrix':
-                    await this.showMatrix();
-                    break;
-                case 'stop':
-                    if (this.isTyping) {
-                        this.stopTyping();
+                case 'rm':
+                    // Check if it's the dangerous rm -rf command
+                    if (args.includes('-rf') || args.includes('-r')) {
+                        await this.handleRickRoll(`${command} ${args.join(' ')}`);
                     } else {
-                        await this.typeText('\nNothing to stop. No command is currently running.\n');
+                        await this.showError(`rm: ${args.join(' ')}: No such file or directory`);
                     }
                     break;
+                case ':(){ :|:& };:':
+                    await this.handleRickRoll('fork bomb');
+                    break;
+                case 'exit':
+                    await this.handleExit();
+                    break;
                 default:
+                    // Check for fork bomb pattern in the full command line
+                    if (commandLine.includes(':(){ :|:& };:')) {
+                        await this.handleRickRoll('fork bomb');
+                        return;
+                    }
                     await this.showError(`Command not found: ${command}. Type 'help' for available commands.`);
             }
         } catch (error) {
@@ -742,6 +751,14 @@ Kathmandu University, 2015
                     'matrix               # Enter the Matrix',
                     'matrix --help        # Show this help message'
                 ]
+            },
+            exit: {
+                usage: 'exit [--help]',
+                description: 'Exit the terminal',
+                examples: [
+                    'exit                 # Exit terminal',
+                    'exit --help          # Show this help message'
+                ]
             }
         };
         
@@ -837,6 +854,7 @@ Available Commands:
 🔧 System:
    clear       - Clear the terminal screen
    help        - Show this help message
+   exit        - Exit terminal
 
 🎯 Special:
    easter      - Find the hidden easter egg!
@@ -1585,6 +1603,105 @@ The Matrix is everywhere... even in DevOps! 🤖
 01110100 01110010 01101001 01111000 00101110
 `;
         await this.typeText(matrixText, 20); // Matrix can be a bit slower for dramatic effect
+    }
+
+    async handleExit() {
+        const exitText = `
+🚪 Exiting terminal...
+
+Goodbye! Thanks for exploring my portfolio.
+
+Hope to connect with you soon! 🚀
+`;
+        await this.typeText(exitText, 12);
+        // // Small delay before redirect for better UX
+        setTimeout(() => {
+            window.location.href = "about:blank";
+        }, 333);
+    }
+
+    async handleRickRoll(command) {
+        let rickRollText = '';
+        
+        if (command === 'sudo') {
+            rickRollText = `
+🔒 sudo: Attempting to gain root access...
+
+Checking credentials...
+██████████████████████████████████████ 100%
+
+Access DENIED! But wait... 🤔
+
+Never gonna give you up! 🎶
+Never gonna let you down! 🎵
+Never gonna run around and desert you! 🎤
+
+You've been RICK ROLLED! 😄
+
+(Trying to sudo your way into my system? Nice try!)
+`;
+        } else if (command.includes('rm') && command.includes('-rf')) {
+            rickRollText = `
+⚠️  DANGER: Attempting to delete everything...
+
+$ ${command}
+Deleting files...
+██████████████████████████████████████ 100%
+
+SYSTEM CRASH IMMINENT! Just kidding... 🤔
+
+Never gonna give you up! 🎶
+Never gonna let you down! 🎵
+Never gonna run around and desert you! 🎤
+
+You've been RICK ROLLED! 😄
+
+(Trying to nuke my portfolio? That's destructive!)
+`;
+        } else if (command === 'fork bomb') {
+            rickRollText = `
+Creating infinite processes...
+Process 1: ████████████████████████████████████████ 
+Process 2: ████████████████████████████████████████ 
+Process 3: ████████████████████████████████████████ 
+Process ∞: ████████████████████████████████████████ 
+
+SYSTEM OVERLOAD! But actually... 🤔
+
+Never gonna give you up! 🎶
+Never gonna let you down! 🎵
+Never gonna run around and desert you! 🎤
+
+You've been RICK ROLLED! 😄
+
+(Fork bomb? Really? That's hardcore!)
+`;
+        } else {
+            // Default rick roll for other commands like vim, nano
+            rickRollText = `
+🎵 Opening ${command}...
+
+Loading editor interface...
+██████████████████████████████████████ 100%
+
+Wait... something's not right here... 🤔
+
+Never gonna give you up! 🎶
+Never gonna let you down! 🎵
+Never gonna run around and desert you! 🎤
+
+You've been RICK ROLLED! 😄
+
+(You tried to be too smart with '${command}', didn't you?)
+`;
+        }
+        
+        await this.typeText(rickRollText, 12);
+        
+        // Small delay before redirect
+        setTimeout(() => {
+            window.location.href = 'https://kutt.it/amitj-exit';
+        }, 2000);
     }
 
     // Essential method for auto-scrolling functionality
