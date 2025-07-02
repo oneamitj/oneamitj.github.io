@@ -320,6 +320,15 @@ Boot sequence complete. Ready for commands...
                 case 'reboot':
                     await this.handleReboot();
                     break;
+                case 'pwa':
+                    await this.handlePWA(args);
+                    break;
+                case 'offline':
+                    await this.showOfflineInfo();
+                    break;
+                case 'install':
+                    await this.handleInstall();
+                    break;
                 default:
                     // Check for fork bomb pattern in the full command line
                     if (commandLine.includes(':(){ :|:& };:')) {
@@ -891,6 +900,13 @@ Available Commands:
    help        - Show this help message
    exit        - Exit terminal
    reboot      - Restart/reload the system
+
+📱 PWA Commands:
+   pwa status  - Show PWA installation status
+   pwa install - Install portfolio as app
+   pwa update  - Update to latest version
+   install     - Quick install command
+   offline     - Show offline capabilities
 
 🎯 Special:
    easter      - Find the hidden easter egg!
@@ -1780,6 +1796,249 @@ See you in a moment! 🚀
         setTimeout(() => {
             window.location.reload();
         }, 1500);
+    }
+
+    // PWA-related command handlers
+    async handlePWA(args) {
+        const subCommand = args[0]?.toLowerCase();
+        
+        if (!subCommand) {
+            await this.showPWAStatus();
+            return;
+        }
+        
+        switch (subCommand) {
+            case 'status':
+                await this.showPWAStatus();
+                break;
+            case 'install':
+                await this.handlePWAInstall();
+                break;
+            case 'update':
+                await this.handlePWAUpdate();
+                break;
+            case 'help':
+                await this.showPWAHelp();
+                break;
+            default:
+                await this.showError(`Unknown PWA command: ${subCommand}. Use 'pwa help' for available options.`);
+        }
+    }
+
+    async showPWAStatus() {
+        const status = window.pwaManager ? window.pwaManager.getPWAStatus() : null;
+        
+        if (!status) {
+            await this.typeText(`
+❌ PWA Manager not available
+`, 10);
+            return;
+        }
+
+        const statusText = `
+╔═══════════════════════════════════════════════╗
+║                    PWA STATUS
+╚═══════════════════════════════════════════════╝
+
+📱 Progressive Web App Information:
+═════════════════════════════════════════════════
+
+🔧 Service Worker: ${status.hasServiceWorker ? '✅ Supported' : '❌ Not Supported'}
+📲 Installation: ${status.isInstalled ? '✅ Installed' : '❌ Not Installed'}
+🖥️  Standalone Mode: ${status.isStandalone ? '✅ Running as App' : '❌ Running in Browser'}
+⬇️  Can Install: ${status.canInstall ? '✅ Available' : '❌ Not Available'}
+🌐 Online Status: ${status.isOnline ? '✅ Online' : '❌ Offline'}
+
+💡 Available PWA Commands:
+═════════════════════════════════════════════════
+• pwa status   - Show current PWA status
+• pwa install  - Install portfolio as app
+• pwa update   - Update to latest version
+• pwa help     - Show PWA command help
+• install      - Quick install command
+• offline      - Show offline capabilities
+
+${status.canInstall ? '🚀 Ready to install! Type "pwa install" or "install"' : ''}
+${status.isInstalled ? '🎉 App is installed and ready to use!' : ''}
+`;
+
+        await this.typeText(statusText, 8);
+    }
+
+    async handlePWAInstall() {
+        if (!window.pwaManager) {
+            await this.showError('PWA Manager not available');
+            return;
+        }
+
+        await this.typeText(`
+📲 Installing portfolio as Progressive Web App...
+
+╔═══════════════════════════════════════════════╗
+║                    INSTALLING PWA
+╚═══════════════════════════════════════════════╝
+
+`, 10);
+
+        const result = await window.pwaManager.installPWA();
+        
+        const installText = `
+${result.success ? '✅' : '❌'} ${result.message}
+
+${result.success ? `
+🎉 Installation Benefits:
+• Access from home screen/desktop
+• Faster loading with offline support
+• App-like experience without browser UI
+• Background updates
+• Push notifications (coming soon)
+
+📱 Look for "AmitJ Terminal" on your device!
+` : `
+💡 Alternative Access Methods:
+• Bookmark this page for quick access
+• Add to home screen manually (mobile)
+• Use browser's "Install App" option
+`}
+`;
+
+        await this.typeText(installText, 10);
+    }
+
+    async handlePWAUpdate() {
+        if (!window.pwaManager) {
+            await this.showError('PWA Manager not available');
+            return;
+        }
+
+        await this.typeText(`
+🔄 Checking for updates...
+
+╔═══════════════════════════════════════════════╗
+║                    UPDATING PWA
+╚═══════════════════════════════════════════════╝
+
+`, 10);
+
+        const result = await window.pwaManager.updatePWA();
+        
+        const updateText = `
+${result.success ? '✅' : '❌'} ${result.message}
+
+${result.success ? `
+📦 Update Features:
+• Latest portfolio content
+• Performance improvements
+• Bug fixes and enhancements
+• New PWA capabilities
+` : `
+💡 Manual Update Options:
+• Refresh browser (Ctrl+F5 / Cmd+R)
+• Clear browser cache
+• Reinstall the PWA
+`}
+`;
+
+        await this.typeText(updateText, 10);
+    }
+
+    async showPWAHelp() {
+        const helpText = `
+╔═══════════════════════════════════════════════╗
+║                    PWA COMMANDS HELP
+╚═══════════════════════════════════════════════╝
+
+📱 Progressive Web App Commands:
+═════════════════════════════════════════════════
+
+pwa status     Show current PWA installation status
+pwa install    Install portfolio as a native app
+pwa update     Update to the latest version
+pwa help       Show this help message
+
+install        Quick command to install PWA
+offline        Show offline capabilities info
+
+🌟 What is a PWA?
+═════════════════════════════════════════════════
+Progressive Web Apps combine the best of web and mobile apps:
+
+✅ Install like a native app
+✅ Work offline with cached content
+✅ Fast loading and performance
+✅ Automatic updates
+✅ App-like experience
+✅ Cross-platform compatibility
+
+📲 Installation Benefits:
+═════════════════════════════════════════════════
+• Access from home screen/desktop
+• No browser address bar
+• Faster loading times
+• Offline browsing capability
+• Background updates
+• Native app-like feel
+
+💡 Try: 'pwa install' to get started!
+`;
+
+        await this.typeText(helpText, 8);
+    }
+
+    async handleInstall() {
+        // Quick install command - same as pwa install
+        await this.handlePWAInstall();
+    }
+
+    async showOfflineInfo() {
+        const isOnline = navigator.onLine;
+        const offlineText = `
+╔═══════════════════════════════════════════════╗
+║                    OFFLINE CAPABILITIES
+╚═══════════════════════════════════════════════╝
+
+🌐 Current Status: ${isOnline ? '✅ Online' : '❌ Offline'}
+📶 Network: ${isOnline ? 'Connected' : 'Disconnected'}
+
+📱 Offline Features:
+═════════════════════════════════════════════════
+
+✅ Core Functionality Available:
+• Complete portfolio browsing
+• All commands work normally  
+• Skills, projects, experience data
+• Contact information
+• Resume viewing
+• Terminal interface
+
+✅ Cached Content:
+• HTML, CSS, JavaScript files
+• JSON data files
+• Fonts and styling
+• Essential assets
+
+❌ Limited When Offline:
+• Resume PDF download
+• External links (LinkedIn, GitHub)
+• Real-time updates
+• Web font loading (fallback fonts used)
+
+🔄 Automatic Sync:
+• Updates download when connection restored
+• Background sync for improved performance
+• Smart caching strategies
+
+💡 Installation Tip:
+Install as PWA for the best offline experience!
+Type 'pwa install' to get started.
+
+${!isOnline ? `
+📱 You're currently offline, but everything still works!
+The portfolio is fully functional thanks to service worker caching.
+` : ''}
+`;
+
+        await this.typeText(offlineText, 8);
     }
 
     // Essential method for auto-scrolling functionality
