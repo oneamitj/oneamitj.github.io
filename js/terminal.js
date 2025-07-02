@@ -293,6 +293,13 @@ Boot sequence complete. Ready for commands...
                 case 'github':
                     await this.openGitHub();
                     break;
+                case 'oneai':
+                    if (args.length > 0) {
+                        await this.handleOneAI(args.join(' '));
+                    } else {
+                        await this.showError('oneai: missing message. Usage: oneai <your question>');
+                    }
+                    break;
                 case 'sudo':
                     await this.handleRickRoll(command);
                     break;
@@ -770,6 +777,20 @@ Kathmandu University, 2015
                     'reboot               # Restart the system',
                     'reboot --help        # Show this help message'
                 ]
+            },
+            oneai: {
+                usage: 'oneai <message> [--help]',
+                description: 'Ask AI questions about Amit and get intelligent responses',
+                options: [
+                    'message              # Required: your question or message'
+                ],
+                examples: [
+                    'oneai "What are your main skills?"',
+                    'oneai "Tell me about your AWS experience"',
+                    'oneai "What projects have you worked on?"',
+                    'oneai "How can you help my company?"',
+                    'oneai --help          # Show this help message'
+                ]
             }
         };
         
@@ -846,6 +867,9 @@ Available Commands:
    projects    - Portfolio projects and achievements
    experience  - Professional work history
    contact     - Contact information
+
+🤖 AI Assistant:
+   oneai <msg> - Ask AI questions about me
 
 🏆 Career:
    achievements - Key career achievements and metrics
@@ -1777,6 +1801,61 @@ See you in a moment! 🚀
                 behavior: 'auto' // Use 'auto' instead of 'smooth' for real-time typing
             });
         });
+    }
+
+
+    async handleOneAI(userMessage) {
+        try {
+            // Show loading message
+            await this.typeText(`
+🤖 🔄 Thinking...\n\n
+`);
+            const xft0 = Date.now();
+            const tokenHeaders = new Headers();
+            tokenHeaders.append("X-Factor", xft0.toString());
+
+            const tokenResponse = await fetch("https://oneai-proxy.vercel.app/t0", {
+                method: "GET",
+                headers: tokenHeaders,
+                redirect: "follow"
+            });
+
+            if (!tokenResponse.ok) {
+                throw new Error(`Failed to get token: ${tokenResponse.status}`);
+            }
+
+            const tokenData = await tokenResponse.json();
+            const token = tokenData.token;
+            const xfp0 = Date.now();
+            const aiHeaders = new Headers();
+            aiHeaders.append("X-Factor", xfp0.toString());
+            aiHeaders.append("Content-Type", "text/plain");
+            aiHeaders.append("Authorization", `Bearer ${token}`);
+
+            const aiResponse = await fetch("https://oneai-proxy.vercel.app/p0", {
+                method: "POST",
+                headers: aiHeaders,
+                body: userMessage,
+                redirect: "follow"
+            });
+
+            if (!aiResponse.ok) {
+                throw new Error(`AI request failed: ${aiResponse.status}`);
+            }
+
+            const aiResult = await aiResponse.text();
+
+            // Display the AI response
+            const responseText = aiResult;
+
+            await this.typeText(responseText, 8);
+
+        } catch (error) {
+            await this.showError(`OneAI Error: ${error.message}`);
+            await this.typeText(`
+💡 Alternative: Try 'about', 'skills', or 'experience' for detailed info
+`);
+        }
     }
 
     async showError(message) {
