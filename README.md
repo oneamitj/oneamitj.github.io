@@ -343,7 +343,7 @@ Inspired by the golden age of computing and terminal interfaces. Built with pass
 
 *"Sometimes the old ways are the best ways."* - Built with vanilla JavaScript, no frameworks needed! 🚀
 
-**Live Demo**: [oneamitj.github.io](https://oneamitj.github.io)
+**Live Demo**: [amitj.com.np](https://amitj.com.np)
 
 ---
 
