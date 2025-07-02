@@ -1,0 +1,67 @@
+# GitHub Pages Jekyll configuration for SEO optimization
+# Amit Joshi - DevOps Engineer Portfolio
+
+title: "Amit Joshi - AWS Expert DevOps Engineer & GenAI Solution Architect"
+description: "AWS Expert DevOps Engineer with 10+ years experience. Led teams to APN Advanced Partner, achieved 40% GenAI performance improvement. Specializing in AWS, Terraform, Kubernetes, AI/ML integration."
+url: "https://amitj.com.np"
+baseurl: ""
+
+# Author information
+author:
+  name: "Amit Joshi"
+  email: "one.amitj@gmail.com"
+  linkedin: "oneamitj"
+  github: "oneamitj"
+  location: "Kathmandu, Nepal"
+
+# SEO settings
+lang: en_US
+timezone: Asia/Kathmandu
+
+# Social media
+social:
+  name: Amit Joshi
+  links:
+    - https://linkedin.com/in/oneamitj
+    - https://github.com/oneamitj
+
+# Google Analytics (add your tracking ID)
+# google_analytics: UA-XXXXXXXXX-X
+
+# SEO tag plugin settings
+webmaster_verifications:
+  google: # Add your Google Search Console verification code
+  bing: # Add your Bing Webmaster verification code
+
+# Site verification
+google_site_verification: # Add your Google site verification code
+
+# Plugins for better SEO (if using Jekyll)
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - LICENSE
+  - node_modules/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+
+# Include files
+include:
+  - _pages
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+
+# Sass settings
+sass:
+  sass_dir: css
+  style: compressed

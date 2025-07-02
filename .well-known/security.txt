@@ -1,0 +1,11 @@
+# Security Policy for Amit Joshi Portfolio
+# Contact: LinkedIn at https://linkedin.com/in/oneamitj
+
+Contact: https://linkedin.com/in/oneamitj
+Expires: 2026-07-03T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://amitj.com.np/.well-known/security.txt
+Policy: https://amitj.com.np/
+
+# This is a static portfolio website
+# For security concerns, please contact via LinkedIn

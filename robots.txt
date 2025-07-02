@@ -1,0 +1,39 @@
+# Robots.txt for Amit Joshi - DevOps Engineer Portfolio
+# Global DevOps & GenAI Solution Architect
+# https://amitj.com.np
+
+User-agent: *
+Allow: /
+
+# Optimize crawl budget - allow all SEO-critical content
+Allow: /*.css
+Allow: /*.js
+Allow: /*.json
+Allow: /icons/
+Allow: /data/
+Allow: /screenshots/
+Allow: /assets/
+
+# Disallow non-essential files for better crawl efficiency
+Disallow: /sw.js
+Disallow: /*.log
+Disallow: /browserconfig.xml
+
+# XML Sitemap for enhanced indexing
+Sitemap: https://amitj.com.np/sitemap.xml
+
+# Global availability - no geo-restrictions
+# Targeting worldwide DevOps, AWS, and GenAI opportunities
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Special instructions for search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

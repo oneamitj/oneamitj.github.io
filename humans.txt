@@ -1,0 +1,37 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    DevOps Engineer & GenAI Solution Architect: Amit Joshi
+    Site: https://amitj.com.np/
+    LinkedIn: linkedin.com/in/oneamitj
+    GitHub: github.com/oneamitj
+    Location: Kathmandu, Nepal
+
+# THANKS
+
+    AWS Community
+    DevOps Community
+    Open Source Contributors
+    Leapfrog Technology Inc.
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, Vanilla JavaScript
+    Progressive Web App (PWA)
+    Service Worker
+    JSON-LD Structured Data
+    Terminal-based UI
+    AWS Expert Level Knowledge
+    Terraform Infrastructure as Code
+    Kubernetes Container Orchestration
+    GenAI Integration Expertise
+
+# SITE
+
+    Last update: 2025/07/03
+    Language: English
+    Doctype: HTML5
+    IDE: VS Code
+    Standards: W3C, PWA, SEO Optimized
