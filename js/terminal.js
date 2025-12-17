@@ -1624,8 +1624,8 @@ Note: Some repositories may be private due to client confidentiality
 📊 Opening Presentation...
 
 ╔═══════════════════════════════════════════════╗
-║  ${pres.title.padEnd(45)}║
-║  ${pres.subtitle.padEnd(45)}║
+║  ${pres.title.padEnd(45)}
+║  ${pres.subtitle.padEnd(45)}
 ╚═══════════════════════════════════════════════╝
 
 📅 Event: ${pres.date}
