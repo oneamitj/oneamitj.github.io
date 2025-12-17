@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Speaker Notes – Dawn of the Agents: The Age of Agents</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #1a1f2e;
+      --fg: #e5e9f0;
+      --muted: #b8c5db;
+      --accent: #ff9900;
+      --card-bg: #242b3d;
+      --border: rgba(156, 163, 175, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      background: linear-gradient(to bottom, #1a1f2e 0%, #141821 100%);
+      color: var(--fg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 80px;
+      padding-bottom: 40px;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      color: var(--fg);
+      line-height: 1.2;
+    }
+
+    header .subtitle {
+      font-size: 24px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    header .meta {
+      font-size: 16px;
+      color: var(--muted);
+      margin-top: 24px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .slide-number {
+      background: var(--accent);
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 6px;
+      min-width: 80px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .slide-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--fg);
+      margin: 0;
+    }
+
+    .slide-content {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .slide-content-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .slide-content-text {
+      font-size: 20px;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    .speaker-notes {
+      font-size: 18px;
+      color: #c8d3e6;
+      line-height: 1.8;
+    }
+
+    .speaker-notes p {
+      margin: 0 0 20px;
+    }
+
+    .speaker-notes strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .speaker-notes em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .speaker-notes blockquote {
+      margin: 24px 0;
+      padding: 20px 24px;
+      background: rgba(255, 153, 0, 0.12);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    .speaker-notes ul {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+
+    .speaker-notes li {
+      margin: 8px 0;
+    }
+
+    .opening, .closing {
+      background: linear-gradient(135deg, rgba(255, 153, 0, 0.15) 0%, rgba(255, 153, 0, 0.05) 100%);
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      padding: 48px;
+      margin-bottom: 80px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .opening h2, .closing h2 {
+      font-size: 36px;
+      color: var(--accent);
+      margin: 0 0 32px;
+      text-align: center;
+    }
+
+    .opening .content, .closing .content {
+      font-size: 18px;
+      color: #d0d9e8;
+      line-height: 1.9;
+    }
+
+    .story-beat {
+      margin: 32px 0;
+    }
+
+    .story-beat h3 {
+      font-size: 24px;
+      color: #ffffff;
+      margin: 0 0 16px;
+      font-weight: 600;
+    }
+
+    .pause {
+      font-style: italic;
+      color: #ffa726;
+      font-size: 16px;
+      margin: 16px 0;
+    }
+
+    .toc {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 60px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .toc h2 {
+      font-size: 24px;
+      color: var(--fg);
+      margin: 0 0 24px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .toc-item {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+
+    .toc-item:hover {
+      background: rgba(255, 153, 0, 0.15);
+      color: var(--accent);
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #000000;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      background: var(--accent);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      background: #e68a00;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 20px;
+      }
+
+      header h1 {
+        font-size: 32px;
+      }
+
+      .slide-title {
+        font-size: 24px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Speaker Notes</h1>
+      <p class="subtitle">Dawn of the Agents</p>
+      <p class="meta">Amit Joshi · Solutions Architect · Leapfrog Technology</p>
+    </header>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h2>Navigation</h2>
+      <div class="toc-grid">
+        <a href="#opening" class="toc-item">Opening Story</a>
+        <a href="#slide-1" class="toc-item">Slide 1: Title</a>
+        <a href="#slide-2" class="toc-item">Slide 2: The Analogy</a>
+        <a href="#slide-3" class="toc-item">Slide 3: Big Theme</a>
+        <a href="#slide-4" class="toc-item">Slide 4: Foundation Models</a>
+        <a href="#slide-5" class="toc-item">Slide 5: Custom Models</a>
+        <a href="#slide-6" class="toc-item">Slide 6: Competition</a>
+        <a href="#slide-7" class="toc-item">Slide 7: Agents</a>
+        <a href="#slide-8" class="toc-item">Slide 8: Agent Stack</a>
+        <a href="#slide-9" class="toc-item">Slide 9: Specialized Agents</a>
+        <a href="#slide-10" class="toc-item">Slide 10: Vibe Coding</a>
+        <a href="#slide-11" class="toc-item">Slide 11: Specs vs Code</a>
+        <a href="#slide-12" class="toc-item">Slide 12: Vibe DevOps</a>
+        <a href="#slide-13" class="toc-item">Slide 13: Governance</a>
+        <a href="#slide-14" class="toc-item">Slide 14: Takeaways</a>
+        <a href="#slide-15" class="toc-item">Slide 15: Closing</a>
+        <a href="#closing" class="toc-item">Closing Story</a>
+      </div>
+    </div>
+
+    <!-- Opening Story -->
+    <div id="opening" class="opening">
+      <h2>Opening Story</h2>
+      <div class="content">
+        <div class="story-beat">
+          <h3>Opening Line</h3>
+          <blockquote>"I want to start with something uncomfortable."</blockquote>
+          <p class="pause">(Pause)</p>
+        </div>
+
+        <div class="story-beat">
+          <h3>The Story</h3>
+          <blockquote>"Think about the last important email you sent at work. A proposal. A roadmap. A customer escalation."</blockquote>
+
+          <p><strong>2015</strong></p>
+          <blockquote>"In 2015, you researched. You read blogs. You wrote drafts. Maybe you asked a colleague to review it. You <em>owned</em> every word."</blockquote>
+
+          <p><strong>2023</strong></p>
+          <blockquote>"In 2023, you pasted links into ChatGPT. You asked for a summary. You tweaked the output. You still pressed 'Send'."</blockquote>
+          <p class="pause">(Pause)</p>
+
+          <p><strong>2025</strong></p>
+          <blockquote>"Now imagine this: You tell an AI 'Handle this.' It researches. It drafts. It adapts tone based on the recipient. It sends the email. And it updates the CRM."</blockquote>
+          <p class="pause">(Pause again)</p>
+
+          <blockquote>"At that point… you're not writing emails anymore. You're supervising outcomes."</blockquote>
+        </div>
+
+        <div class="story-beat">
+          <h3>The Turn</h3>
+          <blockquote>"AWS re:Invent 2025 wasn't about better emails. It was about that exact transition — <strong>everywhere</strong>."</blockquote>
+          <blockquote>"From code… to infrastructure… to security… AWS is betting that <em>doing</em> becomes automated, and <em>judgement</em> becomes the scarce skill."</blockquote>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 1 -->
+    <div id="slide-1" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 1</div>
+        <h2 class="slide-title">Title Slide</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">AWS re:Invent 2025:
+GenAI Matures → The Age of Agents
+
+From copilots to autonomous systems</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>This opening slide sets expectations for the entire presentation. This talk is <strong>not a feature dump</strong> of AWS services. Instead, it's about the <em>directional shifts</em> AWS is making in the GenAI space.</p>
+
+        <p>The key theme is the transition from GenAI that "helps" (like copilots and assistants) to GenAI that "does" (autonomous agents that take action). This represents a fundamental shift in how we think about AI in production systems.</p>
+
+        <p>Mention AWS re:Invent 2025 once here to establish context, then move on. The focus should be on the concepts, not on rehashing conference announcements.</p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div id="slide-2" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 2</div>
+        <h2 class="slide-title">The Analogy (Anchor the Talk)</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">2015 → 2023 → 2025+
+From manual → assisted → autonomous</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>This slide introduces the central analogy that will frame the entire presentation. Walk through the email analogy slowly, as established in the opening story:</p>
+
+        <ul>
+          <li><strong>2015:</strong> You manually research, write, and send emails</li>
+          <li><strong>2023:</strong> AI assists you - you use ChatGPT to draft, but you still review and send</li>
+          <li><strong>2025:</strong> AI acts autonomously - you delegate the task, and AI handles it end-to-end</li>
+        </ul>
+
+        <p>Emphasize the critical difference between <em>AI as a tool</em> (2023) and <em>AI as an actor</em> (2025). This isn't just about better autocomplete - it's about AI systems that can hold intent over time, make decisions, and take actions.</p>
+
+        <p>This framing will apply throughout the talk to:</p>
+        <ul>
+          <li>Foundation models</li>
+          <li>Coding workflows</li>
+          <li>DevOps practices</li>
+          <li>Security policies</li>
+        </ul>
+
+        <blockquote>"re:Invent 2025 was basically AWS saying: we're entering the 2025 box."</blockquote>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div id="slide-3" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 3</div>
+        <h2 class="slide-title">Big re:Invent Theme</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">Foundation Models = Infrastructure
+
+─────────────
+
+Agents are the Interface</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>This is the <strong>core AWS thesis</strong> and the most important conceptual slide in the deck. Everything else ladders up to this framework.</p>
+
+        <p><strong>Foundation Models are Infrastructure:</strong> Models are becoming commoditized utility services, similar to EC2, S3, or managed databases. They're powerful but increasingly undifferentiated. You select them based on cost, performance, and availability - not as your core competitive advantage.</p>
+
+        <p><strong>Agents are the Interface:</strong> The new application layer is agents - systems that use foundation models as compute primitives but add memory, tools, policies, and orchestration on top. This is where differentiation happens.</p>
+
+        <p>This reframing is critical for architects: don't build your strategy around owning or customizing models. Build it around <em>what your agents do with those models</em>.</p>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div id="slide-4" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 4</div>
+        <h2 class="slide-title">Foundation Models = Infrastructure</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">• Nova 2 (Lite, Sonic, Omni)
+• Incremental gains, not magic
+• Bedrock = model marketplace</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>Nova 2 models represent AWS's approach to foundation models: <strong>boring on purpose</strong>. They're not breakthrough innovations - they're incremental improvements focused on:</p>
+        <ul>
+          <li>Faster inference times</li>
+          <li>Lower cost per token</li>
+          <li>Better context windows</li>
+          <li>More reliable outputs</li>
+        </ul>
+
+        <p><strong>That's the point.</strong> Infrastructure should be boring, predictable, and reliable. You don't want your database doing surprising things, and you shouldn't want your foundation models doing surprising things either.</p>
+
+        <p><strong>Bedrock as the model marketplace:</strong> AWS Bedrock now hosts models from multiple sources - AWS's own models, open-source models (Llama, Mistral), and closed models from partners. AWS is positioning itself as the <em>"model switchboard"</em> - you can switch between models without rewriting your application code.</p>
+
+        <p>This is a strategic play: AWS wins if they own the infrastructure layer where models run, regardless of which specific model you choose.</p>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div id="slide-5" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 5</div>
+        <h2 class="slide-title">Custom Models: Power vs Reality</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">Nova Forge
+Custom models are possible
+But rarely necessary</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p><strong>Nova Forge</strong> is AWS's service for training or heavily customizing foundation models. It's powerful, but be very clear with the audience about the reality:</p>
+
+        <p><strong>The challenges of custom models:</strong></p>
+        <ul>
+          <li><strong>Validation is hard:</strong> How do you know your custom model is better? Testing is expensive and time-consuming.</li>
+          <li><strong>Drift is real:</strong> Models degrade over time as data patterns change. You need continuous monitoring and retraining.</li>
+          <li><strong>Cost explodes silently:</strong> Training costs, infrastructure costs, and maintenance costs compound quickly.</li>
+        </ul>
+
+        <p><strong>Critical take (say this explicitly):</strong></p>
+        <blockquote>"For most teams, custom models are a vendor-lock-in shaped hammer looking for a nail."</blockquote>
+
+        <p><strong>Best default approach:</strong></p>
+        <ul>
+          <li>Use the <strong>best available foundation model</strong> from the marketplace</li>
+          <li>Customize via prompts, RAG (Retrieval Augmented Generation), and light fine-tuning</li>
+          <li>Only invest in full custom models when you have a compelling, measured business case</li>
+        </ul>
+
+        <p>Most companies overestimate their need for custom models and underestimate the operational burden.</p>
+      </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div id="slide-6" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 6</div>
+        <h2 class="slide-title">Competitive Reality (Brief, Honest)</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">AWS ≠ only GenAI cloud
+And that's OK</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>Acknowledge the elephant in the room: AWS is not the only player in GenAI infrastructure. Your audience knows this, so address it directly:</p>
+
+        <ul>
+          <li><strong>Google Cloud:</strong> Vertex AI + Gemini models</li>
+          <li><strong>Microsoft Azure:</strong> Azure OpenAI Service (exclusive partnership with OpenAI)</li>
+          <li><strong>Others:</strong> Anthropic (Claude), open-source ecosystem</li>
+        </ul>
+
+        <p><strong>AWS's response is not model supremacy.</strong> They're not trying to win by having the "best" model. Instead, their strategy is:</p>
+        <ul>
+          <li><strong>Choice:</strong> Run any model on their infrastructure</li>
+          <li><strong>Governance:</strong> Enterprise-grade controls, policies, and audit trails</li>
+          <li><strong>Integration:</strong> Deep integration with existing AWS services</li>
+        </ul>
+
+        <p><strong>Implication for architects:</strong> Design your systems for <em>model plurality</em>. Don't hard-code dependencies on a single model or provider. Build abstraction layers that let you swap models based on cost, performance, or capability.</p>
+
+        <p>The best model today might not be the best model next year. Your architecture should be resilient to that reality.</p>
+      </div>
+    </div>
+
+    <!-- Slide 7 -->
+    <div id="slide-7" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 7</div>
+        <h2 class="slide-title">The Real Shift: Agents</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">Agents ≠ Chatbots
+Agents = long-lived AI workers</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>This is where the conversation shifts from models (infrastructure) to agents (the application layer). Define agents clearly for the audience:</p>
+
+        <p><strong>What makes something an agent?</strong></p>
+        <ul>
+          <li><strong>Memory:</strong> Agents remember context across interactions and over time</li>
+          <li><strong>Tools:</strong> Agents can call APIs, query databases, execute code, and interact with external systems</li>
+          <li><strong>Policies:</strong> Agents operate within defined guardrails and permissions</li>
+          <li><strong>Autonomy:</strong> Agents can make decisions and take actions without constant human input</li>
+        </ul>
+
+        <p><strong>Why this is different from chatbots:</strong> Chatbots respond to prompts. Agents hold <em>intent</em> over time, can recover from failures, and can act without asking for permission at every step.</p>
+
+        <p><strong>Tie back to the 2025 analogy:</strong> This is the shift from "assisted" (you ask questions, AI responds) to "autonomous" (you delegate a goal, AI figures out how to achieve it).</p>
+
+        <p>This is the first time AI can truly <em>do things</em> rather than just <em>suggest things</em>.</p>
+      </div>
+    </div>
+
+    <!-- Slide 8 -->
+    <div id="slide-8" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 8</div>
+        <h2 class="slide-title">AWS Agent Stack</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">• Bedrock AgentCore
+• Step-based execution
+• Guardrails & memory</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p><strong>Bedrock AgentCore</strong> is AWS's agent runtime - the infrastructure layer for running agents at scale.</p>
+
+        <p><strong>What it actually is (be honest):</strong></p>
+        <ul>
+          <li><strong>Prompt orchestration:</strong> Managing multi-turn conversations and context</li>
+          <li><strong>Tool calling:</strong> Safely connecting agents to APIs and services</li>
+          <li><strong>Policy enforcement:</strong> Ensuring agents operate within defined boundaries</li>
+          <li><strong>Memory management:</strong> Storing and retrieving agent state</li>
+        </ul>
+
+        <p><strong>Critical take:</strong></p>
+        <blockquote>"It feels more like a controlled workflow engine than true autonomous intelligence."</blockquote>
+
+        <p><strong>And that's not bad.</strong> Enterprises need <em>predictability</em>. They need agents that can be audited, monitored, and constrained. Pure autonomy is scary in production environments with real customers and real money at stake.</p>
+
+        <p>AgentCore is AWS's answer to the question: "How do we make agents enterprise-ready?" The answer is structure, governance, and observability.</p>
+      </div>
+    </div>
+
+    <!-- Slide 9 -->
+    <div id="slide-9" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 9</div>
+        <h2 class="slide-title">Specialized Agents Are Coming Fast</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">DevOps Agent
+Security Agent
+Kiro (IDE)</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>AWS is shipping <strong>job-shaped agents</strong> - AI systems designed for specific professional roles rather than general-purpose tasks.</p>
+
+        <p><strong>Examples:</strong></p>
+        <ul>
+          <li><strong>DevOps Agent:</strong> Acts as an AI on-call engineer that can diagnose issues, execute runbooks, and even remediate incidents</li>
+          <li><strong>Security Agent:</strong> Provides continuous application security scanning, threat detection, and automated response</li>
+          <li><strong>Kiro (IDE):</strong> An agentic integrated development environment that doesn't just autocomplete code, but understands project architecture and can refactor across multiple files</li>
+        </ul>
+
+        <p><strong>The pattern to watch:</strong> AWS is building agents that map to specific job functions. Expect many more to come:</p>
+        <ul>
+          <li><strong>FinOps Agent:</strong> Cost optimization and budget management</li>
+          <li><strong>Compliance Agent:</strong> Continuous regulatory compliance checking</li>
+          <li><strong>Data Ops Agent:</strong> Data pipeline management and quality assurance</li>
+        </ul>
+
+        <p>This is the future of enterprise AI: not one general assistant, but a team of specialized agents, each focused on a specific domain with deep context and tools.</p>
+      </div>
+    </div>
+
+    <!-- Slide 10 -->
+    <div id="slide-10" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 10</div>
+        <h2 class="slide-title">Vibe Coding Is Now Normal</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">Natural language → Code
+Humans supervise</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p><strong>"Vibe coding"</strong> is no longer a joke. It's become the default workflow for many developers: describe what you want in natural language, and AI generates the code.</p>
+
+        <p><strong>The reality:</strong> AI now writes more code than humans in many organizations. Tools like GitHub Copilot, AWS CodeWhisperer, and agentic IDEs are producing the majority of boilerplate, integration code, and even complex logic.</p>
+
+        <p><strong>The risk is not wrong code.</strong> Modern AI is surprisingly good at generating syntactically correct, functionally accurate code for well-defined problems.</p>
+
+        <p><strong>The real risks are:</strong></p>
+        <ul>
+          <li><strong>No one understands it:</strong> Code generated in seconds isn't necessarily code that's understood</li>
+          <li><strong>No one tests it properly:</strong> The temptation is to trust AI output without rigorous testing</li>
+          <li><strong>Technical debt accumulates faster:</strong> It's easy to generate code; it's hard to maintain it</li>
+        </ul>
+
+        <p><strong>Key line (pause after saying this):</strong></p>
+        <blockquote>"Productivity is up. Visibility is down."</blockquote>
+
+        <p>We're shipping faster, but we're accumulating complexity we don't fully understand. This is a management and process challenge, not just a technical one.</p>
+      </div>
+    </div>
+
+    <!-- Slide 11 -->
+    <div id="slide-11" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 11</div>
+        <h2 class="slide-title">The Spec Is the Source Code</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">Specs > Code
+Python ≈ Assembly</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>This is a <strong>provocative statement</strong> - let it land before explaining.</p>
+
+        <p><strong>The core idea:</strong> In an AI-driven development world, specifications drive code generation. The code itself becomes an implementation detail, similar to how assembly language is an implementation detail of higher-level languages.</p>
+
+        <p><strong>What this means:</strong></p>
+        <ul>
+          <li><strong>Specs drive generation:</strong> Well-written specifications, contracts, and type definitions become the source of truth</li>
+          <li><strong>Code is ephemeral:</strong> Code can be regenerated from specs as models improve or requirements change</li>
+          <li><strong>Testing becomes critical:</strong> You can't review every line of generated code, so tests become your primary quality gate</li>
+        </ul>
+
+        <p><strong>Implication for software practices:</strong></p>
+        <ul>
+          <li><strong>Tests</strong> are more important than ever</li>
+          <li><strong>Contracts</strong> and interfaces become first-class artifacts</li>
+          <li><strong>Assertions</strong> and invariants matter more than syntax</li>
+        </ul>
+
+        <p><strong>The Python line:</strong> When you say "Python is the new assembly," smile. It's half joke, half prophecy. The point is that we're moving up the abstraction ladder again - from assembly to C, from C to Python, and now from Python to natural language specifications.</p>
+      </div>
+    </div>
+
+    <!-- Slide 12 -->
+    <div id="slide-12" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 12</div>
+        <h2 class="slide-title">Vibe DevOps: Infra as Prompt</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">"I want X"
+→ Terraform / Pulumi
+→ Running infra</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>Infrastructure generation via prompts is maturing fast. What was a demo 12 months ago is becoming production-ready.</p>
+
+        <p><strong>How it works:</strong></p>
+        <ol>
+          <li>You describe infrastructure intent in natural language: "I need a serverless API with authentication"</li>
+          <li>AI generates infrastructure-as-code (Terraform, Pulumi, CloudFormation)</li>
+          <li>The code is reviewed (by human or automated tools)</li>
+          <li>Infrastructure is provisioned</li>
+        </ol>
+
+        <p><strong>AWS demos and Pulumi AI prove feasibility.</strong> These aren't research projects - they're shipping products that developers are using today.</p>
+
+        <p><strong>Lambda durable workflows</strong> are key to this shift. They enable:</p>
+        <ul>
+          <li><strong>Long-running operations:</strong> Infrastructure changes take time; workflows can wait</li>
+          <li><strong>Agent-driven changes:</strong> Agents can make multi-step infrastructure modifications</li>
+          <li><strong>State management:</strong> Track complex provisioning processes with retries and rollbacks</li>
+        </ul>
+
+        <p><strong>Critical warning:</strong></p>
+        <blockquote>"Infrastructure mistakes scale faster than code mistakes."</blockquote>
+
+        <p>A bad line of code might affect one user. A bad infrastructure change can take down your entire service. The guardrails and review processes for AI-generated infrastructure need to be even stronger than for AI-generated code.</p>
+      </div>
+    </div>
+
+    <!-- Slide 13 -->
+    <div id="slide-13" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 13</div>
+        <h2 class="slide-title">Governance Moves Upstream</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">Security starts at prompt time
+Not post-deployment</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>This is one of the most important slides in the deck for enterprise architects.</p>
+
+        <p><strong>IAM Autopilot is a huge signal.</strong> AWS is showing that policies can be <em>generated</em> from intent rather than copied from Stack Overflow or constructed through trial-and-error.</p>
+
+        <p><strong>What's changing:</strong></p>
+        <ul>
+          <li><strong>Policies are generated from prompts:</strong> "This agent needs read access to S3 and write access to DynamoDB" → least-privilege IAM policy</li>
+          <li><strong>AgentCore policies intercept actions:</strong> Before an agent can execute a tool call, policies check authorization</li>
+          <li><strong>Audit trails are mandatory:</strong> Every agent action is logged and traceable</li>
+        </ul>
+
+        <p><strong>The shift:</strong> Security used to be post-deployment - penetration testing, vulnerability scans, incident response. In the agentic world, security <em>starts at prompt time</em>. The initial prompt determines what the agent can and cannot do.</p>
+
+        <p><strong>Critical implication:</strong></p>
+        <ul>
+          <li><strong>Auditability becomes mandatory:</strong> You must be able to explain why an agent did what it did</li>
+          <li><strong>Prompt logs are compliance artifacts:</strong> The prompts you give to agents are part of your audit trail</li>
+        </ul>
+
+        <p><strong>Say this clearly:</strong></p>
+        <blockquote>"If you can't explain why an agent did something, you can't run it in production."</blockquote>
+
+        <p>This is not optional. It's a requirement for responsible AI deployment.</p>
+      </div>
+    </div>
+
+    <!-- Slide 14 -->
+    <div id="slide-14" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 14</div>
+        <h2 class="slide-title">What This Means for You</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">Use best models
+Adopt agents carefully
+Over-invest in validation</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>This slide translates everything we've discussed into <strong>practical guidance</strong> for the audience.</p>
+
+        <p><strong>1. Use best models (don't build them):</strong></p>
+        <ul>
+          <li>Start with the best available foundation models from the marketplace</li>
+          <li>Customize through prompts, RAG, and fine-tuning before considering full custom models</li>
+          <li>Design for model plurality - don't lock yourself into a single provider</li>
+        </ul>
+
+        <p><strong>2. Adopt agents carefully (treat them like junior engineers):</strong></p>
+        <ul>
+          <li>Start with narrow, well-defined tasks</li>
+          <li>Implement guardrails and policies from day one</li>
+          <li>Provide clear tools and context</li>
+          <li>Supervise outcomes, not every action</li>
+        </ul>
+
+        <p><strong>3. Over-invest in validation (it's your safety net):</strong></p>
+        <ul>
+          <li>Tests are more important than ever in AI-generated code</li>
+          <li>Build comprehensive observability into agent workflows</li>
+          <li>Implement circuit breakers and rollback mechanisms</li>
+          <li>Audit agent actions continuously</li>
+        </ul>
+
+        <p><strong>This is a new operating model, not just new tech.</strong> You can't just "add AI" to your existing processes. You need to rethink how work gets done, how quality is assured, and how responsibility is assigned.</p>
+      </div>
+    </div>
+
+    <!-- Slide 15 -->
+    <div id="slide-15" class="section">
+      <div class="section-header">
+        <div class="slide-number">SLIDE 15</div>
+        <h2 class="slide-title">Close the Loop (Back to the Analogy)</h2>
+      </div>
+
+      <div class="slide-content">
+        <div class="slide-content-label">On Screen</div>
+        <div class="slide-content-text">2025+: You don't write the email
+You approve the outcome</div>
+      </div>
+
+      <div class="speaker-notes">
+        <p>Circle back to the opening analogy from Slide 2. This brings narrative closure to the presentation.</p>
+
+        <p><strong>The core message:</strong> The transition from 2015 → 2023 → 2025 isn't just about better tools. It's about a fundamental shift in <em>our role</em>.</p>
+
+        <p><strong>The mindset shift:</strong></p>
+        <ul>
+          <li>From <strong>execution</strong> → <strong>supervision</strong></li>
+          <li>From <strong>doing</strong> → <strong>judging</strong></li>
+          <li>From <strong>typing</strong> → <strong>delegating</strong></li>
+        </ul>
+
+        <p><strong>AWS re:Invent 2025 wasn't about features.</strong> It wasn't about Nova 2 benchmarks or AgentCore API specifications. It was about AWS recognizing and enabling this fundamental change in how technical work gets done.</p>
+
+        <p><strong>End with this line:</strong></p>
+        <blockquote>"The most valuable engineers won't be the fastest typers — they'll be the best delegators."</blockquote>
+
+        <p>(Pause)</p>
+      </div>
+    </div>
+
+    <!-- Closing Story -->
+    <div id="closing" class="closing">
+      <h2>Closing Story</h2>
+      <div class="content">
+        <div class="story-beat">
+          <h3>The Setup</h3>
+          <blockquote>"Let's go back to that AI that sent the email for you."</blockquote>
+          <blockquote>"What happens if it sends the wrong one?"</blockquote>
+          <p class="pause">(Pause)</p>
+          <blockquote>"What happens if it provisions the wrong infrastructure? Deletes the wrong data? Escalates the wrong incident?"</blockquote>
+        </div>
+
+        <div class="story-beat">
+          <h3>The Insight</h3>
+          <blockquote>"This is why re:Invent spent so much time on:</blockquote>
+          <ul>
+            <li>Guardrails</li>
+            <li>Policies</li>
+            <li>Audit trails</li>
+            <li>IAM generated from intent</li>
+          </ul>
+          <blockquote>"Not because AWS doesn't trust AI — but because <strong>AI changes who's accountable</strong>."</blockquote>
+        </div>
+
+        <div class="story-beat">
+          <h3>The Close (Land This Line)</h3>
+          <blockquote>"In the agentic world, failure doesn't look like a bug. It looks like a decision."</blockquote>
+          <p class="pause">(Pause)</p>
+          <blockquote>"And decisions require ownership."</blockquote>
+        </div>
+
+        <div class="story-beat">
+          <h3>Final Line (Strong, Memorable)</h3>
+          <blockquote>"In 2025, the most valuable engineers won't be the ones who type the fastest… They'll be the ones who know <strong>what not to delegate</strong>."</blockquote>
+          <p class="pause">(Pause)</p>
+          <p class="pause">Thank you.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; padding: 60px 0 40px; border-top: 1px solid var(--border); margin-top: 80px;">
+      <p style="color: var(--muted); font-size: 16px; margin: 0;">
+        Presentation by <strong style="color: var(--fg);">Amit Joshi</strong> · Solutions Architect · Leapfrog Technology
+      </p>
+      <p style="color: var(--muted); font-size: 14px; margin: 16px 0 0;">
+        Dawn of the Agents
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+  <script>
+    // Back to top button functionality
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

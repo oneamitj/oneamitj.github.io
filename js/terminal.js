@@ -293,6 +293,13 @@ Boot sequence complete. Ready for commands...
                 case 'github':
                     await this.openGitHub();
                     break;
+                case 'present':
+                    if (args.length > 0) {
+                        await this.handlePresent(args[0]);
+                    } else {
+                        await this.showError('present: missing file operand. Usage: present <filename>');
+                    }
+                    break;
                 case 'oneai':
                     if (args.length > 0) {
                         await this.handleOneAI(args.join(' '));
@@ -907,6 +914,10 @@ Available Commands:
    pwa update  - Update to latest version
    install     - Quick install command
    offline     - Show offline capabilities
+
+📊 Presentations:
+   present <file> - Open presentation slides
+                    Available: aug.ppt
 
 🎯 Special:
    easter      - Find the hidden easter egg!
@@ -1590,6 +1601,46 @@ Profile: github.com/oneamitj
 Note: Some repositories may be private due to client confidentiality
 `;
         await this.typeText(githubText, 10);
+    }
+
+    async handlePresent(filename) {
+        const presentations = {
+            'aug.ppt': {
+                title: 'Dawn of the Agents',
+                subtitle: 'GenAI Matures → The Age of Agents',
+                path: 'content/aug-slides.html',
+                date: 'AWS User Group Meetup',
+                speaker: 'Amit Joshi · Solutions Architect · Leapfrog Technology'
+            }
+        };
+
+        if (!presentations[filename]) {
+            await this.showError(`present: cannot open '${filename}': No such presentation file\n\nAvailable presentations:\n${Object.keys(presentations).map(f => `  • ${f}`).join('\n')}`);
+            return;
+        }
+
+        const pres = presentations[filename];
+        const presentText = `
+📊 Opening Presentation...
+
+╔═══════════════════════════════════════════════╗
+║  ${pres.title.padEnd(45)}║
+║  ${pres.subtitle.padEnd(45)}║
+╚═══════════════════════════════════════════════╝
+
+📅 Event: ${pres.date}
+👤 Speaker: ${pres.speaker}
+📄 File: ${filename}
+
+🚀 Launching presentation in new window...
+`;
+        
+        await this.typeText(presentText, 10);
+        
+        // Open the presentation in a new window
+        window.open(pres.path, '_blank');
+        
+        await this.typeText(`\n✅ Presentation opened successfully!\n💡 Use arrow keys or click to navigate slides`);
     }
 
     async handleSudo(args) {
