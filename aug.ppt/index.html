@@ -1,51 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=../content/aug-slides.html">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dawn of the Agents - Redirecting...</title>
+  <meta charset="UTF-8" />
+  <title>Dawn of the Agents</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
+    :root {
+      --bg: #0b1220;
+      --fg: #ffffff;
+      --muted: #9ca3af;
+      --accent: #ff9900;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
     body {
       margin: 0;
-      background: #0b1220;
-      color: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      display: flex;
+      background: var(--bg);
+      background: radial-gradient(ellipse at top left, rgba(255, 153, 0, 0.05) 0%, var(--bg) 50%);
+      color: var(--fg);
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      cursor: default;
+    }
+
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      padding: 64px;
       align-items: center;
       justify-content: center;
-      height: 100vh;
       text-align: center;
+      position: relative;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
     }
-    .loader {
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      animation: slideIn 0.3s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+    h1 {
+      font-size: 64px;
+      font-weight: 700;
+      margin: 0 0 32px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0 0 16px;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 28px;
+      margin: 12px 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .row {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 48px;
+      gap: 32px;
+    }
+
+    .col {
+      flex: 1;
+      position: relative;
+    }
+
+    .col::after {
+      content: '';
+      position: absolute;
+      right: -16px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(156, 163, 175, 0.2);
+    }
+
+    .col:last-child::after {
+      display: none;
+    }
+
+    .stack {
+      border: 2px solid rgba(156, 163, 175, 0.3);
+      margin: 12px auto;
+      padding: 20px 32px;
+      width: 70%;
+      color: var(--fg);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
       font-size: 24px;
+      font-weight: 500;
+      transition: all 0.3s ease;
     }
-    .spinner {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      border: 3px solid rgba(255, 153, 0, 0.3);
-      border-radius: 50%;
-      border-top-color: #ff9900;
-      animation: spin 1s ease-in-out infinite;
-      margin: 20px auto;
+
+    .footer {
+      position: absolute;
+      bottom: 32px;
+      right: 64px;
+      font-size: 18px;
+      color: var(--muted);
     }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+
+    .top-label {
+      position: absolute;
+      top: 64px;
+      left: 64px;
+      font-size: 20px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .slide-number {
+      position: absolute;
+      bottom: 32px;
+      left: 64px;
+      font-size: 16px;
+      color: rgba(156, 163, 175, 0.5);
+      font-weight: 500;
+    }
+
+    .divider {
+      width: 200px;
+      height: 3px;
+      background: var(--accent);
+      margin: 48px auto;
+    }
+
+    .split {
+      display: flex;
+      width: 100%;
+      gap: 80px;
+      margin-top: 64px;
+    }
+
+    .split-left,
+    .split-right {
+      flex: 1;
+    }
+
+    .split-right p {
+      color: var(--muted);
+    }
+
+    .flow-step {
+      margin: 24px 0;
+    }
+
+    .arrow {
+      font-size: 48px;
+      color: var(--accent);
+      margin: 16px 0;
+    }
+
+    /* Additional polish */
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .stack:hover {
+      border-color: rgba(255, 153, 0, 0.4);
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-2px);
+    }
+
+    /* Smooth text rendering */
+    h1, h2 {
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Add subtle glow to accent text */
+    .accent {
+      text-shadow: 0 0 20px rgba(255, 153, 0, 0.2);
+    }
+
+    /* Navigation hint (fades out after 3 seconds) */
+    .nav-hint {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: rgba(156, 163, 175, 0.4);
+      animation: fadeOut 3s forwards;
+      pointer-events: none;
+    }
+
+    @keyframes fadeOut {
+      0%, 80% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .notes-link {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      font-size: 12px;
+      color: rgba(156, 163, 175, 0.3);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-weight: 500;
+      z-index: 1000;
+    }
+
+    .notes-link:hover {
+      color: rgba(255, 153, 0, 0.6);
     }
   </style>
 </head>
+
 <body>
-  <div>
-    <div class="spinner"></div>
-    <div class="loader">Loading presentation...</div>
-    <p style="color: #9ca3af; font-size: 14px; margin-top: 20px;">
-      If you are not redirected, <a href="../content/aug-slides.html" style="color: #ff9900;">click here</a>.
-    </p>
+
+  <!-- Speaker notes link (barely noticeable) -->
+  <a href="narration.html" class="notes-link">narration</a>
+
+  <!-- Navigation hint -->
+  <div class="nav-hint">Use arrow keys, space, or click to navigate</div>
+
+  <!-- Slide 1 -->
+  <div class="slide active">
+    <div class="top-label animate-in">AWS User Group Meetup</div>
+    <h1 class="animate-in animate-delay-1">Dawn of the Agents</h1>
+    <h2 class="accent animate-in animate-delay-2">GenAI Matures <span class="accent">→</span> The Age of Agents</h2>
+    <div class="footer animate-in animate-delay-3">Amit Joshi · Solutions Architect · Leapfrog Technology</div>
+    <div class="slide-number">1 / 16</div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide">
+    <h1 class="animate-in">From Manual <span class="accent">→</span> Autonomous</h1>
+    <div class="row">
+      <div class="col animate-in animate-delay-1">
+        <h2>2015</h2>
+        <p>Manual</p>
+        <p style="font-size: 24px; margin-top: 16px;">Human does everything</p>
+      </div>
+      <div class="col animate-in animate-delay-2">
+        <h2>2023</h2>
+        <p>Assisted</p>
+        <p style="font-size: 24px; margin-top: 16px;">AI as copilot</p>
+      </div>
+      <div class="col animate-in animate-delay-3">
+        <h2>2025+</h2>
+        <p class="accent">Autonomous</p>
+        <p style="font-size: 24px; margin-top: 16px;">AI acts independently</p>
+      </div>
+    </div>
+    <div class="slide-number">2 / 16</div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide">
+    <h1 style="font-size: 72px; margin-bottom: 48px;" class="animate-in">Foundation Models = Infrastructure</h1>
+    <div class="divider animate-in animate-delay-1"></div>
+    <p style="font-size: 56px; font-weight: 600; margin-top: 48px;" class="accent animate-in animate-delay-2">Agents are the Interface</p>
+    <div class="slide-number">3 / 16</div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide">
+    <h1 class="animate-in">Foundation Models</h1>
+    <p class="animate-in animate-delay-1" style="font-size: 32px; margin: 32px 0;">Nova 2: Lite · Sonic · Omni</p>
+    <p class="animate-in animate-delay-2" style="margin: 24px 0;">Incremental gains, not magic</p>
+    <p class="accent animate-in animate-delay-3" style="font-size: 32px; font-weight: 600; margin: 32px 0;">Bedrock = model marketplace</p>
+    <div class="slide-number">4 / 16</div>
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="slide">
+    <h1 class="animate-in">Custom Models</h1>
+    <div class="split">
+      <div class="split-left animate-in animate-delay-1">
+        <h2 style="color: var(--fg); margin-bottom: 32px;">Nova Forge</h2>
+        <p style="font-size: 32px; color: var(--fg);">Custom models are possible</p>
+      </div>
+      <div class="split-right animate-in animate-delay-2" style="border-left: 2px solid rgba(156, 163, 175, 0.2); padding-left: 80px;">
+        <h2 style="color: var(--muted); margin-bottom: 32px;">Reality Check</h2>
+        <p style="font-size: 28px; margin: 16px 0;">Expensive</p>
+        <p style="font-size: 28px; margin: 16px 0;">Risky</p>
+        <p style="font-size: 28px; margin: 16px 0;">Rarely needed</p>
+      </div>
+    </div>
+    <div class="slide-number">5 / 16</div>
+  </div>
+
+  <!-- Slide 6 -->
+  <div class="slide">
+    <h1 class="animate-in" style="font-size: 72px;">AWS ≠ Only GenAI Cloud</h1>
+    <p class="accent animate-in animate-delay-1" style="font-size: 48px; font-weight: 600; margin-top: 64px;">Choice beats supremacy</p>
+    <div class="slide-number">6 / 16</div>
+  </div>
+
+  <!-- Slide 7 -->
+  <div class="slide">
+    <h1 class="animate-in" style="font-size: 72px;">Agents ≠ Chatbots</h1>
+    <p class="accent animate-in animate-delay-1" style="font-size: 48px; font-weight: 600; margin-top: 48px;">Long-lived AI workers</p>
+    <p class="animate-in animate-delay-2" style="font-size: 28px; margin-top: 32px;">Memory · Tools · Policies · Autonomy</p>
+    <div class="slide-number">7 / 16</div>
+  </div>
+
+  <!-- Slide 8 -->
+  <div class="slide">
+    <h1 class="animate-in">AWS Agent Stack</h1>
+    <div class="stack animate-in animate-delay-1">Agents</div>
+    <div class="stack animate-in animate-delay-2">AgentCore / Orchestration</div>
+    <div class="stack animate-in animate-delay-3">Foundation Models</div>
+    <div class="stack animate-in animate-delay-4">AWS Infrastructure</div>
+    <div class="slide-number">8 / 16</div>
+  </div>
+
+  <!-- Slide 9 -->
+  <div class="slide">
+    <h1 class="animate-in">Job-Shaped Agents</h1>
+    <p class="animate-in animate-delay-1" style="font-size: 36px; margin: 32px 0;">DevOps Agent</p>
+    <p class="animate-in animate-delay-2" style="font-size: 36px; margin: 32px 0;">Security Agent</p>
+    <p class="accent animate-in animate-delay-3" style="font-size: 36px; margin: 32px 0; font-weight: 600;">Kiro (IDE)</p>
+    <div class="slide-number">9 / 16</div>
+  </div>
+
+  <!-- Slide 10 -->
+  <div class="slide">
+    <h1 class="animate-in">Vibe Coding</h1>
+    <p class="accent animate-in animate-delay-1" style="font-size: 48px; font-weight: 600; margin: 48px 0;">Natural language <span class="accent">→</span> Code</p>
+    <p class="animate-in animate-delay-2" style="font-size: 32px; margin-top: 32px;">Humans supervise</p>
+    <div class="slide-number">10 / 16</div>
+  </div>
+
+  <!-- Slide 11 -->
+  <div class="slide">
+    <h1 class="animate-in">Specs <span class="accent">></span> Code</h1>
+    <div class="split" style="margin-top: 80px;">
+      <div class="split-left animate-in animate-delay-1">
+        <h2 style="margin-bottom: 32px;">Specs</h2>
+        <p style="font-size: 32px; margin: 24px 0; color: var(--fg);">Intent</p>
+        <p style="font-size: 32px; margin: 24px 0; color: var(--fg);">Contracts</p>
+      </div>
+      <div class="split-right animate-in animate-delay-2" style="border-left: 2px solid rgba(156, 163, 175, 0.2); padding-left: 80px;">
+        <h2 style="margin-bottom: 32px; color: var(--muted);">Code</h2>
+        <p style="font-size: 32px; margin: 24px 0;">Implementation</p>
+        <p style="font-size: 32px; margin: 24px 0;">Details</p>
+      </div>
+    </div>
+    <p class="accent animate-in animate-delay-3" style="font-size: 24px; font-style: italic; margin-top: 80px;">Python is the new assembly 😄</p>
+    <div class="slide-number">11 / 16</div>
+  </div>
+
+  <!-- Slide 12 -->
+  <div class="slide">
+    <h1 class="animate-in">Vibe DevOps</h1>
+    <div class="flow-step animate-in animate-delay-1">
+      <p style="font-size: 36px; color: var(--fg);">"I want X"</p>
+    </div>
+    <div class="arrow animate-in animate-delay-2">↓</div>
+    <div class="flow-step animate-in animate-delay-2">
+      <p style="font-size: 32px;">Terraform / Pulumi</p>
+    </div>
+    <div class="arrow animate-in animate-delay-3">↓</div>
+    <div class="flow-step animate-in animate-delay-3">
+      <p class="accent" style="font-size: 36px; font-weight: 600;">Running Infrastructure</p>
+    </div>
+    <div class="slide-number">12 / 16</div>
+  </div>
+
+  <!-- Slide 13 -->
+  <div class="slide">
+    <h1 class="animate-in">Governance Moves Upstream</h1>
+    <p class="accent animate-in animate-delay-1" style="font-size: 48px; font-weight: 600; margin: 48px 0;">Security starts at prompt time</p>
+    <p class="animate-in animate-delay-2" style="font-size: 28px; margin-top: 32px;">IAM Autopilot · Policies · Audit Trails</p>
+    <div class="slide-number">13 / 16</div>
+  </div>
+
+  <!-- Slide 14 -->
+  <div class="slide">
+    <h1 class="animate-in">What This Means</h1>
+    <p class="animate-in animate-delay-1" style="font-size: 36px; margin: 32px 0;">Use best models</p>
+    <p class="animate-in animate-delay-2" style="font-size: 36px; margin: 32px 0;">Adopt agents carefully</p>
+    <p class="accent animate-in animate-delay-3" style="font-size: 36px; margin: 32px 0; font-weight: 600;">Over-invest in validation</p>
+    <div class="slide-number">14 / 16</div>
+  </div>
+
+  <!-- Slide 15 -->
+  <div class="slide">
+    <h1 class="animate-in" style="font-size: 72px;">2025+</h1>
+    <p class="accent animate-in animate-delay-1" style="font-size: 48px; font-weight: 600; margin: 64px 0 32px;">You don't write the email</p>
+    <p class="animate-in animate-delay-2" style="font-size: 40px; margin-top: 32px;">You approve the outcome</p>
+    <div class="slide-number">15 / 16</div>
+  </div>
+  <!-- Slide 16 -->
+  <div class="slide">
+    <h1 class="animate-in" style="font-size: 72px;">Thank You</h1>
+    <div class="divider animate-in animate-delay-1"></div>
+    <p class="accent animate-in animate-delay-2" style="font-size: 36px; font-weight: 600; margin-top: 64px; line-height: 1.6; font-style: italic;">The most valuable engineers won't be the fastest typers - they'll be the best delegators.</p>
+    <div class="slide-number">16 / 16</div>
   </div>
   <script>
-    // Immediate redirect for browsers that support it
-    window.location.replace('../content/aug-slides.html');
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function resetAnimations(slide) {
+      // Remove animation classes from all animated elements in the slide
+      const animatedElements = slide.querySelectorAll('.animate-in');
+      animatedElements.forEach(el => {
+        el.style.animation = 'none';
+        el.offsetHeight; // Trigger reflow
+        el.style.animation = null;
+      });
+    }
+
+    function showSlide(index) {
+      // Remove active from current slide
+      slides[current].classList.remove('active');
+
+      // Calculate new slide index
+      current = (index + slides.length) % slides.length;
+
+      // Reset animations for the new slide
+      resetAnimations(slides[current]);
+
+      // Show new slide
+      slides[current].classList.add('active');
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        showSlide(current + 1);
+      }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        showSlide(current - 1);
+      }
+      // Home key goes to first slide
+      if (e.key === 'Home') {
+        e.preventDefault();
+        showSlide(0);
+      }
+      // End key goes to last slide
+      if (e.key === 'End') {
+        e.preventDefault();
+        showSlide(slides.length - 1);
+      }
+    });
+
+    // Click navigation (right half = next, left half = previous)
+    document.addEventListener('click', e => {
+      if (e.clientX > window.innerWidth / 2) {
+        showSlide(current + 1);
+      } else {
+        showSlide(current - 1);
+      }
+    });
+
+    // Initialize first slide animations
+    resetAnimations(slides[0]);
   </script>
+
 </body>
 </html>

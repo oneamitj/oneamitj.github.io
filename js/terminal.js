@@ -1647,7 +1647,7 @@ Note: Some repositories may be private due to client confidentiality
             'aug.ppt': {
                 title: 'Dawn of the Agents',
                 subtitle: 'GenAI Matures → The Age of Agents',
-                path: 'content/aug-slides.html',
+                path: 'aug.ppt/index.html',
                 date: 'AWS User Group Meetup',
                 speaker: 'Amit Joshi · Solutions Architect · Leapfrog Technology'
             }
@@ -1687,7 +1687,7 @@ Note: Some repositories may be private due to client confidentiality
             'archmentor': {
                 title: 'ArchMentor',
                 subtitle: 'Next-Gen Solution Architect Training',
-                path: 'content/ArchMentor.html',
+                path: 'archmentor/index.html',
                 description: 'Lead with the Product, Choose the Tech',
                 type: 'Training Platform'
             }

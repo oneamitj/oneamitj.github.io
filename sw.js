@@ -19,8 +19,9 @@ const STATIC_ASSETS = [
   '/data/experience.json',
   '/data/AmitJ_CV.pdf',
   '/manifest.json',
-  '/content/ArchMentor.html',
   '/archmentor/index.html',
+  '/aug.ppt/index.html',
+  '/aug.ppt/narration.html',
   // Updated icon paths - all available icons
   '/icons/favicon.ico',
   '/icons/icon-72x72.png',
