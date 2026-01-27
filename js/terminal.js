@@ -300,6 +300,13 @@ Boot sequence complete. Ready for commands...
                         await this.showError('present: missing file operand. Usage: present <filename>');
                     }
                     break;
+                case 'lunch':
+                    if (args.length > 0) {
+                        await this.handleLunch(args[0]);
+                    } else {
+                        await this.showError('lunch: missing file operand. Usage: lunch <filename>');
+                    }
+                    break;
                 case 'oneai':
                     if (args.length > 0) {
                         await this.handleOneAI(args.join(' '));
@@ -807,6 +814,34 @@ Kathmandu University, 2015
                     'oneai "How can you help my company?"',
                     'oneai --help          # Show this help message'
                 ]
+            },
+            present: {
+                usage: 'present <filename> [--help]',
+                description: 'Open presentation slides in a new window',
+                options: [
+                    'filename             # Required: name of presentation file'
+                ],
+                files: [
+                    'aug.ppt              # Dawn of the Agents - GenAI presentation'
+                ],
+                examples: [
+                    'present aug.ppt      # Open AWS User Group presentation',
+                    'present --help       # Show this help message'
+                ]
+            },
+            lunch: {
+                usage: 'lunch <filename> [--help]',
+                description: 'Open training platforms and learning resources',
+                options: [
+                    'filename             # Required: name of training platform'
+                ],
+                files: [
+                    'archmentor           # Next-Gen Solution Architect Training'
+                ],
+                examples: [
+                    'lunch archmentor     # Open ArchMentor training platform',
+                    'lunch --help         # Show this help message'
+                ]
             }
         };
         
@@ -918,6 +953,10 @@ Available Commands:
 📊 Presentations:
    present <file> - Open presentation slides
                     Available: aug.ppt
+
+🍽️  Lunch & Learn:
+   lunch <file> - Open training platforms
+                  Available: archmentor
 
 🎯 Special:
    easter      - Find the hidden easter egg!
@@ -1641,6 +1680,45 @@ Note: Some repositories may be private due to client confidentiality
         window.open(pres.path, '_blank');
         
         await this.typeText(`\n✅ Presentation opened successfully!\n💡 Use arrow keys or click to navigate slides`);
+    }
+
+    async handleLunch(filename) {
+        const lunchItems = {
+            'archmentor': {
+                title: 'ArchMentor',
+                subtitle: 'Next-Gen Solution Architect Training',
+                path: 'content/ArchMentor.html',
+                description: 'Lead with the Product, Choose the Tech',
+                type: 'Training Platform'
+            }
+        };
+
+        if (!lunchItems[filename]) {
+            await this.showError(`lunch: cannot open '${filename}': No such file\n\nAvailable items:\n${Object.keys(lunchItems).map(f => `  • ${f}`).join('\n')}`);
+            return;
+        }
+
+        const item = lunchItems[filename];
+        const lunchText = `
+🚀 Opening ${item.type}...
+
+╔═══════════════════════════════════════════════╗
+║  ${item.title.padEnd(45)}
+║  ${item.subtitle.padEnd(45)}
+╚═══════════════════════════════════════════════╝
+
+📋 Description: ${item.description}
+📄 File: ${filename}
+
+🌐 Launching in new window...
+`;
+        
+        await this.typeText(lunchText, 10);
+        
+        // Open the page in a new window
+        window.open(item.path, '_blank');
+        
+        await this.typeText(`\n✅ ${item.type} opened successfully!`);
     }
 
     async handleSudo(args) {
