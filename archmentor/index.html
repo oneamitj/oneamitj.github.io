@@ -32,6 +32,8 @@
         .copy-btn { position: absolute; bottom: 0.75rem; right: 0.75rem; background: white; border: 1px solid #e2e8f0; padding: 0.5rem; border-radius: 0.5rem; cursor: pointer; transition: all 0.2s; opacity: 0.7; }
         .copy-btn:hover { opacity: 1; background: #f8fafc; }
         .copy-btn.copied { background: #10b981; color: white; border-color: #10b981; }
+        #mobile-menu { animation: slideDown 0.2s ease-out; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen">
@@ -49,9 +51,27 @@
                         <button onclick="navTo('resources')" id="nav-resources" class="nav-link px-1 py-4 text-sm font-medium text-slate-500 hover:text-slate-700 transition">Resources</button>
                     </div>
                 </div>
-                <button onclick="toggleSettings()" class="p-2 text-slate-400 hover:text-indigo-600 transition" title="API Settings">
-                    <span>⚙️</span>
-                </button>
+                <div class="flex items-center space-x-2">
+                    <button onclick="toggleSettings()" class="p-2 text-slate-400 hover:text-indigo-600 transition" title="API Settings">
+                        <span>⚙️</span>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-600 hover:text-indigo-600 transition" id="mobile-menu-btn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-4 py-2 space-y-1">
+                <button onclick="navTo('overview'); toggleMobileMenu();" class="mobile-nav-link block w-full text-left px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 transition">Overview</button>
+                <button onclick="navTo('curriculum'); toggleMobileMenu();" class="mobile-nav-link block w-full text-left px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 transition">Curriculum</button>
+                <button onclick="navTo('ailab'); toggleMobileMenu();" class="mobile-nav-link block w-full text-left px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 transition">AI Lab ✨</button>
+                <button onclick="navTo('resources'); toggleMobileMenu();" class="mobile-nav-link block w-full text-left px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 transition">Resources</button>
             </div>
         </div>
     </header>
@@ -278,7 +298,7 @@
         // --- DATA & STATE ---
         const appId = "arch-training-app";
         let apiKey = localStorage.getItem('gemini_api_key') || "";
-        const modelName = "gemini-2.5-flash-preview-09-2025";
+        const modelName = "gemini-3-flash-preview";
 
         const curriculum = [
             {
@@ -330,6 +350,17 @@
             if (pageId === 'overview') initCharts();
             if (pageId === 'curriculum') renderCurriculum();
             if (pageId === 'ailab' && !apiKey) document.getElementById('api-status').classList.remove('hidden');
+        }
+
+        // --- MOBILE MENU ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const hamburger = document.getElementById('hamburger-icon');
+            const close = document.getElementById('close-icon');
+            
+            menu.classList.toggle('hidden');
+            hamburger.classList.toggle('hidden');
+            close.classList.toggle('hidden');
         }
 
         // --- SETTINGS ---
