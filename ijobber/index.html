@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="iJobber - AI-Powered Cover Letters & CVs Chrome Extension. Generate tailored job application documents in seconds.">
+  <title>iJobber - AI-Powered Cover Letters & CVs</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8f9fa;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .header p {
+      font-size: 1.3em;
+      opacity: 0.95;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section {
+      background: white;
+      margin: 40px 0;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #667eea;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+    }
+
+    .section h3 {
+      font-size: 1.5em;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: #764ba2;
+    }
+
+    .section p, .section li {
+      margin-bottom: 15px;
+      font-size: 1.05em;
+      line-height: 1.8;
+    }
+
+    .section ul {
+      margin-left: 30px;
+      margin-bottom: 20px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .feature-card {
+      background: #f8f9fa;
+      padding: 25px;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      font-size: 1.3em;
+      color: #667eea;
+    }
+
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .screenshot {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .screenshot:hover {
+      transform: translateY(-5px);
+    }
+
+    .screenshot img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: 600;
+      margin: 20px 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .privacy-section {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .footer {
+      background: #2d3748;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2em;
+      }
+
+      .header p {
+        font-size: 1.1em;
+      }
+
+      .section {
+        padding: 25px;
+      }
+
+      .section h2 {
+        font-size: 1.6em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>iJobber</h1>
+    <p>AI-Powered Cover Letters & CVs</p>
+  </div>
+
+  <div class="container">
+    <!-- About Section -->
+    <div class="section">
+      <h2>About iJobber</h2>
+      <p>
+        iJobber is a powerful Chrome extension that transforms your job search by generating personalized, 
+        professional cover letters and CVs tailored to specific job postings. Using advanced AI technology, 
+        iJobber analyzes job requirements and creates customized application documents in seconds.
+      </p>
+
+      <h3>How It Works</h3>
+      <ol>
+        <li><strong>One-Time Setup:</strong> Upload your CV or connect your LinkedIn profile</li>
+        <li><strong>Choose AI Provider:</strong> Select from 6 AI providers (including a free option)</li>
+        <li><strong>Browse Jobs:</strong> Navigate to any job posting on LinkedIn, Indeed, or Seek</li>
+        <li><strong>Generate Documents:</strong> Click the extension icon to create tailored documents</li>
+        <li><strong>Download & Apply:</strong> Get your documents in PDF, HTML, or Markdown format</li>
+      </ol>
+
+      <div class="features">
+        <div class="feature-card">
+          <h3>🎯 Dual Document Generation</h3>
+          <p>Create both personalized cover letters and tailored CVs that highlight your relevant experience and skills for each specific job.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🤖 Multiple AI Providers</h3>
+          <p>Choose from Puter.com (free), Azure OpenAI, OpenAI, Anthropic Claude, Google Gemini, or AWS Bedrock.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🌐 Multi-Platform Support</h3>
+          <p>Works seamlessly with LinkedIn Jobs, Indeed, and Seek (Australia & New Zealand).</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>📄 Multiple Formats</h3>
+          <p>Download your documents as PDF for applications, HTML for editing, or Markdown for maximum flexibility.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🔒 Privacy First</h3>
+          <p>All data stored locally in your browser. No tracking, no data collection, complete privacy control.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>⚡ Fast & Efficient</h3>
+          <p>Generate professional documents in 10-30 seconds. Apply to multiple jobs without burnout.</p>
+        </div>
+      </div>
+
+      <h3>Screenshots</h3>
+      <div class="screenshots">
+        <div class="screenshot">
+          <img src="iJobber-1.png" alt="iJobber Main Interface">
+        </div>
+        <div class="screenshot">
+          <img src="iJobber-2.png" alt="iJobber Settings">
+        </div>
+        <div class="screenshot">
+          <img src="iJobber-3.png" alt="iJobber CV Upload">
+        </div>
+        <div class="screenshot">
+          <img src="iJobber-4.png" alt="iJobber Document Generation">
+        </div>
+        <div class="screenshot">
+          <img src="iJobber-5.png" alt="iJobber Download Options">
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="https://chrome.google.com/webstore" class="cta-button">Install iJobber</a>
+      </div>
+    </div>
+
+    <!-- Privacy Policy Section -->
+    <div class="section">
+      <h2 id="privacy-policy">Privacy Policy</h2>
+      <p><strong>Last Updated:</strong> February 13, 2026</p>
+
+      <h3>1. Introduction</h3>
+      <p>
+        iJobber ("we," "our," or "the extension") is committed to protecting your privacy. This Privacy Policy 
+        explains how iJobber handles information when you use our Chrome extension.
+      </p>
+
+      <h3>2. Information We Do NOT Collect</h3>
+      <div class="privacy-section">
+        <p><strong>iJobber does not collect, store, or transmit any user data to our servers.</strong></p>
+        <p>We do not collect:</p>
+        <ul>
+          <li>Personal information (name, email, phone number, address)</li>
+          <li>CV or resume content</li>
+          <li>LinkedIn profile data</li>
+          <li>Job posting information</li>
+          <li>Generated cover letters or CVs</li>
+          <li>API keys or credentials</li>
+          <li>Browsing history or activity</li>
+          <li>Usage analytics or statistics</li>
+        </ul>
+      </div>
+
+      <h3>3. How Your Data is Handled</h3>
+      <p><strong>Local Storage Only:</strong></p>
+      <ul>
+        <li>Your CV, LinkedIn profile data, and settings are stored exclusively in your browser's local storage using Chrome's storage API</li>
+        <li>This data never leaves your device except when sent to your chosen AI provider (see below)</li>
+        <li>You can delete all stored data at any time by removing the extension</li>
+      </ul>
+
+      <p><strong>AI Provider Communication:</strong></p>
+      <ul>
+        <li>When you generate a document, your CV data and job posting information are sent to your chosen AI provider's API</li>
+        <li>This communication is direct between your browser and the AI provider</li>
+        <li>We do not intercept, store, or have access to this data</li>
+        <li>Each AI provider has their own privacy policy governing how they handle data</li>
+      </ul>
+
+      <h3>4. Third-Party AI Providers</h3>
+      <p>iJobber supports the following AI providers. When you use their services, their respective privacy policies apply:</p>
+      <ul>
+        <li><strong>Puter.com:</strong> <a href="https://puter.com/privacy" target="_blank">https://puter.com/privacy</a></li>
+        <li><strong>Azure OpenAI:</strong> <a href="https://privacy.microsoft.com/" target="_blank">https://privacy.microsoft.com/</a></li>
+        <li><strong>OpenAI:</strong> <a href="https://openai.com/privacy/" target="_blank">https://openai.com/privacy/</a></li>
+        <li><strong>Anthropic Claude:</strong> <a href="https://www.anthropic.com/privacy" target="_blank">https://www.anthropic.com/privacy</a></li>
+        <li><strong>Google Gemini:</strong> <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></li>
+        <li><strong>AWS Bedrock:</strong> <a href="https://aws.amazon.com/privacy/" target="_blank">https://aws.amazon.com/privacy/</a></li>
+      </ul>
+
+      <h3>5. Permissions Explained</h3>
+      <p><strong>activeTab:</strong> Allows reading job posting details from the current tab when you click the extension icon.</p>
+      <p><strong>scripting:</strong> Enables extraction of job information from LinkedIn, Indeed, and Seek pages.</p>
+      <p><strong>storage:</strong> Stores your CV, settings, and API keys locally in your browser.</p>
+      <p><strong>downloads:</strong> Allows you to download generated documents to your computer.</p>
+      <p><strong>Host Permissions:</strong> Access to LinkedIn, Indeed, and Seek domains to read publicly visible job postings.</p>
+
+      <h3>6. Data Security</h3>
+      <ul>
+        <li>All data is stored locally using Chrome's secure storage API</li>
+        <li>API keys are stored in encrypted Chrome storage</li>
+        <li>No data is transmitted to iJobber's servers (we don't have any servers)</li>
+        <li>Communication with AI providers uses HTTPS encryption</li>
+      </ul>
+
+      <h3>7. Your Rights and Control</h3>
+      <p>You have complete control over your data:</p>
+      <ul>
+        <li>View stored data through the extension settings</li>
+        <li>Delete your CV or LinkedIn profile data at any time</li>
+        <li>Change or remove API keys</li>
+        <li>Uninstall the extension to remove all locally stored data</li>
+      </ul>
+
+      <h3>8. Children's Privacy</h3>
+      <p>
+        iJobber is not intended for use by individuals under the age of 16. We do not knowingly collect 
+        information from children.
+      </p>
+
+      <h3>9. Changes to This Privacy Policy</h3>
+      <p>
+        We may update this Privacy Policy from time to time. Any changes will be posted on this page with 
+        an updated "Last Updated" date. Continued use of the extension after changes constitutes acceptance 
+        of the updated policy.
+      </p>
+
+      <h3>10. Open Source</h3>
+      <p>
+        iJobber's code is transparent and can be reviewed. We encourage security researchers and users to 
+        examine our code to verify our privacy claims.
+      </p>
+
+      <h3>11. Contact Information</h3>
+      <p>
+        If you have questions about this Privacy Policy or iJobber's privacy practices, please contact us at:
+      </p>
+      <p>
+        <strong>Email:</strong> <a href="mailto:one.amitj@gmail.com">one.amitj@gmail.com</a><br>
+        <strong>Website:</strong> <a href="https://amitj.com.np/ijobber">https://amitj.com.np/ijobber</a>
+      </p>
+
+      <h3>12. Summary</h3>
+      <div class="privacy-section">
+        <p><strong>In Plain English:</strong></p>
+        <p>
+          iJobber doesn't collect your data. Everything stays on your computer. When you generate a document, 
+          your information goes directly from your browser to the AI provider you chose. We never see it, 
+          store it, or have access to it. You're in complete control.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 iJobber. All rights reserved.</p>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> | 
+      <a href="mailto:one.amitj@gmail.com">Contact</a> | 
+      <a href="https://amitj.com.np">Developer</a>
+    </p>
+  </div>
+</body>
+</html>
