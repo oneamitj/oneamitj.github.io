@@ -16,19 +16,19 @@
       "url": "https://learninglist.com/"
     },
     {
-      "name": "Addy Healthcare - HIPAA Compliant AI Platform",
-      "description": "Healthcare back-office automation with AI-driven efficiency. Built a HIPAA-compliant, multi-tenant serverless system with data isolation and rapid tenant onboarding.",
+      "name": "Addy AI - HIPAA Compliant AI Platform",
+      "description": "LLM-based solution to automate U.S. healthcare provider back-office referral workflows. Built a HIPAA-compliant, multi-tenant serverless system with data isolation and rapid tenant onboarding.",
       "technologies": ["AWS Bedrock", "Anthropic Claude", "AWS Lambda", "HIPAA Compliance", "Multi-tenant Architecture"],
-      "period": "Mar 2024 - Jun 2025",
+      "period": "Mar 2024 - Present",
       "company": "Leapfrog Technology, Inc.",
       "achievements": [
-        "Built HIPAA-compliant multi-tenant serverless system with data isolation",
-        "Automated referral processing reducing administrative burden",
-        "Improved patient care through AI-driven workflows",
-        "Implemented rapid tenant onboarding system"
+        "Architected LLM-based solution to automate healthcare referral workflows",
+        "Led cross-functional team spanning multiple countries and disciplines",
+        "Designed fully serverless AWS architecture enabling near real-time processing",
+        "Built HIPAA-compliant multi-tenant serverless system with data isolation"
       ],
       "category": "Healthcare/AI",
-      "url": "https://addyhealth.com/"
+      "url": "https://www.addy.ai"
     },
     {
       "name": "GenAI R&D Platform",
@@ -44,6 +44,22 @@
         "Created reusable LLM integration patterns"
       ],
       "category": "GenAI/R&D"
+    },
+    {
+      "name": "Programiz Online Compiler - Infrastructure Modernization",
+      "description": "Modernized and re-architected the decade-old Programiz.com deployment to achieve high availability, improved reliability, and high observability. Stabilized GKE-based infrastructure for the Online Compiler.",
+      "technologies": ["GCP", "GKE", "Kubernetes", "Docker", "Security", "Sandboxing"],
+      "period": "Sep 2022 - Mar 2025",
+      "company": "Programiz.com (Consultant)",
+      "achievements": [
+        "Stabilized GKE-based infrastructure achieving near-zero downtime",
+        "Engineered secure custom sandboxing solution for safer code execution",
+        "Reduced infrastructure costs by 50%",
+        "Scaled to 10+ compilers serving 150K+ concurrent users and 10M+ monthly users",
+        "Partnered with Security team to remediate and mitigate vulnerabilities"
+      ],
+      "category": "DevOps/Infrastructure",
+      "url": "https://www.programiz.com/online-compiler/"
     },
     {
       "name": "Evoke Medical Care - Remote Device Monitoring",
@@ -129,12 +145,15 @@
     }
   ],
   "achievements": [
-    "Led AWS efforts, earning APN Advanced membership and growing certified engineers from 4 to 20+",
-    "Improved a product performance by 10x (100+ pages to 1000+ pages)",
+    "Spearheaded AWS Generative AI Competency and APN Advanced membership",
+    "Architected 10+ production-level LLM and GenAI solutions",
+    "Delivered 50% reduction in operational costs and 40% improvement in performance",
+    "Re-engineered document processing pipelines to scale throughput by 10x",
+    "Scaled Programiz Online Compiler to 150K+ concurrent users and 10M+ monthly users",
     "Reduced deployment time by 20% and new service onboarding by more than 90%",
     "Decreased AWS-based product costs by 30%",
     "Streamlined CI/CD, boosting deployment frequency by 400%",
     "Re-architected ETL pipeline from time-based to near real-time processing",
-    "Expanded DevOps team from 5 to 20+ members"
+    "Scaled DevOps team from 5 to 25+ members"
   ]
 }

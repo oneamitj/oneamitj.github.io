@@ -2,31 +2,48 @@
   "current_role": {
     "title": "Solution Architect, DevOps",
     "company": "Leapfrog Technology Inc.",
-    "location": "Kathmandu, Nepal",
+    "location": "Seattle, Washington, United States",
     "period": "Dec 2023 - Present",
-    "duration": "1 year 7 months",
-    "description": "Leading technical solutions from concept to deployment with focus on GenAI integration and cloud-native architecture. Designing secure, scalable, reliable, compliant and cost-effective infrastructure solutions.",
+    "duration": "2+ years",
+    "description": "Solution Architect specializing in the intersection of High-Scale Cloud Infrastructure and GenAI with deep expertise in AWS. Architecting LLM and GenAI systems, serverless multi-tenant platforms, and automated CI/CD pipelines.",
     "key_achievements": [
+      "Spearheaded technical initiative to secure AWS Generative AI Competency and APN Advanced membership",
+      "Architected and deployed 10+ production-level LLM and GenAI solutions with optimized RAG architectures",
       "Built HIPAA-compliant, multi-tenant serverless system with data isolation and rapid tenant onboarding",
-      "Improved product performance by 10x (100+ pages to 1000+ pages)",
-      "Optimized GenAI product performance by 40% and achieved cost reduction by 50%",
-      "Researched GenAI models to establish the company's GenAI development services",
-      "Spearheaded development of GenAI products, driving innovation and efficiency",
-      "Led AWS efforts, earning APN Advanced membership and growing certified engineers from 4 to 20+",
-      "Improved EdTech products turn-around time by automating manual work using GenAI"
+      "Delivered 50% reduction in operational costs and 40% improvement in product performance",
+      "Re-engineered document processing pipelines to scale throughput by 10x (1000+ pages vs 100+)",
+      "Redesigned legacy EdTech products into automated, AI-driven systems using LLM integration",
+      "Led cross-functional team for Addy AI - LLM-based U.S. healthcare provider back-office automation"
     ]
   },
   "experience_timeline": [
     {
       "title": "Solutions Architect",
-      "company": "Addy Healthcare",
-      "period": "Jun 2024 - Jun 2025",
-      "duration": "1 year",
+      "company": "Addy AI (a Leapfrog Technology Inc. venture)",
+      "period": "Jun 2024 - Present",
+      "duration": "1+ year",
       "type": "Contract/Consulting",
       "highlights": [
-        "AI/LLM and DevOps application solutions",
-        "Healthcare back-office automation with AI-driven efficiency",
+        "Architected LLM-based solution to automate U.S. healthcare provider back-office referral workflows",
+        "Led cross-functional team spanning multiple countries and disciplines",
+        "Designed fully serverless AWS architecture enabling near real-time processing",
         "HIPAA-compliant architecture design and implementation"
+      ]
+    },
+    {
+      "title": "DevOps Engineer Consultant",
+      "company": "Programiz.com",
+      "location": "Kathmandu, Nepal",
+      "period": "Sep 2022 - Mar 2025",
+      "duration": "2 years 7 months",
+      "type": "Contract/Consulting",
+      "highlights": [
+        "Modernized and re-architected decade-old Programiz.com deployment for high availability and observability",
+        "Stabilized GKE-based infrastructure for Programiz Online Compiler with near-zero downtime",
+        "Engineered secure custom sandboxing solution for safer code execution",
+        "Reduced infrastructure costs by 50% and scaled to 10+ compilers",
+        "Supported 150K+ concurrent users and 10M+ monthly users",
+        "Partnered with Security team to identify and remediate vulnerabilities"
       ]
     },
     {
@@ -36,7 +53,7 @@
       "duration": "2 years 1 month",
       "highlights": [
         "Designed and implemented system/project architecture (mostly AWS)",
-        "Managed and built DevOps team from 5 to 20+ members",
+        "Managed and built DevOps team from 5 to 25+ members",
         "Created company-wide standards for DevOps tasks and documentation",
         "Scaled product to handle 500% more data sources (8 to 40+ external connections)",
         "Streamlined CI/CD, boosting deployment frequency by 400% (monthly to weekly)",
@@ -62,70 +79,40 @@
     },
     {
       "title": "Engineering Manager",
-      "company": "Smart Ideas Pvt. Ltd. (HamroPatro)",
+      "company": "Hamro Patro, Inc.",
+      "location": "Kathmandu, Nepal",
       "period": "Jul 2020 - Dec 2020",
       "duration": "6 months",
       "highlights": [
-        "Oversaw research and development for blockchain and microservices-based products",
-        "Developed service discovery and deployment system using Go and Docker",
-        "Led engineering team and strategic technology decisions"
+        "Led engineering team to build and launch products within the HamroPatro app",
+        "Designed system architecture for cross-border mobile recharge and money transfer services",
+        "Scaled the engineering team in both headcount and technical expertise"
       ]
     },
     {
-      "title": "Sr. Research Engineer / Team Lead",
-      "company": "Smart Ideas Pvt. Ltd. (HamroPatro)",
-      "period": "Jul 2018 - Jul 2020",
-      "duration": "2 years 1 month",
+      "title": "Research Engineer / Sr. Research Engineer / Team Lead",
+      "company": "Hamro Patro, Inc.",
+      "location": "Kathmandu, Nepal",
+      "period": "Jul 2017 - Jun 2020",
+      "duration": "3 years",
       "highlights": [
-        "Led development of blockchain-based solutions and Ethereum applications",
-        "Developed server monitoring systems using Prometheus and Grafana",
-        "Research and implementation of blockchain, reverse proxy, search engine, NLP technologies",
+        "Built HamroStack, an in-house deployment platform to migrate from GCP App Engine to multi-region self-managed infrastructure",
+        "Led R&D initiatives for blockchain-based solutions across Bitcoin, Ethereum, and Hyperledger platforms",
+        "Implemented server monitoring and observability systems using Prometheus and Grafana",
         "Built reward management system using Solidity and Ethereum",
         "Created ERC20 and ERC721 cryptocurrency implementations"
       ]
     },
     {
-      "title": "Research Engineer",
-      "company": "Smart Ideas Pvt. Ltd. (HamroPatro)",
-      "period": "Jul 2017 - Jul 2018",
-      "duration": "1 year 1 month",
-      "highlights": [
-        "Researched different technologies required for product development",
-        "Worked with blockchain, Docker, load balancing, and microservices",
-        "Developed project deployment system with container services"
-      ]
-    },
-    {
       "title": "Software Engineer",
       "company": "Javra Software Pvt. Ltd.",
-      "period": "Feb 2017 - Jun 2017",
-      "duration": "5 months",
+      "location": "Kathmandu, Nepal",
+      "period": "May 2016 - June 2017",
+      "duration": "1 year 2 months",
       "highlights": [
         "Apache Solr Engineer and Progress 4GL Developer",
         "Enhanced eCommerce search functionality with fuzzy search",
         "Implemented multilingual support for search systems"
-      ]
-    },
-    {
-      "title": "Jr. Software Engineer",
-      "company": "Javra Software Pvt. Ltd.",
-      "period": "May 2016 - Jan 2017",
-      "duration": "9 months",
-      "highlights": [
-        "Apache Solr and Progress ABL Engineer",
-        "Developed search and indexing solutions",
-        "Worked on eCommerce platform enhancements"
-      ]
-    },
-    {
-      "title": "Intern - Ruby Developer",
-      "company": "Cloud Factory",
-      "period": "May 2015 - Aug 2015",
-      "duration": "4 months",
-      "highlights": [
-        "Ruby on Rails development",
-        "First professional software development experience",
-        "Web application development and maintenance"
       ]
     }
   ],
@@ -163,21 +150,27 @@
     }
   ],
   "career_summary": {
-    "total_experience": "8+ years",
+    "total_experience": "9+ years",
+    "location": "Melbourne, Victoria, Australia",
     "specializations": [
       "Cloud Architecture (AWS Expert)",
-      "DevOps Engineering", 
       "GenAI/LLM Integration",
+      "DevOps Engineering",
       "Infrastructure as Code",
       "Team Leadership",
-      "Compliance (HIPAA/SOC2)"
+      "Compliance (HIPAA/SOC2/GDPR/PCI-DSS)"
     ],
     "key_metrics": [
-      "Led team growth from 4 to 20+ certified engineers",
+      "Spearheaded AWS Generative AI Competency and APN Advanced membership",
+      "Architected 10+ production-level LLM and GenAI solutions",
       "Achieved 40% performance improvement and 50% cost reduction in GenAI products",
+      "Scaled document processing throughput by 10x (1000+ pages vs 100+)",
       "Scaled systems to handle 500% more data sources",
       "Reduced deployment times by 20% and onboarding by 90%",
-      "Improved CI/CD frequency by 400%"
+      "Improved CI/CD frequency by 400%",
+      "Scaled Programiz Online Compiler to 150K+ concurrent users and 10M+ monthly users"
+    ]
+  }
     ]
   }
 }

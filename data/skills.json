@@ -2,48 +2,69 @@
   "cloud_platforms": [
     { "name": "AWS", "level": "Expert", "icon": "☁️", "years": "8+ years" },
     { "name": "GCP", "level": "Advanced", "icon": "🌤️", "years": "3+ years" },
-    { "name": "Azure", "level": "Advanced", "icon": "⛅", "years": "2+ years" }
+    { "name": "Azure", "level": "Advanced", "icon": "⛅", "years": "2+ years" },
+    { "name": "DigitalOcean", "level": "Intermediate", "icon": "🌊", "years": "2+ years" }
   ],
   "devops_tools": [
     { "name": "Terraform", "level": "Expert", "icon": "🏗️", "years": "6+ years" },
     { "name": "Docker", "level": "Expert", "icon": "🐳", "years": "7+ years" },
     { "name": "Kubernetes", "level": "Expert", "icon": "⚙️", "years": "3+ years" },
-    { "name": "Ansible", "level": "Advanced", "icon": "🔧", "years": "1+ years" },
-    { "name": "Jenkins", "level": "Advanced", "icon": "🔨", "years": "1+ years" },
     { "name": "GitHub Actions", "level": "Expert", "icon": "🚀", "years": "5+ years" },
-    { "name": "CloudFormation", "level": "Advanced", "icon": "📋", "years": "5+ years" }
+    { "name": "CloudFormation", "level": "Advanced", "icon": "📋", "years": "5+ years" },
+    { "name": "Pulumi", "level": "Advanced", "icon": "🔧", "years": "2+ years" },
+    { "name": "Azure DevOps", "level": "Advanced", "icon": "🔨", "years": "2+ years" },
+    { "name": "Ansible", "level": "Advanced", "icon": "🔩", "years": "1+ years" },
+    { "name": "Jenkins", "level": "Advanced", "icon": "🏭", "years": "1+ years" }
   ],
   "programming_languages": [
     { "name": "Python", "level": "Expert", "icon": "🐍", "years": "8+ years" },
     { "name": "Bash", "level": "Expert", "icon": "💻", "years": "8+ years" },
     { "name": "Go", "level": "Intermediate", "icon": "🐹", "years": "3+ years" },
-    { "name": "JavaScript", "level": "Advanced", "icon": "📜", "years": "5+ years" }
+    { "name": "NodeJS", "level": "Advanced", "icon": "📜", "years": "5+ years" }
   ],
   "monitoring_security": [
     { "name": "Prometheus", "level": "Advanced", "icon": "📊", "years": "4+ years" },
     { "name": "Grafana", "level": "Advanced", "icon": "📈", "years": "4+ years" },
     { "name": "ELK Stack", "level": "Advanced", "icon": "🔍", "years": "3+ years" },
+    { "name": "OpenSearch", "level": "Advanced", "icon": "🔎", "years": "2+ years" },
     { "name": "CloudFlare", "level": "Advanced", "icon": "🛡️", "years": "8+ years" },
     { "name": "Vanta", "level": "Intermediate", "icon": "🔒", "years": "2+ years" },
-    { "name": "Certbot", "level": "Advanced", "icon": "🔐", "years": "5+ years" }
+    { "name": "Drata", "level": "Intermediate", "icon": "📋", "years": "1+ years" },
+    { "name": "Wazuh", "level": "Intermediate", "icon": "🔐", "years": "1+ years" },
+    { "name": "Certbot", "level": "Advanced", "icon": "🔑", "years": "5+ years" }
   ],
   "infrastructure_automation": [
     { "name": "Nginx", "level": "Expert", "icon": "🌐", "years": "6+ years" },
+    { "name": "Apache", "level": "Advanced", "icon": "🪶", "years": "4+ years" },
     { "name": "HAProxy", "level": "Advanced", "icon": "⚖️", "years": "3+ years" },
     { "name": "Envoy Proxy", "level": "Intermediate", "icon": "🔀", "years": "2+ years" },
-    { "name": "PostgreSQL", "level": "Advanced", "icon": "🐘", "years": "5+ years" }
+    { "name": "Kafka", "level": "Intermediate", "icon": "📨", "years": "2+ years" }
+  ],
+  "databases": [
+    { "name": "PostgreSQL", "level": "Advanced", "icon": "🐘", "years": "5+ years" },
+    { "name": "MySQL", "level": "Advanced", "icon": "🗄️", "years": "5+ years" },
+    { "name": "DynamoDB", "level": "Advanced", "icon": "⚡", "years": "3+ years" },
+    { "name": "MongoDB", "level": "Intermediate", "icon": "🍃", "years": "3+ years" },
+    { "name": "Redis", "level": "Advanced", "icon": "🔴", "years": "3+ years" }
   ],
   "genai_technologies": [
     { "name": "OpenAI GPT", "level": "Expert", "icon": "🤖", "years": "2+ years" },
-    { "name": "Anthropic Claude", "level": "Expert", "icon": "🧠", "years": "1+ years" },
-    { "name": "AWS Bedrock", "level": "Advanced", "icon": "🔮", "years": "2+ years" },
-    { "name": "Azure AI", "level": "Advanced", "icon": "✨", "years": "1+ years" },
-    { "name": "Llama Models", "level": "Advanced", "icon": "🦙", "years": "1+ years" },
-    { "name": "RAG Systems", "level": "Expert", "icon": "🔗", "years": "1+ years" },
-    { "name": "Prompt Engineering", "level": "Expert", "icon": "📝", "years": "2+ years" }
+    { "name": "Anthropic Claude", "level": "Expert", "icon": "🧠", "years": "2+ years" },
+    { "name": "AWS Bedrock", "level": "Expert", "icon": "🔮", "years": "2+ years" },
+    { "name": "Azure AI", "level": "Advanced", "icon": "✨", "years": "2+ years" },
+    { "name": "RAG Systems", "level": "Expert", "icon": "🔗", "years": "2+ years" },
+    { "name": "Prompt Engineering", "level": "Expert", "icon": "📝", "years": "2+ years" },
+    { "name": "LangChain", "level": "Advanced", "icon": "⛓️", "years": "1+ years" },
+    { "name": "LangSmith", "level": "Advanced", "icon": "🔬", "years": "1+ years" },
+    { "name": "Pinecone", "level": "Advanced", "icon": "🌲", "years": "1+ years" },
+    { "name": "Amazon Textract", "level": "Advanced", "icon": "📄", "years": "1+ years" },
+    { "name": "Azure Document Intelligence", "level": "Advanced", "icon": "📑", "years": "1+ years" },
+    { "name": "RAGAS / RAGChecker", "level": "Intermediate", "icon": "✅", "years": "1+ years" }
   ],
   "compliance": [
     { "name": "HIPAA", "level": "Expert", "icon": "🏥", "years": "3+ years" },
-    { "name": "SOC2", "level": "Advanced", "icon": "🔐", "years": "2+ years" }
+    { "name": "SOC2", "level": "Advanced", "icon": "🔐", "years": "3+ years" },
+    { "name": "GDPR", "level": "Advanced", "icon": "🇪🇺", "years": "2+ years" },
+    { "name": "PCI-DSS", "level": "Intermediate", "icon": "💳", "years": "1+ years" }
   ]
 }

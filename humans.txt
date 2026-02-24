@@ -7,7 +7,7 @@
     Site: https://amitj.com.np/
     LinkedIn: linkedin.com/in/oneamitj
     GitHub: github.com/oneamitj
-    Location: Kathmandu, Nepal
+    Location: Melbourne, Australia
 
 # THANKS
 

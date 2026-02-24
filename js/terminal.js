@@ -5,7 +5,7 @@ class Terminal {
         this.output = document.getElementById('output');
         this.input = document.getElementById('input');
         this.promptElement = document.getElementById('main-prompt'); // Reference to the main prompt
-        this.clockElement = document.getElementById('nepal-clock');
+        this.clockElement = document.getElementById('melbourne-clock');
         this.currentPath = '/home/amit';
         this.commandHistory = [];
         this.historyIndex = -1;
@@ -17,21 +17,20 @@ class Terminal {
         this.startClock();
     }
 
-    // Clock functionality for Nepal Time (NPT, UTC+5:45)
+    // Clock functionality for Melbourne Time (AET, UTC+10/+11)
     startClock() {
         this.updateClock();
         setInterval(() => this.updateClock(), 1000);
     }
 
     updateClock() {
-        // Get current time and convert to Nepal Time (UTC+5:45)
+        // Get current time in Melbourne (Australia/Melbourne)
         const now = new Date();
-        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-        const nepalTime = new Date(utc + (5.75 * 3600000)); // NPT is UTC+5:45
+        const melbourneTime = new Date(now.toLocaleString('en-US', { timeZone: 'Australia/Melbourne' }));
         
-        const hours = String(nepalTime.getHours()).padStart(2, '0');
-        const minutes = String(nepalTime.getMinutes()).padStart(2, '0');
-        const seconds = String(nepalTime.getSeconds()).padStart(2, '0');
+        const hours = String(melbourneTime.getHours()).padStart(2, '0');
+        const minutes = String(melbourneTime.getMinutes()).padStart(2, '0');
+        const seconds = String(melbourneTime.getSeconds()).padStart(2, '0');
         
         if (this.clockElement) {
             this.clockElement.textContent = `${hours}:${minutes}:${seconds}`;
@@ -64,8 +63,8 @@ class Terminal {
 ║  DevOps Tools: ████████████████████████████████ 100%
 ║  Compliance:   ████████████████████████████████ 100%
 ║
-║  🎯 10+ Years Experience | 🎓 B.E. Computer Engineering
-║  📍 Kathmandu, Nepal
+║  🎯 9+ Years Experience | 🎓 B.E. Computer Engineering
+║  📍 Melbourne, Australia
 ║
 ║  Type 'help' to see available commands
 ║  Type 'about' to learn more about me
@@ -369,7 +368,7 @@ Boot sequence complete. Ready for commands...
 🔗 Source: ./data/AmitJ_CV.pdf
 
 📋 Resume Contents:
-• Professional Experience (10+ years)
+• Professional Experience (9+ years)
 • Technical Skills & Certifications  
 • Key Achievements & Metrics
 • Project Portfolio
@@ -428,12 +427,13 @@ Boot sequence complete. Ready for commands...
         const resumeText = `
 ╔═══════════════════════════════════════════════╗
 ║                            AMIT JOSHI
-║      AWS | Terraform | CI/CD | Docker | GenAI | Python
+║   AWS | Terraform | CI/CD | Docker | GenAI | LLM | Python
 ╚═══════════════════════════════════════════════╝
 
 🌐 LinkedIn: https://www.linkedin.com/in/oneamitj
 📧 Email: one.amitj@gmail.com
 🐙 GitHub: https://github.com/oneamitj
+📍 Location: Melbourne, Victoria, Australia
 
 💡 Tip: Use 'resume --download' to download PDF version
 
@@ -442,20 +442,16 @@ Boot sequence complete. Ready for commands...
 📋 PROFESSIONAL SUMMARY
 ════════════════════════════════════════════════
 
-Dynamic DevOps and GenAI developer with deep expertise in AWS, 
-Terraform, Kubernetes, and modern CI/CD pipelines, alongside hands-on 
-experience in developing and optimizing LLM workflows and integrating 
-cloud-native GenAI solutions. 
+Solution Architect specializing in the intersection of High-Scale 
+Cloud Infrastructure and GenAI with deep expertise in AWS. Proven 
+record of architecting LLM and GenAI systems, serverless multi-tenant 
+platforms, and automated CI/CD pipelines.
 
-Proven ability to design scalable, secure, and cost-efficient 
-infrastructures, including HIPAA-compliant and multi-tenant systems. 
-Skilled at leading cross-functional teams, driving GenAI innovation, 
-and improving product performance by up to 40% while cutting costs by 50%. 
-
-Strong background in compliance (SOC2, HIPAA), infrastructure automation, 
-and scaling complex systems. Passionate about leveraging cutting-edge 
-tools to ensure seamless deployment, operational excellence, and high 
-availability.
+Proven track record of modernizing legacy systems, optimizing costs, 
+scaling services to hundreds of thousands of users, and leading 
+cross-functional teams across multiple countries. Strong focus on 
+reliability, compliance, and operational excellence in enterprise 
+and consumer-facing applications.
 
 ════════════════════════════════════════════════
 
@@ -463,79 +459,92 @@ availability.
 ════════════════════════════════════════════════
 
 ☁️  Cloud Platforms:
-    • AWS (Expert), GCP, Azure
+    • AWS (Expert), GCP, Azure, DigitalOcean
 
 🔧 DevOps Tools:
-    • Terraform, Docker, Kubernetes, Ansible, Jenkins, GitHub Actions
+    • Terraform, CloudFormation, Pulumi, Docker, Kubernetes
+    • GitHub Actions, Azure DevOps
 
-⚙️  Infrastructure Automation:
-    • CloudFormation, Prometheus, Grafana
+🤖 GenAI/LLM:
+    • OpenAI GPT, Anthropic Claude, Azure AI, AWS Bedrock
+    • RAG, Prompt Engineering, LangChain, LangSmith
+    • Pinecone, AWS OpenSearch VectorDB, AWS S3 Vector
+    • Azure Document Intelligence, Amazon Textract
+    • RAGAS, RAGChecker
 
 💻 Programming Languages:
-    • Python, Bash, Go
+    • Python, Bash, Go, NodeJS
 
 🔒 Monitoring & Security:
-    • ELK Stack, Vanta, CloudFlare, Certbot
+    • ELK, OpenSearch, Vanta, Drata, Wazuh, CloudFlare, Certbot, OWASP
+
+🗄️  Database:
+    • MySQL, PostgreSQL, DynamoDB, MongoDB, Redis
 
 🌐 Other Technologies:
-    • Nginx, HAProxy, Envoy Proxy, PostgreSQL
-
-🤖 GenAI:
-    • OpenAI, Claude, Llama, Azure AI, AWS Bedrock, RAG, Prompt Engineering
+    • Linux, Windows, Nginx, Apache, HAProxy, Envoy Proxy, Kafka
+    • Jenkins, Ansible
 
 📋 Compliance:
-    • HIPAA, SOC2
+    • HIPAA, SOC2, GDPR, PCI-DSS
 
 ════════════════════════════════════════════════
 
 💼 PROFESSIONAL EXPERIENCE
 ════════════════════════════════════════════════
 
-🏢 LEAPFROG TECHNOLOGY INC.
+🏢 LEAPFROG TECHNOLOGY INC. | Seattle, Washington, USA
 
 🎯 Solution Architect, DevOps | Dec 2023 - Present
-   • Drove technical solutions from concept to deployment
+   • Spearheaded AWS Generative AI Competency and APN Advanced membership
+   • Architected 10+ production-level LLM and GenAI solutions with optimized RAG
    • Built HIPAA-compliant, multi-tenant serverless system with data isolation
-   • Improved performance of a product by 10x (100+ pages to 1000+ pages)
-   • Optimized GenAI product performance by 40% and cost reduction by 50%
-   • Researched GenAI models to establish company's GenAI development services
-   • Spearheaded development of GenAI products, driving innovation and efficiency
-   • Improved EdTech products turn-around time using GenAI automation
-   • Led AWS efforts, earning APN Advanced membership
-   • Grew certified engineers from 4 to 20+
+   • Delivered 50% reduction in operational costs and 40% improvement in performance
+   • Re-engineered document processing pipelines to scale throughput by 10x
+   • Redesigned legacy EdTech products into automated, AI-driven systems
+   • Led Addy AI: LLM-based U.S. healthcare back-office referral automation
 
 🎯 Principal Engineer, DevOps | Dec 2021 - Dec 2023
-   • Engineered multi-stage deployment architectures for diverse projects
-   • Expanded DevOps team from 5 to 20+, enhancing skills and roles
-   • Scaled a product to handle 500% more data sources (8 to 40+ connections)
-   • Streamlined CI/CD, boosting deployment frequency by 400%
-   • Conducted compliance audits for HIPAA, SOC2, and other standards
-   • Re-architected ETL pipeline from time-based to near real-time processing
+   • Engineered multi-stage deployment architectures for diverse client projects
+   • Scaled DevOps team from 5 to 25+ members
+   • Increased supported data sources by 5x (8 to 40+ external integrations)
+   • Streamlined CI/CD, increasing deployment frequency by 4x (monthly to weekly)
+   • Led compliance initiatives for HIPAA, SOC2, and related regulatory standards
+   • Re-architected ETL pipeline from batch-based to near real-time processing
 
 🎯 Lead Engineer, DevOps | Dec 2020 - Dec 2021
    • Delivered DevOps solutions ensuring high availability and minimal downtime
    • Reduced deployment time by 20% for microservice-based product
-   • Reduced new service onboarding time by 90%
+   • Accelerated new service onboarding by ~90%
    • Built hybrid cloud setup with seamless in-house database integration
-   • Decreased AWS product costs by 30%
-   • Automated deployment pipelines for microservices architecture
-   • Created company-wide documentation standards for DevOps processes
+   • Optimized AWS-based product, reducing infrastructure costs by 30%
+   • Automated CI/CD pipelines for microservices architecture
 
-🏢 SMART IDEAS PVT. LTD. (HAMROPATRO)
+🏢 PROGRAMIZ.COM | Kathmandu, Nepal (Consultant)
+
+🎯 DevOps Engineer Consultant | Sep 2022 - Mar 2025
+   • Modernized decade-old Programiz.com deployment for high availability
+   • Stabilized GKE-based infrastructure for Programiz Online Compiler
+   • Engineered secure custom sandboxing solution for safer code execution
+   • Reduced infrastructure costs by 50%
+   • Scaled to 10+ compilers serving 150K+ concurrent users and 10M+ monthly users
+
+🏢 HAMRO PATRO, INC. | Kathmandu, Nepal
 
 🎯 Engineering Manager | Jul 2020 - Dec 2020
-   • Oversaw R&D for blockchain and microservices-based products
-   • Developed service discovery and deployment system using Go and Docker
+   • Led engineering team to build and launch products within HamroPatro app
+   • Designed system architecture for cross-border mobile recharge and money transfer
 
-🎯 Research Engineer/Sr. Research Engineer/Team Lead | Jul 2017 - Jun 2020
-   • Led development of blockchain-based solutions and Ethereum applications
-   • Developed server monitoring systems using Prometheus and Grafana
+🎯 Research Engineer / Sr. Research Engineer / Team Lead | Jul 2017 - Jun 2020
+   • Built HamroStack: in-house deployment platform migrating from GCP App Engine
+   • Led R&D for blockchain solutions across Bitcoin, Ethereum, and Hyperledger
+   • Implemented server monitoring and observability using Prometheus and Grafana
 
-🏢 JAVRA SOFTWARE PVT. LTD.
+🏢 JAVRA SOFTWARE PVT. LTD. | Kathmandu, Nepal
 
 🎯 Software Engineer | May 2016 - June 2017
    • Enhanced eCommerce search functionality with fuzzy search
-   • Added multilingual support
+   • Added multilingual support for search systems
 
 ════════════════════════════════════════════════
 
@@ -581,13 +590,14 @@ Kathmandu University, 2015
                     'category             # Show specific skill category'
                 ],
                 categories: [
-                    'cloud_platforms      # AWS, GCP, Azure expertise',
+                    'cloud_platforms      # AWS, GCP, Azure, DigitalOcean',
                     'devops_tools         # Terraform, Docker, Kubernetes',
-                    'programming_languages # Python, Bash, Go, JavaScript',
-                    'genai_technologies   # OpenAI, Claude, Bedrock',
-                    'monitoring_security  # Prometheus, Grafana, ELK',
-                    'infrastructure_automation # IaC and automation tools',
-                    'compliance           # HIPAA, SOC2 standards'
+                    'programming_languages # Python, Bash, Go, NodeJS',
+                    'genai_technologies   # OpenAI, Claude, Bedrock, LangChain',
+                    'monitoring_security  # Prometheus, Grafana, ELK, OpenSearch',
+                    'infrastructure_automation # Nginx, HAProxy, Kafka',
+                    'databases            # PostgreSQL, MySQL, DynamoDB, MongoDB, Redis',
+                    'compliance           # HIPAA, SOC2, GDPR, PCI-DSS'
                 ],
                 examples: [
                     'skills               # Show all skills with categories',
@@ -974,33 +984,34 @@ Tip: Use arrow keys to navigate command history
 ║                          ABOUT AMIT JOSHI
 ╚═══════════════════════════════════════════════╝
 
-🚀 Dynamic DevOps and GenAI Solution Architect
+🚀 Solution Architect | Cloud Infrastructure & GenAI
 
-📍 Location: Kathmandu, Bāgmatī, Nepal
+📍 Location: Melbourne, Victoria, Australia
 🎓 Education: B.E. Computer Engineering, Kathmandu University (2015)
 💼 Current Role: Solution Architect @ Leapfrog Technology Inc.
-⏱️ Experience: 10+ years in DevOps & Cloud Engineering
+⏱️ Experience: 9+ years in DevOps & Cloud Engineering
 
 🌟 Professional Summary:
 ═════════════════════════════════════════════════
 
-Dynamic DevOps and GenAI developer with deep expertise in AWS, 
-Terraform, Kubernetes, and modern CI/CD pipelines, alongside 
-hands-on experience in developing and optimizing LLM workflows 
-and integrating cloud-native GenAI solutions.
+Solution Architect specializing in the intersection of High-Scale 
+Cloud Infrastructure and GenAI with deep expertise in AWS. Proven 
+record of architecting LLM and GenAI systems, serverless multi-tenant 
+platforms, and automated CI/CD pipelines.
 
-Proven ability to design scalable, secure, and cost-efficient 
-infrastructures, including HIPAA-compliant and multi-tenant 
-systems. Skilled at leading cross-functional teams, driving 
-GenAI innovation, and improving product performance by up to 40% 
-while cutting costs by 50%.
+Proven track record of modernizing legacy systems, optimizing costs, 
+scaling services to hundreds of thousands of users, and leading 
+cross-functional teams across multiple countries. Strong focus on 
+reliability, compliance, and operational excellence in enterprise 
+and consumer-facing applications.
 
 🏆 Key Achievements:
 ═════════════════════════════════════════════════
-• Led AWS efforts earning APN Advanced membership
-• Grew certified engineers from 4 to 25+ team members
-• Improved product performance by 10x (100+ to 1000+ pages)
+• Spearheaded AWS Generative AI Competency and APN Advanced membership
+• Architected 10+ production-level LLM and GenAI solutions
+• Scaled document processing throughput by 10x (1000+ pages vs 100+)
 • Optimized GenAI costs by 50% while boosting performance by 40%
+• Scaled Programiz Online Compiler to 150K+ concurrent users, 10M+ monthly
 • Scaled data processing by 500% (8 to 40+ external connections)
 • Boosted CI/CD frequency by 400% (monthly to weekly deployments)
 • Reduced deployment time by 20% and onboarding by 90%
@@ -1010,17 +1021,19 @@ while cutting costs by 50%.
 ═════════════════════════════════════════════════
 • Cloud-Native Architecture (AWS Expert Level)
 • GenAI/LLM Integration & Optimization
-• Infrastructure as Code (Terraform, CloudFormation)
-• HIPAA/SOC2 Compliance & Security
+• Infrastructure as Code (Terraform, CloudFormation, Pulumi)
+• HIPAA/SOC2/GDPR/PCI-DSS Compliance & Security
 • DevOps Team Leadership & Scaling
-• Multi-tenant System Architecture
+• Multi-tenant Serverless Architecture
 • Real-time Data Processing & ETL
+• RAG Systems & Prompt Engineering
 
 🎯 Current Focus:
 ════════════════════════════════
-Passionate about leveraging cutting-edge GenAI tools to ensure 
-seamless deployment, operational excellence, and high availability
-while maintaining the highest standards of security and compliance.
+Based in Melbourne, Australia. Passionate about leveraging 
+cutting-edge GenAI tools to ensure seamless deployment, 
+operational excellence, and high availability while maintaining 
+the highest standards of security and compliance.
 
 🏅 Awards & Recognition:
 • Ncell App Camp 2014 Winner (Corporate Solutions)
@@ -1061,7 +1074,8 @@ while maintaining the highest standards of security and compliance.
             'devops_tools': 'DEVOPS TOOLS',
             'programming_languages': 'PROGRAMMING LANGUAGES',
             'monitoring_security': 'MONITORING & SECURITY',
-            'infrastructure_automation': 'INFRASTRUCTURE AUTOMATION',
+            'infrastructure_automation': 'INFRASTRUCTURE & AUTOMATION',
+            'databases': 'DATABASES',
             'genai_technologies': 'GENAI TECHNOLOGIES',
             'compliance': 'COMPLIANCE & STANDARDS'
         };
@@ -1092,7 +1106,8 @@ while maintaining the highest standards of security and compliance.
             'devops_tools': 'DEVOPS TOOLS',
             'programming_languages': 'PROGRAMMING LANGUAGES',
             'monitoring_security': 'MONITORING & SECURITY',
-            'infrastructure_automation': 'INFRASTRUCTURE AUTOMATION',
+            'infrastructure_automation': 'INFRASTRUCTURE & AUTOMATION',
+            'databases': 'DATABASES',
             'genai_technologies': 'GENAI TECHNOLOGIES',
             'compliance': 'COMPLIANCE & STANDARDS'
         };
@@ -1229,7 +1244,7 @@ Key Achievements:
 📧 Email:     one.amitj@gmail.com
 🐙 GitHub:    github.com/oneamitj  
 💼 LinkedIn:  linkedin.com/in/oneamitj
-📍 Location:  Kathmandu, Bāgmatī, Nepal
+📍 Location:  Melbourne, Victoria, Australia
 🏢 Company:   Leapfrog Technology Inc.
 
 🤝 Let's Connect!
@@ -1257,7 +1272,7 @@ Feel free to reach out for:
 • Mentoring junior engineers
 
 📊 Response Time: Usually within 24 hours
-🌍 Time Zone: Nepal Time (NPT, UTC+5:45)
+🌍 Time Zone: Australian Eastern Time (AET, UTC+10/+11)
 `;
         await this.typeText(contactText, 10);
     }
@@ -1364,13 +1379,13 @@ Total: 2 items`;
         const whoText = `
 oneamitj@devops:~$ whoami
 
-🚀 Amit Joshi - DevOps Engineer & GenAI Solution Architect
+🚀 Amit Joshi - Solution Architect | Cloud Infrastructure & GenAI
 
 Quick Facts:
-• 8+ years in DevOps and Cloud Engineering
-• AWS Expert with 20+ certified team members led
-• GenAI enthusiast optimizing LLM workflows
-• HIPAA/SOC2 compliance specialist
+• 9+ years in DevOps and Cloud Engineering
+• Based in Melbourne, Australia
+• AWS Expert | 10+ production-level GenAI solutions architected
+• HIPAA/SOC2/GDPR/PCI-DSS compliance specialist
 • Currently architecting solutions at Leapfrog Technology
 `;
         await this.typeText(whoText, 12);
@@ -1475,24 +1490,31 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
 
 👥 TEAM LEADERSHIP:
 ═════════════════════════════════════════════════
-🎓 Led team growth from 4 to 20+ AWS certified engineers
-📈 Expanded DevOps team from 5 to 20+ members
-🏆 Achieved AWS APN Advanced Partner status for company
-🎯 Established company's GenAI development services
+🎓 Spearheaded AWS Generative AI Competency and APN Advanced membership
+📈 Scaled DevOps team from 5 to 25+ members
+🏆 Architected 10+ production-level LLM and GenAI solutions
+🎯 Led cross-functional teams across multiple countries
 
 🏥 COMPLIANCE & SECURITY:
 ═════════════════════════════════════════════════
 🔒 Built HIPAA-compliant multi-tenant serverless systems
-🛡️ Conducted successful SOC2 compliance audits
+🛡️ Led compliance initiatives for HIPAA, SOC2, GDPR, PCI-DSS
 🏥 Designed secure healthcare data processing pipelines
 🔐 Implemented data isolation and rapid tenant onboarding
 
 🤖 GENAI INNOVATION:
 ═════════════════════════════════════════════════
-🧠 Spearheaded company's GenAI product development
-🔬 Researched and established GenAI development services
+🧠 Spearheaded company's AWS Generative AI Competency
+🔬 Architected 10+ production-level LLM and GenAI solutions
 ⚡ Automated EdTech manual processes using GenAI
 🎓 Improved educational alignment checking by 90% efficiency
+
+🌐 PROGRAMIZ.COM:
+═════════════════════════════════════════════════
+🖥️ Stabilized GKE-based infrastructure with near-zero downtime
+🔒 Engineered secure custom sandboxing for safer code execution
+💰 Reduced infrastructure costs by 50%
+📈 Scaled to 150K+ concurrent users and 10M+ monthly users
 `;
         await this.typeText(achievementsText, 10);
     }
@@ -1556,7 +1578,7 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
 ☁️ AWS EXPERTISE:
 ═════════════════════════════════════════════════
 🏆 Led company to AWS APN Advanced Partner status
-👥 Grew team from 4 to 20+ AWS certified engineers
+👥 Grew team from 5 to 25+ members
 🎓 Expert-level knowledge across AWS services:
    • EC2, ECS, EKS, Lambda
    • RDS, S3, CloudFormation
@@ -1565,17 +1587,20 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
 
 🤖 GENAI EXPERTISE:
 ═════════════════════════════════════════════════
-• OpenAI GPT-4, Claude, Llama models
+• OpenAI GPT, Anthropic Claude, Azure AI, AWS Bedrock
 • RAG (Retrieval-Augmented Generation)
 • Prompt Engineering optimization
-• Azure AI Foundry integration
-• AWS Bedrock implementation
+• LangChain, LangSmith, Pinecone
+• Azure Document Intelligence, Amazon Textract
+• RAGAS, RAGChecker
 
 🛡️ COMPLIANCE EXPERTISE:
 ═════════════════════════════════════════════════
 🏥 HIPAA Compliance (Expert level)
 🔒 SOC2 Audit experience
-🛡️ Security best practices implementation
+🇪🇺 GDPR Compliance
+💳 PCI-DSS Standards
+🛡️ Security best practices implementation (OWASP)
 `;
         await this.typeText(certificationsText, 10);
     }
