@@ -13,7 +13,8 @@
       "Delivered 50% reduction in operational costs and 40% improvement in product performance",
       "Re-engineered document processing pipelines to scale throughput by 10x (1000+ pages vs 100+)",
       "Redesigned legacy EdTech products into automated, AI-driven systems using LLM integration",
-      "Led cross-functional team for Addy AI - LLM-based U.S. healthcare provider back-office automation"
+      "Led cross-functional team for Addy AI - LLM-based U.S. healthcare provider back-office automation",
+      "Featured speaker on CIO.com webcast 'GenAI for Healthcare Providers and Digital Health Companies' with AWS"
     ]
   },
   "experience_timeline": [
@@ -149,8 +150,24 @@
       "description": "Built a sentiment analysis API which helps business in analyzing the sentiments of their customer."
     }
   ],
+  "speaking_engagements": [
+    {
+      "name": "GenAI for Healthcare Providers and Digital Health Companies",
+      "venue": "CIO.com Webcast",
+      "co_hosted_by": "Amazon Web Services (AWS) and Leapfrog Technology",
+      "url": "https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/",
+      "co_speakers": ["Manu Chatterjee - VP/Head of AI, Leapfrog Technologies", "Jim Malone - Senior Contributing Editor, CIO Marketing Services"],
+      "description": "Expert panel discussing accelerating GenAI adoption in healthcare — overcoming POC barriers, security and compliance at scale, real-world use cases for providers and payers, and the partner advantage for GenAI healthcare journeys."
+    },
+    {
+      "name": "Dawn of the Agents",
+      "venue": "AWS User Group Meetup",
+      "url": "https://amitj.com.np/aug.ppt",
+      "description": "Presentation on GenAI maturing into the age of autonomous agents — foundation models as infrastructure, agents as the interface, vibe coding, vibe DevOps, and governance at prompt time."
+    }
+  ],
   "career_summary": {
-    "total_experience": "9+ years",
+    "total_experience": "10+ years",
     "location": "Melbourne, Victoria, Australia",
     "specializations": [
       "Cloud Architecture (AWS Expert)",
@@ -169,8 +186,6 @@
       "Reduced deployment times by 20% and onboarding by 90%",
       "Improved CI/CD frequency by 400%",
       "Scaled Programiz Online Compiler to 150K+ concurrent users and 10M+ monthly users"
-    ]
-  }
     ]
   }
 }

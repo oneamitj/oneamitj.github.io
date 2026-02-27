@@ -63,7 +63,7 @@ class Terminal {
 ║  DevOps Tools: ████████████████████████████████ 100%
 ║  Compliance:   ████████████████████████████████ 100%
 ║
-║  🎯 9+ Years Experience | 🎓 B.E. Computer Engineering
+║  🎯 10+ Years Experience | 🎓 B.E. Computer Engineering
 ║  📍 Melbourne, Australia
 ║
 ║  Type 'help' to see available commands
@@ -368,7 +368,7 @@ Boot sequence complete. Ready for commands...
 🔗 Source: ./data/AmitJ_CV.pdf
 
 📋 Resume Contents:
-• Professional Experience (9+ years)
+• Professional Experience (10+ years)
 • Technical Skills & Certifications  
 • Key Achievements & Metrics
 • Project Portfolio
@@ -553,6 +553,18 @@ and consumer-facing applications.
 
 Bachelor of Engineering in Computer Science
 Kathmandu University, 2015
+
+════════════════════════════════════════════════
+
+🎤 SPEAKING ENGAGEMENTS
+════════════════════════════════════════════════
+
+🎙️ GenAI for Healthcare Providers and Digital Health Companies
+   CIO.com Webcast | Co-hosted by AWS & Leapfrog Technology
+   🔗 https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/
+
+🎙️ Dawn of the Agents — AWS User Group Meetup
+   🔗 https://amitj.com.np/aug.ppt
 
 ════════════════════════════════════════════════
 
@@ -989,7 +1001,7 @@ Tip: Use arrow keys to navigate command history
 📍 Location: Melbourne, Victoria, Australia
 🎓 Education: B.E. Computer Engineering, Kathmandu University (2015)
 💼 Current Role: Solution Architect @ Leapfrog Technology Inc.
-⏱️ Experience: 9+ years in DevOps & Cloud Engineering
+⏱️ Experience: 10+ years in DevOps & Cloud Engineering
 
 🌟 Professional Summary:
 ═════════════════════════════════════════════════
@@ -1038,6 +1050,7 @@ the highest standards of security and compliance.
 🏅 Awards & Recognition:
 • Ncell App Camp 2014 Winner (Corporate Solutions)
 • Global Startup Weekend Kathmandu Winner (Techstars)
+• CIO.com Webcast Speaker: GenAI for Healthcare (with AWS)
 `;
         await this.typeText(aboutText, 10);
     }
@@ -1382,7 +1395,7 @@ oneamitj@devops:~$ whoami
 🚀 Amit Joshi - Solution Architect | Cloud Infrastructure & GenAI
 
 Quick Facts:
-• 9+ years in DevOps and Cloud Engineering
+• 10+ years in DevOps and Cloud Engineering
 • Based in Melbourne, Australia
 • AWS Expert | 10+ production-level GenAI solutions architected
 • HIPAA/SOC2/GDPR/PCI-DSS compliance specialist
@@ -1508,6 +1521,7 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
 🔬 Architected 10+ production-level LLM and GenAI solutions
 ⚡ Automated EdTech manual processes using GenAI
 🎓 Improved educational alignment checking by 90% efficiency
+🎤 Featured speaker on CIO.com webcast with AWS: "GenAI for Healthcare"
 
 🌐 PROGRAMIZ.COM:
 ═════════════════════════════════════════════════
@@ -1547,6 +1561,21 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
 👥 Recognized for exceptional team leadership and growth
 🏥 Successfully delivered multiple HIPAA-compliant solutions
 💡 Innovation leader in GenAI integration and optimization
+
+🎤 SPEAKING ENGAGEMENTS:
+═════════════════════════════════════════════════
+
+🎙️ CIO.com Webcast: GenAI for Healthcare Providers
+   📅 Co-hosted by AWS and Leapfrog Technology
+   🔗 https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/
+   👥 Co-speakers: Manu Chatterjee (VP/Head of AI, Leapfrog)
+                    Jim Malone (Sr. Contributing Editor, CIO)
+   📋 Topics: Moving GenAI past POC in healthcare, security
+      and compliance at scale, real use cases, partner advantage
+
+🎙️ Dawn of the Agents — AWS User Group Meetup
+   🔗 https://amitj.com.np/aug.ppt
+   📋 GenAI maturing into the age of autonomous agents
 
 📈 IMPACT METRICS:
 ═════════════════════════════════════════════════
