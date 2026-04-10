@@ -222,7 +222,7 @@ var roadmap = [
   ]}
 ];
 
-var current = 0, completed = {};
+var current = 0, completed = JSON.parse(localStorage.getItem('roadmap-done') || '{}');
 var navList = document.getElementById("navList");
 var contentEl = document.getElementById("content");
 var prevBtn = document.getElementById("prevBtn");
@@ -279,7 +279,7 @@ function render() {
   }
   contentEl.innerHTML = c;
 
-  document.getElementById("markBtn").addEventListener("click", function() { completed[node.id] = !completed[node.id]; render(); });
+  document.getElementById("markBtn").addEventListener("click", function() { completed[node.id] = !completed[node.id]; localStorage.setItem('roadmap-done', JSON.stringify(completed)); render(); });
   var cards = contentEl.querySelectorAll(".topic-card");
   for (var m = 0; m < cards.length; m++) {
     cards[m].addEventListener("click", function() { openModal(current, parseInt(this.getAttribute("data-topic"))); });
