@@ -239,7 +239,7 @@ Boot sequence complete. Ready for commands...
                     await this.showContact();
                     break;
                 case 'ls':
-                    await this.listDirectory();
+                    await this.listDirectory(args[0]);
                     break;
                 case 'clear':
                     this.clearScreen();
@@ -1294,15 +1294,41 @@ Feel free to reach out for:
         await this.typeText(contactText, 10);
     }
 
-    async listDirectory() {
+    async listDirectory(arg) {
+        // Resolve target path from argument
+        var targetPath = this.currentPath;
+        if (arg) {
+            var clean = arg.replace(/\/+$/, '');
+            var dirMap = {
+                '~': '/home/amit', 'home': '/home/amit', 'skills': '/home/amit/skills',
+                'projects': '/home/amit/projects', 'experience': '/home/amit/experience',
+                'contact': '/home/amit/contact', 'about': '/home/amit/about',
+                'career': '/home/amit/career', '..': this.getParentDirectory(), '.': this.currentPath, '/': '/'
+            };
+            if (dirMap[clean] !== undefined) {
+                targetPath = dirMap[clean];
+            } else if (clean.startsWith('/')) {
+                targetPath = clean;
+            } else {
+                // Try as subdirectory of current path
+                var tryPath = this.currentPath + '/' + clean;
+                var known = ['/home/amit/skills','/home/amit/projects','/home/amit/experience','/home/amit/contact','/home/amit/about','/home/amit/career','/home','/'];
+                if (known.indexOf(tryPath) !== -1) {
+                    targetPath = tryPath;
+                } else {
+                    await this.showError('ls: cannot access \'' + arg + '\': No such file or directory');
+                    return;
+                }
+            }
+        }
+
         let dirText = `
-📁 Current directory: ${this.currentPath}
+📁 Directory: ${targetPath}
 ═════════════════════════════════════════════════
 
 `;
 
-        // Show different content based on current path
-        if (this.currentPath === '/home/amit') {
+        if (targetPath === '/home/amit') {
             dirText += `drwxr-xr-x  about/            📁 Professional summary
 drwxr-xr-x  skills/           📂 Technical skills directory
 drwxr-xr-x  projects/         📂 Portfolio projects  
@@ -1318,7 +1344,7 @@ drwxr-xr-x  career/           📂 DevOps learning path
 -rwxr-xr-x  matrix.exe        🔮 Enter the Matrix
 
 Total: 13 items`;
-        } else if (this.currentPath === '/home/amit/skills') {
+        } else if (targetPath === '/home/amit/skills') {
             dirText += `drwxr-xr-x  ..                📂 Parent directory
 -rw-r--r--  cloud_platforms   📄 AWS, GCP, Azure expertise
 -rw-r--r--  devops_tools      📄 Terraform, Docker, K8s
@@ -1328,7 +1354,7 @@ Total: 13 items`;
 -rw-r--r--  compliance        📄 HIPAA, SOC2 standards
 
 Total: 7 items`;
-        } else if (this.currentPath === '/home/amit/projects') {
+        } else if (targetPath === '/home/amit/projects') {
             dirText += `drwxr-xr-x  ..                📂 Parent directory
 drwxr-xr-x  learning-list/    📂 GenAI Alignment Checker
 drwxr-xr-x  addy-healthcare/  📂 HIPAA-compliant AI Platform
@@ -1338,7 +1364,7 @@ drwxr-xr-x  mindera-atlas/    📂 Skin Atlas Data Warehouse
 drwxr-xr-x  blockchain-systems/ 📂 Various blockchain projects
 
 Total: 7 items`;
-        } else if (this.currentPath === '/') {
+        } else if (targetPath === '/') {
             dirText += `drwxr-xr-x  home/             📂 User directories
 drwxr-xr-x  usr/              📂 System utilities
 drwxr-xr-x  var/              📂 Variable data
