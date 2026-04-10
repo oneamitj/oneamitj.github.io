@@ -1298,14 +1298,17 @@ Feel free to reach out for:
         // Known files per directory
         var files = {
             '/home/amit': ['achievements.txt','awards.txt','resume.pdf','linkedin.url','github.url','easter.exe','matrix.exe'],
-            '/home/amit/skills': ['cloud_platforms','devops_tools','programming','genai_tech','monitoring','compliance'],
-            '/home/amit/projects': ['learning-list','addy-healthcare','genai-platform','evoke-medical','mindera-atlas','blockchain-systems']
+            '/home/amit/skills': ['cloud_platforms','devops_tools','programming','genai_tech','monitoring','compliance']
         };
         // Known directories
         var dirs = {
             '/': ['/home','/usr','/var','/etc'],
             '/home/amit': ['/home/amit/about','/home/amit/skills','/home/amit/projects','/home/amit/experience','/home/amit/contact','/home/amit/career'],
-            '/home/amit/skills': [], '/home/amit/projects': [],
+            '/home/amit/skills': [],
+            '/home/amit/projects': ['/home/amit/projects/learning-list','/home/amit/projects/addy-healthcare','/home/amit/projects/genai-platform','/home/amit/projects/evoke-medical','/home/amit/projects/mindera-atlas','/home/amit/projects/blockchain-systems'],
+            '/home/amit/projects/learning-list': [], '/home/amit/projects/addy-healthcare': [],
+            '/home/amit/projects/genai-platform': [], '/home/amit/projects/evoke-medical': [],
+            '/home/amit/projects/mindera-atlas': [], '/home/amit/projects/blockchain-systems': [],
             '/home/amit/experience': [], '/home/amit/contact': [],
             '/home/amit/about': [], '/home/amit/career': [], '/home': ['/home/amit']
         };
