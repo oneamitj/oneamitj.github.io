@@ -80,6 +80,9 @@ body {
 .topic-card p { color: #94a3b8; font-size: 0.875rem; line-height: 1.5; }
 .topic-card .hint { font-size: 0.75rem; color: #3b82f6; font-weight: 700; margin-top: 0.75rem; opacity: 0; transition: opacity 0.2s; }
 .topic-card:hover .hint { opacity: 1; }
+.topic-card .done-badge { position: absolute; top: 0.75rem; right: 0.75rem; color: #34d399; font-size: 1rem; display: none; }
+.topic-card .done-badge.visible { display: block; }
+.topic-card { position: relative; }
 .arch-note {
   margin-top: 2rem; padding: 1.5rem; background: rgba(244,63,94,0.1);
   border: 1px solid rgba(244,63,94,0.2); border-radius: 0.75rem;
@@ -120,8 +123,14 @@ body {
 .section-box.knowledge-box p { font-weight: 500; }
 .modal-footer {
   padding: 1.5rem 2rem; background: #0f172a; border-top: 1px solid #1e293b;
-  display: flex; justify-content: flex-end; flex-shrink: 0;
+  display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;
 }
+.modal-mark {
+  background: none; color: #94a3b8; padding: 0.625rem 1.5rem; border-radius: 0.75rem;
+  font-weight: 700; cursor: pointer; font-family: inherit; border: 1px solid #334155; transition: all 0.2s;
+}
+.modal-mark:hover { border-color: #10b981; color: #10b981; }
+.modal-mark.checked { background: rgba(16,185,129,0.1); color: #34d399; border-color: rgba(16,185,129,0.5); }
 .modal-done {
   background: #2563eb; color: #fff; padding: 0.625rem 2rem; border-radius: 0.75rem;
   font-weight: 700; cursor: pointer; font-family: inherit; border: none; transition: background 0.2s;
@@ -163,6 +172,7 @@ body {
     </div>
     <div class="modal-scroll" id="modalScroll"></div>
     <div class="modal-footer">
+      <button class="modal-mark" id="modalMarkBtn">Mark as Done</button>
       <button class="modal-done" id="modalCloseBtn">Got it</button>
     </div>
   </div>
@@ -223,6 +233,8 @@ var roadmap = [
 ];
 
 var current = 0, completed = JSON.parse(localStorage.getItem('roadmap-done') || '{}');
+var topicDone = JSON.parse(localStorage.getItem('roadmap-topics-done') || '{}');
+var activeNi = 0, activeTi = 0;
 var navList = document.getElementById("navList");
 var contentEl = document.getElementById("content");
 var prevBtn = document.getElementById("prevBtn");
@@ -268,7 +280,9 @@ function render() {
   c += '<div class="topics-grid">';
   for (var k = 0; k < node.topics.length; k++) {
     var t = node.topics[k];
+    var tkey = node.id + '.' + k;
     c += '<div class="topic-card" data-topic="' + k + '">';
+    c += '<span class="done-badge' + (topicDone[tkey] ? ' visible' : '') + '">\u2713</span>';
     c += '<h4>' + esc(t.name) + '</h4><p>' + esc(t.detail) + '</p>';
     c += '<div class="hint">View Comprehensive Guide \u203A</div></div>';
   }
@@ -289,10 +303,15 @@ function render() {
 }
 
 function openModal(ni, ti) {
+  activeNi = ni; activeTi = ti;
   var t = roadmap[ni].topics[ti];
   var n = roadmap[ni];
+  var tkey = n.id + '.' + ti;
   modalTitle.textContent = t.name;
   modalTop.className = "modal-top " + n.cls;
+  var mb = document.getElementById("modalMarkBtn");
+  mb.className = "modal-mark" + (topicDone[tkey] ? " checked" : "");
+  mb.textContent = topicDone[tkey] ? "\u2713 Done" : "Mark as Done";
   var h = '<div class="modal-section"><div class="section-label research">\uD83D\uDD0D Research & Sub-topics</div>';
   h += '<div class="section-box"><p>' + esc(t.research) + '</p></div></div>';
   h += '<div class="modal-section"><div class="section-label howwhat">\uD83C\uDFAF How to learn & What it teaches you</div>';
@@ -309,6 +328,14 @@ prevBtn.addEventListener("click", function() { if (current > 0) { current--; ren
 nextBtn.addEventListener("click", function() { if (current < roadmap.length - 1) { current++; render(); } });
 document.getElementById("modalCloseX").addEventListener("click", closeModal);
 document.getElementById("modalCloseBtn").addEventListener("click", closeModal);
+document.getElementById("modalMarkBtn").addEventListener("click", function() {
+  var tkey = roadmap[activeNi].id + '.' + activeTi;
+  topicDone[tkey] = !topicDone[tkey];
+  localStorage.setItem('roadmap-topics-done', JSON.stringify(topicDone));
+  this.className = "modal-mark" + (topicDone[tkey] ? " checked" : "");
+  this.textContent = topicDone[tkey] ? "\u2713 Done" : "Mark as Done";
+  render();
+});
 overlay.addEventListener("click", function(e) { if (e.target === overlay) closeModal(); });
 
 render();
