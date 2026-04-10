@@ -306,6 +306,9 @@ Boot sequence complete. Ready for commands...
                         await this.showError('lunch: missing file operand. Usage: lunch <filename>');
                     }
                     break;
+                case 'roadmap':
+                    await this.handleLunch('career');
+                    break;
                 case 'oneai':
                     if (args.length > 0) {
                         await this.handleOneAI(args.join(' '));
@@ -978,7 +981,8 @@ Available Commands:
 
 🍽️  Lunch & Learn:
    lunch <file> - Open training platforms
-                  Available: archmentor
+                  Available: archmentor, career
+   roadmap     - Open DevOps Learning Path
 
 🎯 Special:
    easter      - Find the hidden easter egg!
@@ -1304,6 +1308,7 @@ drwxr-xr-x  skills/           📂 Technical skills directory
 drwxr-xr-x  projects/         📂 Portfolio projects  
 drwxr-xr-x  experience/       📂 Work history
 drwxr-xr-x  contact/          📂 Contact information
+drwxr-xr-x  career/           📂 DevOps learning path
 -rw-r--r--  achievements.txt  📄 Key career achievements
 -rw-r--r--  awards.txt        📄 Competition wins & recognition
 -rw-r--r--  resume.pdf        📄 Download resume
@@ -1312,7 +1317,7 @@ drwxr-xr-x  contact/          📂 Contact information
 -rwxr-xr-x  easter.exe        🎮 Hidden easter egg
 -rwxr-xr-x  matrix.exe        🔮 Enter the Matrix
 
-Total: 12 items`;
+Total: 13 items`;
         } else if (this.currentPath === '/home/amit/skills') {
             dirText += `drwxr-xr-x  ..                📂 Parent directory
 -rw-r--r--  cloud_platforms   📄 AWS, GCP, Azure expertise
@@ -1744,6 +1749,13 @@ Note: Some repositories may be private due to client confidentiality
                 path: 'archmentor/index.html',
                 description: 'Lead with the Product, Choose the Tech',
                 type: 'Training Platform'
+            },
+            'career': {
+                title: 'DevOps Learning Path',
+                subtitle: 'Interactive Roadmap to DevOps Mastery',
+                path: 'career/index.html',
+                description: 'A 10-stage guided curriculum from foundations to GenAI',
+                type: 'Learning Path'
             }
         };
 

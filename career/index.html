@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Learning Path</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #020617;
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+.header { max-width: 56rem; margin: 0 auto 3rem; text-align: center; }
+.header h1 {
+  font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem;
+  background: linear-gradient(to right, #60a5fa, #34d399, #fb7185);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.header p { color: #94a3b8; font-size: 1.125rem; }
+.header strong { color: #e2e8f0; }
+.layout { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; }
+@media (min-width: 1024px) { .layout { grid-template-columns: 1fr 2fr; } }
+.sidebar {
+  background: #0f172a; border: 1px solid #1e293b; border-radius: 1rem;
+  padding: 1.5rem; position: sticky; top: 2rem; align-self: start;
+}
+.sidebar-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: #e2e8f0; }
+.sidebar-title span { color: #60a5fa; }
+.nav-btn {
+  width: 100%; text-align: left; padding: 0.875rem 1rem; border-radius: 0.75rem;
+  border: 1px solid #334155; background: rgba(30,41,59,0.5); color: #cbd5e1;
+  cursor: pointer; display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.875rem; font-weight: 600; transition: all 0.2s; font-family: inherit;
+}
+.nav-btn:hover { border-color: #64748b; }
+.nav-btn.active { border-color: transparent; color: #fff; transform: scale(1.03); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
+.nav-btn .num {
+  width: 2rem; height: 2rem; border-radius: 0.5rem; background: #334155;
+  display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0;
+}
+.nav-btn.active .num { background: rgba(255,255,255,0.2); }
+.nav-btn .label { flex: 1; }
+.nav-btn .done-mark { color: #34d399; display: none; font-size: 1rem; }
+.nav-btn .done-mark.visible { display: inline; }
+.connector { text-align: center; padding: 2px 0; }
+.connector-line { display: inline-block; width: 2px; height: 0.75rem; background: #1e293b; }
+.content-area { background: #0f172a; border: 1px solid #1e293b; border-radius: 1rem; padding: 2rem; min-height: 500px; }
+.content-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+.content-head-left { display: flex; align-items: center; gap: 1rem; }
+.content-icon {
+  width: 3.5rem; height: 3.5rem; border-radius: 1rem; display: flex;
+  align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; font-weight: 700;
+}
+.content-head h2 { font-size: 1.5rem; font-weight: 700; }
+.content-head .stage { color: #94a3b8; font-size: 0.875rem; font-style: italic; }
+.mark-btn {
+  padding: 0.5rem 1.5rem; border-radius: 9999px; font-weight: 700; border: 1px solid transparent;
+  cursor: pointer; font-size: 0.875rem; font-family: inherit; transition: all 0.2s;
+}
+.mark-btn.todo { background: #2563eb; color: #fff; }
+.mark-btn.todo:hover { background: #3b82f6; }
+.mark-btn.done { background: rgba(16,185,129,0.1); color: #34d399; border-color: rgba(16,185,129,0.5); }
+.advice {
+  background: rgba(30,41,59,0.5); border-radius: 0.75rem; padding: 1.5rem;
+  margin-bottom: 2rem; border-left: 4px solid #3b82f6;
+}
+.advice h3 { color: #93c5fd; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+.advice p { color: #cbd5e1; line-height: 1.6; font-style: italic; }
+.topics-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 768px) { .topics-grid { grid-template-columns: 1fr 1fr; } }
+.topic-card {
+  background: rgba(30,41,59,0.3); border: 1px solid #334155; padding: 1.25rem;
+  border-radius: 0.75rem; cursor: pointer; transition: all 0.2s;
+}
+.topic-card:hover { background: rgba(30,41,59,0.7); border-color: rgba(59,130,246,0.5); }
+.topic-card h4 { color: #60a5fa; font-weight: 700; margin-bottom: 0.5rem; }
+.topic-card p { color: #94a3b8; font-size: 0.875rem; line-height: 1.5; }
+.topic-card .hint { font-size: 0.75rem; color: #3b82f6; font-weight: 700; margin-top: 0.75rem; opacity: 0; transition: opacity 0.2s; }
+.topic-card:hover .hint { opacity: 1; }
+.arch-note {
+  margin-top: 2rem; padding: 1.5rem; background: rgba(244,63,94,0.1);
+  border: 1px solid rgba(244,63,94,0.2); border-radius: 0.75rem;
+}
+.arch-note h4 { color: #fda4af; font-weight: 700; margin-bottom: 0.5rem; }
+.arch-note p { color: #94a3b8; font-size: 0.875rem; line-height: 1.5; }
+.pager { display: flex; justify-content: space-between; padding: 1rem 0.25rem; margin-top: 1rem; }
+.pager button { background: none; border: none; cursor: pointer; font-size: 0.875rem; font-family: inherit; transition: color 0.2s; }
+.pager .prev-btn { color: #64748b; } .pager .prev-btn:hover { color: #fff; }
+.pager .next-btn { color: #60a5fa; font-weight: 700; } .pager .next-btn:hover { color: #93c5fd; }
+.pager button[disabled] { opacity: 0; pointer-events: none; }
+.overlay {
+  display: none; position: fixed; inset: 0; z-index: 50; align-items: center; justify-content: center;
+  padding: 1rem; background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
+}
+.overlay.open { display: flex; }
+.modal {
+  background: #0f172a; border: 1px solid #334155; width: 100%; max-width: 40rem;
+  border-radius: 1.5rem; overflow: hidden; display: flex; flex-direction: column; max-height: 90vh;
+}
+.modal-top { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; color: #fff; flex-shrink: 0; }
+.modal-top h3 { font-size: 1.25rem; font-weight: 700; }
+.modal-top .subtitle { color: rgba(255,255,255,0.7); font-size: 0.75rem; margin-top: 0.25rem; }
+.modal-close {
+  background: none; border: none; color: #fff; cursor: pointer; font-size: 1.25rem;
+  padding: 0.25rem 0.5rem; border-radius: 9999px; transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(0,0,0,0.2); }
+.modal-scroll { padding: 2rem; overflow-y: auto; }
+.modal-section { margin-bottom: 2rem; }
+.modal-section:last-child { margin-bottom: 0; }
+.section-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+.section-label.research { color: #60a5fa; }
+.section-label.howwhat { color: #34d399; }
+.section-label.knowledge { color: #facc15; }
+.section-box { background: rgba(2,6,23,0.5); border: 1px solid #1e293b; padding: 1.25rem; border-radius: 1rem; }
+.section-box p { color: #e2e8f0; line-height: 1.6; font-size: 1rem; }
+.section-box.knowledge-box p { font-weight: 500; }
+.modal-footer {
+  padding: 1.5rem 2rem; background: #0f172a; border-top: 1px solid #1e293b;
+  display: flex; justify-content: flex-end; flex-shrink: 0;
+}
+.modal-done {
+  background: #2563eb; color: #fff; padding: 0.625rem 2rem; border-radius: 0.75rem;
+  font-weight: 700; cursor: pointer; font-family: inherit; border: none; transition: background 0.2s;
+  box-shadow: 0 10px 15px -3px rgba(37,99,235,0.2);
+}
+.modal-done:hover { background: #3b82f6; }
+.footer { max-width: 56rem; margin: 5rem auto 0; text-align: center; color: #64748b; font-size: 0.875rem; padding-bottom: 3rem; }
+.c-blue { background-color: #3b82f6; } .c-emerald { background-color: #10b981; }
+.c-purple { background-color: #a855f7; } .c-orange { background-color: #f97316; }
+.c-cyan { background-color: #06b6d4; } .c-yellow { background-color: #eab308; }
+.c-indigo { background-color: #6366f1; } .c-red { background-color: #ef4444; }
+.c-rose { background-color: #e11d48; }
+.c-violet { background-color: #8b5cf6; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>DevOps Learning Path</h1>
+  <p>Click on topics to reveal <strong>What</strong>, <strong>How</strong>, and <strong>Knowledge Gained</strong>.</p>
+</div>
+<div class="layout">
+  <div class="sidebar">
+    <div class="sidebar-title"><span>&#9638;</span> Progress Map</div>
+    <div id="navList"></div>
+  </div>
+  <div>
+    <div class="content-area" id="content"></div>
+    <div class="pager">
+      <button class="prev-btn" id="prevBtn">&lsaquo; Previous</button>
+      <button class="next-btn" id="nextBtn">Next Milestone &rsaquo;</button>
+    </div>
+  </div>
+</div>
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-top" id="modalTop">
+      <div><h3 id="modalTitle"></h3><div class="subtitle">Detailed Learning Path</div></div>
+      <button class="modal-close" id="modalCloseX">&times;</button>
+    </div>
+    <div class="modal-scroll" id="modalScroll"></div>
+    <div class="modal-footer">
+      <button class="modal-done" id="modalCloseBtn">Got it</button>
+    </div>
+  </div>
+</div>
+<div class="footer"><p>Curated DevOps Curriculum for High-Growth Careers</p></div>
+<script>
+var roadmap = [
+  {id:"foundation",title:"1. The Core Foundation",desc:"Don\u2019t get swayed by fancy sides yet. Get your basics right first.",cls:"c-blue",topics:[
+    {name:"Networking",detail:"The absolute base. Understand how data moves.",research:"OSI Model (Layers 3, 4, 7), TCP/UDP protocols, IP Addressing & Subnetting, DNS resolution process, HTTP/HTTPS headers, Load Balancing algorithms (Round Robin, Least Conn), and SSH tunneling.",howWhat:'Learn by using tools like "dig" for DNS, "curl -v" for HTTP headers, and "netstat" or "ss" for socket connections. This teaches you how packets are routed and why a connection might fail at different layers.',knowledge:"You will gain the ability to troubleshoot connectivity issues between services, understand latency, and design secure network boundaries."},
+    {name:"Operating Systems (Linux)",detail:"Master the command line and system internals.",research:"File System Hierarchy (FHS), Permissions (Chmod/Chown), Process management (PID, signals, systemd), Package management, Resource monitoring (top/htop/iostat), and Shell Scripting (Bash/Zsh).",howWhat:"Install a headless Linux distro. Try to automate a user creation script or a log rotation cleanup. This teaches you how the hardware talks to the software and how to manage resources efficiently.",knowledge:"Proficiency in the environment where 99% of DevOps tools run. You will understand how to optimize system performance and automate repetitive tasks."},
+    {name:"Virtualization",detail:"Familiarize yourself with how hardware is abstracted.",research:"Hypervisors (KVM, VMware, VirtualBox), Type 1 vs Type 2 virtualization, CPU/RAM overcommitment, Snapshotting, and Vagrant for environment reproducibility.",howWhat:'Use VirtualBox or VMware to spin up multiple Linux nodes. Network them together. This teaches you the concept of "Infrastructure as Software" and hardware abstraction.',knowledge:"A deep understanding of how modern cloud providers function under the hood and how to create isolated testing environments."}
+  ]},
+  {id:"development",title:"2. Programming & Dev Basics",desc:"Get the knack of coding and how applications are built.",cls:"c-emerald",topics:[
+    {name:"Python",detail:"The most popular language for DevOps automation.",research:"Boto3 (AWS SDK), OS and Sys modules, Virtual environments (venv/poetry), JSON/YAML parsing, Error handling, and interacting with REST APIs using the Requests library.",howWhat:"Write a script that monitors a website status and sends an email/alert if it is down. This teaches you how to bridge the gap between manual operations and automated code.",knowledge:"The ability to extend tool functionality and automate complex workflows that off-the-shelf tools cannot handle."},
+    {name:"App Architecture",detail:"Learn the what and how of Frontend, Backend, and Databases.",research:"Stateless vs Stateful applications, RESTful API design, Database indexing, Caching strategies (Redis), and connection pooling.",howWhat:"Build a very simple CRUD app. This teaches you the flow of data and why developers ask for specific configurations (like CORS or specific DB ports).",knowledge:"You gain empathy for developers and the technical context needed to build deployment pipelines that actually work for the code being shipped."},
+    {name:"Git",detail:"Version control is a non-negotiable tool.",research:"Branching strategies (Trunk-based, Gitflow), Merge vs Rebase, Git Hooks, SSH vs HTTPS auth, and Cherry-picking.",howWhat:"Work on a project with multiple branches. Intentionally create a merge conflict and resolve it. This teaches you how teams collaborate on code without stepping on toes.",knowledge:'The foundation for "Everything as Code." You will be able to manage infrastructure, configuration, and application code versioning.'}
+  ]},
+  {id:"culture",title:"3. DevOps Culture",desc:"DevOps is a culture at its core, driven to improve Agile SDLC.",cls:"c-purple",topics:[
+    {name:"Agile SDLC",detail:"Understand the software development life cycle.",research:'Scrum vs Kanban, Sprint Planning, Story Points, and the feedback loop. Focus on how "Continuous" (Integration/Deployment) fits into the cycle.',howWhat:"Participate in or simulate a mock sprint. This teaches you how business requirements translate into technical tasks and why speed-to-market matters.",knowledge:'Understanding the "Why" behind DevOps. You will know how to align technical work with business goals.'},
+    {name:"Collaboration",detail:"Bridging the gap between Dev and Ops teams.",research:"The CAMS model (Culture, Automation, Measurement, Sharing), Blameless Post-mortems, and Site Reliability Engineering (SRE) principles.",howWhat:"Read case studies on DevOps transformations (e.g., The Phoenix Project). This teaches you that DevOps is 80% people and 20% tools.",knowledge:"Soft skills and organizational mindset. You will learn how to break down silos and foster a culture of shared responsibility."}
+  ]},
+  {id:"deployment-local",title:"4. Local Deployment",desc:"Hands-on: Deploy a basic 3-tier application locally inside a VM.",cls:"c-orange",topics:[
+    {name:"Web Servers",detail:"Setting up and configuring Nginx.",research:"Configuration blocks (events, http, server, location), virtual hosts, static file serving, and Log formats.",howWhat:"Manually install Nginx and host a custom HTML page. This teaches you how a web server listens on ports and serves requests.",knowledge:"Core web hosting skills. You will understand how the entry point of most applications works."},
+    {name:"Reverse Proxy",detail:"Understanding how to route traffic to your app.",research:"Upstream blocks, proxy_set_header, SSL termination (Certbot/Self-signed), and path-based vs domain-based routing.",howWhat:"Configure Nginx to sit in front of a Python/Node process. This teaches you security through abstraction and how to handle application traffic.",knowledge:"Understanding how to protect backend servers and manage traffic flow at the edge."},
+    {name:"3-Tier Logic",detail:"Connecting Web -> App -> Database.",research:"Network isolation between tiers, Connection strings, Environment variables, and basic SQL commands for testing connectivity.",howWhat:"Setup a VM and manually install a DB and an App. Connect them. This teaches you about the complexity of stateful connections and dependencies.",knowledge:"Full-stack infrastructure awareness. You will know exactly how all components of a modern web app interact."}
+  ]},
+  {id:"containers",title:"5. Containers & Orchestration",desc:"Time to master modern packaging and orchestration.",cls:"c-cyan",topics:[
+    {name:"Docker",detail:"Universal containerization. Dissect VM vs Container.",research:"Linux Namespaces & Cgroups (the magic behind containers), Dockerfile optimization (Layer caching, Multi-stage builds), and Docker Compose.",howWhat:'Containerize your 3-tier app. Compare the resource usage vs the VM version. This teaches you about efficiency and portability.',knowledge:'The ability to "package once, run anywhere." You eliminate the "it works on my machine" problem.'},
+    {name:"Kubernetes (K8s)",detail:"Orchestration. Deploy your 3-tier app here.",research:"Control Plane vs Worker Nodes, Declarative YAML (Pods, Deployments, Services, Ingress), and Self-healing (ReplicaSets).",howWhat:'Deploy your app to Minikube. "Kill" a pod and watch K8s recreate it. This teaches you about high availability and automated management.',knowledge:"The industry-standard for scaling applications. You will be able to manage large-scale distributed systems."},
+    {name:"ArgoCD (Optional)",detail:"GitOps style CD for your Kubernetes clusters.",research:'The GitOps Manifest, Application Controller, and the concept of "Desired State" vs "Actual State".',howWhat:"Change a tag in your Git repo and watch ArgoCD automatically update your K8s cluster. This teaches you about automated reconciliation.",knowledge:"Modern deployment automation. You will learn how to keep environments in sync without manual intervention."}
+  ]},
+  {id:"cloud",title:"6. The Cloud (AWS)",desc:"Apply your knowledge to a major provider like AWS.",cls:"c-yellow",topics:[
+    {name:"AWS Services",detail:"VPC, EC2, ECS/EKS, S3, Lambda.",research:"Regions vs Availability Zones, Shared Responsibility Model, IAM (Roles vs Users), and Security Groups.",howWhat:"Set up a custom VPC with public and private subnets. This teaches you how cloud providers virtualize entire data centers.",knowledge:"Cloud literacy. You will understand how to build resilient infrastructure using global-scale services."},
+    {name:"Cloud Migration",detail:"Deploy that same 3-tier app in the cloud.",research:"Managed Services (RDS) vs Self-managed, Application Load Balancers (ALB), and Auto-scaling Groups (ASG).",howWhat:'Migrate your local app tiers to EC2 and RDS. This teaches you about the "Managed Service" trade-off (cost vs effort).',knowledge:"Cloud-native engineering skills. You will know how to take an app from a local dev machine to a global production environment."},
+    {name:"CI/CD",detail:"Implement automation using GitHub Actions.",research:"Workflows, Actions, Runners, Secrets, and Build Matrix.",howWhat:'Create a pipeline that triggers on code push. Build an image and deploy it to AWS. This teaches you the power of "Continuous" delivery.',knowledge:"The heart of DevOps productivity. You will be able to automate the path from code to customer."}
+  ]},
+  {id:"iac",title:"7. Infrastructure as Code",desc:"Automate your infrastructure once you have the hang of the Cloud.",cls:"c-indigo",topics:[
+    {name:"Terraform",detail:"The industry standard for declarative infrastructure.",research:"Provider blocks, Resource blocks, State files (.tfstate), Backend configuration (S3/DynamoDB for locking), and Variables.",howWhat:'Define your AWS VPC and EC2 in Terraform files. Run "terraform apply". This teaches you how to treat your hardware like code.',knowledge:'The ability to recreate an entire environment in minutes. You eliminate "Configuration Drift" and manual errors.'},
+    {name:"Pulumi",detail:"An alternative using familiar programming languages.",research:"The Pulumi Engine, Automation API, and using standard languages (Python/TS) to loop and create resources.",howWhat:'Try to create 5 S3 buckets using a simple Python "for loop" in Pulumi. This teaches you the power of logic in infrastructure.',knowledge:"Infrastructure engineering using developer tools. You will understand the next generation of IaC."}
+  ]},
+  {id:"security",title:"8. Security First",desc:"Learn about security once you understand how the systems are built.",cls:"c-red",topics:[
+    {name:"OWASP Top 10",detail:"Understand web vulnerabilities and mitigation.",research:"SQL Injection, Broken Access Control, Security Misconfiguration, and Vulnerable Components.",howWhat:"Read about common exploits. Look at how Nginx ModSecurity or AWS WAF can block these. This teaches you defensive system design.",knowledge:"A security-first mindset. You will know how to build systems that are hardened by default."},
+    {name:"Web App Security",detail:"Learn how to secure the application layer.",research:"Content Security Policy (CSP), HSTS headers, Secrets Management (preventing passwords in Git), and OAuth2/OIDC basics.",howWhat:"Use a tool like Snyk or Trivy to scan your Docker images for vulnerabilities. This teaches you that secure code includes the base image.",knowledge:"Technical security competence. You will be able to protect user data and business secrets."},
+    {name:"Security Culture",detail:"Shifting security left in the pipeline.",research:"DevSecOps integration, automated compliance checks, and Principle of Least Privilege (PoLP).",howWhat:'Apply strict IAM policies that only allow a user to do one specific task. This teaches you about the "blast radius" of security breaches.',knowledge:"Strategic security awareness. You will learn how to make security a part of the development speed, not a bottleneck."}
+  ]},
+  {id:"architecture",title:"9. System Architecture",desc:"The final step: Learn types of system architecture and design based on needs.",cls:"c-rose",topics:[
+    {name:"Decision Framework",detail:"How to select the right service or technology stack.",research:"CAP Theorem, Microservices vs Monolith, Serverless vs Fixed clusters, and when to use NoSQL vs SQL.",howWhat:'Analyze a project requirement. Choose a stack and justify it. This teaches you that there is no "best" tool, only the "right" tool for the job.',knowledge:"High-level engineering leadership. You will be able to lead technical discussions and choose long-term strategies."},
+    {name:"Cost Optimization",detail:"Designing for budget efficiency and ROI.",research:"AWS Cost Explorer, Right-sizing (Compute Optimizer), Spot Instances, and Cloud Carbon Footprint.",howWhat:"Compare the monthly cost of an RDS instance vs running a DB on EC2. This teaches you the financial impact of architectural choices.",knowledge:"FinOps literacy. You will learn to build systems that are not just technically sound but also financially sustainable."},
+    {name:"Availability & Reliability",detail:"Implementing HA and fault-tolerant designs.",research:"SLA vs SLO vs SLI, RTO/RPO (Recovery Time/Point Objective), and Blue-Green vs Canary deployments.",howWhat:'Design a system that stays online even if a whole AWS Data Center goes down. This teaches you about "Design for Failure."',knowledge:"Reliability engineering. You will know how to build systems that users can trust 24/7."},
+    {name:"Security & Compliance",detail:"Ensuring the architecture meets regulatory needs.",research:"SOC2, GDPR, HIPAA basics (as they relate to infra), Data residency, and Encryption at Rest vs Transit.",howWhat:"Look at how to audit a system. This teaches you that your architecture must be verifiable and defensible.",knowledge:"Governance and professional ethics. You will understand how to build systems that are legal and compliant."}
+  ]},
+  {id:"genai",title:"10. GenAI for DevOps",desc:"AI is not replacing DevOps engineers. DevOps engineers who use AI are replacing those who don\u2019t.",cls:"c-violet",topics:[
+    {name:"Prompt Engineering",detail:"Learn to talk to LLMs effectively for technical tasks.",research:"Zero-shot vs Few-shot prompting, Chain-of-Thought, System prompts, Temperature and token limits, and context window management.",howWhat:"Give an LLM a vague prompt, then a precise one, and compare outputs. This teaches you that AI quality depends entirely on how you ask.",knowledge:"The core skill of the AI age. You will be able to extract reliable, actionable output from any LLM for infrastructure and automation tasks."},
+    {name:"LLM APIs & SDKs",detail:"Call AI models programmatically from Python.",research:"OpenAI API, AWS Bedrock, LangChain basics, structured output (JSON mode), and streaming responses.",howWhat:"Write a Python script that takes a task description and returns a Terraform snippet via an LLM API. This teaches you how to embed AI into your automation workflows.",knowledge:"The ability to build custom AI-powered DevOps tools — from config generators to intelligent alerting systems."},
+    {name:"AI-Assisted IaC & Config",detail:"Use AI to generate, review, and optimize infrastructure code.",research:"AI pair programming (Copilot/Kiro), generating HCL/YAML from natural language, AI-powered code review bots, and drift detection.",howWhat:"Describe an AWS architecture in plain English and use AI to generate the Terraform. Then review and fix what it got wrong. This teaches you to use AI as a force multiplier, not a crutch.",knowledge:"10x productivity in writing infrastructure code. You will ship faster while still understanding every line."},
+    {name:"Responsible AI in Ops",detail:"AI hallucinations can take down production. Learn the guardrails.",research:"Hallucination detection, output validation, human-in-the-loop patterns, cost of LLM API calls, and when NOT to use AI (secrets, compliance decisions).",howWhat:"Intentionally ask AI to generate a security group rule and verify if it is actually secure. This teaches you that AI output must always be validated before applying to production.",knowledge:"Critical thinking in the AI era. You will know how to leverage AI speed without sacrificing reliability or security."}
+  ]}
+];
+
+var current = 0, completed = {};
+var navList = document.getElementById("navList");
+var contentEl = document.getElementById("content");
+var prevBtn = document.getElementById("prevBtn");
+var nextBtn = document.getElementById("nextBtn");
+var overlay = document.getElementById("overlay");
+var modalTitle = document.getElementById("modalTitle");
+var modalScroll = document.getElementById("modalScroll");
+var modalTop = document.getElementById("modalTop");
+
+function esc(s) {
+  var d = document.createElement("div");
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function render() {
+  var html = "";
+  for (var i = 0; i < roadmap.length; i++) {
+    var node = roadmap[i];
+    var classes = "nav-btn" + (i === current ? " " + node.cls + " active" : "");
+    html += '<button class="' + classes + '" data-idx="' + i + '">';
+    html += '<div class="num">' + (i + 1) + '</div>';
+    html += '<span class="label">' + esc(node.title) + '</span>';
+    html += '<span class="done-mark' + (completed[node.id] ? ' visible' : '') + '">\u2713</span>';
+    html += '<span>\u203A</span></button>';
+    if (i < roadmap.length - 1) html += '<div class="connector"><span class="connector-line"></span></div>';
+  }
+  navList.innerHTML = html;
+  var btns = navList.querySelectorAll(".nav-btn");
+  for (var j = 0; j < btns.length; j++) {
+    btns[j].addEventListener("click", function() { current = parseInt(this.getAttribute("data-idx")); render(); });
+  }
+
+  var node = roadmap[current];
+  var c = '<div class="content-head"><div class="content-head-left">';
+  c += '<div class="content-icon ' + node.cls + '">' + (current + 1) + '</div>';
+  c += '<div><h2>' + esc(node.title) + '</h2><p class="stage">Stage ' + (current + 1) + '</p></div>';
+  c += '</div><button class="mark-btn ' + (completed[node.id] ? 'done' : 'todo') + '" id="markBtn">';
+  c += completed[node.id] ? 'Milestone Complete!' : 'Mark as Done';
+  c += '</button></div>';
+  c += '<div class="advice"><h3>\u2139 The Guide\'s Advice</h3>';
+  c += '<p>\u201C' + esc(node.desc) + '\u201D</p></div>';
+  c += '<div class="topics-grid">';
+  for (var k = 0; k < node.topics.length; k++) {
+    var t = node.topics[k];
+    c += '<div class="topic-card" data-topic="' + k + '">';
+    c += '<h4>' + esc(t.name) + '</h4><p>' + esc(t.detail) + '</p>';
+    c += '<div class="hint">View Comprehensive Guide \u203A</div></div>';
+  }
+  c += '</div>';
+  if (node.id === "architecture") {
+    c += '<div class="arch-note"><h4>\u2696 Architectural Mindset</h4>';
+    c += '<p>Now you are thinking about the "Big Picture." Every choice has a trade-off. Architecture is the art of choosing the right problems to have.</p></div>';
+  }
+  contentEl.innerHTML = c;
+
+  document.getElementById("markBtn").addEventListener("click", function() { completed[node.id] = !completed[node.id]; render(); });
+  var cards = contentEl.querySelectorAll(".topic-card");
+  for (var m = 0; m < cards.length; m++) {
+    cards[m].addEventListener("click", function() { openModal(current, parseInt(this.getAttribute("data-topic"))); });
+  }
+  prevBtn.disabled = (current === 0);
+  nextBtn.disabled = (current === roadmap.length - 1);
+}
+
+function openModal(ni, ti) {
+  var t = roadmap[ni].topics[ti];
+  var n = roadmap[ni];
+  modalTitle.textContent = t.name;
+  modalTop.className = "modal-top " + n.cls;
+  var h = '<div class="modal-section"><div class="section-label research">\uD83D\uDD0D Research & Sub-topics</div>';
+  h += '<div class="section-box"><p>' + esc(t.research) + '</p></div></div>';
+  h += '<div class="modal-section"><div class="section-label howwhat">\uD83C\uDFAF How to learn & What it teaches you</div>';
+  h += '<div class="section-box"><p>' + esc(t.howWhat) + '</p></div></div>';
+  h += '<div class="modal-section"><div class="section-label knowledge">\u26A1 Knowledge Gathered</div>';
+  h += '<div class="section-box knowledge-box"><p>' + esc(t.knowledge) + '</p></div></div>';
+  modalScroll.innerHTML = h;
+  overlay.classList.add("open");
+}
+
+function closeModal() { overlay.classList.remove("open"); }
+
+prevBtn.addEventListener("click", function() { if (current > 0) { current--; render(); } });
+nextBtn.addEventListener("click", function() { if (current < roadmap.length - 1) { current++; render(); } });
+document.getElementById("modalCloseX").addEventListener("click", closeModal);
+document.getElementById("modalCloseBtn").addEventListener("click", closeModal);
+overlay.addEventListener("click", function(e) { if (e.target === overlay) closeModal(); });
+
+render();
+</script>
+</body>
+</html>
