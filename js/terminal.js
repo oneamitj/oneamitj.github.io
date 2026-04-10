@@ -277,6 +277,9 @@ Boot sequence complete. Ready for commands...
                 case 'easter':
                     await this.showEasterEgg();
                     break;
+                case 'matrix':
+                    await this.showMatrix();
+                    break;
                 case 'achievements':
                     await this.showAchievements();
                     break;
@@ -299,15 +302,15 @@ Boot sequence complete. Ready for commands...
                         await this.showError('present: missing file operand. Usage: present <filename>');
                     }
                     break;
-                case 'lunch':
+                case 'launch':
                     if (args.length > 0) {
-                        await this.handleLunch(args[0]);
+                        await this.handleLaunch(args[0]);
                     } else {
-                        await this.showError('lunch: missing file operand. Usage: lunch <filename>');
+                        await this.showError('launch: missing file operand. Usage: launch <filename>');
                     }
                     break;
                 case 'roadmap':
-                    await this.handleLunch('career');
+                    await this.handleLaunch('career');
                     break;
                 case 'oneai':
                     if (args.length > 0) {
@@ -854,18 +857,20 @@ Kathmandu University, 2015
                     'present --help       # Show this help message'
                 ]
             },
-            lunch: {
-                usage: 'lunch <filename> [--help]',
+            launch: {
+                usage: 'launch <filename> [--help]',
                 description: 'Open training platforms and learning resources',
                 options: [
                     'filename             # Required: name of training platform'
                 ],
                 files: [
-                    'archmentor           # Next-Gen Solution Architect Training'
+                    'archmentor           # Next-Gen Solution Architect Training',
+                    'career               # DevOps Learning Path'
                 ],
                 examples: [
-                    'lunch archmentor     # Open ArchMentor training platform',
-                    'lunch --help         # Show this help message'
+                    'launch archmentor    # Open ArchMentor training platform',
+                    'launch career        # Open DevOps Learning Path',
+                    'launch --help        # Show this help message'
                 ]
             }
         };
@@ -979,10 +984,10 @@ Available Commands:
    present <file> - Open presentation slides
                     Available: aug.ppt
 
-🍽️  Lunch & Learn:
-   lunch <file> - Open training platforms
-                  Available: archmentor, career
-   roadmap     - Open DevOps Learning Path
+🚀 Launch & Learn:
+   launch <file> - Open training platforms
+                   Available: archmentor, career
+   roadmap      - Open DevOps Learning Path
 
 🎯 Special:
    easter      - Find the hidden easter egg!
@@ -1790,8 +1795,8 @@ Note: Some repositories may be private due to client confidentiality
         await this.typeText(`\n✅ Presentation opened successfully!\n💡 Use arrow keys or click to navigate slides`);
     }
 
-    async handleLunch(filename) {
-        const lunchItems = {
+    async handleLaunch(filename) {
+        const launchItems = {
             'archmentor': {
                 title: 'ArchMentor',
                 subtitle: 'Next-Gen Solution Architect Training',
@@ -1808,13 +1813,13 @@ Note: Some repositories may be private due to client confidentiality
             }
         };
 
-        if (!lunchItems[filename]) {
-            await this.showError(`lunch: cannot open '${filename}': No such file\n\nAvailable items:\n${Object.keys(lunchItems).map(f => `  • ${f}`).join('\n')}`);
+        if (!launchItems[filename]) {
+            await this.showError(`launch: cannot open '${filename}': No such file\n\nAvailable items:\n${Object.keys(launchItems).map(f => `  • ${f}`).join('\n')}`);
             return;
         }
 
-        const item = lunchItems[filename];
-        const lunchText = `
+        const item = launchItems[filename];
+        const launchText = `
 🚀 Opening ${item.type}...
 
 ╔═══════════════════════════════════════════════╗
@@ -1828,7 +1833,7 @@ Note: Some repositories may be private due to client confidentiality
 🌐 Launching in new window...
 `;
         
-        await this.typeText(lunchText, 10);
+        await this.typeText(launchText, 10);
         
         // Open the page in a new window
         window.open(item.path, '_blank');
