@@ -1295,33 +1295,53 @@ Feel free to reach out for:
     }
 
     async listDirectory(arg) {
-        // Resolve target path from argument
-        var targetPath = this.currentPath;
-        if (arg) {
-            var clean = arg.replace(/\/+$/, '');
-            var dirMap = {
-                '~': '/home/amit', 'home': '/home/amit', 'skills': '/home/amit/skills',
-                'projects': '/home/amit/projects', 'experience': '/home/amit/experience',
-                'contact': '/home/amit/contact', 'about': '/home/amit/about',
-                'career': '/home/amit/career', '..': this.getParentDirectory(), '.': this.currentPath, '/': '/'
-            };
-            if (dirMap[clean] !== undefined) {
-                targetPath = dirMap[clean];
-            } else if (clean.startsWith('/')) {
-                targetPath = clean;
-            } else {
-                // Try as subdirectory of current path
-                var tryPath = this.currentPath + '/' + clean;
-                var known = ['/home/amit/skills','/home/amit/projects','/home/amit/experience','/home/amit/contact','/home/amit/about','/home/amit/career','/home','/'];
-                if (known.indexOf(tryPath) !== -1) {
-                    targetPath = tryPath;
-                } else {
-                    await this.showError('ls: cannot access \'' + arg + '\': No such file or directory');
-                    return;
-                }
-            }
+        // Known files per directory
+        var files = {
+            '/home/amit': ['achievements.txt','awards.txt','resume.pdf','linkedin.url','github.url','easter.exe','matrix.exe'],
+            '/home/amit/skills': ['cloud_platforms','devops_tools','programming','genai_tech','monitoring','compliance'],
+            '/home/amit/projects': ['learning-list','addy-healthcare','genai-platform','evoke-medical','mindera-atlas','blockchain-systems']
+        };
+        // Known directories
+        var dirs = {
+            '/': ['/home','/usr','/var','/etc'],
+            '/home/amit': ['/home/amit/about','/home/amit/skills','/home/amit/projects','/home/amit/experience','/home/amit/contact','/home/amit/career'],
+            '/home/amit/skills': [], '/home/amit/projects': [],
+            '/home/amit/experience': [], '/home/amit/contact': [],
+            '/home/amit/about': [], '/home/amit/career': [], '/home': ['/home/amit']
+        };
+
+        if (!arg) {
+            return await this._renderLs(this.currentPath, dirs, files);
         }
 
+        var clean = arg.replace(/\/+$/, '');
+        // Resolve to absolute path
+        var resolved;
+        if (clean === '~') resolved = '/home/amit';
+        else if (clean === '..') resolved = this.getParentDirectory();
+        else if (clean === '.') resolved = this.currentPath;
+        else if (clean.startsWith('/')) resolved = clean;
+        else resolved = (this.currentPath === '/' ? '/' : this.currentPath + '/') + clean;
+
+        // Check if it's a known directory
+        if (dirs[resolved] !== undefined) {
+            return await this._renderLs(resolved, dirs, files);
+        }
+
+        // Check if it's a file (parent dir + filename)
+        var lastSlash = resolved.lastIndexOf('/');
+        var parentDir = resolved.substring(0, lastSlash) || '/';
+        var fileName = resolved.substring(lastSlash + 1);
+        var parentFiles = files[parentDir] || [];
+        if (parentFiles.indexOf(fileName) !== -1) {
+            await this.typeText('\n-rw-r--r--  ' + fileName + '\n', 10);
+            return;
+        }
+
+        await this.showError('ls: cannot access \'' + arg + '\': No such file or directory');
+    }
+
+    async _renderLs(targetPath, dirs, files) {
         let dirText = `
 📁 Directory: ${targetPath}
 ═════════════════════════════════════════════════
