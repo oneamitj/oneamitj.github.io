@@ -80,7 +80,7 @@ Boot sequence complete. Ready for commands...
 • Spearheaded the development of GenAI products,
 • GenAI/LLM apps in production (e.g. Addy AI — healthcare automation)
 • Compliance audits for HIPAA, SOC2, and other standards.
-• Guided company to be 🏆 APN Advanced Partner
+• Guided company to 🏆 AWS GenAI Competency, DevOps Competency & APN Advanced Partner
 `;
         
         await this.typeText(welcomeText, 3);
