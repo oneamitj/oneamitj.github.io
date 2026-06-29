@@ -106,6 +106,16 @@
       "category": "Business Intelligence"
     }
   ],
+  "personal_projects": [
+    {
+      "name": "TimezoneTracker",
+      "description": "A mobile-first timezone management app that lets you track, compare, and coordinate times across multiple locations.",
+      "technologies": ["Mobile App", "Timezone Management", "Cross-platform"],
+      "period": "2025",
+      "url": "https://timezonetracker.app",
+      "category": "Productivity/Mobile"
+    }
+  ],
   "other_projects": [
     {
       "name": "Vyaguta - Internal LMS",

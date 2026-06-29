@@ -78,6 +78,7 @@ Boot sequence complete. Ready for commands...
 • Optimized GenAI products: 40% performance ↑, 50% cost ↓
 • Drove technical solutions from concept to deployment
 • Spearheaded the development of GenAI products,
+• GenAI/LLM apps in production (e.g. Addy AI — healthcare automation)
 • Compliance audits for HIPAA, SOC2, and other standards.
 • Guided company to be 🏆 APN Advanced Partner
 `;
@@ -263,6 +264,8 @@ Boot sequence complete. Ready for commands...
                 case 'resume':
                     if (args.includes('--download')) {
                         await this.downloadResume();
+                    } else if (args.includes('--open')) {
+                        await this.openResumePage();
                     } else {
                         await this.showResume();
                     }
@@ -270,6 +273,8 @@ Boot sequence complete. Ready for commands...
                 case 'cv':
                     if (args.includes('--download')) {
                         await this.downloadResume();
+                    } else if (args.includes('--open')) {
+                        await this.openResumePage();
                     } else {
                         await this.showResume();
                     }
@@ -409,6 +414,22 @@ Boot sequence complete. Ready for commands...
         } catch (error) {
             await this.showError('Download failed. Please try again or contact me directly.');
         }
+    }
+
+    async openResumePage() {
+        const openText = `
+🌐 Opening CV/Resume page...
+
+╔═══════════════════════════════════════════════╗
+║                    OPENING RESUME PAGE
+╚═══════════════════════════════════════════════╝
+
+📄 Opening: https://amitj.me/cv/
+🚀 Launching in new window...
+`;
+        await this.typeText(openText, 10);
+        window.open('/cv/', '_blank');
+        await this.typeText(`\n✅ Resume page opened successfully!\n💡 Tip: Use 'resume --download' to get the PDF version`);
     }
 
     async catFile(filename) {
@@ -570,7 +591,14 @@ Kathmandu University, 2015
    🔗 https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/
 
 🎙️ Dawn of the Agents — AWS User Group Meetup
-   🔗 https://amitj.com.np/aug.ppt
+   🔗 https://amitj.me/aug.ppt
+
+📝 ARTICLES & PUBLICATIONS:
+════════════════════════════════════════════════
+
+📰 In the Age of Vibes, Someone Has to Be the Checker
+   LinkedIn Article
+   🔗 https://www.linkedin.com/pulse/age-vibes-someone-has-checker-amit-joshi-wzpsc/
 
 ════════════════════════════════════════════════
 
@@ -578,6 +606,7 @@ Kathmandu University, 2015
 
 💡 For more details, visit: https://www.linkedin.com/in/oneamitj
 📥 Use 'resume --download' to get the PDF version
+🌐 Use 'resume --open' to view as a web page
 `;
         
         await this.typeText(resumeText, 8);
@@ -710,26 +739,30 @@ Kathmandu University, 2015
                 ]
             },
             resume: {
-                usage: 'resume [--download] [--help]',
+                usage: 'resume [--download] [--open] [--help]',
                 description: 'Display complete resume with professional experience and skills',
                 options: [
-                    '--download           # Download PDF version of resume'
+                    '--download           # Download PDF version of resume',
+                    '--open               # Open resume as a web page in new window'
                 ],
                 examples: [
                     'resume               # Show complete resume in terminal',
                     'resume --download    # Download PDF version',
+                    'resume --open        # Open resume web page',
                     'resume --help        # Show this help message'
                 ]
             },
             cv: {
-                usage: 'cv [--download] [--help]',
+                usage: 'cv [--download] [--open] [--help]',
                 description: 'Display complete curriculum vitae (same as resume)',
                 options: [
-                    '--download           # Download PDF version of CV'
+                    '--download           # Download PDF version of CV',
+                    '--open               # Open CV as a web page in new window'
                 ],
                 examples: [
                     'cv                   # Show complete CV in terminal',
                     'cv --download        # Download PDF version',
+                    'cv --open            # Open CV web page',
                     'cv --help            # Show this help message'
                 ]
             },
@@ -960,8 +993,10 @@ Available Commands:
 📄 Resume/CV:
    resume      - Display resume in terminal
    resume --download - Download PDF resume
+   resume --open - Open resume web page
    cv          - Display CV in terminal (same as resume)
    cv --download - Download PDF CV
+   cv --open   - Open CV web page
 
 🔗 Links:
    linkedin    - Open LinkedIn profile
@@ -1192,6 +1227,18 @@ the highest standards of security and compliance.
                 projectText += '\n' + '─'.repeat(60) + '\n\n';
             });
             
+            projectText += `\n🚀 PERSONAL PROJECTS & APPS:\n`;
+            projectText += '═════════════════════════════════════════════════\n\n';
+            
+            if (projects.personal_projects) {
+                projects.personal_projects.forEach((project, index) => {
+                    projectText += `${index + 1}. ${project.name} (${project.period})\n`;
+                    projectText += `   ${project.description}\n`;
+                    if (project.url) projectText += `   🔗 ${project.url}\n`;
+                    projectText += `   Tech: ${project.technologies.join(', ')}\n\n`;
+                });
+            }
+
             projectText += `\n💡 OTHER NOTABLE PROJECTS:\n`;
             projectText += '═════════════════════════════════════════════════\n\n';
             
@@ -1633,8 +1680,16 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
       and compliance at scale, real use cases, partner advantage
 
 🎙️ Dawn of the Agents — AWS User Group Meetup
-   🔗 https://amitj.com.np/aug.ppt
+   🔗 https://amitj.me/aug.ppt
    📋 GenAI maturing into the age of autonomous agents
+
+📝 ARTICLES & PUBLICATIONS:
+═════════════════════════════════════════════════
+
+📰 In the Age of Vibes, Someone Has to Be the Checker
+   📅 LinkedIn Article
+   🔗 https://www.linkedin.com/pulse/age-vibes-someone-has-checker-amit-joshi-wzpsc/
+   📋 Vibe coding, AI-generated code, and the critical role of human reviewers
 
 📈 IMPACT METRICS:
 ═════════════════════════════════════════════════

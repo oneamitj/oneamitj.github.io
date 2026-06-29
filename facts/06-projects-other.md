@@ -32,7 +32,7 @@
 
 ## 7. iJobber — AI-Powered Cover Letters & CVs (Personal Project)
 - **Description:** A Chrome extension that generates personalized, professional cover letters and CVs tailored to specific job postings using advanced AI technology. Analyzes job requirements and creates customized application documents in seconds.
-- **URL:** https://amitj.com.np/ijobber
+- **URL:** https://amitj.me/ijobber
 - **Chrome Web Store:** https://chromewebstore.google.com/detail/ijobber-ai-powered-cover/nknjgaedlggceepiffebkbdokghoajea
 - **Contact Email:** wannamit@gmail.com
 - **Features:**
@@ -57,7 +57,7 @@
 
 ## 10. ArchMentor — Solution Architect Training Platform (Internal Tool)
 - **Description:** A Next-Gen Solution Architect Training platform created by Amit to train architects within his organization. Features an AI Lab powered by Gemini API for interactive learning.
-- **URL:** https://amitj.com.np/archmentor
+- **URL:** https://amitj.me/archmentor
 - **Philosophy:** "Lead with the Product, Choose the Tech." — Training architects who understand that technical excellence is secondary to business problem-solving.
 - **Curriculum Modules:**
   1. Discovery & Questioning — Learning how to extract business intent from vague requirements
@@ -72,8 +72,8 @@
 
 ## 11. "Dawn of the Agents" Presentation (AWS User Group Meetup)
 - **Description:** A 16-slide presentation given at an AWS User Group Meetup about GenAI maturing into the age of agents.
-- **URL:** https://amitj.com.np/aug.ppt
-- **Speaker Notes URL:** https://amitj.com.np/aug.ppt/narration.html
+- **URL:** https://amitj.me/aug.ppt
+- **Speaker Notes URL:** https://amitj.me/aug.ppt/narration.html
 - **Key Themes:**
   - Transition from manual → assisted → autonomous AI
   - Foundation Models as Infrastructure, Agents as the Interface
@@ -84,6 +84,6 @@
 
 ## 12. Retro DevOps Portfolio Website (Personal Project)
 - **Description:** Interactive terminal-based portfolio website built with pure vanilla JavaScript (no frameworks). Features a retro CRT monitor aesthetic with command-line interface navigation.
-- **URL:** https://amitj.com.np
+- **URL:** https://amitj.me
 - **Technologies:** HTML5, CSS3, Vanilla JavaScript, PWA, Service Worker, JSON-LD Structured Data
 - **Features:** PWA support, offline functionality, OneAI assistant, CRT effects, command history, Melbourne time clock, Easter eggs

@@ -6,8 +6,8 @@
 - **LinkedIn:** https://linkedin.com/in/oneamitj
 - **GitHub:** https://github.com/oneamitj
 - **Twitter/X:** @oneamitj
-- **Website:** https://amitj.com.np
-- **iJobber Product Page:** https://amitj.com.np/ijobber
+- **Website:** https://amitj.me
+- **iJobber Product Page:** https://amitj.me/ijobber
 
 ## Location
 - **Current:** Melbourne, Victoria, Australia
@@ -46,8 +46,8 @@
 
 ## Security Contact
 - For security concerns related to his portfolio website: Contact via LinkedIn (https://linkedin.com/in/oneamitj)
-- Security policy canonical URL: https://amitj.com.np/.well-known/security.txt
+- Security policy canonical URL: https://amitj.me/.well-known/security.txt
 
 ## Resume / CV
-- Available for download at: https://amitj.com.np/data/AmitJ_CV.pdf
+- Available for download at: https://amitj.me/data/AmitJ_CV.pdf
 - Can also be viewed in terminal format on his portfolio website using the `resume` or `cv` command

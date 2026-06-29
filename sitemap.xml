@@ -6,15 +6,15 @@
 
     <!-- Main Portfolio Page -->
     <url>
-        <loc>https://amitj.com.np/</loc>
-        <lastmod>2026-04-10</lastmod>
+        <loc>https://amitj.me/</loc>
+        <lastmod>2026-06-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <!-- DevOps Learning Path / Career Roadmap -->
     <url>
-        <loc>https://amitj.com.np/career/</loc>
+        <loc>https://amitj.me/career/</loc>
         <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -22,15 +22,15 @@
 
     <!-- Resume PDF -->
     <url>
-        <loc>https://amitj.com.np/data/AmitJ_CV.pdf</loc>
-        <lastmod>2026-04-10</lastmod>
+        <loc>https://amitj.me/data/AmitJ_CV.pdf</loc>
+        <lastmod>2026-06-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <!-- Presentations -->
     <url>
-        <loc>https://amitj.com.np/aug.ppt/</loc>
+        <loc>https://amitj.me/aug.ppt/</loc>
         <lastmod>2025-07-03</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
@@ -38,7 +38,7 @@
 
     <!-- Training Platforms -->
     <url>
-        <loc>https://amitj.com.np/archmentor/</loc>
+        <loc>https://amitj.me/archmentor/</loc>
         <lastmod>2025-07-03</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
@@ -46,10 +46,18 @@
 
     <!-- iJobber Chrome Extension -->
     <url>
-        <loc>https://amitj.com.np/ijobber/</loc>
+        <loc>https://amitj.me/ijobber/</loc>
         <lastmod>2025-07-03</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
+    </url>
+
+    <!-- CV / Resume Page -->
+    <url>
+        <loc>https://amitj.me/cv/</loc>
+        <lastmod>2026-06-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
     </url>
 
 </urlset>

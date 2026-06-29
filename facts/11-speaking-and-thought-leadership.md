@@ -5,8 +5,8 @@
 ### "Dawn of the Agents" — AWS User Group Meetup
 - **Venue:** AWS User Group Meetup
 - **Role:** Speaker / Solutions Architect at Leapfrog Technology
-- **Presentation URL:** https://amitj.com.np/aug.ppt
-- **Speaker Notes URL:** https://amitj.com.np/aug.ppt/narration.html
+- **Presentation URL:** https://amitj.me/aug.ppt
+- **Speaker Notes URL:** https://amitj.me/aug.ppt/narration.html
 - **Slides:** 16 slides
 - **Topic:** GenAI Matures → The Age of Agents
 

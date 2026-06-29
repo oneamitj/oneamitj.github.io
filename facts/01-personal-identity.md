@@ -16,8 +16,8 @@ Amit Joshi
 - Nepali
 
 ## Personal Website
-- https://amitj.com.np
-- Custom domain: amitj.com.np
+- https://amitj.me
+- Custom domain: amitj.me
 - Hosted on GitHub Pages (repository: oneamitj.github.io)
 
 ## Email Addresses

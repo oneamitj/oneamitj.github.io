@@ -4,7 +4,7 @@
 # TEAM
 
     DevOps Engineer & GenAI Solution Architect: Amit Joshi
-    Site: https://amitj.com.np/
+    Site: https://amitj.me/
     LinkedIn: linkedin.com/in/oneamitj
     GitHub: github.com/oneamitj
     Location: Melbourne, Australia

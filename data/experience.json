@@ -162,8 +162,16 @@
     {
       "name": "Dawn of the Agents",
       "venue": "AWS User Group Meetup",
-      "url": "https://amitj.com.np/aug.ppt",
+      "url": "https://amitj.me/aug.ppt",
       "description": "Presentation on GenAI maturing into the age of autonomous agents — foundation models as infrastructure, agents as the interface, vibe coding, vibe DevOps, and governance at prompt time."
+    }
+  ],
+  "articles": [
+    {
+      "name": "In the Age of Vibes, Someone Has to Be the Checker",
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/pulse/age-vibes-someone-has-checker-amit-joshi-wzpsc/",
+      "description": "Exploring how vibe coding is reshaping software development and why the role of the human reviewer — the checker — becomes even more critical when AI generates the code."
     }
   ],
   "career_summary": {
