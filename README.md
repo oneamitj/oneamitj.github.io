@@ -1,15 +1,15 @@
 # Retro DevOps Portfolio - Amit Joshi
 
-Welcome to my Retro DevOps Portfolio! This project showcases my 10+ years of experience in DevOps, AWS cloud architecture, and GenAI integration through a nostalgic command-line interface style reminiscent of classic computing.
+Welcome to my Retro DevOps Portfolio! This project showcases my 11+ years of experience in DevOps, AWS cloud architecture, and GenAI integration through a nostalgic command-line interface style reminiscent of classic computing.
 
 ## 🚀 About This Portfolio
 
 This interactive terminal-based portfolio demonstrates my expertise in:
-- **Cloud Architecture**: AWS Expert with APN Advanced Partner achievement
+- **Cloud Architecture**: AWS Expert with APN Advanced Partner & AWS GenAI Competency
 - **DevOps Engineering**: Terraform, Kubernetes, Docker, CI/CD
-- **GenAI Integration**: 40% performance improvement, 50% cost reduction
-- **Team Leadership**: Grew teams from 4 to 20+ certified engineers
-- **Compliance**: HIPAA, SOC2 compliant system design
+- **GenAI Integration**: 10+ production LLM solutions, 40% performance improvement, 50% cost reduction
+- **Team Leadership**: Grew teams from 5 to 25+ engineers
+- **Compliance**: HIPAA, SOC2, GDPR, PCI-DSS compliant system design
 
 ## 🎯 Features
 
@@ -24,27 +24,37 @@ This interactive terminal-based portfolio demonstrates my expertise in:
 - **Service Worker**: Background caching and updates
 - **Easter Eggs**: Hidden commands for the curious explorer
 - **Command History**: Navigate previous commands with arrow keys
-- **Nepal Time Clock**: Real-time clock display in header
+- **Local Time Clock**: Real-time clock showing Amit's current timezone
 
 ## 🛠️ Technologies Used
 
 - **Frontend**: Pure HTML5, CSS3, Vanilla JavaScript (no frameworks!)
 - **PWA**: Service Worker, Web App Manifest, Background Sync
-- **AI Integration**: Custom OneAI for intelligent responses
+- **AI Integration**: OneAI assistant backed by Pinecone vector store (RAG)
 - **Styling**: Custom CSS with CRT effects, retro fonts
 - **Fonts**: VT323, Press Start 2P (Google Fonts)
-- **Data**: JSON-based content management
+- **Data**: JSON-based content management + Markdown CV
 - **Caching**: Advanced service worker with cache strategies
-- **Hosting**: Static site hosting compatible (GitHub Pages, Netlify, Vercel)
+- **SEO**: Sitemap, robots.txt, structured metadata
+- **Security**: .well-known/security.txt, HTTPS-only PWA
+- **Hosting**: GitHub Pages with custom domain (amitj.me)
 
 ## 📁 Project Structure
 
 ```
 oneamitj.github.io/
 ├── index.html              # Main HTML file with PWA meta tags
+├── 404.html                # Custom 404 page
 ├── manifest.json           # PWA manifest configuration
 ├── sw.js                   # Service worker for offline functionality
+├── sitemap.xml             # SEO sitemap
+├── robots.txt              # Search engine crawling rules
+├── humans.txt              # Credits and technology colophon
 ├── browserconfig.xml       # Browser configuration for Windows tiles
+├── CNAME                   # Custom domain configuration
+├── _config.yml             # Jekyll/GitHub Pages config
+├── .well-known/
+│   └── security.txt        # Security contact information
 ├── css/
 │   ├── main.css            # Core styling with PWA support
 │   ├── terminal.css        # Terminal-specific styles
@@ -58,20 +68,38 @@ oneamitj.github.io/
 │   ├── skills.json         # Technical skills with GenAI technologies
 │   ├── projects.json       # Portfolio projects including GenAI work
 │   ├── experience.json     # Professional experience timeline
-│   └── AmitJ_CV.pdf        # Downloadable resume
+│   ├── AmitJ_CV.md         # CV in Markdown format
+│   └── AmitJ_CV.pdf        # Downloadable resume/CV
+├── facts/                  # OneAI knowledge base (Pinecone vector store)
+│   ├── 01-personal-identity.md
+│   ├── 02-education.md
+│   ├── ...                 # 17 structured knowledge files
+│   ├── upload_to_pinecone.py  # Vector DB upload script
+│   └── requirements.txt    # Python dependencies for upload
 ├── assets/
 │   └── fonts/
 │       └── terminal-font.css # Custom terminal font definitions
 ├── icons/                  # PWA icons for all device sizes
-│   ├── icon-72x72.png
-│   ├── icon-96x96.png
-│   ├── icon-128x128.png
-│   ├── icon-144x144.png
-│   ├── icon-152x152.png
-│   ├── icon-192x192.png
-│   ├── icon-256x256.png
-│   ├── icon-384x384.png
-│   └── icon-512x512.png
+│   ├── favicon.ico
+│   ├── icon-16x16.png ... icon-512x512.png
+│   └── icon.png
+├── screenshots/            # Portfolio screenshots
+│   ├── desktop-wide.png
+│   └── mobile-narrow.png
+├── archmentor/             # ArchMentor project page
+│   └── index.html
+├── career/                 # Career page
+│   └── index.html
+├── cv/                     # CV/Resume viewer page
+│   └── index.html
+├── resume/                 # Resume page (alternate route)
+├── ijobber/                # iJobber app showcase
+│   ├── index.html
+│   ├── privacy.html
+│   └── iJobber-*.png       # App screenshots
+├── aug.ppt/                # Presentation page
+│   ├── index.html
+│   └── narration.html
 └── README.md               # This file
 ```
 
@@ -268,7 +296,7 @@ This portfolio is a fully functional Progressive Web App with the following capa
 ### 🎮 Interactive Elements
 - **Easter Eggs**: Hidden commands and features for exploration
 - **Command History**: Navigate previous commands with arrow keys
-- **Real-time Clock**: Live Nepal Time display in header
+- **Real-time Clock**: Live clock display in Amit's current timezone
 - **Typing Interruption**: Ctrl+C support for stopping long outputs
 - **Responsive Design**: Adapts to all screen sizes and orientations
 
@@ -287,43 +315,46 @@ When installed as a PWA or when offline, the portfolio provides:
 
 ## 🌟 Key Achievements Showcased
 
-- **Performance**: 10x product improvement (100+ to 1000+ pages)
+- **Performance**: 10x document processing throughput (100+ to 1000+ pages)
 - **Scale**: 500% increase in data processing capacity (8 to 40+ sources)
 - **Cost**: 50% GenAI cost reduction with 40% performance gain
-- **Team**: Grew engineering teams from 5 to 20+ members
-- **Compliance**: HIPAA-compliant multi-tenant systems
-- **AWS**: Led company to APN Advanced Partner status
+- **Team**: Grew DevOps team from 5 to 25+ members
+- **Compliance**: HIPAA-compliant multi-tenant serverless systems
+- **AWS**: Led company to APN Advanced Partner + GenAI Competency + DevOps Competency
 - **Deployment**: 400% increase in deployment frequency
 - **Onboarding**: 90% reduction in new service onboarding time
+- **Infrastructure**: 50% cost reduction on GKE serving 10M+ monthly users
 
 ## 📈 Professional Highlights
 
-- **Current Role**: Solution Architect @ Leapfrog Technology Inc.
-- **Experience**: 10+ years in DevOps and Cloud Engineering
-- **Specialization**: AWS, GenAI, Terraform, Kubernetes
-- **Location**: Kathmandu, Nepal
+- **Current Role**: Solution Architect, DevOps @ Leapfrog Technology Inc. (Seattle, WA)
+- **Experience**: 11+ years in DevOps, Cloud Engineering, and Solution Architecture
+- **Specialization**: AWS, GenAI/LLM, Terraform, Kubernetes, HIPAA-compliant systems
+- **Key Product**: [Addy AI](https://www.addy.ai) - LLM-based healthcare referral automation
+- **Speaking**: [CIO Online Webcast](https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/) with AWS on GenAI in Healthcare
 - **Education**: B.E. Computer Science, Kathmandu University (2015)
 
 ## 🔧 Technical Stack Featured
 
 ### Cloud & DevOps
-- **AWS Services**: EC2, EKS, Lambda, Bedrock, S3, RDS, CloudFormation
-- **Infrastructure as Code**: Terraform, CloudFormation, Ansible
-- **Container Orchestration**: Kubernetes, Docker, Amazon EKS
-- **CI/CD**: Jenkins, GitHub Actions, GitLab CI, AWS CodePipeline
-- **Monitoring**: Prometheus, Grafana, ELK Stack, CloudWatch
+- **AWS Services**: EC2, EKS, Lambda, Bedrock, S3, RDS, CloudFormation, OpenSearch
+- **Infrastructure as Code**: Terraform, CloudFormation, Pulumi, Ansible
+- **Container Orchestration**: Kubernetes, Docker, Amazon EKS, GKE
+- **CI/CD**: GitHub Actions, Azure DevOps, Jenkins, GitLab CI, AWS CodePipeline
+- **Monitoring**: Prometheus, Grafana, ELK Stack, OpenSearch, CloudWatch
 
 ### GenAI & Machine Learning
-- **LLM Platforms**: OpenAI GPT, Anthropic Claude, AWS Bedrock
-- **GenAI Frameworks**: RAG (Retrieval-Augmented Generation), LangChain
-- **AI Integration**: Custom API development, Prompt engineering
-- **Performance Optimization**: Model fine-tuning, Cost optimization
+- **LLM Platforms**: OpenAI GPT, Anthropic Claude, AWS Bedrock, Azure AI
+- **GenAI Frameworks**: RAG, LangChain, LangSmith, RAGAS, RAGChecker
+- **Vector Databases**: Pinecone, AWS OpenSearch VectorDB, AWS S3 Vector
+- **AI Services**: Azure Document Intelligence, Amazon Textract
+- **Optimization**: Prompt engineering, model selection, token optimization, cost engineering
 
 ### Programming & Automation
-- **Languages**: Python, Bash, Go, JavaScript
-- **Databases**: PostgreSQL, MongoDB, Redis, Amazon Aurora
+- **Languages**: Python, Bash, Go, NodeJS
+- **Databases**: PostgreSQL, MySQL, DynamoDB, MongoDB, Redis
 - **Web Technologies**: HTML5, CSS3, Vanilla JavaScript, Progressive Web Apps
-- **Security & Compliance**: HIPAA, SOC2, Multi-tenant architecture
+- **Security & Compliance**: HIPAA, SOC2, GDPR, PCI-DSS, Vanta, Drata, OWASP
 
 ## 🤝 Connect With Me
 
@@ -349,12 +380,22 @@ Inspired by the golden age of computing and terminal interfaces. Built with pass
 
 ### 🎉 Recent Updates
 
-**v1.0.0** - Latest Features:
+**v2.0.0** - Latest Features:
+- ✅ OneAI powered by Pinecone vector store with 17 structured knowledge files
+- ✅ ArchMentor project page
+- ✅ Career page with detailed experience timeline
+- ✅ CV/Resume viewer with Markdown and PDF formats
+- ✅ Screenshots for desktop and mobile views
+- ✅ .well-known/security.txt for responsible disclosure
+- ✅ sitemap.xml and robots.txt for SEO
+- ✅ Custom 404 page
+
+**v1.0.0** - Initial Release:
 - ✅ Progressive Web App (PWA) support
 - ✅ OneAI assistant integration  
 - ✅ Complete offline functionality
 - ✅ Advanced service worker caching
-- ✅ Nepal Time clock integration
+- ✅ Local time clock integration
 - ✅ Enhanced mobile responsiveness
 - ✅ Extended command system with help documentation
 - ✅ PWA installation and update management
