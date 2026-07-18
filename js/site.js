@@ -89,15 +89,82 @@
             }, null, 1.7);
 
         if (window.ScrollTrigger) {
-            /* --- Section titles & path markers --- */
-            document.querySelectorAll('.section').forEach(function (section) {
-                const head = section.querySelectorAll('.path-marker, .section-title, .contact-headline');
-                if (head.length) {
-                    gsap.from(head, {
-                        y: 26, autoAlpha: 0, duration: 0.8, ease: 'expo.out', stagger: 0.1,
-                        scrollTrigger: { trigger: section, start: 'top 74%' }
-                    });
-                }
+            /* --- Cinematic hero exit: scrubbed departure as you scroll away --- */
+            gsap.to('.hero-inner', {
+                y: -70, scale: 0.95, autoAlpha: 0.15, filter: 'blur(7px)',
+                transformOrigin: '20% 40%', ease: 'none',
+                scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 45%', scrub: 0.5 }
+            });
+
+            /* --- Path markers fade in; titles reveal word-by-word from masks --- */
+            document.querySelectorAll('.path-marker').forEach(function (marker) {
+                gsap.from(marker, {
+                    y: 20, autoAlpha: 0, duration: 0.7, ease: 'expo.out',
+                    scrollTrigger: { trigger: marker, start: 'top 80%' }
+                });
+            });
+
+            // split a heading into masked word spans (keeps <br>; the accent
+            // dot rides inside the previous word so it can never wrap alone)
+            function splitWords(el) {
+                let lastWord = null;
+                Array.from(el.childNodes).forEach(function (node) {
+                    if (node.nodeType === 3) {
+                        const frag = document.createDocumentFragment();
+                        node.textContent.split(/(\s+)/).forEach(function (part) {
+                            if (!part) return;
+                            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+                            const mask = document.createElement('span');
+                            mask.className = 'w-mask';
+                            const w = document.createElement('span');
+                            w.className = 'w';
+                            w.textContent = part;
+                            mask.appendChild(w);
+                            frag.appendChild(mask);
+                            lastWord = w;
+                        });
+                        el.replaceChild(frag, node);
+                    } else if (node.nodeType === 1 && node.tagName !== 'BR') {
+                        if (lastWord) { lastWord.appendChild(node); return; }
+                        const mask = document.createElement('span');
+                        mask.className = 'w-mask';
+                        node.replaceWith(mask);
+                        const w = document.createElement('span');
+                        w.className = 'w';
+                        w.appendChild(node);
+                        mask.appendChild(w);
+                        lastWord = w;
+                    }
+                });
+                return el.querySelectorAll('.w');
+            }
+
+            document.querySelectorAll('.section-title, .contact-headline').forEach(function (title) {
+                const words = splitWords(title);
+                if (!words.length) return;
+                gsap.from(words, {
+                    yPercent: 115, duration: 0.75, ease: 'expo.out', stagger: 0.055,
+                    scrollTrigger: { trigger: title, start: 'top 82%' }
+                });
+            });
+
+            /* --- Metric count-ups: numbers tick up as they enter view --- */
+            document.querySelectorAll('.metric, .project-metrics li, .proof-strip li').forEach(function (el) {
+                const tokens = el.textContent.split(/(\d+)/);
+                const nums = [];
+                tokens.forEach(function (t, i) { if (/^\d+$/.test(t)) nums.push({ i: i, v: +t }); });
+                if (!nums.length) return;
+                const state = { p: 0 };
+                gsap.to(state, {
+                    p: 1, duration: 1.1, ease: 'power2.out',
+                    scrollTrigger: { trigger: el, start: 'top 90%' },
+                    onUpdate: function () {
+                        el.textContent = tokens.map(function (t, i) {
+                            for (const n of nums) { if (n.i === i) return String(Math.round(n.v * state.p)); }
+                            return t;
+                        }).join('');
+                    }
+                });
             });
 
             /* --- About: copy rises, yaml card prints itself --- */
@@ -105,11 +172,28 @@
                 y: 22, autoAlpha: 0, duration: 0.7, ease: 'expo.out', stagger: 0.09,
                 scrollTrigger: { trigger: '.about-copy', start: 'top 72%' }
             });
-            gsap.from('.about-card', {
-                clipPath: 'inset(0 0 100% 0)', autoAlpha: 0, y: 18,
-                duration: 1.0, ease: 'expo.out',
-                scrollTrigger: { trigger: '.about-card', start: 'top 78%' }
-            });
+            /* --- amit.yaml types itself, line by line, then leaves the caret blinking --- */
+            (function () {
+                const lines = gsap.utils.toArray('.about-yaml .y-line');
+                if (!lines.length) return;
+                const tl = gsap.timeline({
+                    scrollTrigger: { trigger: '.about-card', start: 'top 78%' }
+                });
+                tl.from('.about-card', { y: 24, autoAlpha: 0, duration: 0.55, ease: 'expo.out' });
+                lines.forEach(function (line) {
+                    const chars = Math.max(6, line.textContent.length);
+                    tl.fromTo(line,
+                        { clipPath: 'inset(-5% 102% -5% -2%)' },
+                        {
+                            clipPath: 'inset(-5% -2% -5% -2%)',
+                            duration: Math.min(0.42, chars * 0.011),
+                            ease: 'steps(' + Math.min(chars, 24) + ')'
+                        }, '>0.04');
+                });
+                tl.call(function () {
+                    lines[lines.length - 1].classList.add('typing'); // resting caret
+                });
+            })();
 
             /* --- Journey: rail draws with scroll, entries slide in --- */
             gsap.to('#rail-fill', {

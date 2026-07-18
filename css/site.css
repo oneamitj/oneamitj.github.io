@@ -427,6 +427,16 @@ img, svg, canvas { max-width: 100%; }
 }
 .path-marker::before { content: "$ cd "; color: var(--ink-3); }
 
+/* masked per-word title reveals (scroll cinema) */
+.w-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.08em;   /* room for descenders while masked */
+    margin-bottom: -0.08em;
+}
+.w-mask .w { display: inline-block; }
+
 .section-title {
     font-size: var(--text-title);
     font-weight: 640;
@@ -487,6 +497,17 @@ img, svg, canvas { max-width: 100%; }
     line-height: 1.9;
     overflow-x: auto;
     white-space: pre;
+}
+.about-yaml .y-line { display: block; }
+.about-yaml .y-line.typing::after {
+    content: "";
+    display: inline-block;
+    width: 0.55em;
+    height: 1em;
+    margin-left: 3px;
+    vertical-align: -0.15em;
+    background: var(--phosphor);
+    animation: caret-blink 0.9s step-end infinite;
 }
 .about-yaml .y-key { color: var(--phosphor-soft); }
 .about-yaml .y-comment { color: var(--ink-3); }
