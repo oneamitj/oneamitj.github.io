@@ -76,7 +76,17 @@
             .from('.hero-lede', { y: 18, autoAlpha: 0, duration: 0.6 }, 0.66)
             .from('.hero-cta .btn', { y: 14, autoAlpha: 0, duration: 0.5, stagger: 0.08 }, 0.78)
             .from('.proof-strip li', { y: 10, autoAlpha: 0, duration: 0.45, stagger: 0.05 }, 0.9)
-            .from('.scroll-cue', { autoAlpha: 0, duration: 0.6 }, 1.15);
+            .from('.scroll-cue', { autoAlpha: 0, duration: 0.6 }, 1.15)
+            // the system comes alive: one pulse burst ripples through the
+            // constellation right after the entrance settles
+            .call(function () {
+                if (typeof window.constellationBurst !== 'function') return;
+                const name = document.querySelector('.hero-name');
+                const r = name ? name.getBoundingClientRect() : null;
+                const x = r ? Math.min(window.innerWidth - 80, r.right + 140) : window.innerWidth * 0.62;
+                const y = r ? r.top + r.height * 0.45 : window.innerHeight * 0.4;
+                window.constellationBurst(x, y);
+            }, null, 1.7);
 
         if (window.ScrollTrigger) {
             /* --- Section titles & path markers --- */

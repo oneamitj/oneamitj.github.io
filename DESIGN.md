@@ -37,7 +37,7 @@ Semantics: phosphor = results, actions, "go"; amber = time, category, warmth. Ne
 - **Path markers**: each section opens with `$ cd ~/section` in mono phosphor — the site's named kicker system, tying the modern page to the working terminal behind `~`.
 - **Accent dot**: section titles end with a phosphor period.
 - **amit.yaml card**: profile-as-config-file, window chrome with dots.
-- **Constellation canvas**: fixed background architecture diagram (nodes/edges/pulses, `js/constellation.js`), density-biased away from hero copy, fades on scroll, static frame under reduced motion.
+- **Constellation canvas**: fixed background architecture diagram (nodes/edges/pulses, `js/constellation.js`), density-biased away from hero copy, fades on scroll, static frame under reduced motion. Interactive: the pointer joins the network (edges link to the cursor, nodes lean toward it), and any click/tap fires a **pulse burst** — a double shockwave ring plus a hop-by-hop chain reaction (BFS through the edge graph, 110ms per hop) that flashes nodes and sends sparks down edges. One autonomous burst fires beside the hero name ~1.7s after load, so every visitor sees the system come alive. Interactions stay lively down-page (alpha floor 0.55) while ambient layers fade.
 
 ## Motion
 
