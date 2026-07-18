@@ -51,14 +51,19 @@ oneamitj.github.io/
 ├── .well-known/
 │   └── security.txt        # Security contact information
 ├── css/
-│   ├── main.css            # Core styling with PWA support
-│   ├── terminal.css        # Terminal-specific styles
+│   ├── site.css            # Redesign: layout, theme (light/dark), hero, components
+│   ├── terminal-overlay.css # Retro terminal, now a summonable overlay
+│   ├── main.css            # Legacy core styling (still referenced by terminal pages)
+│   ├── terminal.css        # Legacy terminal-specific styles
 │   └── retro-theme.css     # Retro CRT effects and animations
 ├── js/
-│   ├── terminal.js         # Main terminal logic with PWA integration
-│   ├── commands.js         # Command processing and utilities
+│   ├── site.js             # Redesign: GSAP hero/scroll choreography, oneai chat, magnetic CTAs
+│   ├── constellation.js    # Canvas architecture-diagram background
+│   ├── terminal.js         # Terminal overlay logic with PWA integration
+│   ├── commands.js         # Terminal command processing and utilities
 │   ├── typewriter.js       # Typewriter effects engine
-│   └── pwa.js              # PWA management and installation
+│   ├── pwa.js              # PWA management and installation
+│   └── vendor/             # Locally vendored GSAP + ScrollTrigger
 ├── data/
 │   ├── skills.json         # Technical skills with GenAI technologies
 │   ├── projects.json       # Portfolio projects including GenAI work
@@ -95,6 +100,8 @@ oneamitj.github.io/
 ├── aug.ppt/                # Presentation page
 │   ├── index.html
 │   └── narration.html
+├── DESIGN.md               # Design system notes
+├── PRODUCT.md               # Product/content notes
 └── README.md               # This file
 ```
 
@@ -323,11 +330,11 @@ When installed as a PWA or when offline, the portfolio provides:
 ## 📈 Professional Highlights
 
 - **Current Role**: Solution Architect, DevOps @ Leapfrog Technology Inc. (Seattle, WA)
-- **Experience**: 11+ years in DevOps, Cloud Engineering, and Solution Architecture
+- **Experience**: 10+ years in DevOps, Cloud Engineering, and Solution Architecture
 - **Specialization**: AWS, GenAI/LLM, Terraform, Kubernetes, HIPAA-compliant systems
 - **Key Product**: [Addy AI](https://www.addy.ai) - LLM-based healthcare referral automation
 - **Speaking**: [CIO Online Webcast](https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/) with AWS on GenAI in Healthcare
-- **Education**: B.E. Computer Science, Kathmandu University (2015)
+- **Education**: B.E. Computer Engineering, Kathmandu University (2015)
 
 ## 🔧 Technical Stack Featured
 
