@@ -1046,6 +1046,24 @@ img, svg, canvas { max-width: 100%; }
     color: var(--ink-2);
     font-size: var(--text-mono-sm);
 }
+.chat-head-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.chat-new {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink-3);
+    font-size: var(--text-mono-sm);
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.35em 0.55em;
+    border-radius: 6px;
+    transition: color var(--dur-fast) var(--ease-out),
+                border-color var(--dur-fast) var(--ease-out);
+}
+.chat-new:hover { color: var(--phosphor); border-color: var(--phosphor-soft); }
 .chat-close {
     background: none;
     border: none;

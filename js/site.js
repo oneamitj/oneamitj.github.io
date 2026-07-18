@@ -434,11 +434,35 @@
     const fab = document.getElementById('chat-fab');
     const panel = document.getElementById('chat-panel');
     const chatClose = document.getElementById('chat-close');
+    const chatNew = document.getElementById('chat-new');
     const chatLog = document.getElementById('chat-log');
     const chatForm = document.getElementById('chat-form');
     const chatInput = document.getElementById('chat-input');
-    const suggests = document.getElementById('chat-suggests');
     let chatBusy = false;
+
+    // Conversation awareness without an API change: history rides inside the
+    // one plain-text message as an XML block. First message goes raw.
+    const HISTORY_MAX_TURNS = 8;    // 4 exchanges
+    const HISTORY_TURN_CHARS = 600; // per-turn clip keeps the payload lean
+    let chatHistory = [];
+    // pristine greeting + suggestion chips, restored on "new chat"
+    const chatLogHome = chatLog ? chatLog.innerHTML : '';
+
+    function clipTurn(text) {
+        return text.length > HISTORY_TURN_CHARS ? text.slice(0, HISTORY_TURN_CHARS) + '…' : text;
+    }
+    function buildPayload(message, history) {
+        if (!history.length) return message;
+        const lines = history.map(function (t) {
+            return (t.role === 'user' ? 'User: ' : 'Assistant: ') + clipTurn(t.text);
+        });
+        return '<conversation_history>\n' + lines.join('\n') + '\n</conversation_history>\n\n' +
+               '<current_message>\n' + message + '\n</current_message>';
+    }
+    function rememberTurn(history, role, text) {
+        history.push({ role: role, text: text });
+        while (history.length > HISTORY_MAX_TURNS) history.shift();
+    }
 
     function toggleChat(open) {
         if (!panel || !fab) return;
@@ -493,16 +517,20 @@
     }
 
     async function submitChat(message) {
-        if (chatBusy || !message.trim()) return;
+        const text = message.trim();
+        if (chatBusy || !text) return;
         chatBusy = true;
-        if (suggests) suggests.remove();
-        appendMsg('user', message.trim());
+        const sug = document.getElementById('chat-suggests');
+        if (sug) sug.remove();
+        appendMsg('user', text);
         if (chatInput) { chatInput.value = ''; chatInput.disabled = true; }
         const typing = showTyping();
         try {
-            const reply = await askOneAI(message.trim());
+            const reply = await askOneAI(buildPayload(text, chatHistory));
             typing.remove();
             appendMsg('ai', reply);
+            rememberTurn(chatHistory, 'user', text);
+            rememberTurn(chatHistory, 'assistant', reply);
         } catch (err) {
             typing.remove();
             appendMsg('error', "Hmm, my AI brain didn't respond. Try again in a moment, or just ask the human: linkedin.com/in/oneamitj");
@@ -512,13 +540,25 @@
         }
     }
 
+    function resetChat() {
+        if (chatBusy) return; // never wipe mid-flight
+        chatHistory = [];
+        if (chatLog) chatLog.innerHTML = chatLogHome;
+        if (chatInput) { chatInput.value = ''; chatInput.focus(); }
+    }
+    if (chatNew) chatNew.addEventListener('click', resetChat);
+
     if (chatForm) {
         chatForm.addEventListener('submit', function (e) {
             e.preventDefault();
             submitChat(chatInput ? chatInput.value : '');
         });
     }
-    document.querySelectorAll('.chat-suggest').forEach(function (btn) {
-        btn.addEventListener('click', function () { submitChat(btn.textContent); });
-    });
+    // delegated so chips restored by resetChat keep working
+    if (chatLog) {
+        chatLog.addEventListener('click', function (e) {
+            const btn = e.target.closest ? e.target.closest('.chat-suggest') : null;
+            if (btn) submitChat(btn.textContent);
+        });
+    }
 })();

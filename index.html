@@ -435,7 +435,10 @@
     <section class="chat-panel" id="chat-panel" aria-label="oneai — ask about Amit" hidden>
         <header class="chat-head">
             <p class="mono chat-head-title"><span class="status-dot" aria-hidden="true"></span>oneai · ask about amit</p>
-            <button class="chat-close" id="chat-close" type="button" aria-label="Close chat">&times;</button>
+            <div class="chat-head-actions">
+                <button class="chat-new mono" id="chat-new" type="button" aria-label="Start a new chat" title="Start a new chat">+ new</button>
+                <button class="chat-close" id="chat-close" type="button" aria-label="Close chat">&times;</button>
+            </div>
         </header>
         <div class="chat-log" id="chat-log" aria-live="polite">
             <div class="chat-msg chat-msg-ai">
