@@ -1111,6 +1111,18 @@ img, svg, canvas { max-width: 100%; }
 }
 .chat-msg-error { border-color: oklch(60% 0.19 25 / 0.5); color: oklch(78% 0.12 25); }
 
+/* block caret while a reply types itself out */
+.chat-msg-revealing p::after {
+    content: "";
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    margin-left: 0.15em;
+    vertical-align: text-bottom;
+    background: var(--phosphor);
+    animation: caret-blink 1.2s step-end infinite;
+}
+
 .chat-typing {
     align-self: flex-start;
     display: inline-flex;

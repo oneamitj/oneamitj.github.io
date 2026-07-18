@@ -1,7 +1,7 @@
 // Service Worker for Amit's Portfolio PWA (redesign)
-const CACHE_NAME = 'amit-portfolio-v2.3.1';
-const STATIC_CACHE_NAME = 'amit-static-v2.3.1';
-const DYNAMIC_CACHE_NAME = 'amit-dynamic-v2.3.1';
+const CACHE_NAME = 'amit-portfolio-v2.3.2';
+const STATIC_CACHE_NAME = 'amit-static-v2.3.2';
+const DYNAMIC_CACHE_NAME = 'amit-dynamic-v2.3.2';
 
 // Files to cache for offline functionality
 const STATIC_ASSETS = [

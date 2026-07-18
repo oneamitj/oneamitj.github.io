@@ -496,6 +496,37 @@
         return div;
     }
 
+    // Typewriter reveal for AI replies. The proxy returns the full text at
+    // once; the reveal is presentation only, so input unlocks as soon as it
+    // starts and a new submit completes any reveal still in flight.
+    let revealFinish = null;
+    function revealMsg(text) {
+        const div = appendMsg('ai', '');
+        const p = div.querySelector('p');
+        if (reduceMotion) {
+            p.textContent = text;
+            chatLog.scrollTop = chatLog.scrollHeight;
+            return;
+        }
+        div.classList.add('chat-msg-revealing');
+        let i = 0;
+        // chunk size scales with length: full reveal never takes over ~3.5s
+        const step = Math.max(2, Math.round(text.length / 220));
+        const timer = setInterval(function () {
+            i += step;
+            p.textContent = text.slice(0, i);
+            chatLog.scrollTop = chatLog.scrollHeight;
+            if (i >= text.length && revealFinish) revealFinish();
+        }, 16);
+        revealFinish = function () {
+            clearInterval(timer);
+            revealFinish = null;
+            p.textContent = text;
+            div.classList.remove('chat-msg-revealing');
+            chatLog.scrollTop = chatLog.scrollHeight;
+        };
+    }
+
     async function askOneAI(message) {
         const tokenHeaders = new Headers();
         tokenHeaders.append('X-Factor', Date.now().toString());
@@ -520,6 +551,7 @@
         const text = message.trim();
         if (chatBusy || !text) return;
         chatBusy = true;
+        if (revealFinish) revealFinish(); // settle any reply still typing out
         const sug = document.getElementById('chat-suggests');
         if (sug) sug.remove();
         appendMsg('user', text);
@@ -528,7 +560,7 @@
         try {
             const reply = await askOneAI(buildPayload(text, chatHistory));
             typing.remove();
-            appendMsg('ai', reply);
+            revealMsg(reply);
             rememberTurn(chatHistory, 'user', text);
             rememberTurn(chatHistory, 'assistant', reply);
         } catch (err) {
@@ -542,6 +574,7 @@
 
     function resetChat() {
         if (chatBusy) return; // never wipe mid-flight
+        if (revealFinish) revealFinish(); // stop a reply still typing out
         chatHistory = [];
         if (chatLog) chatLog.innerHTML = chatLogHome;
         if (chatInput) { chatInput.value = ''; chatInput.focus(); }
