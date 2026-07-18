@@ -5,41 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>404 - Page Not Found | Amit Joshi</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b1210">
 <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..750&family=Fragment+Mono&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0d0d0d;color:#00ff41;font-family:'Courier New',monospace;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}
-.container{max-width:600px}
-h1{font-size:4rem;margin-bottom:1rem;text-shadow:0 0 20px rgba(0,255,65,0.5)}
-p{font-size:1.125rem;line-height:1.6;margin-bottom:1.5rem;color:#94a3b8}
-a{color:#00aaff;text-decoration:none}
-a:hover{text-decoration:underline}
-.links{list-style:none;display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2rem}
-.links a{border:1px solid #334155;padding:0.5rem 1rem;border-radius:0.5rem;transition:all 0.2s}
-.links a:hover{border-color:#00ff41;text-decoration:none}
-pre{color:#00ff41;font-size:0.75rem;margin-bottom:2rem;line-height:1.2}
+body{background:#0b1210;background:oklch(14.5% 0.012 170);color:oklch(94% 0.01 170);font-family:"Bricolage Grotesque",system-ui,sans-serif;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.container{max-width:38rem}
+.path{font-family:"Fragment Mono",monospace;font-size:0.8125rem;color:oklch(72% 0.14 155);margin-bottom:1rem}
+.path::before{content:"$ cd ";color:oklch(65% 0.024 170)}
+h1{font-size:clamp(4rem,15vw,7rem);font-weight:750;letter-spacing:-0.03em;line-height:1;margin-bottom:0.5rem}
+h1 span{color:oklch(86% 0.21 155)}
+p{font-size:1.0625rem;line-height:1.6;margin-bottom:1rem;color:oklch(78% 0.022 170)}
+.mono{font-family:"Fragment Mono",monospace;font-size:0.8125rem;color:oklch(65% 0.024 170)}
+.links{display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;margin-top:2rem}
+.links a{color:oklch(94% 0.01 170);text-decoration:none;border:1px solid oklch(30% 0.02 170);padding:0.6rem 1.1rem;border-radius:10px;font-weight:600;font-size:0.9375rem;transition:border-color 160ms ease-out,color 160ms ease-out,background-color 160ms ease-out}
+.links a:hover{border-color:oklch(72% 0.14 155);color:oklch(86% 0.21 155);background:oklch(86% 0.21 155/0.08)}
+.links a.primary{background:oklch(86% 0.21 155);border-color:transparent;color:oklch(16% 0.03 165)}
+.links a.primary:hover{box-shadow:0 6px 32px oklch(86% 0.21 155/0.28)}
 </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","w9k177a7ak");</script>
 </head>
 <body>
 <div class="container">
-<pre>
-  _  _    ___  _  _
- | || |  / _ \| || |
- | || |_| | | | || |_
- |__   _| | | |__   _|
-    | | | |_| |  | |
-    |_|  \___/   |_|
-</pre>
-<h1>404</h1>
-<p>Command not found. The page you're looking for doesn't exist.</p>
-<p style="color:#00ff41">Try one of these instead:</p>
+<p class="path">~/nowhere</p>
+<h1>404<span>.</span></h1>
+<p>Command not found. This page doesn't exist, or it moved somewhere smarter.</p>
+<p class="mono">error: ENOENT — no such file or directory</p>
 <div class="links">
-<a href="/">Terminal Portfolio</a>
+<a class="primary" href="/">Back home</a>
+<a href="/cv/">View CV</a>
 <a href="/career/">DevOps Roadmap</a>
-<a href="/archmentor/">ArchMentor</a>
-<a href="/data/AmitJ_CV.pdf">Resume</a>
+<a href="https://linkedin.com/in/oneamitj">LinkedIn</a>
 </div>
 </div>
 </body>

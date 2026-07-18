@@ -3,7 +3,7 @@
 ## Overview
 - 2+ years of expert-level GenAI experience
 - Architected 10+ production-level LLM and GenAI solutions
-- Spearheaded AWS Generative AI Competency for Leapfrog Technology
+- Spearheaded AWS Generative AI and Agentic AI Consulting Competencies for Leapfrog Technology
 - Established the company's GenAI development services
 
 ## LLM Platforms & Models

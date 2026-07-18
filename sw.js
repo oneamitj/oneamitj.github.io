@@ -1,19 +1,23 @@
-// Service Worker for Amit's Terminal Portfolio PWA
-const CACHE_NAME = 'amit-terminal-portfolio-v1.0.0';
-const STATIC_CACHE_NAME = 'amit-static-v1.0.0';
-const DYNAMIC_CACHE_NAME = 'amit-dynamic-v1.0.0';
+// Service Worker for Amit's Portfolio PWA (redesign)
+const CACHE_NAME = 'amit-portfolio-v2.2.0';
+const STATIC_CACHE_NAME = 'amit-static-v2.2.0';
+const DYNAMIC_CACHE_NAME = 'amit-dynamic-v2.2.0';
 
 // Files to cache for offline functionality
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/css/main.css',
-  '/css/terminal.css',
-  '/css/retro-theme.css',
-  '/assets/fonts/terminal-font.css',
+  '/css/site.css',
+  '/css/terminal-overlay.css',
+  '/js/site.js',
+  '/js/constellation.js',
+  '/js/vendor/gsap.min.js',
+  '/js/vendor/ScrollTrigger.min.js',
+  '/js/vendor/lenis.min.js',
   '/js/terminal.js',
   '/js/commands.js',
   '/js/typewriter.js',
+  '/js/pwa.js',
   '/data/skills.json',
   '/data/projects.json',
   '/data/experience.json',

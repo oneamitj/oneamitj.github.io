@@ -54,6 +54,8 @@
     { "name": "Azure AI", "level": "Advanced", "icon": "✨", "years": "2+ years" },
     { "name": "RAG Systems", "level": "Expert", "icon": "🔗", "years": "2+ years" },
     { "name": "Prompt Engineering", "level": "Expert", "icon": "📝", "years": "2+ years" },
+    { "name": "MCP", "level": "Advanced", "icon": "🔌", "years": "1+ years" },
+    { "name": "Claude Agent SDK", "level": "Advanced", "icon": "🛠️", "years": "1+ years" },
     { "name": "LangChain", "level": "Advanced", "icon": "⛓️", "years": "1+ years" },
     { "name": "LangSmith", "level": "Advanced", "icon": "🔬", "years": "1+ years" },
     { "name": "Pinecone", "level": "Advanced", "icon": "🌲", "years": "1+ years" },

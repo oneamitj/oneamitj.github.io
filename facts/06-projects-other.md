@@ -87,3 +87,10 @@
 - **URL:** https://amitj.me
 - **Technologies:** HTML5, CSS3, Vanilla JavaScript, PWA, Service Worker, JSON-LD Structured Data
 - **Features:** PWA support, offline functionality, OneAI assistant, CRT effects, command history, Melbourne time clock, Easter eggs
+
+## 13. TimezoneTracker (Personal Project)
+- **Period:** 2025 – Present
+- **Description:** "Compare Time Across Cities Instantly" — a timezone management app that lets you track, compare, and coordinate times across multiple locations. Designed, built, and deployed by Amit solo, end-to-end, on every platform.
+- **Platforms:** iOS (Apple App Store), Android (Google Play), Web app, and Chrome extension
+- **URL:** https://timezonetracker.app (details at https://timezonetracker.app/about)
+- **Significance:** Demonstrates hands-on, full product ownership outside client work: one person taking a product from idea to published apps across four platforms.

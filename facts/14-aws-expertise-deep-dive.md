@@ -2,7 +2,7 @@
 
 ## Overview
 - AWS is Amit's primary cloud platform with 8+ years of expert-level experience
-- Spearheaded Leapfrog Technology's AWS Generative AI Competency and APN Advanced membership
+- Spearheaded Leapfrog Technology's AWS Generative AI Competency, AWS Agentic AI Consulting Competency, and APN Advanced membership
 - Architected 10+ production-level solutions on AWS
 
 ## AWS Services Used in Production
@@ -56,7 +56,7 @@
 
 ## AWS Partnership Achievements
 - Led Leapfrog Technology to achieve AWS APN Advanced Partner status
-- Spearheaded AWS Generative AI Competency certification for the company
+- Spearheaded AWS Generative AI and Agentic AI Consulting Competency certifications for the company
 - These are significant partnership milestones that demonstrate organizational-level AWS expertise
 
 ## AWS Architecture Patterns Amit Has Implemented

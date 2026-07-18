@@ -24,7 +24,7 @@
 
 ### Solution Architect — Leapfrog Technology (Dec 2023 – Present)
 - Led cross-functional team for Addy AI spanning multiple countries
-- Spearheaded technical initiative to secure AWS Generative AI Competency
+- Spearheaded technical initiative to secure AWS Generative AI and Agentic AI Consulting Competencies
 - Guided company to APN Advanced Partner status
 
 ## Leadership Certifications
@@ -51,4 +51,4 @@
 - Created reusable LLM integration patterns for the organization
 - Built company-wide DevOps documentation standards
 - Led compliance initiatives that enabled the company to serve regulated industries
-- Spearheaded AWS partnership achievements (APN Advanced, GenAI Competency)
+- Spearheaded AWS partnership achievements (APN Advanced, GenAI & Agentic AI Competencies)

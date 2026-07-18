@@ -18,11 +18,13 @@
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3, Vanilla JavaScript
+    HTML5, CSS3 (OKLCH), Vanilla JavaScript
+    GSAP + ScrollTrigger + Lenis motion
+    Canvas constellation background
     Progressive Web App (PWA)
     Service Worker
     JSON-LD Structured Data
-    Terminal-based UI
+    Hidden retro terminal (press ~)
     AWS Expert Level Knowledge
     Terraform Infrastructure as Code
     Kubernetes Container Orchestration
@@ -30,7 +32,7 @@
 
 # SITE
 
-    Last update: 2025/07/03
+    Last update: 2026/07/18
     Language: English
     Doctype: HTML5
     IDE: VS Code

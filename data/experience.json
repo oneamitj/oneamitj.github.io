@@ -7,7 +7,7 @@
     "duration": "2+ years",
     "description": "Solution Architect specializing in the intersection of High-Scale Cloud Infrastructure and GenAI with deep expertise in AWS. Architecting LLM and GenAI systems, serverless multi-tenant platforms, and automated CI/CD pipelines.",
     "key_achievements": [
-      "Spearheaded technical initiative to secure AWS Generative AI Competency and APN Advanced membership",
+      "Spearheaded technical initiative to secure AWS Generative AI Competency, AWS Agentic AI Consulting Competency, AWS DevOps Competency, AWS Service Delivery, and APN Advanced membership",
       "Architected and deployed 10+ production-level LLM and GenAI solutions with optimized RAG architectures",
       "Built HIPAA-compliant, multi-tenant serverless system with data isolation and rapid tenant onboarding",
       "Delivered 50% reduction in operational costs and 40% improvement in product performance",
@@ -21,8 +21,8 @@
     {
       "title": "Solutions Architect",
       "company": "Addy AI (a Leapfrog Technology Inc. venture)",
-      "period": "Jun 2024 - Present",
-      "duration": "1+ year",
+      "period": "Jun 2024 - Jun 2025",
+      "duration": "1 year 1 month",
       "type": "Contract/Consulting",
       "highlights": [
         "Architected LLM-based solution to automate U.S. healthcare provider back-office referral workflows",
@@ -126,17 +126,53 @@
   },
   "certifications": [
     {
+      "name": "Introduction to Model Context Protocol",
+      "issuer": "Anthropic",
+      "date": "Apr 2026"
+    },
+    {
+      "name": "Introduction to Agent Skills",
+      "issuer": "Anthropic",
+      "date": "Apr 2026"
+    },
+    {
+      "name": "Claude Code in Action",
+      "issuer": "Anthropic",
+      "date": "Apr 2026"
+    },
+    {
+      "name": "Building with the Claude API",
+      "issuer": "Anthropic",
+      "date": "Apr 2026"
+    },
+    {
       "name": "Self-Awareness: Leading with Emotional Intelligence",
       "issuer": "Dale Carnegie Digital",
       "date": "Jan 2022"
     },
     {
       "name": "Secrets of Motivation",
-      "issuer": "Dale Carnegie Digital", 
+      "issuer": "Dale Carnegie Digital",
       "date": "Jan 2022"
+    },
+    {
+      "name": "Docker Essentials: Extend Your Apps With Containers",
+      "issuer": "IBM",
+      "date": "Mar 2018"
+    },
+    {
+      "name": "IBM Blockchain Essentials",
+      "issuer": "IBM",
+      "date": "Jan 2018"
     }
   ],
   "awards": [
+    {
+      "name": "Leapfrog Hackathon 2026 - Winning Team Advisor",
+      "issuer": "Leapfrog Technology",
+      "date": "2026",
+      "description": "Advised 'Project Aegis' (winner and People's Choice), a unified security control & risk visibility platform, mentoring the team remotely from Australia."
+    },
     {
       "name": "Ncell App Camp 2014 (Corporate Solutions Winner)",
       "issuer": "Ncell",
@@ -164,14 +200,48 @@
       "venue": "AWS User Group Meetup",
       "url": "https://amitj.me/aug.ppt",
       "description": "Presentation on GenAI maturing into the age of autonomous agents — foundation models as infrastructure, agents as the interface, vibe coding, vibe DevOps, and governance at prompt time."
+    },
+    {
+      "name": "Leapfrog Technology Podcast",
+      "venue": "Podcast",
+      "description": "Guest episode with Leapfrog's VP & Head of AI, covering GenAI delivery and platform engineering."
     }
   ],
   "articles": [
     {
       "name": "In the Age of Vibes, Someone Has to Be the Checker",
       "platform": "LinkedIn",
+      "read_time": "12 min read",
       "url": "https://www.linkedin.com/pulse/age-vibes-someone-has-checker-amit-joshi-wzpsc/",
-      "description": "Exploring how vibe coding is reshaping software development and why the role of the human reviewer — the checker — becomes even more critical when AI generates the code."
+      "description": "How to actually use AI-assisted coding with a real development team — not just in demos, but in production."
+    },
+    {
+      "name": "From Admiring Watches to Building One: How GenAI/LLMs Became My Silent Co-Creator",
+      "platform": "LinkedIn",
+      "read_time": "6 min read",
+      "url": "https://www.linkedin.com/pulse/from-admiring-watches-building-one-how-genaillms-became-amit-joshi-kq7zc/",
+      "description": "A story about hobby, curiosity, and watches — building a watch with GenAI as a silent co-creator."
+    },
+    {
+      "name": "The Delegator's Manifesto: Navigating the Dawn of the Agents in 2026",
+      "platform": "LinkedIn",
+      "read_time": "3 min read",
+      "url": "https://www.linkedin.com/pulse/delegators-manifesto-navigating-dawn-agents-2026-amit-joshi-00uic/",
+      "description": "How the nature of 'doing' has changed as autonomous agents become the interface to work."
+    },
+    {
+      "name": "Can I call myself a Mobile App Developer? My experience with AI-Assisted Programming",
+      "platform": "LinkedIn",
+      "read_time": "5 min read",
+      "url": "https://www.linkedin.com/pulse/can-i-call-myself-mobile-app-developer-my-experience-amit-joshi-5x7ec/",
+      "description": "Building and shipping a mobile app with AI-assisted programming, after 11 years in IT."
+    },
+    {
+      "name": "Create Username and Password based SFTP with Lambda as IdP in AWS Transfer Family",
+      "platform": "LinkedIn",
+      "read_time": "7 min read",
+      "url": "https://www.linkedin.com/pulse/create-username-password-based-sftp-lambda-idp-aws-transfer-joshi/",
+      "description": "A hands-on AWS guide: username/password SFTP with Lambda as identity provider in AWS Transfer Family."
     }
   ],
   "career_summary": {
@@ -186,7 +256,7 @@
       "Compliance (HIPAA/SOC2/GDPR/PCI-DSS)"
     ],
     "key_metrics": [
-      "Spearheaded AWS Generative AI Competency and APN Advanced membership",
+      "Spearheaded AWS Generative AI & Agentic AI Consulting Competencies and APN Advanced membership",
       "Architected 10+ production-level LLM and GenAI solutions",
       "Achieved 40% performance improvement and 50% cost reduction in GenAI products",
       "Scaled document processing throughput by 10x (1000+ pages vs 100+)",
