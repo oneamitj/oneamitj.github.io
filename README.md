@@ -1,11 +1,11 @@
-# Retro DevOps Portfolio - Amit Joshi
+# amitj.me — Portfolio of Amit Joshi
 
-Welcome to my Retro DevOps Portfolio! This project showcases my 11+ years of experience in DevOps, AWS cloud architecture, and GenAI integration through a nostalgic command-line interface style reminiscent of classic computing.
+A cinematic dark portfolio for a Solution Architect working at the intersection of AWS cloud infrastructure and GenAI. Scroll-driven storytelling on the surface, a fully working retro terminal underneath (press `~`).
 
 ## 🚀 About This Portfolio
 
-This interactive terminal-based portfolio demonstrates my expertise in:
-- **Cloud Architecture**: AWS Expert with APN Advanced Partner & AWS GenAI Competency
+The site presents 10+ years of experience in DevOps, AWS cloud architecture, and GenAI:
+- **Cloud Architecture**: AWS Expert with APN Advanced Partner, AWS GenAI & DevOps Competencies
 - **DevOps Engineering**: Terraform, Kubernetes, Docker, CI/CD
 - **GenAI Integration**: 10+ production LLM solutions, 40% performance improvement, 50% cost reduction
 - **Team Leadership**: Grew teams from 5 to 25+ engineers
@@ -13,29 +13,24 @@ This interactive terminal-based portfolio demonstrates my expertise in:
 
 ## 🎯 Features
 
-- **Progressive Web App (PWA)**: Installable as native app with offline support
-- **Interactive Command-Line Interface**: Navigate using familiar terminal commands
-- **AI Assistant (OneAI)**: Ask questions about my experience and skills
-- **Real-time Typewriter Effects**: Authentic retro computing experience
-- **Comprehensive Portfolio**: Skills, projects, experience, achievements
-- **CRT Monitor Effects**: Nostalgic visual styling with scan lines
-- **Responsive Design**: Works on desktop and mobile devices
-- **Offline Functionality**: Complete portfolio access without internet
-- **Service Worker**: Background caching and updates
-- **Easter Eggs**: Hidden commands for the curious explorer
-- **Command History**: Navigate previous commands with arrow keys
-- **Local Time Clock**: Real-time clock showing Amit's current timezone
+- **Cinematic redesign**: dark "mission control" theme, phosphor green + amber accents, GSAP-orchestrated hero entrance and scroll choreography
+- **Living constellation background**: canvas-drawn architecture diagram (nodes, edges, data pulses) with pointer parallax
+- **Retro terminal easter egg**: the original interactive CLI lives on as a summonable overlay (`~` key, nav button, or `/?cmd=<command>` deep link) — all commands, easter eggs, and history intact
+- **AI Assistant (oneai)**: chat panel + terminal command, backed by a Pinecone RAG proxy
+- **Progressive Web App (PWA)**: installable, offline-capable, service-worker cached
+- **Accessible & resilient**: semantic HTML readable without JavaScript, `prefers-reduced-motion` alternatives, WCAG AA contrast
+- **Comprehensive content**: experience timeline, featured projects, skills, LinkedIn recommendations, articles, talks, certifications
+- **Melbourne clock**: real-time local timezone in the hero and terminal
 
 ## 🛠️ Technologies Used
 
-- **Frontend**: Pure HTML5, CSS3, Vanilla JavaScript (no frameworks!)
-- **PWA**: Service Worker, Web App Manifest, Background Sync
-- **AI Integration**: OneAI assistant backed by Pinecone vector store (RAG)
-- **Styling**: Custom CSS with CRT effects, retro fonts
-- **Fonts**: VT323, Press Start 2P (Google Fonts)
+- **Frontend**: Pure HTML5, CSS3 (OKLCH color), Vanilla JavaScript — no build step
+- **Motion**: GSAP + ScrollTrigger + Lenis (vendored locally)
+- **Typography**: Bricolage Grotesque + Fragment Mono (VT323 in terminal mode)
+- **PWA**: Service Worker, Web App Manifest
+- **AI Integration**: oneai assistant backed by Pinecone vector store (RAG)
 - **Data**: JSON-based content management + Markdown CV
-- **Caching**: Advanced service worker with cache strategies
-- **SEO**: Sitemap, robots.txt, structured metadata
+- **SEO**: Sitemap, robots.txt, JSON-LD structured data
 - **Security**: .well-known/security.txt, HTTPS-only PWA
 - **Hosting**: GitHub Pages with custom domain (amitj.me)
 

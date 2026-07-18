@@ -67,8 +67,8 @@ class PWAManager {
 
     // Show update notification
     showUpdateNotification() {
-        if (window.terminal) {
-            window.terminal.typeText(`
+        if (window.retroTerminal) {
+            window.retroTerminal.typeText(`
 🔄 Portfolio update available!
 
 Type 'pwa update' to refresh with latest changes.
@@ -107,9 +107,9 @@ Type 'pwa update' to refresh with latest changes.
 
     // Show install hint in terminal
     showInstallHint() {
-        if (window.terminal && !this.isInstalled) {
+        if (window.retroTerminal && !this.isInstalled) {
             setTimeout(() => {
-                window.terminal.typeText(`
+                window.retroTerminal.typeText(`
 💡 Tip: This portfolio can be installed as an app!
 
 Type 'pwa install' to install it on your device.
@@ -120,8 +120,8 @@ Type 'pwa install' to install it on your device.
 
     // Show installation success message
     showInstallSuccess() {
-        if (window.terminal) {
-            window.terminal.typeText(`
+        if (window.retroTerminal) {
+            window.retroTerminal.typeText(`
 🎉 Portfolio app installed successfully!
 
 You can now access it from your home screen/desktop.
@@ -208,7 +208,7 @@ You can now access it from your home screen/desktop.
     // Add PWA-related commands to terminal
     addPWACommands() {
         // We'll integrate this with the terminal's command system
-        if (window.terminal) {
+        if (window.retroTerminal) {
             // Add commands after terminal is initialized
             setTimeout(() => {
                 this.integratePWACommands();
@@ -225,16 +225,16 @@ You can now access it from your home screen/desktop.
     // Handle offline/online status
     setupNetworkHandling() {
         window.addEventListener('online', () => {
-            if (window.terminal) {
-                window.terminal.typeText(`
+            if (window.retroTerminal) {
+                window.retroTerminal.typeText(`
 🌐 Connection restored! You're back online.
 `, 10);
             }
         });
 
         window.addEventListener('offline', () => {
-            if (window.terminal) {
-                window.terminal.typeText(`
+            if (window.retroTerminal) {
+                window.retroTerminal.typeText(`
 📱 You're now offline, but the portfolio still works!
 
 All cached content is available for browsing.

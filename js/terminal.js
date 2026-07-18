@@ -40,12 +40,16 @@ class Terminal {
     init() {
         this.input.addEventListener('keydown', (e) => this.handleInput(e));
         this.input.focus();
-        
+
         // Update the main prompt to show current path
         this.updateMainPrompt();
-        
-        // Keep input focused
-        document.addEventListener('click', () => this.input.focus());
+
+        // Keep input focused while interacting with the terminal
+        // (scoped to #terminal so the rest of the page keeps normal focus behavior)
+        const terminalEl = document.getElementById('terminal');
+        if (terminalEl) {
+            terminalEl.addEventListener('click', () => this.input.focus());
+        }
     }
 
     async showWelcome() {
@@ -2353,16 +2357,11 @@ The portfolio is fully functional thanks to service worker caching.
             this.output.scrollTop = this.output.scrollHeight;
             
             // Also scroll the main terminal container if needed
+            // (window scrolling removed: the terminal now lives in an overlay)
             const terminal = document.getElementById('terminal');
             if (terminal) {
                 terminal.scrollTop = terminal.scrollHeight;
             }
-            
-            // Scroll the window itself if content exceeds viewport
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'auto' // Use 'auto' instead of 'smooth' for real-time typing
-            });
         });
     }
 
@@ -2435,7 +2434,11 @@ The portfolio is fully functional thanks to service worker caching.
     }
 }
 
-// Initialize terminal when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    new Terminal();
-});
+// Lazy boot: the terminal is an overlay easter egg on the redesigned site.
+// site.js calls window.bootTerminal() the first time the overlay opens.
+window.bootTerminal = function () {
+    if (!window.retroTerminal) {
+        window.retroTerminal = new Terminal();
+    }
+    return window.retroTerminal;
+};
