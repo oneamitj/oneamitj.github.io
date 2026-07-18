@@ -66,6 +66,20 @@
     <meta name="msapplication-TileColor" content="#0b1210">
     <meta name="msapplication-config" content="browserconfig.xml">
 
+    <!-- Theme boot: saved choice > OS preference > dark. Runs before first paint. -->
+    <script>
+    (function () {
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) { /* private mode */ }
+        if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', t === 'light' ? '#ebf2ef' : '#0b1210');
+    }());
+    </script>
+
     <!-- Apple Touch Icons -->
     <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180x180.png">
@@ -91,7 +105,7 @@
     <link rel="prefetch" href="data/skills.json">
     <!-- Microsoft Clarity -->
     <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","w9k177a7ak");</script>
-    <noscript><style>.chat-fab, .btn-terminal, .terminal-hint { display: none; }</style></noscript>
+    <noscript><style>.chat-fab, .btn-terminal, .btn-theme, .terminal-hint { display: none; }</style></noscript>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -110,6 +124,15 @@
         </nav>
         <div class="nav-actions">
             <a class="btn btn-ghost btn-sm" href="/cv/">CV</a>
+            <button class="btn-theme" id="theme-toggle" type="button" aria-label="Switch to light theme">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"></path>
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
             <button class="btn-terminal" id="open-terminal" type="button" aria-label="Open the interactive terminal" title="Open terminal (~)">
                 <span aria-hidden="true">&gt;_</span>
             </button>
@@ -412,7 +435,10 @@
     <section class="chat-panel" id="chat-panel" aria-label="oneai — ask about Amit" hidden>
         <header class="chat-head">
             <p class="mono chat-head-title"><span class="status-dot" aria-hidden="true"></span>oneai · ask about amit</p>
-            <button class="chat-close" id="chat-close" type="button" aria-label="Close chat">&times;</button>
+            <div class="chat-head-actions">
+                <button class="chat-new mono" id="chat-new" type="button" aria-label="Start a new chat" title="Start a new chat">+ new</button>
+                <button class="chat-close" id="chat-close" type="button" aria-label="Close chat">&times;</button>
+            </div>
         </header>
         <div class="chat-log" id="chat-log" aria-live="polite">
             <div class="chat-msg chat-msg-ai">
@@ -450,7 +476,6 @@
     <!-- Scripts -->
     <script src="js/vendor/gsap.min.js" defer></script>
     <script src="js/vendor/ScrollTrigger.min.js" defer></script>
-    <script src="js/vendor/lenis.min.js" defer></script>
     <script src="js/constellation.js" defer></script>
     <script src="js/site.js" defer></script>
     <script src="js/pwa.js" defer></script>

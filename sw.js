@@ -1,7 +1,7 @@
 // Service Worker for Amit's Portfolio PWA (redesign)
-const CACHE_NAME = 'amit-portfolio-v2.2.0';
-const STATIC_CACHE_NAME = 'amit-static-v2.2.0';
-const DYNAMIC_CACHE_NAME = 'amit-dynamic-v2.2.0';
+const CACHE_NAME = 'amit-portfolio-v2.4.0';
+const STATIC_CACHE_NAME = 'amit-static-v2.4.0';
+const DYNAMIC_CACHE_NAME = 'amit-dynamic-v2.4.0';
 
 // Files to cache for offline functionality
 const STATIC_ASSETS = [
@@ -13,7 +13,6 @@ const STATIC_ASSETS = [
   '/js/constellation.js',
   '/js/vendor/gsap.min.js',
   '/js/vendor/ScrollTrigger.min.js',
-  '/js/vendor/lenis.min.js',
   '/js/terminal.js',
   '/js/commands.js',
   '/js/typewriter.js',

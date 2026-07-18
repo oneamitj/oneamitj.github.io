@@ -26,6 +26,39 @@
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+    /* ============ Theme toggle ============ */
+    // The boot script in <head> already set data-theme before first paint;
+    // this only handles switching, persistence, and OS-preference follow.
+    const themeBtn = document.getElementById('theme-toggle');
+    function applyTheme(theme, persist) {
+        document.documentElement.setAttribute('data-theme', theme);
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'light' ? '#ebf2ef' : '#0b1210');
+        if (themeBtn) {
+            themeBtn.setAttribute('aria-label',
+                theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+        }
+        if (persist) {
+            try { localStorage.setItem('theme', theme); } catch (e) { /* private mode */ }
+        }
+        document.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+    }
+    if (themeBtn) {
+        themeBtn.setAttribute('aria-label',
+            document.documentElement.getAttribute('data-theme') === 'light'
+                ? 'Switch to dark theme' : 'Switch to light theme');
+        themeBtn.addEventListener('click', function () {
+            const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            applyTheme(next, true);
+        });
+    }
+    // Follow OS changes live, but only while the visitor has not chosen manually
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
+        let saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (err) { /* private mode */ }
+        if (saved !== 'light' && saved !== 'dark') applyTheme(e.matches ? 'light' : 'dark', false);
+    });
+
     /* ============ Nav scrolled state ============ */
     const nav = document.getElementById('site-nav');
     function onScrollNav() {
@@ -34,20 +67,9 @@
     window.addEventListener('scroll', onScrollNav, { passive: true });
     onScrollNav();
 
-    /* ============ Smooth scroll (Lenis) ============ */
-    let lenis = null;
-    if (!reduceMotion && typeof window.Lenis !== 'undefined') {
-        lenis = new window.Lenis({ lerp: 0.12, wheelMultiplier: 1 });
-        if (hasGSAP && window.ScrollTrigger) {
-            lenis.on('scroll', window.ScrollTrigger.update);
-            window.gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-            window.gsap.ticker.lagSmoothing(0);
-        } else {
-            (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
-        }
-    }
-
-    // Anchor navigation that respects Lenis
+    /* ============ Anchor navigation ============ */
+    // Scrolling is fully native (wheel smoothing felt resistive on trackpads);
+    // anchors glide via scrollIntoView + scroll-margin-top on sections.
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function (e) {
             const id = link.getAttribute('href');
@@ -55,8 +77,7 @@
             const target = document.querySelector(id);
             if (!target) return;
             e.preventDefault();
-            if (lenis) lenis.scrollTo(target, { offset: -64, duration: 1.1 });
-            else target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+            target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
             history.pushState(null, '', id);
         });
     });
@@ -335,8 +356,7 @@
         overlay.hidden = false;
         // next frame so the transition can play
         requestAnimationFrame(function () { overlay.classList.add('open'); });
-        document.body.classList.add('terminal-open');
-        if (lenis) lenis.stop();
+        document.body.classList.add('terminal-open'); // body overflow:hidden locks the page
 
         // lazy-boot the retro terminal on first open
         let term = window.retroTerminal;
@@ -366,7 +386,6 @@
         terminalOpen = false;
         overlay.classList.remove('open');
         document.body.classList.remove('terminal-open');
-        if (lenis) lenis.start();
         const done = function () { overlay.hidden = true; };
         if (reduceMotion) done();
         else setTimeout(done, 280);
@@ -401,11 +420,35 @@
     const fab = document.getElementById('chat-fab');
     const panel = document.getElementById('chat-panel');
     const chatClose = document.getElementById('chat-close');
+    const chatNew = document.getElementById('chat-new');
     const chatLog = document.getElementById('chat-log');
     const chatForm = document.getElementById('chat-form');
     const chatInput = document.getElementById('chat-input');
-    const suggests = document.getElementById('chat-suggests');
     let chatBusy = false;
+
+    // Conversation awareness without an API change: history rides inside the
+    // one plain-text message as an XML block. First message goes raw.
+    const HISTORY_MAX_TURNS = 8;    // 4 exchanges
+    const HISTORY_TURN_CHARS = 600; // per-turn clip keeps the payload lean
+    let chatHistory = [];
+    // pristine greeting + suggestion chips, restored on "new chat"
+    const chatLogHome = chatLog ? chatLog.innerHTML : '';
+
+    function clipTurn(text) {
+        return text.length > HISTORY_TURN_CHARS ? text.slice(0, HISTORY_TURN_CHARS) + '…' : text;
+    }
+    function buildPayload(message, history) {
+        if (!history.length) return message;
+        const lines = history.map(function (t) {
+            return (t.role === 'user' ? 'User: ' : 'Assistant: ') + clipTurn(t.text);
+        });
+        return '<conversation_history>\n' + lines.join('\n') + '\n</conversation_history>\n\n' +
+               '<current_message>\n' + message + '\n</current_message>';
+    }
+    function rememberTurn(history, role, text) {
+        history.push({ role: role, text: text });
+        while (history.length > HISTORY_MAX_TURNS) history.shift();
+    }
 
     function toggleChat(open) {
         if (!panel || !fab) return;
@@ -439,6 +482,37 @@
         return div;
     }
 
+    // Typewriter reveal for AI replies. The proxy returns the full text at
+    // once; the reveal is presentation only, so input unlocks as soon as it
+    // starts and a new submit completes any reveal still in flight.
+    let revealFinish = null;
+    function revealMsg(text) {
+        const div = appendMsg('ai', '');
+        const p = div.querySelector('p');
+        if (reduceMotion) {
+            p.textContent = text;
+            chatLog.scrollTop = chatLog.scrollHeight;
+            return;
+        }
+        div.classList.add('chat-msg-revealing');
+        let i = 0;
+        // chunk size scales with length: full reveal never takes over ~3.5s
+        const step = Math.max(2, Math.round(text.length / 220));
+        const timer = setInterval(function () {
+            i += step;
+            p.textContent = text.slice(0, i);
+            chatLog.scrollTop = chatLog.scrollHeight;
+            if (i >= text.length && revealFinish) revealFinish();
+        }, 16);
+        revealFinish = function () {
+            clearInterval(timer);
+            revealFinish = null;
+            p.textContent = text;
+            div.classList.remove('chat-msg-revealing');
+            chatLog.scrollTop = chatLog.scrollHeight;
+        };
+    }
+
     async function askOneAI(message) {
         const tokenHeaders = new Headers();
         tokenHeaders.append('X-Factor', Date.now().toString());
@@ -460,16 +534,21 @@
     }
 
     async function submitChat(message) {
-        if (chatBusy || !message.trim()) return;
+        const text = message.trim();
+        if (chatBusy || !text) return;
         chatBusy = true;
-        if (suggests) suggests.remove();
-        appendMsg('user', message.trim());
+        if (revealFinish) revealFinish(); // settle any reply still typing out
+        const sug = document.getElementById('chat-suggests');
+        if (sug) sug.remove();
+        appendMsg('user', text);
         if (chatInput) { chatInput.value = ''; chatInput.disabled = true; }
         const typing = showTyping();
         try {
-            const reply = await askOneAI(message.trim());
+            const reply = await askOneAI(buildPayload(text, chatHistory));
             typing.remove();
-            appendMsg('ai', reply);
+            revealMsg(reply);
+            rememberTurn(chatHistory, 'user', text);
+            rememberTurn(chatHistory, 'assistant', reply);
         } catch (err) {
             typing.remove();
             appendMsg('error', "Hmm, my AI brain didn't respond. Try again in a moment, or just ask the human: linkedin.com/in/oneamitj");
@@ -479,13 +558,26 @@
         }
     }
 
+    function resetChat() {
+        if (chatBusy) return; // never wipe mid-flight
+        if (revealFinish) revealFinish(); // stop a reply still typing out
+        chatHistory = [];
+        if (chatLog) chatLog.innerHTML = chatLogHome;
+        if (chatInput) { chatInput.value = ''; chatInput.focus(); }
+    }
+    if (chatNew) chatNew.addEventListener('click', resetChat);
+
     if (chatForm) {
         chatForm.addEventListener('submit', function (e) {
             e.preventDefault();
             submitChat(chatInput ? chatInput.value : '');
         });
     }
-    document.querySelectorAll('.chat-suggest').forEach(function (btn) {
-        btn.addEventListener('click', function () { submitChat(btn.textContent); });
-    });
+    // delegated so chips restored by resetChat keep working
+    if (chatLog) {
+        chatLog.addEventListener('click', function (e) {
+            const btn = e.target.closest ? e.target.closest('.chat-suggest') : null;
+            if (btn) submitChat(btn.textContent);
+        });
+    }
 })();

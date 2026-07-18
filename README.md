@@ -25,7 +25,7 @@ The site presents 10+ years of experience in DevOps, AWS cloud architecture, and
 ## 🛠️ Technologies Used
 
 - **Frontend**: Pure HTML5, CSS3 (OKLCH color), Vanilla JavaScript — no build step
-- **Motion**: GSAP + ScrollTrigger + Lenis (vendored locally)
+- **Motion**: GSAP + ScrollTrigger (vendored locally); scrolling itself is native
 - **Typography**: Bricolage Grotesque + Fragment Mono (VT323 in terminal mode)
 - **PWA**: Service Worker, Web App Manifest
 - **AI Integration**: oneai assistant backed by Pinecone vector store (RAG)

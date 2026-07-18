@@ -4,7 +4,9 @@ Visual system of amitj.me — "Mission Control": a cinematic dark portfolio wher
 
 ## Theme
 
-Dark only, by intent: the scene is a CTO clicking through from LinkedIn at 9pm — the screen should feel like mission control at night: dark, alive, precise, quietly glowing. The heritage of the old green-CRT terminal site is evolved (refined phosphor), not cosplayed; the literal CRT look survives only inside the terminal overlay easter egg.
+Dark-first, by intent: the scene is a CTO clicking through from LinkedIn at 9pm — the screen should feel like mission control at night: dark, alive, precise, quietly glowing. The heritage of the old green-CRT terminal site is evolved (refined phosphor), not cosplayed; the literal CRT look survives only inside the terminal overlay easter egg.
+
+A light theme translates the same room to daylight: identical hues (170 neutral tint, phosphor 155, amber 85) with the lightness ramp inverted — mint-tinted paper canvas, white cards, accents deepened to emerald and bronze so every text role clears WCAG AA. Resolution order: saved choice (`localStorage.theme`) > OS `prefers-color-scheme` > dark. A pre-paint boot script in `<head>` stamps `data-theme` on `<html>`; the nav toggle (`#theme-toggle`, sun/moon) flips and persists it and syncs `<meta name="theme-color">`. Light tokens live in `:root[data-theme="light"]`; the few hardcoded dark literals have `[data-theme="light"]` twins at the end of `site.css`. The constellation canvas listens for `themechange` and swaps to the deep palette with boosted alphas (edges ×1.6, nodes ×1.25) so the network keeps equal presence on paper. The terminal overlay stays CRT-dark in both themes.
 
 ## Color
 
@@ -22,6 +24,8 @@ OKLCH throughout. Committed dark strategy: brand-tinted near-black canvas, one s
 | `--phosphor` | `oklch(86% 0.21 155)` | signature accent: CTAs, metrics, accent dot |
 | `--amber` | `oklch(84% 0.14 85)` | warm counterpoint: periods, tags, role line |
 | `--on-accent` | `oklch(16% 0.03 165)` | text on phosphor/amber fills |
+
+Light-theme values (same roles): `--bg oklch(95.5% 0.008 170)`, `--surface oklch(98.8% 0.005 170)`, `--ink oklch(21% 0.02 170)`, `--phosphor oklch(46% 0.108 152)` (emerald), `--amber oklch(50% 0.103 85)` (bronze), `--on-accent oklch(98.5% 0.01 155)`; full set in `:root[data-theme="light"]`.
 
 Semantics: phosphor = results, actions, "go"; amber = time, category, warmth. Never both on the same element.
 
@@ -41,7 +45,7 @@ Semantics: phosphor = results, actions, "go"; amber = time, category, warmth. Ne
 
 ## Motion
 
-GSAP + ScrollTrigger + Lenis (vendored in `js/vendor/`). Ease: expo.out family, no bounce. One orchestrated hero entrance (~1.2s: nav → status → name with blur-out → role → lede → CTAs → proof strip). Scroll reveals are per-section and content-fitted: timeline rail scrub-draws, yaml card clip-path "prints", chips ripple (20ms stagger), quotes settle. Micro: underline slide on nav, arrow nudge on primary CTA, translateX on article titles. Everything JS-applied over a visible default; `prefers-reduced-motion` gets instant content.
+GSAP + ScrollTrigger (vendored in `js/vendor/`); page scrolling is native — wheel smoothing (Lenis) was removed because the lerp felt resistive on laptop trackpads. Anchors glide via `scrollIntoView` + `scroll-margin-top`. Ease: expo.out family, no bounce. One orchestrated hero entrance (~1.2s: nav → status → name with blur-out → role → lede → CTAs → proof strip). Scroll reveals are per-section and content-fitted: timeline rail scrub-draws, yaml card clip-path "prints", chips ripple (20ms stagger), quotes settle. Micro: underline slide on nav, arrow nudge on primary CTA, translateX on article titles. Everything JS-applied over a visible default; `prefers-reduced-motion` gets instant content.
 
 ## Layout
 

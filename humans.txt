@@ -19,7 +19,7 @@
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3 (OKLCH), Vanilla JavaScript
-    GSAP + ScrollTrigger + Lenis motion
+    GSAP + ScrollTrigger motion
     Canvas constellation background
     Progressive Web App (PWA)
     Service Worker

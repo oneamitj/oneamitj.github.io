@@ -9,6 +9,7 @@ class Terminal {
         this.currentPath = '/home/amit';
         this.commandHistory = [];
         this.historyIndex = -1;
+        this.oneaiHistory = []; // conversation turns sent along with each oneai message
         this.isTyping = false; // Track if we're currently typing
         this.shouldStop = false; // Flag to stop typing
         
@@ -321,13 +322,23 @@ Boot sequence complete. Ready for commands...
                 case 'roadmap':
                     await this.handleLaunch('career');
                     break;
-                case 'oneai':
-                    if (args.length > 0) {
-                        await this.handleOneAI(args.join(' '));
+                case 'oneai': {
+                    let oneaiArgs = args;
+                    if (oneaiArgs[0] === '--new') {
+                        this.oneaiHistory = [];
+                        oneaiArgs = oneaiArgs.slice(1);
+                        if (oneaiArgs.length === 0) {
+                            await this.typeText('\noneai: started a new conversation.\n');
+                            break;
+                        }
+                    }
+                    if (oneaiArgs.length > 0) {
+                        await this.handleOneAI(oneaiArgs.join(' '));
                     } else {
-                        await this.showError('oneai: missing message. Usage: oneai <your question>');
+                        await this.showError('oneai: missing message. Usage: oneai <your question> | oneai --new');
                     }
                     break;
+                }
                 case 'sudo':
                     await this.handleRickRoll(command);
                     break;
@@ -867,16 +878,17 @@ Kathmandu University, 2015
                 ]
             },
             oneai: {
-                usage: 'oneai <message> [--help]',
-                description: 'Ask AI questions about Amit and get intelligent responses',
+                usage: 'oneai <message> | oneai --new [message] [--help]',
+                description: 'Ask AI questions about Amit. Remembers the conversation; --new starts fresh',
                 options: [
-                    'message              # Required: your question or message'
+                    'message              # Required: your question or message',
+                    '--new                # Start a new conversation (alone, or before a message)'
                 ],
                 examples: [
                     'oneai "What are your main skills?"',
-                    'oneai "Tell me about your AWS experience"',
-                    'oneai "What projects have you worked on?"',
-                    'oneai "How can you help my company?"',
+                    'oneai "Tell me more about the second one"   # follows up with context',
+                    'oneai --new           # Reset the conversation',
+                    'oneai --new "What projects have you worked on?"',
                     'oneai --help          # Show this help message'
                 ]
             },
@@ -987,7 +999,7 @@ Available Commands:
    contact     - Contact information
 
 🤖 AI Assistant:
-   oneai <msg> - Ask AI questions about me
+   oneai <msg> - Ask AI questions about me (remembers context; --new resets)
 
 🏆 Career:
    achievements - Key career achievements and metrics
@@ -2366,6 +2378,22 @@ The portfolio is fully functional thanks to service worker caching.
     }
 
 
+    // Conversation context rides inside the single plain-text message the
+    // proxy already accepts: an XML history block plus the current message.
+    // The first message of a conversation is sent raw.
+    buildOneAIPayload(message) {
+        const MAX_TURNS = 8;      // 4 exchanges
+        const TURN_CHARS = 600;   // per-turn clip keeps the payload lean
+        while (this.oneaiHistory.length > MAX_TURNS) this.oneaiHistory.shift();
+        if (this.oneaiHistory.length === 0) return message;
+        const lines = this.oneaiHistory.map((t) => {
+            const text = t.text.length > TURN_CHARS ? t.text.slice(0, TURN_CHARS) + '…' : t.text;
+            return (t.role === 'user' ? 'User: ' : 'Assistant: ') + text;
+        });
+        return '<conversation_history>\n' + lines.join('\n') + '\n</conversation_history>\n\n' +
+               '<current_message>\n' + message + '\n</current_message>';
+    }
+
     async handleOneAI(userMessage) {
         try {
             // Show loading message
@@ -2397,7 +2425,7 @@ The portfolio is fully functional thanks to service worker caching.
             const aiResponse = await fetch("https://oneai-proxy.vercel.app/p0", {
                 method: "POST",
                 headers: aiHeaders,
-                body: userMessage,
+                body: this.buildOneAIPayload(userMessage),
                 redirect: "follow"
             });
 
@@ -2406,6 +2434,10 @@ The portfolio is fully functional thanks to service worker caching.
             }
 
             const aiResult = await aiResponse.text();
+
+            // Only successful exchanges become context for the next message
+            this.oneaiHistory.push({ role: 'user', text: userMessage });
+            this.oneaiHistory.push({ role: 'assistant', text: aiResult });
 
             // Display the AI response
             const responseText = aiResult;
