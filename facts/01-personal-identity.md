@@ -42,7 +42,7 @@ Amit Joshi
 - Leapfrog Technology Inc. (headquartered in Seattle, Washington, United States)
 
 ## Professional Summary (Self-Description)
-Solution Architect specializing in the intersection of High-Scale Cloud Infrastructure and GenAI with deep expertise in AWS. Proven record of architecting LLM and GenAI systems, serverless multi-tenant platforms, and automated CI/CD pipelines. Proven track record of modernizing legacy systems, optimizing costs, scaling services to hundreds of thousands of users, and leading cross-functional teams across multiple countries. Strong focus on reliability, compliance, and operational excellence in enterprise and consumer-facing applications.
+Solution Architect with 10+ years across cloud infrastructure, DevOps and GenAI, specialising in taking LLM systems from POC to secure, cost-efficient production on AWS. Architected 10+ production GenAI solutions, including a HIPAA-compliant multi-tenant serverless platform, and cut operational costs while lifting performance. Led Leapfrog Technology to AWS Generative AI, Agentic AI Consulting and DevOps Competencies, and scaled Programiz's compiler infrastructure to 150,000+ concurrent and 10M+ monthly users at half the previous cost. Hands-on with Terraform, Kubernetes, Python and serverless, and experienced leading multi-country engineering teams.  
 
 ## Response Time
 - Usually within 24 hours

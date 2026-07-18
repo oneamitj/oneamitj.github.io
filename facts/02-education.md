@@ -2,7 +2,7 @@
 
 ## Formal Education
 
-### Bachelor of Engineering in Computer Science
+### Bachelor of Engineering (Computer Engineering)
 - **University:** Kathmandu University
 - **Location:** Nepal
 - **Duration:** 2011 - 2015

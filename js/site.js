@@ -87,6 +87,12 @@
         const gsap = window.gsap;
         if (window.ScrollTrigger) gsap.registerPlugin(window.ScrollTrigger);
 
+        // Reveal via .to from a pre-set hidden state, not .from: a .from
+        // immediate-renders its start, and the font-load ScrollTrigger.refresh()
+        // reverts immediate-render tweens mid-flight — stranding the button at
+        // y:14 (this left "View CV" 14px low). clearProps clears it on finish.
+        gsap.set('.hero-cta .btn', { y: 14, autoAlpha: 0 });
+
         /* --- Hero entrance: one orchestrated sequence --- */
         const heroTl = gsap.timeline({ defaults: { ease: 'expo.out' } });
         heroTl
@@ -95,7 +101,7 @@
             .from('.hero-name', { y: 36, autoAlpha: 0, filter: 'blur(12px)', duration: 0.95 }, 0.26)
             .from('.hero-role', { y: 16, autoAlpha: 0, duration: 0.6 }, 0.55)
             .from('.hero-lede', { y: 18, autoAlpha: 0, duration: 0.6 }, 0.66)
-            .from('.hero-cta .btn', { y: 14, autoAlpha: 0, duration: 0.5, stagger: 0.08 }, 0.78)
+            .to('.hero-cta .btn', { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.08, clearProps: 'transform' }, 0.78)
             .from('.proof-strip li', { y: 10, autoAlpha: 0, duration: 0.45, stagger: 0.05 }, 0.9)
             .from('.scroll-cue', { autoAlpha: 0, duration: 0.6 }, 1.15)
             // the system comes alive: one pulse burst ripples through the
@@ -292,18 +298,26 @@
         /* --- Magnetic primary CTAs: the button leans toward the cursor --- */
         document.querySelectorAll('.btn-primary').forEach(function (btn) {
             btn.classList.add('magnetized');
-            const xTo = gsap.quickTo(btn, 'x', { duration: 0.35, ease: 'power3.out' });
-            const yTo = gsap.quickTo(btn, 'y', { duration: 0.35, ease: 'power3.out' });
-            const sTo = gsap.quickTo(btn, 'scale', { duration: 0.25, ease: 'power3.out' });
+            // Create the quickTo controllers lazily on first hover; at setup
+            // they'd claim this button's transform and fight the entrance reveal
+            // above, stranding the primary CTA ~14px low on load (no pointer needed).
+            let xTo, yTo, sTo;
+            function ensureQuickTo() {
+                if (xTo) return;
+                xTo = gsap.quickTo(btn, 'x', { duration: 0.35, ease: 'power3.out' });
+                yTo = gsap.quickTo(btn, 'y', { duration: 0.35, ease: 'power3.out' });
+                sTo = gsap.quickTo(btn, 'scale', { duration: 0.25, ease: 'power3.out' });
+            }
+            btn.addEventListener('pointerenter', function () { ensureQuickTo(); sTo(1.02); });
             btn.addEventListener('pointermove', function (e) {
+                if (!xTo) return;
                 const r = btn.getBoundingClientRect();
                 xTo((e.clientX - (r.left + r.width / 2)) * 0.14);
                 yTo((e.clientY - (r.top + r.height / 2)) * 0.2);
             });
-            btn.addEventListener('pointerenter', function () { sTo(1.02); });
-            btn.addEventListener('pointerleave', function () { xTo(0); yTo(0); sTo(1); });
-            btn.addEventListener('pointerdown', function () { sTo(0.97); });
-            btn.addEventListener('pointerup', function () { sTo(1.02); });
+            btn.addEventListener('pointerleave', function () { if (xTo) { xTo(0); yTo(0); sTo(1); } });
+            btn.addEventListener('pointerdown', function () { if (sTo) sTo(0.97); });
+            btn.addEventListener('pointerup', function () { if (sTo) sTo(1.02); });
         });
 
         /* --- 3D tilt + tracking glow on project cards --- */
