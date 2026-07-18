@@ -26,6 +26,39 @@
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+    /* ============ Theme toggle ============ */
+    // The boot script in <head> already set data-theme before first paint;
+    // this only handles switching, persistence, and OS-preference follow.
+    const themeBtn = document.getElementById('theme-toggle');
+    function applyTheme(theme, persist) {
+        document.documentElement.setAttribute('data-theme', theme);
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'light' ? '#ebf2ef' : '#0b1210');
+        if (themeBtn) {
+            themeBtn.setAttribute('aria-label',
+                theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+        }
+        if (persist) {
+            try { localStorage.setItem('theme', theme); } catch (e) { /* private mode */ }
+        }
+        document.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+    }
+    if (themeBtn) {
+        themeBtn.setAttribute('aria-label',
+            document.documentElement.getAttribute('data-theme') === 'light'
+                ? 'Switch to dark theme' : 'Switch to light theme');
+        themeBtn.addEventListener('click', function () {
+            const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            applyTheme(next, true);
+        });
+    }
+    // Follow OS changes live, but only while the visitor has not chosen manually
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
+        let saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (err) { /* private mode */ }
+        if (saved !== 'light' && saved !== 'dark') applyTheme(e.matches ? 'light' : 'dark', false);
+    });
+
     /* ============ Nav scrolled state ============ */
     const nav = document.getElementById('site-nav');
     function onScrollNav() {

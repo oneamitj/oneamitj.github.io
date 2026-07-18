@@ -11,8 +11,26 @@
     const ctx = canvas.getContext('2d');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    const PHOSPHOR = '148, 238, 178';   // spring green
-    const AMBER = '244, 200, 130';      // warm counterpoint
+    // Palette follows the page theme: bright phosphor on the dark bg,
+    // deep emerald + bronze (same hues, inverted lightness) on the light one.
+    const COLORS = {
+        dark:  { phosphor: '148, 238, 178', amber: '244, 200, 130' },
+        light: { phosphor: '25, 105, 56',   amber: '126, 93, 0' }
+    };
+    let PHOSPHOR = COLORS.dark.phosphor;
+    let AMBER = COLORS.dark.amber;
+    // Deep colors on paper carry less weight than glow on night; boost alphas
+    // in light mode so the network keeps the same presence in both themes.
+    let EDGE_BOOST = 1;
+    let NODE_BOOST = 1;
+    function syncTheme() {
+        const light = document.documentElement.getAttribute('data-theme') === 'light';
+        PHOSPHOR = light ? COLORS.light.phosphor : COLORS.dark.phosphor;
+        AMBER = light ? COLORS.light.amber : COLORS.dark.amber;
+        EDGE_BOOST = light ? 1.6 : 1;
+        NODE_BOOST = light ? 1.25 : 1;
+    }
+    syncTheme();
 
     let width = 0, height = 0, dpr = 1;
     let nodes = [];
@@ -157,7 +175,7 @@
                 const d2 = dx * dx + dy * dy;
                 if (d2 < LINK_DIST * LINK_DIST) {
                     const d = Math.sqrt(d2);
-                    const alpha = (1 - d / LINK_DIST) * 0.1 * scrollFade;
+                    const alpha = (1 - d / LINK_DIST) * 0.1 * EDGE_BOOST * scrollFade;
                     ctx.strokeStyle = 'rgba(' + PHOSPHOR + ',' + alpha.toFixed(3) + ')';
                     ctx.lineWidth = 1;
                     ctx.beginPath();
@@ -205,7 +223,7 @@
             const col = n.warm ? AMBER : PHOSPHOR;
             const breathe = n.hub ? Math.sin(now / 1200 + n.phase) * 0.35 : 0;
             const boost = flashBoost.get(n) || 0;
-            const alpha = Math.min(0.95, ((n.hub ? 0.5 : 0.32) + boost * 0.6) * (boost > 0.05 ? liveFade : scrollFade));
+            const alpha = Math.min(0.95, ((n.hub ? 0.5 : 0.32) * NODE_BOOST + boost * 0.6) * (boost > 0.05 ? liveFade : scrollFade));
             const radius = n.r + breathe + boost * 2.6;
             if (boost > 0.05) {
                 ctx.shadowColor = 'rgba(' + col + ',' + (0.8 * boost).toFixed(3) + ')';
@@ -217,7 +235,7 @@
             ctx.fill();
             ctx.shadowBlur = 0;
             if (n.hub) {
-                ctx.strokeStyle = 'rgba(' + col + ',' + ((0.14 + boost * 0.3) * scrollFade).toFixed(3) + ')';
+                ctx.strokeStyle = 'rgba(' + col + ',' + ((0.14 * EDGE_BOOST + boost * 0.3) * scrollFade).toFixed(3) + ')';
                 ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.arc(nx, ny, radius + 3.5, 0, Math.PI * 2);
@@ -362,6 +380,11 @@
     reduceMotion.addEventListener('change', function () {
         if (reduceMotion.matches) { stop(); drawFrame(performance.now()); }
         else start();
+    });
+
+    document.addEventListener('themechange', function () {
+        syncTheme();
+        if (!running) drawFrame(performance.now()); // repaint the static frame
     });
 
     resize();

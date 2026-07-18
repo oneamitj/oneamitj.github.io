@@ -5,6 +5,8 @@
 
 /* ---------- Tokens ---------- */
 :root {
+    color-scheme: dark;
+
     /* color — deep blue-green night, brand-tinted neutrals (OKLCH) */
     --bg:            oklch(14.5% 0.012 170);
     --bg-elev:       oklch(17%   0.014 170);
@@ -59,6 +61,30 @@
     --z-chat: 600;
     --z-terminal: 700;
     --z-toast: 800;
+}
+
+/* Light theme — the same room at daylight: identical hues (170 neutral,
+   phosphor 155, amber 85), lightness ramp inverted. Accents deepen to
+   emerald and bronze so every text role clears WCAG AA on the paper bg. */
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    --bg:            oklch(95.5% 0.008 170);
+    --bg-elev:       oklch(97.5% 0.006 170);
+    --surface:       oklch(98.8% 0.005 170);
+    --surface-2:     oklch(93%   0.012 170);
+    --line:          oklch(86%   0.018 170);
+    --line-soft:     oklch(90.5% 0.013 170);
+    --ink:           oklch(21%   0.02  170);
+    --ink-2:         oklch(36%   0.025 170);
+    --ink-3:         oklch(46%   0.025 170);
+    --phosphor:      oklch(46%   0.108 152);
+    --phosphor-soft: oklch(58%   0.11  155);
+    --phosphor-tint: oklch(46% 0.108 152 / 0.08);
+    --phosphor-glow: oklch(58% 0.14 155 / 0.22);
+    --amber:         oklch(50%   0.103 85);
+    --amber-soft:    oklch(62%   0.10  85);
+    --on-accent:     oklch(98.5% 0.01  155);
 }
 
 /* ---------- Reset & base ---------- */
@@ -211,7 +237,8 @@ img, svg, canvas { max-width: 100%; }
 }
 .nav-links + .nav-actions { margin-left: 0; }
 
-.btn-terminal {
+.btn-terminal,
+.btn-theme {
     font-family: var(--font-mono);
     font-size: 0.875rem;
     color: var(--phosphor);
@@ -224,11 +251,19 @@ img, svg, canvas { max-width: 100%; }
                 background-color var(--dur-fast) var(--ease-out),
                 box-shadow var(--dur-fast) var(--ease-out);
 }
-.btn-terminal:hover {
+.btn-terminal:hover,
+.btn-theme:hover {
     border-color: var(--phosphor-soft);
     background: var(--phosphor-tint);
     box-shadow: 0 0 18px var(--phosphor-glow);
 }
+
+/* theme toggle: sun offered in the dark, moon offered in the light */
+.btn-theme { display: inline-flex; align-items: center; padding: 0.45em 0.55em; }
+.btn-theme svg { width: 1.05em; height: 1.05em; display: block; }
+.btn-theme .icon-moon { display: none; }
+[data-theme="light"] .btn-theme .icon-sun { display: none; }
+[data-theme="light"] .btn-theme .icon-moon { display: block; }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -1251,4 +1286,52 @@ img, svg, canvas { max-width: 100%; }
     }
     .status-dot, .wordmark-cursor { animation: none; opacity: 1; }
     .scroll-cue-line::after { animation: none; opacity: 0; }
+}
+
+/* ---------- Light theme: hardcoded-color translations ---------- */
+/* Every rule above that bakes a literal dark value gets its daylight twin here. */
+[data-theme="light"] #constellation {
+    background:
+        radial-gradient(120% 90% at 75% 10%, oklch(92% 0.03 165 / 0.5) 0%, transparent 55%),
+        radial-gradient(90% 70% at 15% 85%, oklch(93% 0.03 90 / 0.4) 0%, transparent 60%);
+}
+[data-theme="light"] .site-nav.scrolled {
+    background: oklch(95.5% 0.008 170 / 0.82);
+}
+[data-theme="light"] .about-card {
+    box-shadow: 0 24px 60px oklch(35% 0.02 170 / 0.16);
+}
+[data-theme="light"] .project::after {
+    background: radial-gradient(280px circle at var(--gx, 50%) var(--gy, 50%),
+        oklch(52% 0.14 155 / 0.1), transparent 68%);
+}
+[data-theme="light"] .project:hover {
+    box-shadow: 0 18px 48px oklch(35% 0.02 170 / 0.13);
+}
+[data-theme="light"] .project-grid .project-closer {
+    background:
+        radial-gradient(70% 130% at 12% 0%, oklch(55% 0.12 85 / 0.07) 0%, transparent 55%),
+        var(--bg-elev);
+}
+[data-theme="light"] .chip:active {
+    box-shadow: inset 0 1px 3px oklch(35% 0.02 170 / 0.28);
+}
+[data-theme="light"] .chip-expert {
+    border-color: oklch(46% 0.11 152 / 0.4);
+}
+[data-theme="light"] .chat-fab {
+    box-shadow: 0 10px 34px oklch(35% 0.02 170 / 0.16);
+}
+[data-theme="light"] .chat-panel {
+    box-shadow: 0 30px 80px oklch(35% 0.02 170 / 0.2);
+}
+[data-theme="light"] .chat-msg-user {
+    border-color: oklch(46% 0.11 152 / 0.35);
+}
+[data-theme="light"] .chat-msg-error {
+    border-color: oklch(52% 0.19 25 / 0.5);
+    color: oklch(45% 0.16 25);
+}
+[data-theme="light"] .pwa-install-prompt {
+    box-shadow: 0 20px 60px oklch(35% 0.02 170 / 0.18);
 }
