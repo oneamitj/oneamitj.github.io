@@ -180,6 +180,62 @@
         }
     }
 
+    /* ============ Tactile micro-interactions (pointer: fine only) ============ */
+    if (hasGSAP && !reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+        const gsap = window.gsap;
+
+        /* --- Magnetic primary CTAs: the button leans toward the cursor --- */
+        document.querySelectorAll('.btn-primary').forEach(function (btn) {
+            btn.classList.add('magnetized');
+            const xTo = gsap.quickTo(btn, 'x', { duration: 0.35, ease: 'power3.out' });
+            const yTo = gsap.quickTo(btn, 'y', { duration: 0.35, ease: 'power3.out' });
+            const sTo = gsap.quickTo(btn, 'scale', { duration: 0.25, ease: 'power3.out' });
+            btn.addEventListener('pointermove', function (e) {
+                const r = btn.getBoundingClientRect();
+                xTo((e.clientX - (r.left + r.width / 2)) * 0.14);
+                yTo((e.clientY - (r.top + r.height / 2)) * 0.2);
+            });
+            btn.addEventListener('pointerenter', function () { sTo(1.02); });
+            btn.addEventListener('pointerleave', function () { xTo(0); yTo(0); sTo(1); });
+            btn.addEventListener('pointerdown', function () { sTo(0.97); });
+            btn.addEventListener('pointerup', function () { sTo(1.02); });
+        });
+
+        /* --- 3D tilt + tracking glow on project cards --- */
+        document.querySelectorAll('.project').forEach(function (card) {
+            card.classList.add('tilt');
+            gsap.set(card, { transformPerspective: 750 });
+            const rx = gsap.quickTo(card, 'rotationX', { duration: 0.5, ease: 'power2.out' });
+            const ry = gsap.quickTo(card, 'rotationY', { duration: 0.5, ease: 'power2.out' });
+            const lift = gsap.quickTo(card, 'y', { duration: 0.35, ease: 'power2.out' });
+            card.addEventListener('pointermove', function (e) {
+                const r = card.getBoundingClientRect();
+                const px = (e.clientX - r.left) / r.width - 0.5;
+                const py = (e.clientY - r.top) / r.height - 0.5;
+                const damp = Math.min(1, 380 / r.width); // wide cards tilt less
+                ry(px * 6 * damp);
+                rx(-py * 6 * damp);
+                card.style.setProperty('--gx', ((px + 0.5) * 100).toFixed(1) + '%');
+                card.style.setProperty('--gy', ((py + 0.5) * 100).toFixed(1) + '%');
+            });
+            card.addEventListener('pointerenter', function () { lift(-3); });
+            card.addEventListener('pointerleave', function () { rx(0); ry(0); lift(0); });
+        });
+    }
+
+    /* ============ Dev console easter egg ============ */
+    try {
+        console.log(
+            '%c amitj %c you found the third interface.',
+            'background:#3ce39b;color:#0b1210;padding:2px 8px;border-radius:3px;font-weight:bold;font-family:monospace',
+            'color:#3ce39b;font-family:monospace'
+        );
+        console.log(
+            '%cthe first is the page. the second hides behind the ~ key. this one is all yours.\nshipping something real? linkedin.com/in/oneamitj',
+            'color:#7d8f87;font-family:monospace'
+        );
+    } catch (e) { /* consoles are optional */ }
+
     /* ============ Terminal overlay ============ */
     const overlay = document.getElementById('terminal-overlay');
     const openBtn = document.getElementById('open-terminal');
