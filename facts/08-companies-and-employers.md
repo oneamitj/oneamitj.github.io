@@ -8,7 +8,7 @@
   1. Lead Engineer, DevOps (Dec 2020 – Dec 2021)
   2. Principal Engineer, DevOps (Dec 2021 – Dec 2023)
   3. Solution Architect, DevOps (Dec 2023 – Present)
-- **Notable:** Amit spearheaded the company's AWS Generative AI Competency and APN Advanced membership. He grew the DevOps team from 5 to 25+ members and established company-wide DevOps standards.
+- **Notable:** Amit spearheaded the company's AWS Generative AI Competency, AWS Agentic AI Consulting Competency, and APN Advanced membership. He grew the DevOps team from 5 to 25+ members and established company-wide DevOps standards.
 
 ## Addy AI (a Leapfrog Technology Inc. venture)
 - **Website:** https://www.addy.ai

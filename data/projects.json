@@ -135,11 +135,16 @@
   "personal_projects": [
     {
       "name": "TimezoneTracker",
-      "description": "A mobile-first timezone management app that lets you track, compare, and coordinate times across multiple locations.",
-      "technologies": ["Mobile App", "Timezone Management", "Cross-platform"],
-      "period": "2025",
+      "description": "Compare time across cities instantly. A timezone management app designed, built, and deployed end-to-end on every platform: iOS (App Store), Android (Google Play), web, and a Chrome extension.",
+      "technologies": ["iOS", "Android", "Web App", "Chrome Extension", "Cross-platform"],
+      "period": "2025 - Present",
       "url": "https://timezonetracker.app",
-      "category": "Productivity/Mobile"
+      "achievements": [
+        "Shipped solo across four platforms: iOS, Android, web, and Chrome extension",
+        "Published on the Apple App Store and Google Play",
+        "Details at timezonetracker.app/about"
+      ],
+      "category": "Productivity/Cross-platform"
     }
   ],
   "other_projects": [
@@ -172,6 +177,12 @@
       "description": "Proof of Concept for Ethereum-based ERC721 and ERC20 cryptocurrency implementation.",
       "technologies": ["Ethereum", "Solidity", "ERC20", "ERC721"],
       "period": "Jul 2018 - Aug 2018"
+    },
+    {
+      "name": "Data Capture & Analytics",
+      "description": "Scraped data from websites, APIs, and social platforms; cleaned and warehoused it, then extracted meaningful insights through charts and analysis.",
+      "technologies": ["Web Scraping", "ETL", "Data Analysis"],
+      "period": "May 2018 - Feb 2020"
     },
     {
       "name": "KPI Analytics Dashboard",

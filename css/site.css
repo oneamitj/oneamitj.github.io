@@ -638,6 +638,20 @@ img, svg, canvas { max-width: 100%; }
     margin-top: auto;
 }
 .project-grid .project { display: flex; flex-direction: column; }
+/* personal build closes the grid full-width, mirroring the flagship opener */
+.project-grid .project-closer {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: clamp(1.5rem, 4vw, 3rem);
+    background:
+        radial-gradient(70% 130% at 12% 0%, oklch(84% 0.14 85 / 0.06) 0%, transparent 55%),
+        var(--bg-elev);
+}
+.project-grid .project-closer .project-tag { flex-basis: 100%; }
+.project-grid .project-closer .project-desc { flex: 1 1 24rem; margin-bottom: 0; }
+.project-grid .project-closer .project-metrics { margin-top: 0; flex-direction: column; row-gap: 0.45rem; }
 
 .project-more {
     margin-top: var(--space-lg);
@@ -770,6 +784,11 @@ img, svg, canvas { max-width: 100%; }
 .article-meta { color: var(--ink-3); white-space: nowrap; font-size: var(--text-mono-sm); }
 
 .talk-list { list-style: none; display: flex; flex-direction: column; gap: 1.4rem; }
+.talk-name-plain {
+    font-weight: 620;
+    font-size: 1.125rem;
+    color: var(--ink);
+}
 .talk-name {
     font-weight: 620;
     font-size: 1.125rem;

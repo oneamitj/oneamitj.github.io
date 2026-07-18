@@ -84,7 +84,7 @@ Boot sequence complete. Ready for commands...
 • Spearheaded the development of GenAI products,
 • GenAI/LLM apps in production (e.g. Addy AI — healthcare automation)
 • Compliance audits for HIPAA, SOC2, and other standards.
-• Guided company to 🏆 AWS GenAI Competency, DevOps Competency & APN Advanced Partner
+• Guided company to 🏆 AWS Agentic AI, GenAI & DevOps Competencies + APN Advanced Partner
 `;
         
         await this.typeText(welcomeText, 3);
@@ -527,7 +527,7 @@ and consumer-facing applications.
 🏢 LEAPFROG TECHNOLOGY INC. | Seattle, Washington, USA
 
 🎯 Solution Architect, DevOps | Dec 2023 - Present
-   • Spearheaded AWS Generative AI Competency and APN Advanced membership
+   • Spearheaded AWS Generative AI & Agentic AI Consulting Competencies and APN Advanced membership
    • Architected 10+ production-level LLM and GenAI solutions with optimized RAG
    • Built HIPAA-compliant, multi-tenant serverless system with data isolation
    • Delivered 50% reduction in operational costs and 40% improvement in performance
@@ -1067,7 +1067,7 @@ and consumer-facing applications.
 
 🏆 Key Achievements:
 ═════════════════════════════════════════════════
-• Spearheaded AWS Generative AI Competency and APN Advanced membership
+• Spearheaded AWS Generative AI & Agentic AI Consulting Competencies and APN Advanced membership
 • Architected 10+ production-level LLM and GenAI solutions
 • Scaled document processing throughput by 10x (1000+ pages vs 100+)
 • Optimized GenAI costs by 50% while boosting performance by 40%
@@ -1613,7 +1613,7 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
 
 👥 TEAM LEADERSHIP:
 ═════════════════════════════════════════════════
-🎓 Spearheaded AWS Generative AI Competency and APN Advanced membership
+🎓 Spearheaded AWS Generative AI & Agentic AI Consulting Competencies and APN Advanced membership
 📈 Scaled DevOps team from 5 to 25+ members
 🏆 Architected 10+ production-level LLM and GenAI solutions
 🎯 Led cross-functional teams across multiple countries
@@ -1627,7 +1627,7 @@ no frameworks needed! Sometimes the old ways are the best ways. 🚀
 
 🤖 GENAI INNOVATION:
 ═════════════════════════════════════════════════
-🧠 Spearheaded company's AWS Generative AI Competency
+🧠 Spearheaded company's AWS Generative AI & Agentic AI Consulting Competencies
 🔬 Architected 10+ production-level LLM and GenAI solutions
 ⚡ Automated EdTech manual processes using GenAI
 🎓 Improved educational alignment checking by 90% efficiency

@@ -1,7 +1,7 @@
 # Achievements & Key Metrics
 
 ## GenAI Innovation
-- Spearheaded AWS Generative AI Competency and APN Advanced membership for Leapfrog Technology
+- Spearheaded AWS Generative AI Competency, AWS Agentic AI Consulting Competency, and APN Advanced membership for Leapfrog Technology
 - Architected 10+ production-level LLM and GenAI solutions with optimized RAG architectures
 - Optimized GenAI product performance by 40% while reducing costs by 50%
 - Re-engineered document processing pipelines to scale throughput by 10x (from 100+ pages to 1000+ pages)

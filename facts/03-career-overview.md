@@ -60,7 +60,7 @@
 - **Location:** Seattle, Washington, United States (company HQ)
 - **Description:** Solution Architect specializing in the intersection of High-Scale Cloud Infrastructure and GenAI with deep expertise in AWS
 - **Key Achievements:**
-  - Spearheaded technical initiative to secure AWS Generative AI Competency and APN Advanced membership
+  - Spearheaded technical initiative to secure AWS Generative AI Competency, AWS Agentic AI Consulting Competency, and APN Advanced membership
   - Architected and deployed 10+ production-level LLM and GenAI solutions with optimized RAG architectures
   - Built HIPAA-compliant, multi-tenant serverless system with data isolation and rapid tenant onboarding
   - Delivered 50% reduction in operational costs and 40% improvement in product performance

@@ -14,7 +14,7 @@
 
 ## **Professional Summary**
 
-Solution Architect specializing in the intersection of High-Scale Cloud Infrastructure and GenAI with deep expertise in AWS. Proven record of architecting LLM and GenAI systems, serverless multi-tenant platforms, and automated CI/CD pipelines. Proven track record of modernizing legacy systems, optimizing costs, scaling services to hundreds of thousands of users, and leading cross-functional teams across multiple countries. Strong focus on reliability, compliance, and operational excellence in enterprise and consumer-facing applications.  
+Solution Architect specializing in the intersection of High-Scale Cloud Infrastructure and GenAI with deep expertise in AWS. Proven record of architecting LLM and GenAI systems to production, serverless multi-tenant platforms, and automated CI/CD pipelines. Proven track record of modernizing legacy systems, optimizing costs, scaling services to hundreds of thousands of users, and leading cross-functional teams across multiple countries. Strong focus on reliability, compliance, and operational excellence in enterprise and consumer-facing applications.  
 ---
 
 ## **Core Skills**
@@ -40,7 +40,7 @@ Seattle, Washington, United States
 **Solution Architect, DevOps**  
 *Dec 2023 – Present*
 
-* **Organizational Leadership & AWS Strategy:** Spearheaded the technical initiative to secure [**AWS Generative AI Competency**](https://www.lftechnology.com/blogs/leapfrog-technology-achieves-aws-generative-ai-competency), [**AWS DevOps Competency**](https://www.lftechnology.com/blogs/amazon-devops-competency-status) and [**Amazon Partner Network Advanced**](https://www.lftechnology.com/blogs/leapfrog-technology-achieves-aws-advanced-tier-partner-status) membership, positioning the firm as a premier GenAI service provider.  
+* **Organizational Leadership & AWS Strategy:** Spearheaded the technical initiative to secure [**AWS Generative AI Competency**](https://www.lftechnology.com/blogs/leapfrog-technology-achieves-aws-generative-ai-competency),  [**AWS Agentic AI Consulting Competency**](https://www.linkedin.com/posts/lftechnology_its-official-were-not-just-prompt-engineering-activity-7480174729966944256-vVsM/), [**AWS DevOps Competency**](https://www.lftechnology.com/blogs/amazon-devops-competency-status) and [**Amazon Partner Network Advanced**](https://www.lftechnology.com/blogs/leapfrog-technology-achieves-aws-advanced-tier-partner-status) membership, positioning the firm as a premier GenAI service provider.  
 * **Healthcare GenAI Evangelism:** [**Webcast**](https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/) speaker with CIO Online and Amazon Web Services on scaling Generative AI in healthcare, outlining frameworks to move from POC to secure, HIPAA-compliant production deployments while maximizing ROI and minimizing integration risk.  
 * **Enterprise GenAI Orchestration:** Architected and deployed 10+ production-level LLM and GenAI solutions, focusing on optimized RAG architectures and prompt engineering to solve complex business challenges.  
 * **Scalable Multi-Tenant Architecture:** Designed a **HIPAA-compliant**, multi-tenant serverless ecosystem, implementing rigorous data isolation protocols and streamlined onboarding for rapid tenant scaling.  

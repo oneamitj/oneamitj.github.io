@@ -7,7 +7,7 @@
     "duration": "2+ years",
     "description": "Solution Architect specializing in the intersection of High-Scale Cloud Infrastructure and GenAI with deep expertise in AWS. Architecting LLM and GenAI systems, serverless multi-tenant platforms, and automated CI/CD pipelines.",
     "key_achievements": [
-      "Spearheaded technical initiative to secure AWS Generative AI Competency and APN Advanced membership",
+      "Spearheaded technical initiative to secure AWS Generative AI Competency, AWS Agentic AI Consulting Competency, AWS DevOps Competency, AWS Service Delivery, and APN Advanced membership",
       "Architected and deployed 10+ production-level LLM and GenAI solutions with optimized RAG architectures",
       "Built HIPAA-compliant, multi-tenant serverless system with data isolation and rapid tenant onboarding",
       "Delivered 50% reduction in operational costs and 40% improvement in product performance",
@@ -168,6 +168,12 @@
   ],
   "awards": [
     {
+      "name": "Leapfrog Hackathon 2026 - Winning Team Advisor",
+      "issuer": "Leapfrog Technology",
+      "date": "2026",
+      "description": "Advised 'Project Aegis' (winner and People's Choice), a unified security control & risk visibility platform, mentoring the team remotely from Australia."
+    },
+    {
       "name": "Ncell App Camp 2014 (Corporate Solutions Winner)",
       "issuer": "Ncell",
       "date": "Dec 2014",
@@ -194,6 +200,11 @@
       "venue": "AWS User Group Meetup",
       "url": "https://amitj.me/aug.ppt",
       "description": "Presentation on GenAI maturing into the age of autonomous agents — foundation models as infrastructure, agents as the interface, vibe coding, vibe DevOps, and governance at prompt time."
+    },
+    {
+      "name": "Leapfrog Technology Podcast",
+      "venue": "Podcast",
+      "description": "Guest episode with Leapfrog's VP & Head of AI, covering GenAI delivery and platform engineering."
     }
   ],
   "articles": [
@@ -245,7 +256,7 @@
       "Compliance (HIPAA/SOC2/GDPR/PCI-DSS)"
     ],
     "key_metrics": [
-      "Spearheaded AWS Generative AI Competency and APN Advanced membership",
+      "Spearheaded AWS Generative AI & Agentic AI Consulting Competencies and APN Advanced membership",
       "Architected 10+ production-level LLM and GenAI solutions",
       "Achieved 40% performance improvement and 50% cost reduction in GenAI products",
       "Scaled document processing throughput by 10x (1000+ pages vs 100+)",
