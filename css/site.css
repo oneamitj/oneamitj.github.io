@@ -95,8 +95,8 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
+/* native anchor scrolling lands sections clear of the fixed nav */
+section[id], [id="top"] { scroll-margin-top: 4rem; }
 
 body {
     background-color: #0b1210; /* fallback */

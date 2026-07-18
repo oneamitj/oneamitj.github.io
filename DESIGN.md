@@ -45,7 +45,7 @@ Semantics: phosphor = results, actions, "go"; amber = time, category, warmth. Ne
 
 ## Motion
 
-GSAP + ScrollTrigger + Lenis (vendored in `js/vendor/`). Ease: expo.out family, no bounce. One orchestrated hero entrance (~1.2s: nav → status → name with blur-out → role → lede → CTAs → proof strip). Scroll reveals are per-section and content-fitted: timeline rail scrub-draws, yaml card clip-path "prints", chips ripple (20ms stagger), quotes settle. Micro: underline slide on nav, arrow nudge on primary CTA, translateX on article titles. Everything JS-applied over a visible default; `prefers-reduced-motion` gets instant content.
+GSAP + ScrollTrigger (vendored in `js/vendor/`); page scrolling is native — wheel smoothing (Lenis) was removed because the lerp felt resistive on laptop trackpads. Anchors glide via `scrollIntoView` + `scroll-margin-top`. Ease: expo.out family, no bounce. One orchestrated hero entrance (~1.2s: nav → status → name with blur-out → role → lede → CTAs → proof strip). Scroll reveals are per-section and content-fitted: timeline rail scrub-draws, yaml card clip-path "prints", chips ripple (20ms stagger), quotes settle. Micro: underline slide on nav, arrow nudge on primary CTA, translateX on article titles. Everything JS-applied over a visible default; `prefers-reduced-motion` gets instant content.
 
 ## Layout
 

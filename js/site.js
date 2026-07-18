@@ -67,20 +67,9 @@
     window.addEventListener('scroll', onScrollNav, { passive: true });
     onScrollNav();
 
-    /* ============ Smooth scroll (Lenis) ============ */
-    let lenis = null;
-    if (!reduceMotion && typeof window.Lenis !== 'undefined') {
-        lenis = new window.Lenis({ lerp: 0.12, wheelMultiplier: 1 });
-        if (hasGSAP && window.ScrollTrigger) {
-            lenis.on('scroll', window.ScrollTrigger.update);
-            window.gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-            window.gsap.ticker.lagSmoothing(0);
-        } else {
-            (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
-        }
-    }
-
-    // Anchor navigation that respects Lenis
+    /* ============ Anchor navigation ============ */
+    // Scrolling is fully native (wheel smoothing felt resistive on trackpads);
+    // anchors glide via scrollIntoView + scroll-margin-top on sections.
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function (e) {
             const id = link.getAttribute('href');
@@ -88,8 +77,7 @@
             const target = document.querySelector(id);
             if (!target) return;
             e.preventDefault();
-            if (lenis) lenis.scrollTo(target, { offset: -64, duration: 1.1 });
-            else target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+            target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
             history.pushState(null, '', id);
         });
     });
@@ -368,8 +356,7 @@
         overlay.hidden = false;
         // next frame so the transition can play
         requestAnimationFrame(function () { overlay.classList.add('open'); });
-        document.body.classList.add('terminal-open');
-        if (lenis) lenis.stop();
+        document.body.classList.add('terminal-open'); // body overflow:hidden locks the page
 
         // lazy-boot the retro terminal on first open
         let term = window.retroTerminal;
@@ -399,7 +386,6 @@
         terminalOpen = false;
         overlay.classList.remove('open');
         document.body.classList.remove('terminal-open');
-        if (lenis) lenis.start();
         const done = function () { overlay.hidden = true; };
         if (reduceMotion) done();
         else setTimeout(done, 280);
