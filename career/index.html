@@ -30,6 +30,11 @@ body {
   padding: 1.5rem;
 }
 .header { max-width: 56rem; margin: 0 auto 3rem; text-align: center; }
+.home-link {
+  display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em;
+  text-transform: uppercase; color: #64748b; text-decoration: none; margin-bottom: 1rem;
+}
+.home-link:hover, .home-link:focus-visible { color: #94a3b8; }
 .header h1 {
   font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem;
   background: linear-gradient(to right, #60a5fa, #34d399, #fb7185);
@@ -166,6 +171,7 @@ body {
 </head>
 <body>
 <div class="header">
+  <a href="/" class="home-link">&larr; amitj.me</a>
   <h1>DevOps Learning Path</h1>
   <p>Click on topics to reveal <strong>What</strong>, <strong>How</strong>, and <strong>Knowledge Gained</strong>.</p>
 </div>

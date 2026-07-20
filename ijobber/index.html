@@ -35,6 +35,22 @@
       color: white;
       padding: 60px 20px;
       text-align: center;
+      position: relative;
+    }
+
+    .home-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+
+    .home-link:hover {
+      color: white;
+      text-decoration: underline;
     }
 
     .header h1 {
@@ -197,6 +213,7 @@
 </head>
 <body>
   <div class="header">
+    <a href="https://amitj.me" class="home-link">&larr; amitj.me</a>
     <h1>iJobber</h1>
     <p>AI-Powered Cover Letters & CVs</p>
   </div>

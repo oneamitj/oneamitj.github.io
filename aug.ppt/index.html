@@ -275,6 +275,22 @@
     .notes-link:hover {
       color: rgba(255, 153, 0, 0.6);
     }
+
+    .home-link {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      font-size: 12px;
+      color: rgba(156, 163, 175, 0.3);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-weight: 500;
+      z-index: 1000;
+    }
+
+    .home-link:hover {
+      color: rgba(255, 153, 0, 0.6);
+    }
   </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","w9k177a7ak");</script>
@@ -284,6 +300,9 @@
 
   <!-- Speaker notes link (barely noticeable) -->
   <a href="narration.html" class="notes-link">narration</a>
+
+  <!-- Home link (barely noticeable) -->
+  <a href="/" class="home-link">amitj.me</a>
 
   <!-- Navigation hint -->
   <div class="nav-hint">Use arrow keys, space, or click to navigate</div>
