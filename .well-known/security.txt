@@ -2,7 +2,7 @@
 # Contact: LinkedIn at https://linkedin.com/in/oneamitj
 
 Contact: https://linkedin.com/in/oneamitj
-Expires: 2026-07-03T00:00:00.000Z
+Expires: 2027-07-21T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://amitj.me/.well-known/security.txt
 Policy: https://amitj.me/

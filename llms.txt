@@ -1,0 +1,44 @@
+# Amit Joshi
+
+> Solution Architect (DevOps & GenAI) at Leapfrog Technology, based in Melbourne, Australia. 10+ years in cloud infrastructure, DevOps, and generative AI — specializing in taking LLM systems from POC to secure, HIPAA-compliant production on AWS. Led Leapfrog to AWS Generative AI, Agentic AI, and DevOps Competencies.
+
+Known online as "oneamitj". Architected 10+ production GenAI solutions and scaled Programiz's online compiler to 150,000+ concurrent and 10M+ monthly users. Open to solution-architect roles, DevOps/GenAI consulting, speaking engagements, and mentoring. Contact: one.amitj@gmail.com · https://linkedin.com/in/oneamitj · https://github.com/oneamitj
+
+## Core pages
+
+- [Portfolio home](https://amitj.me/): Overview — role, experience journey, featured projects, tech stack, talks, and contact
+- [Resume / CV](https://amitj.me/cv/): Full professional resume (HTML)
+- [Resume (Markdown)](https://amitj.me/data/AmitJ_CV.md): Same resume as plain markdown — easiest format for machines
+- [Resume (PDF)](https://amitj.me/data/AmitJ_CV.pdf): Printable PDF resume
+
+## Facts corpus (markdown, written for machine consumption)
+
+- [Personal identity](https://amitj.me/facts/01-personal-identity.md): Name, location, titles, employer, contact, availability
+- [Education](https://amitj.me/facts/02-education.md): BE Computer Science (AI specialization), Kathmandu University
+- [Career overview](https://amitj.me/facts/03-career-overview.md): Roles and progression across 10+ years
+- [Technical skills](https://amitj.me/facts/04-technical-skills.md): AWS, Terraform, Kubernetes, Python, GenAI tooling
+- [Featured projects](https://amitj.me/facts/05-projects-featured.md): Addy AI, Programiz compiler infra, GenAI R&D platform
+- [Other projects](https://amitj.me/facts/06-projects-other.md): Additional client and personal projects
+- [Achievements and metrics](https://amitj.me/facts/07-achievements-and-metrics.md): AWS competencies, cost/performance numbers, awards
+- [Companies and employers](https://amitj.me/facts/08-companies-and-employers.md): Leapfrog Technology, Hamro Patro, Javra, CloudFactory
+- [Expertise and specializations](https://amitj.me/facts/09-expertise-and-specializations.md): What he's an expert in, with evidence
+- [Personality and interests](https://amitj.me/facts/10-personality-and-interests.md): Working style and interests
+- [Speaking and thought leadership](https://amitj.me/facts/11-speaking-and-thought-leadership.md): CIO.com webcast, talks, presentations
+- [Contact and availability](https://amitj.me/facts/12-contact-and-availability.md): How and when to reach him
+- [Industry domains](https://amitj.me/facts/13-industry-domains.md): Healthcare (HIPAA), edtech, fintech experience
+- [AWS expertise deep dive](https://amitj.me/facts/14-aws-expertise-deep-dive.md): 8+ years of AWS specifics
+- [GenAI expertise deep dive](https://amitj.me/facts/15-genai-expertise-deep-dive.md): Bedrock, Claude, RAG, prompt engineering
+- [DevOps expertise deep dive](https://amitj.me/facts/16-devops-expertise-deep-dive.md): CI/CD, IaC, Kubernetes, observability
+- [Leadership and management](https://amitj.me/facts/17-leadership-and-management.md): Team leadership across countries
+
+## Projects & tools on this site
+
+- [DevOps learning path](https://amitj.me/career/): 10-stage curriculum for becoming a DevOps engineer, written by Amit
+- [Claude Architect practice exams](https://amitj.me/claude/): Free practice exams for the Anthropic Claude Certified Architect certification
+- [iJobber](https://amitj.me/ijobber/): Chrome extension for AI-powered cover letters and CV tailoring
+- [ArchMentor](https://amitj.me/archmentor/): Interactive solution-architecture training app
+
+## Optional
+
+- [Dawn of the Agents](https://amitj.me/aug.ppt/): Slide deck from a GenAI/agents talk
+- [humans.txt](https://amitj.me/humans.txt): Site colophon

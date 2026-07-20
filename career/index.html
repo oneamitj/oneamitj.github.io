@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DevOps Learning Path - Interactive Roadmap from Foundations to GenAI | Amit Joshi</title>
 <meta name="description" content="A 10-stage interactive DevOps learning roadmap covering networking, Linux, containers, Kubernetes, AWS, Terraform, security, architecture, and GenAI. Curated by Amit Joshi, Solution Architect with 10+ years experience.">
-<meta name="keywords" content="DevOps roadmap, DevOps learning path, learn DevOps, DevOps career, AWS DevOps, Kubernetes tutorial, Terraform guide, Docker learning, CI/CD pipeline, GenAI DevOps, cloud engineering career, DevOps for beginners">
 <meta name="author" content="Amit Joshi">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://amitj.me/career/">
@@ -13,8 +12,9 @@
 <meta property="og:title" content="DevOps Learning Path - Interactive Roadmap | Amit Joshi">
 <meta property="og:description" content="A 10-stage guided curriculum from networking fundamentals to GenAI for DevOps. Track your progress as you master each milestone.">
 <meta property="og:url" content="https://amitj.me/career/">
-<meta property="og:image" content="https://amitj.me/icons/icon-512x512.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://amitj.me/assets/og/og-default.png">
+<meta property="og:site_name" content="Amit Joshi">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="DevOps Learning Path - Interactive Roadmap | Amit Joshi">
 <meta name="twitter:description" content="A 10-stage guided curriculum from networking fundamentals to GenAI for DevOps.">
 <meta name="twitter:creator" content="@oneamitj">
@@ -165,6 +165,17 @@ body {
 .c-indigo { background-color: #6366f1; } .c-red { background-color: #ef4444; }
 .c-rose { background-color: #e11d48; }
 .c-violet { background-color: #8b5cf6; }
+.reference { max-width: 72rem; margin: 4rem auto 0; }
+.reference h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+.ref-intro { color: #94a3b8; margin-bottom: 2rem; }
+.ref-stage { background: #0f172a; border: 1px solid #1e293b; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.ref-stage h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; }
+.ref-advice { color: #94a3b8; font-style: italic; margin-bottom: 1rem; }
+.ref-topic { border: 1px solid #1e293b; border-radius: 0.75rem; padding: 0.75rem 1rem; margin-bottom: 0.6rem; background: rgba(30,41,59,0.3); }
+.ref-topic summary { cursor: pointer; color: #cbd5e1; }
+.ref-topic summary strong { color: #60a5fa; }
+.ref-topic p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-top: 0.75rem; }
+.ref-topic p strong { color: #cbd5e1; }
 </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","w9k177a7ak");</script>
@@ -201,6 +212,231 @@ body {
     </div>
   </div>
 </div>
+<!-- Static, crawlable rendering of the full curriculum. Keep in sync with the `roadmap` data in the script below. -->
+<section class="reference" id="curriculum" aria-label="Full curriculum reference">
+  <h2>The full 10-stage DevOps curriculum</h2>
+  <p class="ref-intro">The complete learning path in reading order: every stage, topic, and what you gain from it. Use the interactive map above to track your progress.</p>
+  <article class="ref-stage">
+    <h3>1. The Core Foundation</h3>
+    <p class="ref-advice">Don’t get swayed by fancy sides yet. Get your basics right first.</p>
+    <details class="ref-topic">
+      <summary><strong>Networking</strong>: The absolute base. Understand how data moves.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> OSI Model (Layers 3, 4, 7), TCP/UDP protocols, IP Addressing &amp; Subnetting, DNS resolution process, HTTP/HTTPS headers, Load Balancing algorithms (Round Robin, Least Conn), and SSH tunneling.</p>
+      <p><strong>How to learn it:</strong> Learn by using tools like "dig" for DNS, "curl -v" for HTTP headers, and "netstat" or "ss" for socket connections. This teaches you how packets are routed and why a connection might fail at different layers.</p>
+      <p><strong>Knowledge gained:</strong> You will gain the ability to troubleshoot connectivity issues between services, understand latency, and design secure network boundaries.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Operating Systems (Linux)</strong>: Master the command line and system internals.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> File System Hierarchy (FHS), Permissions (Chmod/Chown), Process management (PID, signals, systemd), Package management, Resource monitoring (top/htop/iostat), and Shell Scripting (Bash/Zsh).</p>
+      <p><strong>How to learn it:</strong> Install a headless Linux distro. Try to automate a user creation script or a log rotation cleanup. This teaches you how the hardware talks to the software and how to manage resources efficiently.</p>
+      <p><strong>Knowledge gained:</strong> Proficiency in the environment where 99% of DevOps tools run. You will understand how to optimize system performance and automate repetitive tasks.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Virtualization</strong>: Familiarize yourself with how hardware is abstracted.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Hypervisors (KVM, VMware, VirtualBox), Type 1 vs Type 2 virtualization, CPU/RAM overcommitment, Snapshotting, and Vagrant for environment reproducibility.</p>
+      <p><strong>How to learn it:</strong> Use VirtualBox or VMware to spin up multiple Linux nodes. Network them together. This teaches you the concept of "Infrastructure as Software" and hardware abstraction.</p>
+      <p><strong>Knowledge gained:</strong> A deep understanding of how modern cloud providers function under the hood and how to create isolated testing environments.</p>
+    </details>
+  </article>
+  <article class="ref-stage">
+    <h3>2. Programming &amp; Dev Basics</h3>
+    <p class="ref-advice">Get the knack of coding and how applications are built.</p>
+    <details class="ref-topic">
+      <summary><strong>Python</strong>: The most popular language for DevOps automation.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Boto3 (AWS SDK), OS and Sys modules, Virtual environments (venv/poetry), JSON/YAML parsing, Error handling, and interacting with REST APIs using the Requests library.</p>
+      <p><strong>How to learn it:</strong> Write a script that monitors a website status and sends an email/alert if it is down. This teaches you how to bridge the gap between manual operations and automated code.</p>
+      <p><strong>Knowledge gained:</strong> The ability to extend tool functionality and automate complex workflows that off-the-shelf tools cannot handle.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>App Architecture</strong>: Learn the what and how of Frontend, Backend, and Databases.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Stateless vs Stateful applications, RESTful API design, Database indexing, Caching strategies (Redis), and connection pooling.</p>
+      <p><strong>How to learn it:</strong> Build a very simple CRUD app. This teaches you the flow of data and why developers ask for specific configurations (like CORS or specific DB ports).</p>
+      <p><strong>Knowledge gained:</strong> You gain empathy for developers and the technical context needed to build deployment pipelines that actually work for the code being shipped.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Git</strong>: Version control is a non-negotiable tool.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Branching strategies (Trunk-based, Gitflow), Merge vs Rebase, Git Hooks, SSH vs HTTPS auth, and Cherry-picking.</p>
+      <p><strong>How to learn it:</strong> Work on a project with multiple branches. Intentionally create a merge conflict and resolve it. This teaches you how teams collaborate on code without stepping on toes.</p>
+      <p><strong>Knowledge gained:</strong> The foundation for "Everything as Code." You will be able to manage infrastructure, configuration, and application code versioning.</p>
+    </details>
+  </article>
+  <article class="ref-stage">
+    <h3>3. DevOps Culture</h3>
+    <p class="ref-advice">DevOps is a culture at its core, driven to improve Agile SDLC.</p>
+    <details class="ref-topic">
+      <summary><strong>Agile SDLC</strong>: Understand the software development life cycle.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Scrum vs Kanban, Sprint Planning, Story Points, and the feedback loop. Focus on how "Continuous" (Integration/Deployment) fits into the cycle.</p>
+      <p><strong>How to learn it:</strong> Participate in or simulate a mock sprint. This teaches you how business requirements translate into technical tasks and why speed-to-market matters.</p>
+      <p><strong>Knowledge gained:</strong> Understanding the "Why" behind DevOps. You will know how to align technical work with business goals.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Collaboration</strong>: Bridging the gap between Dev and Ops teams.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> The CAMS model (Culture, Automation, Measurement, Sharing), Blameless Post-mortems, and Site Reliability Engineering (SRE) principles.</p>
+      <p><strong>How to learn it:</strong> Read case studies on DevOps transformations (e.g., The Phoenix Project). This teaches you that DevOps is 80% people and 20% tools.</p>
+      <p><strong>Knowledge gained:</strong> Soft skills and organizational mindset. You will learn how to break down silos and foster a culture of shared responsibility.</p>
+    </details>
+  </article>
+  <article class="ref-stage">
+    <h3>4. Local Deployment</h3>
+    <p class="ref-advice">Hands-on: Deploy a basic 3-tier application locally inside a VM.</p>
+    <details class="ref-topic">
+      <summary><strong>Web Servers</strong>: Setting up and configuring Nginx.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Configuration blocks (events, http, server, location), virtual hosts, static file serving, and Log formats.</p>
+      <p><strong>How to learn it:</strong> Manually install Nginx and host a custom HTML page. This teaches you how a web server listens on ports and serves requests.</p>
+      <p><strong>Knowledge gained:</strong> Core web hosting skills. You will understand how the entry point of most applications works.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Reverse Proxy</strong>: Understanding how to route traffic to your app.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Upstream blocks, proxy_set_header, SSL termination (Certbot/Self-signed), and path-based vs domain-based routing.</p>
+      <p><strong>How to learn it:</strong> Configure Nginx to sit in front of a Python/Node process. This teaches you security through abstraction and how to handle application traffic.</p>
+      <p><strong>Knowledge gained:</strong> Understanding how to protect backend servers and manage traffic flow at the edge.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>3-Tier Logic</strong>: Connecting Web -&gt; App -&gt; Database.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Network isolation between tiers, Connection strings, Environment variables, and basic SQL commands for testing connectivity.</p>
+      <p><strong>How to learn it:</strong> Setup a VM and manually install a DB and an App. Connect them. This teaches you about the complexity of stateful connections and dependencies.</p>
+      <p><strong>Knowledge gained:</strong> Full-stack infrastructure awareness. You will know exactly how all components of a modern web app interact.</p>
+    </details>
+  </article>
+  <article class="ref-stage">
+    <h3>5. Containers &amp; Orchestration</h3>
+    <p class="ref-advice">Time to master modern packaging and orchestration.</p>
+    <details class="ref-topic">
+      <summary><strong>Docker</strong>: Universal containerization. Dissect VM vs Container.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Linux Namespaces &amp; Cgroups (the magic behind containers), Dockerfile optimization (Layer caching, Multi-stage builds), and Docker Compose.</p>
+      <p><strong>How to learn it:</strong> Containerize your 3-tier app. Compare the resource usage vs the VM version. This teaches you about efficiency and portability.</p>
+      <p><strong>Knowledge gained:</strong> The ability to "package once, run anywhere." You eliminate the "it works on my machine" problem.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Kubernetes (K8s)</strong>: Orchestration. Deploy your 3-tier app here.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Control Plane vs Worker Nodes, Declarative YAML (Pods, Deployments, Services, Ingress), and Self-healing (ReplicaSets).</p>
+      <p><strong>How to learn it:</strong> Deploy your app to Minikube. "Kill" a pod and watch K8s recreate it. This teaches you about high availability and automated management.</p>
+      <p><strong>Knowledge gained:</strong> The industry-standard for scaling applications. You will be able to manage large-scale distributed systems.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>ArgoCD (Optional)</strong>: GitOps style CD for your Kubernetes clusters.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> The GitOps Manifest, Application Controller, and the concept of "Desired State" vs "Actual State".</p>
+      <p><strong>How to learn it:</strong> Change a tag in your Git repo and watch ArgoCD automatically update your K8s cluster. This teaches you about automated reconciliation.</p>
+      <p><strong>Knowledge gained:</strong> Modern deployment automation. You will learn how to keep environments in sync without manual intervention.</p>
+    </details>
+  </article>
+  <article class="ref-stage">
+    <h3>6. The Cloud (AWS)</h3>
+    <p class="ref-advice">Apply your knowledge to a major provider like AWS.</p>
+    <details class="ref-topic">
+      <summary><strong>AWS Services</strong>: VPC, EC2, ECS/EKS, S3, Lambda.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Regions vs Availability Zones, Shared Responsibility Model, IAM (Roles vs Users), and Security Groups.</p>
+      <p><strong>How to learn it:</strong> Set up a custom VPC with public and private subnets. This teaches you how cloud providers virtualize entire data centers.</p>
+      <p><strong>Knowledge gained:</strong> Cloud literacy. You will understand how to build resilient infrastructure using global-scale services.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Cloud Migration</strong>: Deploy that same 3-tier app in the cloud.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Managed Services (RDS) vs Self-managed, Application Load Balancers (ALB), and Auto-scaling Groups (ASG).</p>
+      <p><strong>How to learn it:</strong> Migrate your local app tiers to EC2 and RDS. This teaches you about the "Managed Service" trade-off (cost vs effort).</p>
+      <p><strong>Knowledge gained:</strong> Cloud-native engineering skills. You will know how to take an app from a local dev machine to a global production environment.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>CI/CD</strong>: Implement automation using GitHub Actions.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Workflows, Actions, Runners, Secrets, and Build Matrix.</p>
+      <p><strong>How to learn it:</strong> Create a pipeline that triggers on code push. Build an image and deploy it to AWS. This teaches you the power of "Continuous" delivery.</p>
+      <p><strong>Knowledge gained:</strong> The heart of DevOps productivity. You will be able to automate the path from code to customer.</p>
+    </details>
+  </article>
+  <article class="ref-stage">
+    <h3>7. Infrastructure as Code</h3>
+    <p class="ref-advice">Automate your infrastructure once you have the hang of the Cloud.</p>
+    <details class="ref-topic">
+      <summary><strong>Terraform</strong>: The industry standard for declarative infrastructure.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Provider blocks, Resource blocks, State files (.tfstate), Backend configuration (S3/DynamoDB for locking), and Variables.</p>
+      <p><strong>How to learn it:</strong> Define your AWS VPC and EC2 in Terraform files. Run "terraform apply". This teaches you how to treat your hardware like code.</p>
+      <p><strong>Knowledge gained:</strong> The ability to recreate an entire environment in minutes. You eliminate "Configuration Drift" and manual errors.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Pulumi</strong>: An alternative using familiar programming languages.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> The Pulumi Engine, Automation API, and using standard languages (Python/TS) to loop and create resources.</p>
+      <p><strong>How to learn it:</strong> Try to create 5 S3 buckets using a simple Python "for loop" in Pulumi. This teaches you the power of logic in infrastructure.</p>
+      <p><strong>Knowledge gained:</strong> Infrastructure engineering using developer tools. You will understand the next generation of IaC.</p>
+    </details>
+  </article>
+  <article class="ref-stage">
+    <h3>8. Security First</h3>
+    <p class="ref-advice">Learn about security once you understand how the systems are built.</p>
+    <details class="ref-topic">
+      <summary><strong>OWASP Top 10</strong>: Understand web vulnerabilities and mitigation.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> SQL Injection, Broken Access Control, Security Misconfiguration, and Vulnerable Components.</p>
+      <p><strong>How to learn it:</strong> Read about common exploits. Look at how Nginx ModSecurity or AWS WAF can block these. This teaches you defensive system design.</p>
+      <p><strong>Knowledge gained:</strong> A security-first mindset. You will know how to build systems that are hardened by default.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Web App Security</strong>: Learn how to secure the application layer.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Content Security Policy (CSP), HSTS headers, Secrets Management (preventing passwords in Git), and OAuth2/OIDC basics.</p>
+      <p><strong>How to learn it:</strong> Use a tool like Snyk or Trivy to scan your Docker images for vulnerabilities. This teaches you that secure code includes the base image.</p>
+      <p><strong>Knowledge gained:</strong> Technical security competence. You will be able to protect user data and business secrets.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Security Culture</strong>: Shifting security left in the pipeline.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> DevSecOps integration, automated compliance checks, and Principle of Least Privilege (PoLP).</p>
+      <p><strong>How to learn it:</strong> Apply strict IAM policies that only allow a user to do one specific task. This teaches you about the "blast radius" of security breaches.</p>
+      <p><strong>Knowledge gained:</strong> Strategic security awareness. You will learn how to make security a part of the development speed, not a bottleneck.</p>
+    </details>
+  </article>
+  <article class="ref-stage">
+    <h3>9. System Architecture</h3>
+    <p class="ref-advice">The final step: Learn types of system architecture and design based on needs.</p>
+    <details class="ref-topic">
+      <summary><strong>Decision Framework</strong>: How to select the right service or technology stack.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> CAP Theorem, Microservices vs Monolith, Serverless vs Fixed clusters, and when to use NoSQL vs SQL.</p>
+      <p><strong>How to learn it:</strong> Analyze a project requirement. Choose a stack and justify it. This teaches you that there is no "best" tool, only the "right" tool for the job.</p>
+      <p><strong>Knowledge gained:</strong> High-level engineering leadership. You will be able to lead technical discussions and choose long-term strategies.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Cost Optimization</strong>: Designing for budget efficiency and ROI.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> AWS Cost Explorer, Right-sizing (Compute Optimizer), Spot Instances, and Cloud Carbon Footprint.</p>
+      <p><strong>How to learn it:</strong> Compare the monthly cost of an RDS instance vs running a DB on EC2. This teaches you the financial impact of architectural choices.</p>
+      <p><strong>Knowledge gained:</strong> FinOps literacy. You will learn to build systems that are not just technically sound but also financially sustainable.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Availability &amp; Reliability</strong>: Implementing HA and fault-tolerant designs.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> SLA vs SLO vs SLI, RTO/RPO (Recovery Time/Point Objective), and Blue-Green vs Canary deployments.</p>
+      <p><strong>How to learn it:</strong> Design a system that stays online even if a whole AWS Data Center goes down. This teaches you about "Design for Failure."</p>
+      <p><strong>Knowledge gained:</strong> Reliability engineering. You will know how to build systems that users can trust 24/7.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Security &amp; Compliance</strong>: Ensuring the architecture meets regulatory needs.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> SOC2, GDPR, HIPAA basics (as they relate to infra), Data residency, and Encryption at Rest vs Transit.</p>
+      <p><strong>How to learn it:</strong> Look at how to audit a system. This teaches you that your architecture must be verifiable and defensible.</p>
+      <p><strong>Knowledge gained:</strong> Governance and professional ethics. You will understand how to build systems that are legal and compliant.</p>
+    </details>
+  </article>
+  <article class="ref-stage">
+    <h3>10. GenAI for DevOps</h3>
+    <p class="ref-advice">AI is not replacing DevOps engineers. DevOps engineers who use AI are replacing those who don’t.</p>
+    <details class="ref-topic">
+      <summary><strong>Prompt Engineering</strong>: Learn to talk to LLMs effectively for technical tasks.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Zero-shot vs Few-shot prompting, Chain-of-Thought, System prompts, Temperature and token limits, and context window management.</p>
+      <p><strong>How to learn it:</strong> Give an LLM a vague prompt, then a precise one, and compare outputs. This teaches you that AI quality depends entirely on how you ask.</p>
+      <p><strong>Knowledge gained:</strong> The core skill of the AI age. You will be able to extract reliable, actionable output from any LLM for infrastructure and automation tasks.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>LLM APIs &amp; SDKs</strong>: Call AI models programmatically from Python.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> OpenAI API, AWS Bedrock, LangChain basics, structured output (JSON mode), and streaming responses.</p>
+      <p><strong>How to learn it:</strong> Write a Python script that takes a task description and returns a Terraform snippet via an LLM API. This teaches you how to embed AI into your automation workflows.</p>
+      <p><strong>Knowledge gained:</strong> The ability to build custom AI-powered DevOps tools — from config generators to intelligent alerting systems.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>AI-Assisted IaC &amp; Config</strong>: Use AI to generate, review, and optimize infrastructure code.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> AI pair programming (Copilot/Kiro), generating HCL/YAML from natural language, AI-powered code review bots, and drift detection.</p>
+      <p><strong>How to learn it:</strong> Describe an AWS architecture in plain English and use AI to generate the Terraform. Then review and fix what it got wrong. This teaches you to use AI as a force multiplier, not a crutch.</p>
+      <p><strong>Knowledge gained:</strong> 10x productivity in writing infrastructure code. You will ship faster while still understanding every line.</p>
+    </details>
+    <details class="ref-topic">
+      <summary><strong>Responsible AI in Ops</strong>: AI hallucinations can take down production. Learn the guardrails.</summary>
+      <p><strong>Research &amp; sub-topics:</strong> Hallucination detection, output validation, human-in-the-loop patterns, cost of LLM API calls, and when NOT to use AI (secrets, compliance decisions).</p>
+      <p><strong>How to learn it:</strong> Intentionally ask AI to generate a security group rule and verify if it is actually secure. This teaches you that AI output must always be validated before applying to production.</p>
+      <p><strong>Knowledge gained:</strong> Critical thinking in the AI era. You will know how to leverage AI speed without sacrificing reliability or security.</p>
+    </details>
+  </article>
+</section>
 <div class="footer"><p>Curated DevOps Curriculum for High-Growth Careers</p></div>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -208,7 +444,19 @@ body {
     {"@type":"ListItem","position":1,"name":"Amit Joshi","item":"https://amitj.me/"},
     {"@type":"ListItem","position":2,"name":"DevOps Learning Path","item":"https://amitj.me/career/"}
   ]},
-  {"@type":"Course","name":"DevOps Learning Path","description":"A 10-stage interactive roadmap from networking fundamentals to GenAI for DevOps, curated by a Solution Architect with 10+ years experience.","provider":{"@type":"Person","name":"Amit Joshi","url":"https://amitj.me"},"educationalLevel":"Beginner to Advanced","about":["DevOps","AWS","Kubernetes","Docker","Terraform","CI/CD","GenAI"],"inLanguage":"en","isAccessibleForFree":true}
+  {"@type":"WebPage","@id":"https://amitj.me/career/#webpage","url":"https://amitj.me/career/","name":"DevOps Learning Path — 10-Stage Roadmap from Foundations to GenAI","isPartOf":{"@id":"https://amitj.me/#website"},"author":{"@id":"https://amitj.me/#person"},"dateModified":"2026-07-21"},
+  {"@type":"Course","name":"DevOps Learning Path","description":"A 10-stage interactive roadmap from networking fundamentals to GenAI for DevOps, curated by a Solution Architect with 10+ years experience.","provider":{"@type":"Person","@id":"https://amitj.me/#person","name":"Amit Joshi","url":"https://amitj.me/"},"educationalLevel":"Beginner to Advanced","about":["DevOps","AWS","Kubernetes","Docker","Terraform","CI/CD","GenAI"],"inLanguage":"en","isAccessibleForFree":true,"syllabusSections":[
+    {"@type":"Syllabus","position":1,"name":"The Core Foundation","description":"Networking, Operating Systems (Linux), Virtualization"},
+    {"@type":"Syllabus","position":2,"name":"Programming & Dev Basics","description":"Python, App Architecture, Git"},
+    {"@type":"Syllabus","position":3,"name":"DevOps Culture","description":"Agile SDLC, Collaboration, CAMS, SRE principles"},
+    {"@type":"Syllabus","position":4,"name":"Local Deployment","description":"Web Servers (Nginx), Reverse Proxy, 3-Tier Logic"},
+    {"@type":"Syllabus","position":5,"name":"Containers & Orchestration","description":"Docker, Kubernetes, ArgoCD/GitOps"},
+    {"@type":"Syllabus","position":6,"name":"The Cloud (AWS)","description":"AWS Services, Cloud Migration, CI/CD with GitHub Actions"},
+    {"@type":"Syllabus","position":7,"name":"Infrastructure as Code","description":"Terraform, Pulumi"},
+    {"@type":"Syllabus","position":8,"name":"Security First","description":"OWASP Top 10, Web App Security, DevSecOps culture"},
+    {"@type":"Syllabus","position":9,"name":"System Architecture","description":"Decision frameworks, Cost Optimization, Availability & Reliability, Compliance"},
+    {"@type":"Syllabus","position":10,"name":"GenAI for DevOps","description":"Prompt Engineering, LLM APIs & SDKs, AI-Assisted IaC, Responsible AI in Ops"}
+  ]}
 ]}
 </script>
 <script>

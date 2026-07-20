@@ -1,39 +1,60 @@
-# Robots.txt for Amit Joshi - DevOps Engineer Portfolio
-# Global DevOps & GenAI Solution Architect
+# robots.txt — Amit Joshi | Solution Architect (DevOps & GenAI)
 # https://amitj.me
+# Policy: all crawlers welcome, including AI/LLM agents.
 
 User-agent: *
 Allow: /
 
-# Optimize crawl budget - allow all SEO-critical content
-Allow: /*.css
-Allow: /*.js
-Allow: /*.json
-Allow: /icons/
-Allow: /data/
-Allow: /screenshots/
-Allow: /assets/
+# --- AI search & assistant crawlers (explicitly allowed) ---
+# OpenAI
+User-agent: GPTBot
+Allow: /
 
-# Disallow non-essential files for better crawl efficiency
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google (Gemini / AI training)
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# Common Crawl (feeds many model training sets)
+User-agent: CCBot
+Allow: /
+
+# DuckDuckGo AI
+User-agent: DuckAssistBot
+Allow: /
+
+# --- Housekeeping ---
 Disallow: /sw.js
-Disallow: /*.log
 Disallow: /browserconfig.xml
 
-# XML Sitemap for enhanced indexing
 Sitemap: https://amitj.me/sitemap.xml
-
-# Global availability - no geo-restrictions
-# Targeting worldwide DevOps, AWS, and GenAI opportunities
-
-# Crawl delay for respectful crawling
-Crawl-delay: 1
-
-# Special instructions for search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /

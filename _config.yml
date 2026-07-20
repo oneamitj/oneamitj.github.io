@@ -12,11 +12,11 @@ author:
   email: "one.amitj@gmail.com"
   linkedin: "oneamitj"
   github: "oneamitj"
-  location: "Kathmandu, Nepal"
+  location: "Melbourne, Australia"
 
 # SEO settings
 lang: en_US
-timezone: Asia/Kathmandu
+timezone: Australia/Melbourne
 
 # Social media
 social:
@@ -36,11 +36,10 @@ webmaster_verifications:
 # Site verification
 google_site_verification: # Add your Google site verification code
 
-# Plugins for better SEO (if using Jekyll)
-plugins:
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-feed
+# NOTE: Jekyll is disabled via .nojekyll — the site is served as pure static
+# files, with sitemap.xml and all meta tags maintained by hand. This file is
+# kept only as a reference; plugins are intentionally not enabled to avoid
+# conflicting with the hand-maintained sitemap and meta tags.
 
 # Exclude files from processing
 exclude:

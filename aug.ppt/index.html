@@ -13,9 +13,35 @@
   <meta property="og:title" content="Dawn of the Agents - GenAI Presentation">
   <meta property="og:description" content="GenAI matures into the age of autonomous agents. AWS User Group Meetup talk by Amit Joshi.">
   <meta property="og:url" content="https://amitj.me/aug.ppt/">
-  <meta property="og:image" content="https://amitj.me/icons/icon-512x512.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://amitj.me/assets/og/og-default.png">
+  <meta property="og:site_name" content="Amit Joshi">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@oneamitj">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://amitj.me/aug.ppt/#webpage",
+        "url": "https://amitj.me/aug.ppt/",
+        "name": "Dawn of the Agents - GenAI Presentation",
+        "isPartOf": { "@id": "https://amitj.me/#website" },
+        "author": { "@id": "https://amitj.me/#person" }
+      },
+      {
+        "@type": "PresentationDigitalDocument",
+        "@id": "https://amitj.me/aug.ppt/#deck",
+        "name": "Dawn of the Agents: The Age of Agents",
+        "description": "Slide deck on GenAI maturing into the age of autonomous agents: foundation models as infrastructure, agents as the interface, vibe coding, and governance moving upstream to prompt time. Presented at an AWS User Group meetup.",
+        "url": "https://amitj.me/aug.ppt/",
+        "author": { "@id": "https://amitj.me/#person" },
+        "inLanguage": "en",
+        "about": ["Generative AI", "AI agents", "AWS", "Foundation models", "AI governance"]
+      }
+    ]
+  }
+  </script>
 
   <style>
     :root {
@@ -97,6 +123,14 @@
     .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
 
     h1 {
+      font-size: 64px;
+      font-weight: 700;
+      margin: 0 0 32px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    h2.slide-title {
       font-size: 64px;
       font-weight: 700;
       margin: 0 0 32px;
@@ -318,7 +352,7 @@
 
   <!-- Slide 2 -->
   <div class="slide">
-    <h1 class="animate-in">From Manual <span class="accent">→</span> Autonomous</h1>
+    <h2 class="slide-title animate-in">From Manual <span class="accent">→</span> Autonomous</h2>
     <div class="row">
       <div class="col animate-in animate-delay-1">
         <h2>2015</h2>
@@ -341,7 +375,7 @@
 
   <!-- Slide 3 -->
   <div class="slide">
-    <h1 style="font-size: 72px; margin-bottom: 48px;" class="animate-in">Foundation Models = Infrastructure</h1>
+    <h2 style="font-size: 72px; margin-bottom: 48px;" class="slide-title animate-in">Foundation Models = Infrastructure</h2>
     <div class="divider animate-in animate-delay-1"></div>
     <p style="font-size: 56px; font-weight: 600; margin-top: 48px;" class="accent animate-in animate-delay-2">Agents are the Interface</p>
     <div class="slide-number">3 / 16</div>
@@ -349,7 +383,7 @@
 
   <!-- Slide 4 -->
   <div class="slide">
-    <h1 class="animate-in">Foundation Models</h1>
+    <h2 class="slide-title animate-in">Foundation Models</h2>
     <p class="animate-in animate-delay-1" style="font-size: 32px; margin: 32px 0;">Nova 2: Lite · Sonic · Omni</p>
     <p class="animate-in animate-delay-2" style="margin: 24px 0;">Incremental gains, not magic</p>
     <p class="accent animate-in animate-delay-3" style="font-size: 32px; font-weight: 600; margin: 32px 0;">Bedrock = model marketplace</p>
@@ -358,7 +392,7 @@
 
   <!-- Slide 5 -->
   <div class="slide">
-    <h1 class="animate-in">Custom Models</h1>
+    <h2 class="slide-title animate-in">Custom Models</h2>
     <div class="split">
       <div class="split-left animate-in animate-delay-1">
         <h2 style="color: var(--fg); margin-bottom: 32px;">Nova Forge</h2>
@@ -376,14 +410,14 @@
 
   <!-- Slide 6 -->
   <div class="slide">
-    <h1 class="animate-in" style="font-size: 72px;">AWS ≠ Only GenAI Cloud</h1>
+    <h2 class="slide-title animate-in" style="font-size: 72px;">AWS ≠ Only GenAI Cloud</h2>
     <p class="accent animate-in animate-delay-1" style="font-size: 48px; font-weight: 600; margin-top: 64px;">Choice beats supremacy</p>
     <div class="slide-number">6 / 16</div>
   </div>
 
   <!-- Slide 7 -->
   <div class="slide">
-    <h1 class="animate-in" style="font-size: 72px;">Agents ≠ Chatbots</h1>
+    <h2 class="slide-title animate-in" style="font-size: 72px;">Agents ≠ Chatbots</h2>
     <p class="accent animate-in animate-delay-1" style="font-size: 48px; font-weight: 600; margin-top: 48px;">Long-lived AI workers</p>
     <p class="animate-in animate-delay-2" style="font-size: 28px; margin-top: 32px;">Memory · Tools · Policies · Autonomy</p>
     <div class="slide-number">7 / 16</div>
@@ -391,7 +425,7 @@
 
   <!-- Slide 8 -->
   <div class="slide">
-    <h1 class="animate-in">AWS Agent Stack</h1>
+    <h2 class="slide-title animate-in">AWS Agent Stack</h2>
     <div class="stack animate-in animate-delay-1">Agents</div>
     <div class="stack animate-in animate-delay-2">AgentCore / Orchestration</div>
     <div class="stack animate-in animate-delay-3">Foundation Models</div>
@@ -401,7 +435,7 @@
 
   <!-- Slide 9 -->
   <div class="slide">
-    <h1 class="animate-in">Job-Shaped Agents</h1>
+    <h2 class="slide-title animate-in">Job-Shaped Agents</h2>
     <p class="animate-in animate-delay-1" style="font-size: 36px; margin: 32px 0;">DevOps Agent</p>
     <p class="animate-in animate-delay-2" style="font-size: 36px; margin: 32px 0;">Security Agent</p>
     <p class="accent animate-in animate-delay-3" style="font-size: 36px; margin: 32px 0; font-weight: 600;">Kiro (IDE)</p>
@@ -410,7 +444,7 @@
 
   <!-- Slide 10 -->
   <div class="slide">
-    <h1 class="animate-in">Vibe Coding</h1>
+    <h2 class="slide-title animate-in">Vibe Coding</h2>
     <p class="accent animate-in animate-delay-1" style="font-size: 48px; font-weight: 600; margin: 48px 0;">Natural language <span class="accent">→</span> Code</p>
     <p class="animate-in animate-delay-2" style="font-size: 32px; margin-top: 32px;">Humans supervise</p>
     <div class="slide-number">10 / 16</div>
@@ -418,7 +452,7 @@
 
   <!-- Slide 11 -->
   <div class="slide">
-    <h1 class="animate-in">Specs <span class="accent">></span> Code</h1>
+    <h2 class="slide-title animate-in">Specs <span class="accent">></span> Code</h2>
     <div class="split" style="margin-top: 80px;">
       <div class="split-left animate-in animate-delay-1">
         <h2 style="margin-bottom: 32px;">Specs</h2>
@@ -437,7 +471,7 @@
 
   <!-- Slide 12 -->
   <div class="slide">
-    <h1 class="animate-in">Vibe DevOps</h1>
+    <h2 class="slide-title animate-in">Vibe DevOps</h2>
     <div class="flow-step animate-in animate-delay-1">
       <p style="font-size: 36px; color: var(--fg);">"I want X"</p>
     </div>
@@ -454,7 +488,7 @@
 
   <!-- Slide 13 -->
   <div class="slide">
-    <h1 class="animate-in">Governance Moves Upstream</h1>
+    <h2 class="slide-title animate-in">Governance Moves Upstream</h2>
     <p class="accent animate-in animate-delay-1" style="font-size: 48px; font-weight: 600; margin: 48px 0;">Security starts at prompt time</p>
     <p class="animate-in animate-delay-2" style="font-size: 28px; margin-top: 32px;">IAM Autopilot · Policies · Audit Trails</p>
     <div class="slide-number">13 / 16</div>
@@ -462,7 +496,7 @@
 
   <!-- Slide 14 -->
   <div class="slide">
-    <h1 class="animate-in">What This Means</h1>
+    <h2 class="slide-title animate-in">What This Means</h2>
     <p class="animate-in animate-delay-1" style="font-size: 36px; margin: 32px 0;">Use best models</p>
     <p class="animate-in animate-delay-2" style="font-size: 36px; margin: 32px 0;">Adopt agents carefully</p>
     <p class="accent animate-in animate-delay-3" style="font-size: 36px; margin: 32px 0; font-weight: 600;">Over-invest in validation</p>
@@ -471,14 +505,14 @@
 
   <!-- Slide 15 -->
   <div class="slide">
-    <h1 class="animate-in" style="font-size: 72px;">2025+</h1>
+    <h2 class="slide-title animate-in" style="font-size: 72px;">2025+</h2>
     <p class="accent animate-in animate-delay-1" style="font-size: 48px; font-weight: 600; margin: 64px 0 32px;">You don't write the email</p>
     <p class="animate-in animate-delay-2" style="font-size: 40px; margin-top: 32px;">You approve the outcome</p>
     <div class="slide-number">15 / 16</div>
   </div>
   <!-- Slide 16 -->
   <div class="slide">
-    <h1 class="animate-in" style="font-size: 72px;">Thank You</h1>
+    <h2 class="slide-title animate-in" style="font-size: 72px;">Thank You</h2>
     <div class="divider animate-in animate-delay-1"></div>
     <p class="accent animate-in animate-delay-2" style="font-size: 36px; font-weight: 600; margin-top: 64px; line-height: 1.6; font-style: italic;">The most valuable engineers won't be the fastest typers - they'll be the best delegators.</p>
     <div class="slide-number">16 / 16</div>
