@@ -1,7 +1,9 @@
 /* Claude Architect Practice — shared theme
    Single source of truth for the color palette used by /claude/,
-   /claude/1/ (Set 1) and /claude/2/ (Set 2). Keep in sync across
-   pages by editing only here. */
+   /claude/course/ (hub pages), /claude/test/1/ (Set 1) and
+   /claude/test/2/ (Set 2). Keep in sync across pages by editing only
+   here. Dark mode is opt-in via [data-theme="dark"] on <html>,
+   toggled by each page's #themeBtn. */
 :root{
   --bg:#f5f4ef; --surface:#ffffff; --surface-2:#faf9f6;
   --ink:#262624; --muted:#6e6a63; --faint:#928d84;
@@ -14,10 +16,25 @@
   --shadow:0 1px 2px rgba(30,25,20,.04),0 6px 20px rgba(30,25,20,.06);
   --radius:14px;
 }
+html[data-theme="dark"]{
+  --bg:#15171c; --surface:#1c1f26; --surface-2:#20232b;
+  --ink:#e7e9ee; --muted:#a7afbd; --faint:#7c8494;
+  --border:#2b303a; --border-2:#343a46;
+  --accent:#e8935f; --accent-d:#e8935f70; --accent-ink:#f0b189;
+  --green:#5ecb93; --green-bg:#132a20; --green-bd:#245c40;
+  --red:#e78a86; --red-bg:#2c1a1a; --red-bd:#5c3230;
+  --amber:#e0b45f; --amber-bg:#2a2416; --amber-bd:#5c4c26;
+  --blue:#6ea8e0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.4);
+}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
+html{color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark}
 body{
   background:var(--bg); color:var(--ink);
   font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
 }
+.iconbtn{font-size:12.5px;border:1px solid var(--border);background:var(--bg);color:var(--muted);border-radius:8px;padding:6px 11px;cursor:pointer}
+.iconbtn:hover{color:var(--ink);border-color:var(--accent)}

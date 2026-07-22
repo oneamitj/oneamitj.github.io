@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCAR-F Study Guides — Claude Certified Architect Foundations Self-Study Courses</title>
+<meta name="description" content="Two independent self-study guides for the Claude Certified Architect – Foundations (CCAR-F) exam: agentic architecture, tool design &amp; MCP, Claude Code workflows, prompt engineering, and context management.">
+<meta name="author" content="Amit Joshi">
+<link rel="canonical" href="https://amitj.me/claude/course/ccarf/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://amitj.me/claude/course/ccarf/">
+<meta property="og:title" content="CCAR-F Study Guides — Claude Certified Architect Foundations Self-Study Courses">
+<meta property="og:description" content="Two independent self-study guides for the Claude Certified Architect – Foundations (CCAR-F) exam: agentic architecture, tool design &amp; MCP, Claude Code workflows, prompt engineering, and context management.">
+<meta property="og:image" content="https://amitj.me/assets/og/og-claude.png">
+<meta property="og:site_name" content="Amit Joshi">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://amitj.me/claude/course/ccarf/#webpage",
+      "url": "https://amitj.me/claude/course/ccarf/",
+      "name": "CCAR-F Study Guides (Claude Certified Architect Foundations)",
+      "description": "Free, unofficial self-study courses for the Claude Certified Architect – Foundations (CCAR-F) certification: two independent domain-by-domain guides.",
+      "isPartOf": { "@id": "https://amitj.me/#website" },
+      "author": { "@id": "https://amitj.me/#person" },
+      "dateModified": "2026-07-22",
+      "breadcrumb": { "@id": "https://amitj.me/claude/course/ccarf/#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://amitj.me/claude/course/ccarf/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "amitj.me", "item": "https://amitj.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Claude Architect Prep", "item": "https://amitj.me/claude/" },
+        { "@type": "ListItem", "position": 3, "name": "Study Guides", "item": "https://amitj.me/claude/course/" },
+        { "@type": "ListItem", "position": 4, "name": "CCAR-F", "item": "https://amitj.me/claude/course/ccarf/" }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/claude/theme.css">
+<style>
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer}
+
+.topbar{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);margin-bottom:22px}
+.topbar-in{max-width:900px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:650;letter-spacing:-.01em}
+.brand .dot{width:16px;height:16px;border-radius:5px;background:var(--accent)}
+.brand small{font-weight:500;color:var(--muted)}
+.spacer{flex:1}
+.back-link{font-size:13px;font-weight:600;color:var(--faint);text-decoration:none;white-space:nowrap}
+.back-link:hover{color:var(--accent-ink)}
+
+.wrap{max-width:900px;margin:0 auto;padding:22px 18px 80px}
+h1,h2,h3{line-height:1.25;margin:0}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.hero{padding:30px 30px 26px}
+.hero h1{font-size:27px;letter-spacing:-.02em}
+.hero p.sub{color:var(--muted);margin:9px 0 0;font-size:15.5px}
+
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.cert-card{display:block;padding:18px 18px 16px;text-align:left;border:1.5px solid var(--border);background:var(--surface);
+  border-radius:var(--radius);transition:.15s;position:relative;text-decoration:none;color:inherit}
+.cert-card:hover{border-color:var(--accent-d);box-shadow:var(--shadow)}
+.cert-card .code{font-weight:750;font-size:15px;color:var(--ink)}
+.cert-card .full{font-size:13.5px;color:var(--muted);margin-top:2px}
+.cert-card .meta{font-size:13px;color:var(--faint);margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-size:11.5px;font-weight:650;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:2px 7px;color:var(--muted)}
+.cert-card .desc{font-size:13px;color:var(--muted);margin-top:11px;line-height:1.5}
+.cert-card .go{font-size:13.5px;font-weight:650;color:var(--accent-ink);margin-top:14px}
+
+.disclaimer{font-size:12.5px;color:var(--faint);margin-top:24px;line-height:1.5}
+
+@media(max-width:640px){
+  .cert-grid{grid-template-columns:1fr}
+  .hero{padding:24px 20px}
+}
+</style>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","w9k177a7ak");</script>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-in">
+    <a href="/claude/course/" class="back-link">&larr; Study Guides</a>
+    <div class="brand"><span class="dot"></span><span>CCAR-F<br><small>Foundations self-study guides</small></span></div>
+    <div class="spacer"></div>
+    <button id="themeBtn" class="iconbtn" type="button" title="Toggle color theme">&#9680; Theme</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="card hero">
+    <h1>CCAR-F &middot; Foundations study guides</h1>
+    <p class="sub">Two independent, original self-study guides for the Claude Certified Architect – Foundations exam, each covering agentic architecture, tool design &amp; MCP, Claude Code workflows, prompt engineering, and context management. Pick whichever fits how you want to study.</p>
+  </div>
+
+  <div class="cert-grid">
+    <a class="cert-card" href="/claude/course/ccarf/1/">
+      <div class="code">Guide 1</div>
+      <div class="full">Complete self-study guide</div>
+      <div class="meta">
+        <span class="tag">29 chapters</span>
+        <span class="tag">30 knowledge checks</span>
+      </div>
+      <div class="desc">A concise domain-by-domain walkthrough of agentic architecture, tool design &amp; MCP, Claude Code workflows, prompt engineering, and context management, plus a dedicated practice-questions chapter.</div>
+      <div class="go">Start Guide 1 &rarr;</div>
+    </a>
+    <a class="cert-card" href="/claude/course/ccarf/2/">
+      <div class="code">Guide 2</div>
+      <div class="full">Standalone course with worked examples</div>
+      <div class="meta">
+        <span class="tag">30 chapters</span>
+        <span class="tag">92 knowledge checks</span>
+      </div>
+      <div class="desc">A deeper course covering the Claude Agent SDK, the Claude API, MCP, and Claude Code, with worked examples, official-style scenarios, and a full practice exam built in.</div>
+      <div class="go">Start Guide 2 &rarr;</div>
+    </a>
+  </div>
+
+  <p class="disclaimer"><b>Unofficial study aid.</b> These are original study guides written to the published exam guide for the Claude Certified Architect – Foundations (CCAR-F) certification. They are not official course material and this tool is not affiliated with or endorsed by Anthropic. Want to test yourself instead? See <a href="/claude/test/">Practice Exams</a>.</p>
+</div>
+<script>
+document.getElementById('themeBtn').addEventListener('click',function(){
+  var h=document.documentElement;
+  h.setAttribute('data-theme', h.getAttribute('data-theme')==='dark'?'light':'dark');
+});
+</script>
+</body>
+</html>

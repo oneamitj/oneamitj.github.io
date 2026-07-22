@@ -60,24 +60,80 @@
         <priority>0.9</priority>
     </url>
 
-    <!-- Claude Certified Architect Practice Exams -->
+    <!-- Claude Certified Architect Study Guides & Practice Exams -->
     <url>
         <loc>https://amitj.me/claude/</loc>
-        <lastmod>2026-07-21</lastmod>
+        <lastmod>2026-07-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://amitj.me/claude/1/</loc>
-        <lastmod>2026-07-21</lastmod>
+        <loc>https://amitj.me/claude/course/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.55</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/course/ccarf/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.45</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/course/ccarf/1/</loc>
+        <lastmod>2026-07-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
-        <loc>https://amitj.me/claude/2/</loc>
-        <lastmod>2026-07-21</lastmod>
+        <loc>https://amitj.me/claude/course/ccarf/2/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/course/ccarp/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.45</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/course/ccarp/1/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/course/ccarp/2/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/test/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.55</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/test/1/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/test/2/</loc>
+        <lastmod>2026-07-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>

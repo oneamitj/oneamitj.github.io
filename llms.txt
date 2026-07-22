@@ -34,7 +34,7 @@ Known online as "oneamitj". Architected 10+ production GenAI solutions and scale
 ## Projects & tools on this site
 
 - [DevOps learning path](https://amitj.me/career/): 10-stage curriculum for becoming a DevOps engineer, written by Amit
-- [Claude Architect practice exams](https://amitj.me/claude/): Free practice exams for the Anthropic Claude Certified Architect certification
+- [Claude Architect prep](https://amitj.me/claude/): Free self-study guides and practice exams for the Anthropic Claude Certified Architect certification
 - [iJobber](https://amitj.me/ijobber/): Chrome extension for AI-powered cover letters and CV tailoring
 - [ArchMentor](https://amitj.me/archmentor/): Interactive solution-architecture training app
 

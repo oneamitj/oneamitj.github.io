@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Claude Certified Architect Prep — Free CCAR-F &amp; CCAR-P Study Guides &amp; Practice Exams</title>
-<meta name="description" content="Free self-study guides and practice exams for the Claude Certified Architect certifications (CCAR-F &amp; CCAR-P): full domain-by-domain courses, a timed exam simulator, keyboard-driven drills, and domain score breakdowns.">
+<title>Claude Certified Architect Study Guides — CCAR-F &amp; CCAR-P Self-Study Courses</title>
+<meta name="description" content="Free self-study courses for the Claude Certified Architect certifications: two independent domain-by-domain guides for CCAR-F (Foundations) and two for CCAR-P (Professional), each with click-to-reveal knowledge checks.">
 <meta name="author" content="Amit Joshi">
-<link rel="canonical" href="https://amitj.me/claude/">
+<link rel="canonical" href="https://amitj.me/claude/course/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://amitj.me/claude/">
-<meta property="og:title" content="Claude Certified Architect Prep — Free CCAR-F &amp; CCAR-P Study Guides &amp; Practice Exams">
-<meta property="og:description" content="Free self-study guides and practice exams for the Claude Certified Architect certifications (CCAR-F &amp; CCAR-P): full domain-by-domain courses, a timed exam simulator, keyboard-driven drills, and domain score breakdowns.">
+<meta property="og:url" content="https://amitj.me/claude/course/">
+<meta property="og:title" content="Claude Certified Architect Study Guides — CCAR-F &amp; CCAR-P Self-Study Courses">
+<meta property="og:description" content="Free self-study courses for the Claude Certified Architect certifications: two independent domain-by-domain guides for CCAR-F (Foundations) and two for CCAR-P (Professional), each with click-to-reveal knowledge checks.">
 <meta property="og:image" content="https://amitj.me/assets/og/og-claude.png">
 <meta property="og:site_name" content="Amit Joshi">
 <meta name="twitter:card" content="summary_large_image">
@@ -23,35 +23,22 @@
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://amitj.me/claude/#webpage",
-      "url": "https://amitj.me/claude/",
-      "name": "Claude Certified Architect Study Guides & Practice Exams (CCAR-F & CCAR-P)",
-      "description": "Free, unofficial self-study guides and practice exams for the Anthropic Claude Certified Architect certifications: full domain-by-domain courses, a timed full exam simulator, and a streamlined practice quiz, each with its own original question bank.",
+      "@id": "https://amitj.me/claude/course/#webpage",
+      "url": "https://amitj.me/claude/course/",
+      "name": "Claude Certified Architect Study Guides (CCAR-F & CCAR-P)",
+      "description": "Free, unofficial self-study courses for the Anthropic Claude Certified Architect certifications: two independent domain-by-domain guides per exam.",
       "isPartOf": { "@id": "https://amitj.me/#website" },
       "author": { "@id": "https://amitj.me/#person" },
       "dateModified": "2026-07-22",
-      "breadcrumb": { "@id": "https://amitj.me/claude/#breadcrumb" }
-    },
-    {
-      "@type": "LearningResource",
-      "@id": "https://amitj.me/claude/#resource",
-      "name": "Claude Certified Architect Study Guides & Practice Exams",
-      "description": "Original self-study courses and scenario-based practice questions written to the official CCAR-F (Foundations) and CCAR-P (Professional) exam blueprints, with full domain-by-domain guides, timed sessions, flag-and-review navigation, and domain-by-domain score breakdowns.",
-      "url": "https://amitj.me/claude/",
-      "learningResourceType": "Study guide, practice exam",
-      "educationalLevel": "Professional certification",
-      "teaches": "Anthropic Claude architecture: Claude API, tool use, MCP, agents, prompt engineering, deployment and safety practices",
-      "isAccessibleForFree": true,
-      "inLanguage": "en",
-      "author": { "@id": "https://amitj.me/#person" },
-      "provider": { "@id": "https://amitj.me/#person" }
+      "breadcrumb": { "@id": "https://amitj.me/claude/course/#breadcrumb" }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://amitj.me/claude/#breadcrumb",
+      "@id": "https://amitj.me/claude/course/#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "amitj.me", "item": "https://amitj.me/" },
-        { "@type": "ListItem", "position": 2, "name": "Claude Architect Prep", "item": "https://amitj.me/claude/" }
+        { "@type": "ListItem", "position": 2, "name": "Claude Architect Prep", "item": "https://amitj.me/claude/" },
+        { "@type": "ListItem", "position": 3, "name": "Study Guides", "item": "https://amitj.me/claude/course/" }
       ]
     }
   ]
@@ -62,7 +49,6 @@
 *{box-sizing:border-box}
 button{font-family:inherit;cursor:pointer}
 
-/* top bar */
 .topbar{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);
   border-bottom:1px solid var(--border);margin-bottom:22px}
 .topbar-in{max-width:900px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;gap:14px}
@@ -109,8 +95,8 @@ h1,h2,h3{line-height:1.25;margin:0}
 <body>
 <div class="topbar">
   <div class="topbar-in">
-    <a href="/" class="back-link">&larr; amitj.me</a>
-    <div class="brand"><span class="dot"></span><span>Claude Architect Prep<br><small>Study Guides &amp; Practice Exams · CCAR-F &amp; CCAR-P</small></span></div>
+    <a href="/claude/" class="back-link">&larr; Claude Architect Prep</a>
+    <div class="brand"><span class="dot"></span><span>Study Guides<br><small>CCAR-F &amp; CCAR-P self-study courses</small></span></div>
     <div class="spacer"></div>
     <button id="themeBtn" class="iconbtn" type="button" title="Toggle color theme">&#9680; Theme</button>
   </div>
@@ -118,12 +104,9 @@ h1,h2,h3{line-height:1.25;margin:0}
 
 <div class="wrap">
   <div class="card hero">
-    <h1>Prep for the Claude Certified Architect exams</h1>
-    <p class="sub">Free, original self-study guides and practice exams for CCAR-F (Foundations) and CCAR-P (Professional). Read a full domain-by-domain course, then drill with timed practice exams — pick whichever fits how you want to study.</p>
+    <h1>Claude Certified Architect study guides</h1>
+    <p class="sub">Free, original self-study courses covering every domain on the exam blueprint, with click-to-reveal knowledge checks throughout. Two independent guides per exam — pick whichever fits how you want to study.</p>
   </div>
-
-  <div class="section-label">Study guides</div>
-  <p class="section-sub">Complete self-paced courses covering every domain on the exam blueprint, with click-to-reveal knowledge checks throughout. Two independent guides per exam, each with its own approach.</p>
 
   <div class="group-label">CCAR-F &middot; Foundations</div>
   <div class="cert-grid">
@@ -173,33 +156,7 @@ h1,h2,h3{line-height:1.25;margin:0}
     </a>
   </div>
 
-  <div class="section-label">Practice exams</div>
-  <p class="section-sub">Original scenario-based questions written to the official CCAR-F and CCAR-P exam blueprints. Two independent practice-exam experiences, each with its own question bank.</p>
-  <div class="cert-grid">
-    <a class="cert-card" href="/claude/test/1/">
-      <div class="code">Set 1</div>
-      <div class="full">Full exam simulator</div>
-      <div class="meta">
-        <span class="tag">Timer</span>
-        <span class="tag">Flag &amp; review</span>
-        <span class="tag">Question navigator</span>
-      </div>
-      <div class="desc">Timed sessions with a flaggable question navigator and a domain-by-domain score breakdown at the end — closest to sitting the real exam.</div>
-      <div class="go">Start Set 1 &rarr;</div>
-    </a>
-    <a class="cert-card" href="/claude/test/2/">
-      <div class="code">Set 2</div>
-      <div class="full">Streamlined practice flow</div>
-      <div class="meta">
-        <span class="tag">Keyboard shortcuts</span>
-        <span class="tag">Linear flow</span>
-      </div>
-      <div class="desc">A simpler, single-column quiz with keyboard shortcuts (1–4, arrow keys) — quick for low-friction drilling.</div>
-      <div class="go">Start Set 2 &rarr;</div>
-    </a>
-  </div>
-
-  <p class="disclaimer"><b>Unofficial study aid.</b> These are original study guides and practice questions written to the published exam guides for the Claude Certified Architect – Foundations (CCAR-F) and Professional (CCAR-P) certifications. They are not official course material or real exam questions, and this tool is not affiliated with or endorsed by Anthropic. Pass/fail on the practice exams uses an approximate 72% bar; the real exams use scaled scoring (720/1000).</p>
+  <p class="disclaimer"><b>Unofficial study aid.</b> These are original study guides written to the published exam guides for the Claude Certified Architect – Foundations (CCAR-F) and Professional (CCAR-P) certifications. They are not official course material and this tool is not affiliated with or endorsed by Anthropic. Looking for practice exams instead? See <a href="/claude/test/">Practice Exams</a>.</p>
 </div>
 <script>
 document.getElementById('themeBtn').addEventListener('click',function(){
