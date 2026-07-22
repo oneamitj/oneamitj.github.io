@@ -1,9 +1,9 @@
 /* Claude Architect Practice — shared theme
    Single source of truth for the color palette used by /claude/,
-   /claude/course/ (hub pages), /claude/test/1/ (Set 1) and
-   /claude/test/2/ (Set 2). Keep in sync across pages by editing only
-   here. Dark mode is opt-in via [data-theme="dark"] on <html>,
-   toggled by each page's #themeBtn. */
+   /claude/course/ (hub pages), and /claude/test/ (hub pages plus
+   /claude/test/ccarf/{1,2}/ and /claude/test/ccarp/{1,2}/). Keep in
+   sync across pages by editing only here. Dark mode is opt-in via
+   [data-theme="dark"] on <html>, toggled by each page's #themeBtn. */
 :root{
   --bg:#f5f4ef; --surface:#ffffff; --surface-2:#faf9f6;
   --ink:#262624; --muted:#6e6a63; --faint:#928d84;

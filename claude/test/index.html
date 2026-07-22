@@ -65,8 +65,11 @@ h1,h2,h3{line-height:1.25;margin:0}
 .hero{padding:30px 30px 26px}
 .hero h1{font-size:27px;letter-spacing:-.02em}
 .hero p.sub{color:var(--muted);margin:9px 0 0;font-size:15.5px}
+.group-label{font-size:12.5px;font-weight:650;color:var(--accent-ink);margin:16px 4px 9px;display:flex;align-items:center;gap:8px}
+.group-label:first-of-type{margin-top:0}
 
 .cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.cert-grid+.group-label{margin-top:20px}
 .cert-card{display:block;padding:18px 18px 16px;text-align:left;border:1.5px solid var(--border);background:var(--surface);
   border-radius:var(--radius);transition:.15s;position:relative;text-decoration:none;color:inherit}
 .cert-card:hover{border-color:var(--accent-d);box-shadow:var(--shadow)}
@@ -100,27 +103,55 @@ h1,h2,h3{line-height:1.25;margin:0}
 <div class="wrap">
   <div class="card hero">
     <h1>Claude Certified Architect practice exams</h1>
-    <p class="sub">Original scenario-based questions written to the official CCAR-F and CCAR-P exam blueprints. Two independent practice-exam experiences, each with its own question bank. Pick whichever fits how you want to drill.</p>
+    <p class="sub">Original scenario-based questions written to the official CCAR-F and CCAR-P exam blueprints. Two independent practice-exam experiences per certification, each with its own question bank. Pick whichever fits how you want to drill.</p>
   </div>
 
+  <div class="group-label">CCAR-F &middot; Foundations</div>
   <div class="cert-grid">
-    <a class="cert-card" href="/claude/test/1/">
+    <a class="cert-card" href="/claude/test/ccarf/1/">
       <div class="code">Set 1</div>
       <div class="full">Full exam simulator</div>
       <div class="meta">
-        <span class="tag">Timer</span>
-        <span class="tag">Flag &amp; review</span>
-        <span class="tag">Question navigator</span>
+        <span class="tag">500 questions</span>
+        <span class="tag">5 domains</span>
+        <span class="tag">60 Q &middot; 120 min</span>
       </div>
       <div class="desc">Timed sessions with a flaggable question navigator and a domain-by-domain score breakdown at the end, closest to sitting the real exam.</div>
       <div class="go">Start Set 1 &rarr;</div>
     </a>
-    <a class="cert-card" href="/claude/test/2/">
+    <a class="cert-card" href="/claude/test/ccarf/2/">
       <div class="code">Set 2</div>
       <div class="full">Streamlined practice flow</div>
       <div class="meta">
+        <span class="tag">323 questions</span>
+        <span class="tag">5 domains</span>
         <span class="tag">Keyboard shortcuts</span>
-        <span class="tag">Linear flow</span>
+      </div>
+      <div class="desc">A simpler, single-column quiz with keyboard shortcuts (1-4, arrow keys), quick for low-friction drilling.</div>
+      <div class="go">Start Set 2 &rarr;</div>
+    </a>
+  </div>
+
+  <div class="group-label">CCAR-P &middot; Professional</div>
+  <div class="cert-grid">
+    <a class="cert-card" href="/claude/test/ccarp/1/">
+      <div class="code">Set 1</div>
+      <div class="full">Full exam simulator</div>
+      <div class="meta">
+        <span class="tag">500 questions</span>
+        <span class="tag">7 domains</span>
+        <span class="tag">63 Q &middot; 120 min</span>
+      </div>
+      <div class="desc">Timed sessions with a flaggable question navigator and a domain-by-domain score breakdown at the end, closest to sitting the real exam.</div>
+      <div class="go">Start Set 1 &rarr;</div>
+    </a>
+    <a class="cert-card" href="/claude/test/ccarp/2/">
+      <div class="code">Set 2</div>
+      <div class="full">Streamlined practice flow</div>
+      <div class="meta">
+        <span class="tag">308 questions</span>
+        <span class="tag">5 domains</span>
+        <span class="tag">Keyboard shortcuts</span>
       </div>
       <div class="desc">A simpler, single-column quiz with keyboard shortcuts (1-4, arrow keys), quick for low-friction drilling.</div>
       <div class="go">Start Set 2 &rarr;</div>

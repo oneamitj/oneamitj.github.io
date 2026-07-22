@@ -125,14 +125,42 @@
     </url>
 
     <url>
-        <loc>https://amitj.me/claude/test/1/</loc>
+        <loc>https://amitj.me/claude/test/ccarf/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.45</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/test/ccarf/1/</loc>
         <lastmod>2026-07-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
-        <loc>https://amitj.me/claude/test/2/</loc>
+        <loc>https://amitj.me/claude/test/ccarf/2/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/test/ccarp/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.45</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/test/ccarp/1/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://amitj.me/claude/test/ccarp/2/</loc>
         <lastmod>2026-07-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
