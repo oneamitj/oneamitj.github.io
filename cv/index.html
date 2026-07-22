@@ -27,9 +27,26 @@
     <meta name="twitter:creator" content="@oneamitj">
     <meta name="twitter:image" content="https://amitj.me/assets/og/og-default.png">
 
+    <!-- PWA / chrome theming -->
+    <meta name="theme-color" content="#0b1210">
+
+    <!-- Theme boot: saved choice > OS preference > dark. Runs before first paint. -->
+    <script>
+    (function () {
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) { /* private mode */ }
+        if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', t === 'light' ? '#ebf2ef' : '#0b1210');
+    }());
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
 
     <!-- Structured Data for AI/Search -->
     <script type="application/ld+json">
@@ -42,7 +59,7 @@
         "url": "https://amitj.me/cv/",
         "name": "Amit Joshi - Resume",
         "isPartOf": { "@id": "https://amitj.me/#website" },
-        "dateModified": "2026-07-21",
+        "dateModified": "2026-07-22",
         "mainEntity": { "@id": "https://amitj.me/#person" }
         },
         {
@@ -88,420 +105,367 @@
     }
     </script>
 
+    <!-- Shared design system: same tokens, nav, buttons, chips & timeline as amitj.me -->
+    <link rel="stylesheet" href="/css/site.css">
+
     <style>
-        :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #0f3460;
-            --text: #eaeaea;
-            --text-muted: #a0a0b0;
-            --surface: #1e1e34;
-            --border: #2a2a4a;
-            --success: #4ade80;
-            --link: #60a5fa;
-            --tag-bg: rgba(96, 165, 250, 0.1);
-            --tag-border: rgba(96, 165, 250, 0.3);
-        }
-        @media (prefers-color-scheme: light) {
-            :root {
-                --primary: #ffffff;
-                --secondary: #f8fafc;
-                --accent: #e2e8f0;
-                --text: #1e293b;
-                --text-muted: #64748b;
-                --surface: #f1f5f9;
-                --border: #e2e8f0;
-                --success: #16a34a;
-                --link: #2563eb;
-                --tag-bg: rgba(37, 99, 235, 0.08);
-                --tag-border: rgba(37, 99, 235, 0.2);
-            }
-        }
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { font-size: 16px; scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--primary);
-            color: var(--text);
-            line-height: 1.7;
-            min-height: 100vh;
-        }
-        a { color: var(--link); text-decoration: none; transition: opacity 0.2s; }
-        a:hover { opacity: 0.8; text-decoration: underline; }
-        .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+        /* ---------- CV-specific layout (built on the shared token set) ---------- */
+        .cv-page .section { max-width: 52rem; padding-top: clamp(3rem, 6vh, 4.5rem); }
 
-        /* Header */
-        .cv-header {
-            text-align: center;
-            padding: 3rem 0 2rem;
-            border-bottom: 2px solid var(--border);
-            margin-bottom: 2.5rem;
+        .cv-hero {
+            max-width: 52rem;
+            margin: 0 auto;
+            padding: calc(4.5rem + 3.5vh) var(--gutter) 0;
         }
-        .cv-header h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-        .cv-header h1 a { color: inherit; text-decoration: none; }
-        .cv-header h1 a:hover, .cv-header h1 a:focus-visible { text-decoration: underline; opacity: 0.85; }
-        .cv-header .tagline { font-size: 1.1rem; color: var(--text-muted); font-weight: 500; margin-bottom: 1.25rem; }
-        .cv-header .contact-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 1.5rem; font-size: 0.9rem; }
-        .cv-header .contact-row a, .cv-header .contact-row span { display: inline-flex; align-items: center; gap: 0.35rem; }
-
-        /* Sections */
-        .section { margin-bottom: 2.5rem; }
-        .section-title {
-            font-size: 1.25rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.05em; color: var(--link);
-            border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.25rem;
+        .cv-name {
+            font-size: clamp(2.25rem, 4.2vw + 1rem, 3.5rem);
+            font-weight: 750;
+            font-variation-settings: "opsz" 60;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 0.3em;
         }
-        .summary p { font-size: 1.05rem; }
-
-        /* Skills */
-        .skills-grid { display: flex; flex-direction: column; gap: 1rem; }
-        .skill-category { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
-        .skill-category-label { font-weight: 600; font-size: 0.9rem; min-width: 180px; color: var(--text); }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .skill-tag {
-            background: var(--tag-bg); border: 1px solid var(--tag-border); border-radius: 4px;
-            padding: 0.2rem 0.6rem; font-size: 0.8rem; font-weight: 500; color: var(--link); white-space: nowrap;
+        .cv-kicker {
+            color: var(--ink-3);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: var(--text-mono-sm);
+            margin-bottom: var(--space-sm);
         }
-        .skill-tag.expert { background: rgba(74, 222, 128, 0.1); border-color: rgba(74, 222, 128, 0.3); color: var(--success); }
-
-        /* Experience */
-        .job { margin-bottom: 2rem; padding-left: 1rem; border-left: 3px solid var(--border); }
-        .job:hover { border-left-color: var(--link); }
-        .job-header { margin-bottom: 0.5rem; }
-        .job-title { font-size: 1.1rem; font-weight: 700; }
-        .job-company { font-size: 1rem; color: var(--link); font-weight: 600; }
-        .job-meta { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.15rem; }
-        .job-highlights { list-style: none; padding: 0; margin-top: 0.75rem; }
-        .job-highlights li { position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; font-size: 0.95rem; }
-        .job-highlights li::before { content: "▸"; position: absolute; left: 0; color: var(--link); font-weight: bold; }
-        .job-highlights li strong { color: var(--text); }
-
-        /* Sub-project */
-        .sub-project { margin-top: 0.75rem; padding: 0.75rem 1rem; background: var(--surface); border-radius: 6px; border: 1px solid var(--border); }
-        .sub-project-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; }
-        .sub-project ul { list-style: none; padding: 0; }
-        .sub-project ul li { position: relative; padding-left: 1.1rem; font-size: 0.9rem; margin-bottom: 0.3rem; }
-        .sub-project ul li::before { content: "–"; position: absolute; left: 0; color: var(--text-muted); }
-
-        /* Speaking & Education */
-        .speaking-item { padding: 0.75rem 1rem; background: var(--surface); border-radius: 6px; border: 1px solid var(--border); margin-bottom: 1rem; }
-        .speaking-title { font-weight: 700; font-size: 0.95rem; }
-        .speaking-meta { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem; }
-
-        /* Footer */
-        .cv-footer { text-align: center; padding: 2rem 0; border-top: 2px solid var(--border); margin-top: 2rem; }
-        .cv-footer .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
-        .btn {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            padding: 0.6rem 1.5rem; border-radius: 6px; font-size: 0.9rem; font-weight: 600;
-            text-decoration: none; transition: all 0.2s; border: 1px solid var(--border); background: var(--surface); color: var(--text);
+        .cv-tagline {
+            font-size: clamp(1.0625rem, 1.4vw + 0.6rem, 1.25rem);
+            font-weight: 560;
+            color: var(--amber-soft);
+            margin-bottom: var(--space-lg);
         }
-        .btn:hover { text-decoration: none; border-color: var(--link); background: var(--tag-bg); opacity: 1; }
-        .btn-primary { background: var(--link); color: #fff; border-color: var(--link); }
-        .btn-primary:hover { background: #3b82f6; color: #fff; }
-        .cv-footer p { font-size: 0.85rem; color: var(--text-muted); }
-
-        /* Print */
-        @media print {
-            body { background: #fff; color: #000; font-size: 11pt; line-height: 1.5; }
-            .container { max-width: 100%; padding: 0; }
-            .cv-header { padding: 1rem 0; }
-            .cv-footer { display: none; }
-            .section { margin-bottom: 1.5rem; }
-            .job { border-left-color: #ccc; }
-            a { color: #000; text-decoration: underline; }
-            .skill-tag { border: 1px solid #ccc; color: #333; background: #f5f5f5; }
-            .skill-tag.expert { color: #166534; background: #f0fdf4; border-color: #86efac; }
-            .speaking-item, .sub-project { background: #f9f9f9; border-color: #ddd; }
+        .cv-contact {
+            display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem;
+            color: var(--ink-3);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid var(--line-soft);
         }
+        .cv-contact a { color: var(--ink-2); text-underline-offset: 4px; text-decoration-color: var(--line); }
+        .cv-contact a:hover { color: var(--phosphor); text-decoration-color: var(--phosphor); }
+
+        /* ---------- Summary ---------- */
+        .cv-summary p { max-width: var(--measure); color: var(--ink-2); font-size: 1.0625rem; text-wrap: pretty; }
+
+        /* ---------- Experience (extends .timeline / .tl-*) ---------- */
+        .cv-job { max-width: none; }
+        .cv-job .tl-org a { color: var(--ink-2); }
+        .cv-bullets {
+            list-style: none;
+            display: flex; flex-direction: column; gap: 0.55rem;
+            margin-top: 1rem;
+            color: var(--ink-2);
+        }
+        .cv-bullets li { position: relative; padding-left: 1.3rem; text-wrap: pretty; }
+        .cv-bullets li::before { content: "▸"; position: absolute; left: 0; color: var(--phosphor-soft); }
+        .cv-bullets strong { color: var(--ink); font-weight: 600; }
+
+        .cv-subcard {
+            margin-top: 1.2rem;
+            padding: 1.1rem 1.35rem;
+            background: var(--bg-elev);
+            border: 1px solid var(--line-soft);
+            border-radius: 12px;
+        }
+        .cv-subcard-title { font-weight: 640; color: var(--ink); margin-bottom: 0.6rem; }
+        .cv-subcard-title .mono { color: var(--ink-3); font-weight: 400; }
+        .cv-subcard .cv-bullets { margin-top: 0; gap: 0.4rem; font-size: 0.95rem; }
+
+        /* ---------- Education ---------- */
+        .cv-edu-org { color: var(--ink-3); font-size: var(--text-mono-sm); }
+
+        /* ---------- Resume & contact CTA ---------- */
+        .cv-lead-note { color: var(--ink-2); margin-bottom: var(--space-md); }
+        .cv-footer-actions {
+            display: flex; flex-wrap: wrap; justify-content: flex-start;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+        #downloads { padding-bottom: var(--space-xl); }
+
+        /* ---------- Scroll reveal (vanilla, no GSAP — keeps the resume light) ---------- */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--dur-slow) var(--ease-out-expo), transform var(--dur-slow) var(--ease-out-expo);
+        }
+        [data-reveal="left"] { transform: translateX(-22px); }
+        [data-reveal].is-visible { opacity: 1; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            [data-reveal] { opacity: 1; transform: none; transition: none; }
+        }
+
         @media (max-width: 640px) {
-            .cv-header h1 { font-size: 2rem; }
-            .skill-category { flex-direction: column; gap: 0.3rem; }
-            .skill-category-label { min-width: auto; }
-            .container { padding: 1.5rem 1rem; }
+            .cv-name { font-size: 2.1rem; }
+        }
+
+        /* ---------- Print: flatten to a clean, ink-cheap light document ---------- */
+        @media print {
+            :root, :root[data-theme="dark"], :root[data-theme="light"] {
+                color-scheme: light;
+                --bg: #ffffff; --bg-elev: #ffffff; --surface: #f6f6f6; --surface-2: #eeeeee;
+                --line: #cccccc; --line-soft: #dddddd;
+                --ink: #111111; --ink-2: #333333; --ink-3: #555555;
+                --phosphor: #0a6b45; --phosphor-soft: #0a6b45; --phosphor-tint: transparent; --phosphor-glow: transparent;
+                --amber: #8a5a00; --amber-soft: #8a5a00;
+            }
+            .site-nav, .cv-footer-actions, .cv-note, .site-footer, .terminal-hint, .scroll-cue { display: none !important; }
+            [data-reveal] { opacity: 1 !important; transform: none !important; }
+            .cv-hero { padding-top: 0.5rem; }
+            .cv-page .section { padding-top: 1.5rem; }
+            .timeline-rail { display: none; }
+            .timeline-item { padding-left: 0; }
+            .timeline-item::before { display: none; }
+            a { text-decoration: underline; }
+            body { line-height: 1.5; }
         }
     </style>
     <!-- Microsoft Clarity -->
     <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","w9k177a7ak");</script>
 </head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <header class="cv-header">
-            <h1><a href="/">Amit Joshi</a></h1>
-            <p class="tagline">Solution Architect · AWS Expert · GenAI/LLM Specialist</p>
-            <div class="contact-row">
-                <a href="mailto:one.amitj@gmail.com">📧 one.amitj@gmail.com</a>
-                <a href="https://linkedin.com/in/oneamitj" target="_blank" rel="noopener">💼 LinkedIn</a>
-                <a href="https://github.com/oneamitj" target="_blank" rel="noopener">🐙 GitHub</a>
-                <a href="https://amitj.me" target="_blank" rel="noopener">🌐 amitj.me</a>
-                <span>📍 Melbourne, Australia</span>
-            </div>
-        </header>
+<body class="cv-page">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-        <!-- Professional Summary -->
-        <section class="section summary">
-            <h2 class="section-title">Professional Summary</h2>
-            <p>Solution Architect with 10+ years across cloud infrastructure, DevOps, and GenAI, specializing in taking LLM systems from POC to secure, cost-efficient production on AWS. Architected 10+ production GenAI solutions, including a HIPAA-compliant multi-tenant serverless platform, and cut operational costs while lifting performance. Led Leapfrog Technology to AWS Generative AI, Agentic AI Consulting, and DevOps Competencies, and scaled Programiz's compiler infrastructure to 150,000+ concurrent and 10M+ monthly users at half the previous cost. Hands-on with Terraform, Kubernetes, Python, and serverless, and experienced leading multi-country engineering teams.</p>
+    <header class="site-nav" id="site-nav">
+        <a class="wordmark" href="/" aria-label="amitj — back to portfolio">amitj</a>
+        <nav class="nav-links" aria-label="Resume sections">
+            <a href="#summary">Summary</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#speaking">Speaking</a>
+            <a href="#education">Education</a>
+        </nav>
+        <div class="nav-actions">
+            <a class="btn btn-ghost btn-sm" href="/">Portfolio</a>
+            <button class="btn-theme" id="theme-toggle" type="button" aria-label="Switch to light theme">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"></path>
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- ============ HEADER ============ -->
+        <section class="cv-hero">
+            <h1 class="cv-name" data-reveal>Amit Joshi</h1>
+            <p class="cv-tagline" data-reveal>Solution Architect · AWS Expert · GenAI/LLM Specialist</p>
+            <p class="cv-contact mono" data-reveal>
+                <a href="mailto:one.amitj@gmail.com">one.amitj@gmail.com</a> ·
+                <a href="https://linkedin.com/in/oneamitj" target="_blank" rel="noopener">LinkedIn</a> ·
+                <a href="https://github.com/oneamitj" target="_blank" rel="noopener">GitHub</a> ·
+                <a href="https://amitj.me" target="_blank" rel="noopener">amitj.me</a> ·
+                <span>Melbourne, Australia</span>
+            </p>
         </section>
 
-        <!-- Core Skills -->
-        <section class="section">
-            <h2 class="section-title">Core Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <span class="skill-category-label">Cloud Platforms</span>
-                    <div class="skill-tags">
-                        <span class="skill-tag expert">AWS (Expert)</span>
-                        <span class="skill-tag">GCP</span>
-                        <span class="skill-tag">Azure</span>
-                        <span class="skill-tag">DigitalOcean</span>
-                    </div>
+        <!-- ============ SUMMARY ============ -->
+        <section class="section cv-summary" id="summary" aria-labelledby="summary-title">
+            <p class="cv-kicker mono" data-reveal>Summary</p>
+            <h2 class="section-title" id="summary-title" data-reveal>Professional Summary<span class="accent-dot">.</span></h2>
+            <p data-reveal>Solution Architect with 10+ years across cloud infrastructure, DevOps, and GenAI, specializing in taking LLM systems from POC to secure, cost-efficient production on AWS. Architected 10+ production GenAI solutions, including a HIPAA-compliant multi-tenant serverless platform, and cut operational costs while lifting performance. Led Leapfrog Technology to AWS Generative AI, Agentic AI Consulting, and DevOps Competencies, and scaled Programiz's compiler infrastructure to 150,000+ concurrent and 10M+ monthly users at half the previous cost. Hands-on with Terraform, Kubernetes, Python, and serverless, and experienced leading multi-country engineering teams.</p>
+        </section>
+
+        <!-- ============ SKILLS ============ -->
+        <section class="section" id="skills" aria-labelledby="skills-title">
+            <p class="cv-kicker mono" data-reveal>Skills</p>
+            <h2 class="section-title" id="skills-title" data-reveal>Core Skills<span class="accent-dot">.</span></h2>
+            <div class="stack-groups">
+                <div class="stack-group" data-reveal>
+                    <h3 class="stack-label mono">Cloud Platforms</h3>
+                    <ul class="chips"><li class="chip chip-expert">AWS</li><li class="chip">GCP</li><li class="chip">Azure</li><li class="chip">DigitalOcean</li></ul>
                 </div>
-                <div class="skill-category">
-                    <span class="skill-category-label">DevOps & IaC</span>
-                    <div class="skill-tags">
-                        <span class="skill-tag expert">Terraform</span>
-                        <span class="skill-tag">CloudFormation</span>
-                        <span class="skill-tag">Pulumi</span>
-                        <span class="skill-tag expert">Docker</span>
-                        <span class="skill-tag expert">Kubernetes</span>
-                        <span class="skill-tag">GitHub Actions</span>
-                        <span class="skill-tag">Azure DevOps</span>
-                    </div>
+                <div class="stack-group" data-reveal>
+                    <h3 class="stack-label mono">DevOps &amp; IaC</h3>
+                    <ul class="chips"><li class="chip chip-expert">Terraform</li><li class="chip">CloudFormation</li><li class="chip">Pulumi</li><li class="chip chip-expert">Docker</li><li class="chip chip-expert">Kubernetes</li><li class="chip">GitHub Actions</li><li class="chip">Azure DevOps</li></ul>
                 </div>
-                <div class="skill-category">
-                    <span class="skill-category-label">GenAI / LLM</span>
-                    <div class="skill-tags">
-                        <span class="skill-tag expert">OpenAI GPT</span>
-                        <span class="skill-tag expert">Anthropic Claude</span>
-                        <span class="skill-tag">Azure AI</span>
-                        <span class="skill-tag expert">AWS Bedrock</span>
-                        <span class="skill-tag expert">RAG</span>
-                        <span class="skill-tag expert">Prompt Engineering</span>
-                    </div>
+                <div class="stack-group" data-reveal>
+                    <h3 class="stack-label mono">GenAI / LLM</h3>
+                    <ul class="chips"><li class="chip chip-expert">OpenAI GPT</li><li class="chip chip-expert">Anthropic Claude</li><li class="chip">Azure AI</li><li class="chip chip-expert">AWS Bedrock</li><li class="chip chip-expert">RAG</li><li class="chip chip-expert">Prompt Engineering</li></ul>
                 </div>
-                <div class="skill-category">
-                    <span class="skill-category-label">AI Tools</span>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Azure Document Intelligence</span>
-                        <span class="skill-tag">Amazon Textract</span>
-                        <span class="skill-tag">Pinecone</span>
-                        <span class="skill-tag">AWS OpenSearch VectorDB</span>
-                        <span class="skill-tag">AWS S3 Vector</span>
-                        <span class="skill-tag">LangChain</span>
-                        <span class="skill-tag">LangSmith</span>
-                        <span class="skill-tag">RAGAS</span>
-                        <span class="skill-tag">RAGChecker</span>
-                    </div>
+                <div class="stack-group" data-reveal>
+                    <h3 class="stack-label mono">AI Tools</h3>
+                    <ul class="chips"><li class="chip">Azure Document Intelligence</li><li class="chip">Amazon Textract</li><li class="chip">Pinecone</li><li class="chip">AWS OpenSearch VectorDB</li><li class="chip">AWS S3 Vector</li><li class="chip">LangChain</li><li class="chip">LangSmith</li><li class="chip">RAGAS</li><li class="chip">RAGChecker</li></ul>
                 </div>
-                <div class="skill-category">
-                    <span class="skill-category-label">Languages</span>
-                    <div class="skill-tags">
-                        <span class="skill-tag expert">Python</span>
-                        <span class="skill-tag expert">Bash</span>
-                        <span class="skill-tag">Go</span>
-                        <span class="skill-tag">NodeJS</span>
-                    </div>
+                <div class="stack-group" data-reveal>
+                    <h3 class="stack-label mono">Languages</h3>
+                    <ul class="chips"><li class="chip chip-expert">Python</li><li class="chip chip-expert">Bash</li><li class="chip">Go</li><li class="chip">Node.js</li></ul>
                 </div>
-                <div class="skill-category">
-                    <span class="skill-category-label">Monitoring & Security</span>
-                    <div class="skill-tags">
-                        <span class="skill-tag">ELK</span>
-                        <span class="skill-tag">OpenSearch</span>
-                        <span class="skill-tag">Vanta</span>
-                        <span class="skill-tag">Drata</span>
-                        <span class="skill-tag">Wazuh</span>
-                        <span class="skill-tag">CloudFlare</span>
-                        <span class="skill-tag">Certbot</span>
-                        <span class="skill-tag">OWASP</span>
-                    </div>
+                <div class="stack-group" data-reveal>
+                    <h3 class="stack-label mono">Monitoring &amp; Security</h3>
+                    <ul class="chips"><li class="chip">ELK</li><li class="chip">OpenSearch</li><li class="chip">Vanta</li><li class="chip">Drata</li><li class="chip">Wazuh</li><li class="chip">CloudFlare</li><li class="chip">Certbot</li><li class="chip">OWASP</li></ul>
                 </div>
-                <div class="skill-category">
-                    <span class="skill-category-label">Databases</span>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">DynamoDB</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Redis</span>
-                    </div>
+                <div class="stack-group" data-reveal>
+                    <h3 class="stack-label mono">Databases</h3>
+                    <ul class="chips"><li class="chip">MySQL</li><li class="chip">PostgreSQL</li><li class="chip">DynamoDB</li><li class="chip">MongoDB</li><li class="chip">Redis</li></ul>
                 </div>
-                <div class="skill-category">
-                    <span class="skill-category-label">Infrastructure</span>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Linux</span>
-                        <span class="skill-tag">Windows</span>
-                        <span class="skill-tag">Nginx</span>
-                        <span class="skill-tag">Apache</span>
-                        <span class="skill-tag">HAProxy</span>
-                        <span class="skill-tag">Envoy Proxy</span>
-                        <span class="skill-tag">Kafka</span>
-                        <span class="skill-tag">Jenkins</span>
-                        <span class="skill-tag">Ansible</span>
-                    </div>
+                <div class="stack-group" data-reveal>
+                    <h3 class="stack-label mono">Infrastructure</h3>
+                    <ul class="chips"><li class="chip">Linux</li><li class="chip">Windows</li><li class="chip">Nginx</li><li class="chip">Apache</li><li class="chip">HAProxy</li><li class="chip">Envoy Proxy</li><li class="chip">Kafka</li><li class="chip">Jenkins</li><li class="chip">Ansible</li></ul>
                 </div>
-                <div class="skill-category">
-                    <span class="skill-category-label">Compliance</span>
-                    <div class="skill-tags">
-                        <span class="skill-tag expert">HIPAA</span>
-                        <span class="skill-tag">SOC2</span>
-                        <span class="skill-tag">GDPR</span>
-                        <span class="skill-tag">PCI-DSS</span>
-                    </div>
+                <div class="stack-group" data-reveal>
+                    <h3 class="stack-label mono">Compliance</h3>
+                    <ul class="chips"><li class="chip chip-expert">HIPAA</li><li class="chip">SOC2</li><li class="chip">GDPR</li><li class="chip">PCI-DSS</li></ul>
                 </div>
             </div>
         </section>
 
-        <!-- Professional Experience -->
-        <section class="section">
-            <h2 class="section-title">Professional Experience</h2>
+        <!-- ============ EXPERIENCE ============ -->
+        <section class="section" id="experience" aria-labelledby="experience-title">
+            <p class="cv-kicker mono" data-reveal>Experience</p>
+            <h2 class="section-title" id="experience-title" data-reveal>Professional Experience<span class="accent-dot">.</span></h2>
 
-            <div class="job">
-                <div class="job-header">
-                    <div class="job-title">Solution Architect, DevOps</div>
-                    <div class="job-company"><a href="https://www.lftechnology.com" target="_blank" rel="noopener">Leapfrog Technology Inc.</a></div>
-                    <div class="job-meta">Dec 2023 – Present · Seattle, Washington, United States</div>
-                </div>
-                <ul class="job-highlights">
-                    <li><strong>Organizational Leadership & AWS Strategy:</strong> Spearheaded the technical initiative to secure <a href="https://www.lftechnology.com/blogs/leapfrog-technology-achieves-aws-generative-ai-competency" target="_blank" rel="noopener">AWS Generative AI Competency</a>, <a href="https://www.linkedin.com/posts/lftechnology_its-official-were-not-just-prompt-engineering-activity-7480174729966944256-vVsM/" target="_blank" rel="noopener">AWS Agentic AI Consulting Competency</a>, <a href="https://www.lftechnology.com/blogs/amazon-devops-competency-status" target="_blank" rel="noopener">AWS DevOps Competency</a> and <a href="https://www.lftechnology.com/blogs/leapfrog-technology-achieves-aws-advanced-tier-partner-status" target="_blank" rel="noopener">APN Advanced</a> membership.</li>
-                    <li><strong>Healthcare GenAI Evangelism:</strong> <a href="https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/" target="_blank" rel="noopener">Webcast speaker</a> with CIO Online and AWS on scaling Generative AI in healthcare.</li>
-                    <li><strong>Enterprise GenAI Orchestration:</strong> Architected and deployed 10+ production-level LLM and GenAI solutions with optimized RAG architectures and prompt engineering.</li>
-                    <li><strong>Scalable Multi-Tenant Architecture:</strong> Designed a HIPAA-compliant, multi-tenant serverless ecosystem with rigorous data isolation and streamlined onboarding.</li>
-                    <li><strong>Performance & Cost Engineering:</strong> Delivered <strong>50% reduction in operational costs</strong> and <strong>40% improvement in product performance</strong> through strategic model selection and serverless efficiency.</li>
-                    <li><strong>High-Throughput Data Processing:</strong> Re-engineered document processing pipelines to scale throughput by <strong>10x</strong> (1000+ pages vs. 100+), utilizing multicloud AI services.</li>
-                    <li><strong>Product Modernization:</strong> Redesigned legacy EdTech products into automated, AI-driven systems via LLM integration.</li>
-                </ul>
-                <div class="sub-project">
-                    <div class="sub-project-title"><a href="https://www.addy.ai" target="_blank" rel="noopener">Addy AI</a> (a Leapfrog Technology Inc. venture)</div>
-                    <ul>
-                        <li>Architected an LLM-based solution to automate U.S. healthcare provider back-office referral workflows</li>
-                        <li>Led a cross-functional team spanning multiple countries and disciplines</li>
-                        <li>Designed fully serverless AWS architecture enabling near real-time processing</li>
-                    </ul>
-                </div>
-            </div>
+            <div class="timeline">
+                <div class="timeline-rail" aria-hidden="true"><div class="timeline-rail-fill" id="cv-rail-fill"></div></div>
+                <ol class="timeline-list">
+                    <li class="timeline-item cv-job" data-reveal="left">
+                        <p class="tl-period mono">Dec 2023 – Present</p>
+                        <h3 class="tl-role">Solution Architect, DevOps</h3>
+                        <p class="tl-org"><a class="text-link" href="https://www.lftechnology.com" target="_blank" rel="noopener">Leapfrog Technology Inc.</a> · Seattle, Washington, United States</p>
+                        <ul class="cv-bullets">
+                            <li><strong>Organizational Leadership &amp; AWS Strategy:</strong> Spearheaded the technical initiative to secure <a class="text-link" href="https://www.lftechnology.com/blogs/leapfrog-technology-achieves-aws-generative-ai-competency" target="_blank" rel="noopener">AWS Generative AI Competency</a>, <a class="text-link" href="https://www.linkedin.com/posts/lftechnology_its-official-were-not-just-prompt-engineering-activity-7480174729966944256-vVsM/" target="_blank" rel="noopener">AWS Agentic AI Consulting Competency</a>, <a class="text-link" href="https://www.lftechnology.com/blogs/amazon-devops-competency-status" target="_blank" rel="noopener">AWS DevOps Competency</a> and <a class="text-link" href="https://www.lftechnology.com/blogs/leapfrog-technology-achieves-aws-advanced-tier-partner-status" target="_blank" rel="noopener">APN Advanced</a> membership.</li>
+                            <li><strong>Healthcare GenAI Evangelism:</strong> <a class="text-link" href="https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/" target="_blank" rel="noopener">Webcast speaker</a> with CIO Online and AWS on scaling Generative AI in healthcare.</li>
+                            <li><strong>Enterprise GenAI Orchestration:</strong> Architected and deployed 10+ production-level LLM and GenAI solutions with optimized RAG architectures and prompt engineering.</li>
+                            <li><strong>Scalable Multi-Tenant Architecture:</strong> Designed a HIPAA-compliant, multi-tenant serverless ecosystem with rigorous data isolation and streamlined onboarding.</li>
+                            <li><strong>Performance &amp; Cost Engineering:</strong> Delivered <span class="metric mono">50% reduction</span> in operational costs and <span class="metric mono">40% improvement</span> in product performance through strategic model selection and serverless efficiency.</li>
+                            <li><strong>High-Throughput Data Processing:</strong> Re-engineered document processing pipelines to scale throughput by <span class="metric mono">10×</span> (1000+ pages vs. 100+), utilizing multicloud AI services.</li>
+                            <li><strong>Product Modernization:</strong> Redesigned legacy EdTech products into automated, AI-driven systems via LLM integration.</li>
+                        </ul>
+                        <div class="cv-subcard">
+                            <p class="cv-subcard-title"><a class="text-link" href="https://www.addy.ai" target="_blank" rel="noopener">Addy AI</a> <span class="mono">— a Leapfrog Technology Inc. venture</span></p>
+                            <ul class="cv-bullets">
+                                <li>Architected an LLM-based solution to automate U.S. healthcare provider back-office referral workflows</li>
+                                <li>Led a cross-functional team spanning multiple countries and disciplines</li>
+                                <li>Designed fully serverless AWS architecture enabling near real-time processing</li>
+                            </ul>
+                        </div>
+                    </li>
 
-            <div class="job">
-                <div class="job-header">
-                    <div class="job-title">Principal Engineer, DevOps</div>
-                    <div class="job-company"><a href="https://www.lftechnology.com" target="_blank" rel="noopener">Leapfrog Technology Inc.</a></div>
-                    <div class="job-meta">Dec 2021 – Dec 2023 · Seattle, Washington, United States</div>
-                </div>
-                <ul class="job-highlights">
-                    <li>Engineered multi-stage deployment architectures for diverse client projects</li>
-                    <li>Scaled and stabilized the DevOps team from <strong>5 to 25+ members</strong></li>
-                    <li>Increased supported data sources by <strong>5x</strong> (8 to 40+ external integrations)</li>
-                    <li>Streamlined CI/CD pipelines, increasing deployment frequency by <strong>4x</strong> (monthly to weekly)</li>
-                    <li>Led compliance initiatives for HIPAA, SOC 2, and related regulatory standards</li>
-                    <li>Re-architected an ETL pipeline from batch-based to near real-time processing</li>
-                </ul>
-            </div>
+                    <li class="timeline-item cv-job" data-reveal="left">
+                        <p class="tl-period mono">Dec 2021 – Dec 2023</p>
+                        <h3 class="tl-role">Principal Engineer, DevOps</h3>
+                        <p class="tl-org"><a class="text-link" href="https://www.lftechnology.com" target="_blank" rel="noopener">Leapfrog Technology Inc.</a> · Seattle, Washington, United States</p>
+                        <ul class="cv-bullets">
+                            <li>Engineered multi-stage deployment architectures for diverse client projects</li>
+                            <li>Scaled and stabilized the DevOps team from <span class="metric mono">5 to 25+</span> members</li>
+                            <li>Increased supported data sources by <span class="metric mono">5×</span> (8 to 40+ external integrations)</li>
+                            <li>Streamlined CI/CD pipelines, increasing deployment frequency by <span class="metric mono">4×</span> (monthly to weekly)</li>
+                            <li>Led compliance initiatives for HIPAA, SOC 2, and related regulatory standards</li>
+                            <li>Re-architected an ETL pipeline from batch-based to near real-time processing</li>
+                        </ul>
+                    </li>
 
-            <div class="job">
-                <div class="job-header">
-                    <div class="job-title">Lead Engineer, DevOps</div>
-                    <div class="job-company"><a href="https://www.lftechnology.com" target="_blank" rel="noopener">Leapfrog Technology Inc.</a></div>
-                    <div class="job-meta">Dec 2020 – Dec 2021</div>
-                </div>
-                <ul class="job-highlights">
-                    <li>Delivered DevOps solutions ensuring high availability and minimal downtime</li>
-                    <li>Reduced deployment time by <strong>20%</strong> for a microservices-based product</li>
-                    <li>Accelerated new service onboarding by over <strong>~90%</strong></li>
-                    <li>Built a hybrid cloud setup with seamless in-house database integration</li>
-                    <li>Optimized an AWS-based product, reducing infrastructure costs by <strong>30%</strong></li>
-                    <li>Automated CI/CD pipelines for a microservices architecture</li>
-                </ul>
-            </div>
+                    <li class="timeline-item cv-job" data-reveal="left">
+                        <p class="tl-period mono">Dec 2020 – Dec 2021</p>
+                        <h3 class="tl-role">Lead Engineer, DevOps</h3>
+                        <p class="tl-org"><a class="text-link" href="https://www.lftechnology.com" target="_blank" rel="noopener">Leapfrog Technology Inc.</a></p>
+                        <ul class="cv-bullets">
+                            <li>Delivered DevOps solutions ensuring high availability and minimal downtime</li>
+                            <li>Reduced deployment time by <span class="metric mono">20%</span> for a microservices-based product</li>
+                            <li>Accelerated new service onboarding by over <span class="metric mono">90%</span></li>
+                            <li>Built a hybrid cloud setup with seamless in-house database integration</li>
+                            <li>Optimized an AWS-based product, reducing infrastructure costs by <span class="metric mono">30%</span></li>
+                            <li>Automated CI/CD pipelines for a microservices architecture</li>
+                        </ul>
+                    </li>
 
-            <div class="job">
-                <div class="job-header">
-                    <div class="job-title">DevOps Engineer Consultant</div>
-                    <div class="job-company"><a href="https://www.programiz.com" target="_blank" rel="noopener">Programiz.com</a></div>
-                    <div class="job-meta">Sep 2022 – Mar 2025 · Kathmandu, Nepal</div>
-                </div>
-                <ul class="job-highlights">
-                    <li>Modernized and re-architected decade-old deployment for high availability, reliability, and observability</li>
-                    <li>Stabilized GKE-based infrastructure for the <a href="https://www.programiz.com/online-compiler/" target="_blank" rel="noopener">Online Compiler</a>, achieving near-zero downtime</li>
-                    <li>Engineered secure custom sandboxing solution for safer code execution</li>
-                    <li>Reduced infrastructure costs by <strong>50%</strong>, scaled to 10+ compilers serving <strong>150K+ concurrent</strong> and <strong>10M+ monthly users</strong></li>
-                    <li>Partnered with Security team to identify, remediate, and mitigate vulnerabilities</li>
-                </ul>
-            </div>
+                    <li class="timeline-item cv-job" data-reveal="left">
+                        <p class="tl-period mono">Sep 2022 – Mar 2025</p>
+                        <h3 class="tl-role">DevOps Engineer Consultant</h3>
+                        <p class="tl-org"><a class="text-link" href="https://www.programiz.com" target="_blank" rel="noopener">Programiz.com</a> · Kathmandu, Nepal</p>
+                        <ul class="cv-bullets">
+                            <li>Modernized and re-architected decade-old deployment for high availability, reliability, and observability</li>
+                            <li>Stabilized GKE-based infrastructure for the <a class="text-link" href="https://www.programiz.com/online-compiler/" target="_blank" rel="noopener">Online Compiler</a>, achieving near-zero downtime</li>
+                            <li>Engineered secure custom sandboxing solution for safer code execution</li>
+                            <li>Reduced infrastructure costs by <span class="metric mono">50%</span>, scaled to 10+ compilers serving <span class="metric mono">150K+ concurrent</span> and <span class="metric mono">10M+ monthly</span> users</li>
+                            <li>Partnered with Security team to identify, remediate, and mitigate vulnerabilities</li>
+                        </ul>
+                    </li>
 
-            <div class="job">
-                <div class="job-header">
-                    <div class="job-title">Engineering Manager</div>
-                    <div class="job-company"><a href="https://www.hamropatro.com" target="_blank" rel="noopener">Hamro Patro, Inc.</a></div>
-                    <div class="job-meta">Jul 2020 – Dec 2020 · Kathmandu, Nepal</div>
-                </div>
-                <ul class="job-highlights">
-                    <li>Led the engineering team to build and launch products within the HamroPatro app</li>
-                    <li>Designed system architecture for cross-border mobile recharge and money transfer services</li>
-                    <li>Scaled the engineering team in both headcount and technical expertise</li>
-                </ul>
-            </div>
+                    <li class="timeline-item cv-job" data-reveal="left">
+                        <p class="tl-period mono">Jul 2020 – Dec 2020</p>
+                        <h3 class="tl-role">Engineering Manager</h3>
+                        <p class="tl-org"><a class="text-link" href="https://www.hamropatro.com" target="_blank" rel="noopener">Hamro Patro, Inc.</a> · Kathmandu, Nepal</p>
+                        <ul class="cv-bullets">
+                            <li>Led the engineering team to build and launch products within the HamroPatro app</li>
+                            <li>Designed system architecture for cross-border mobile recharge and money transfer services</li>
+                            <li>Scaled the engineering team in both headcount and technical expertise</li>
+                        </ul>
+                    </li>
 
-            <div class="job">
-                <div class="job-header">
-                    <div class="job-title">Research Engineer / Sr. Research Engineer / Team Lead</div>
-                    <div class="job-company"><a href="https://www.hamropatro.com" target="_blank" rel="noopener">Hamro Patro, Inc.</a></div>
-                    <div class="job-meta">Jul 2017 – Jun 2020 · Kathmandu, Nepal</div>
-                </div>
-                <ul class="job-highlights">
-                    <li>Built HamroStack, an in-house deployment platform, migrating from GCP App Engine to multi-region self-managed infrastructure</li>
-                    <li>Led R&D initiatives for blockchain-based solutions across Bitcoin, Ethereum, and Hyperledger</li>
-                    <li>Implemented server monitoring and observability systems using Prometheus and Grafana</li>
-                </ul>
-            </div>
+                    <li class="timeline-item cv-job" data-reveal="left">
+                        <p class="tl-period mono">Jul 2017 – Jun 2020</p>
+                        <h3 class="tl-role">Research Engineer / Sr. Research Engineer / Team Lead</h3>
+                        <p class="tl-org"><a class="text-link" href="https://www.hamropatro.com" target="_blank" rel="noopener">Hamro Patro, Inc.</a> · Kathmandu, Nepal</p>
+                        <ul class="cv-bullets">
+                            <li>Built HamroStack, an in-house deployment platform, migrating from GCP App Engine to multi-region self-managed infrastructure</li>
+                            <li>Led R&amp;D initiatives for blockchain-based solutions across Bitcoin, Ethereum, and Hyperledger</li>
+                            <li>Implemented server monitoring and observability systems using Prometheus and Grafana</li>
+                        </ul>
+                    </li>
 
-            <div class="job">
-                <div class="job-header">
-                    <div class="job-title">Software Engineer</div>
-                    <div class="job-company"><a href="https://www.javra.com" target="_blank" rel="noopener">Javra Software Pvt. Ltd.</a></div>
-                    <div class="job-meta">May 2016 – June 2017 · Kathmandu, Nepal</div>
-                </div>
+                    <li class="timeline-item cv-job" data-reveal="left">
+                        <p class="tl-period mono">May 2016 – Jun 2017</p>
+                        <h3 class="tl-role">Software Engineer</h3>
+                        <p class="tl-org"><a class="text-link" href="https://www.javra.com" target="_blank" rel="noopener">Javra Software Pvt. Ltd.</a> · Kathmandu, Nepal</p>
+                    </li>
+                </ol>
             </div>
         </section>
 
-        <!-- Speaking Engagements & Articles -->
-        <section class="section">
-            <h2 class="section-title">Speaking Engagements & Articles</h2>
-            <div class="speaking-item">
-                <div class="speaking-title">GenAI for Healthcare Providers and Digital Health Companies</div>
-                <div class="speaking-meta">CIO.com Webcast · Co-hosted by Amazon Web Services (AWS) and Leapfrog Technology</div>
-                <div class="speaking-meta"><a href="https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/" target="_blank" rel="noopener">Watch the webcast →</a></div>
-            </div>
-            <div class="speaking-item">
-                <div class="speaking-title">Dawn of the Agents</div>
-                <div class="speaking-meta">AWS User Group Meetup · GenAI maturing into the age of autonomous agents</div>
-                <div class="speaking-meta"><a href="https://amitj.me/aug.ppt" target="_blank" rel="noopener">View presentation →</a></div>
-            </div>
-            <div class="speaking-item">
-                <div class="speaking-title">In the Age of Vibes, Someone Has to Be the Checker</div>
-                <div class="speaking-meta">LinkedIn Article · Exploring vibe coding and the critical role of human reviewers when AI generates code</div>
-                <div class="speaking-meta"><a href="https://www.linkedin.com/pulse/age-vibes-someone-has-checker-amit-joshi-wzpsc/" target="_blank" rel="noopener">Read on LinkedIn →</a></div>
-            </div>
+        <!-- ============ SPEAKING & ARTICLES ============ -->
+        <section class="section speaking" id="speaking" aria-labelledby="speaking-title">
+            <p class="cv-kicker mono" data-reveal>Speaking</p>
+            <h2 class="section-title" id="speaking-title" data-reveal>Speaking Engagements &amp; Articles<span class="accent-dot">.</span></h2>
+            <ul class="talk-list">
+                <li data-reveal>
+                    <a class="talk-name" href="https://us.resources.cio.com/resources/genai-for-healthcare-providers-and-digital-health-companies-6/" target="_blank" rel="noopener">GenAI for Healthcare Providers and Digital Health Companies</a>
+                    <p class="talk-venue">CIO.com webcast · co-hosted by Amazon Web Services (AWS) and Leapfrog Technology.</p>
+                </li>
+                <li data-reveal>
+                    <a class="talk-name" href="https://amitj.me/aug.ppt" target="_blank" rel="noopener">Dawn of the Agents</a>
+                    <p class="talk-venue">AWS User Group meetup · GenAI maturing into the age of autonomous agents.</p>
+                </li>
+                <li data-reveal>
+                    <a class="talk-name" href="https://www.linkedin.com/pulse/age-vibes-someone-has-checker-amit-joshi-wzpsc/" target="_blank" rel="noopener">In the Age of Vibes, Someone Has to Be the Checker</a>
+                    <p class="talk-venue">LinkedIn article · exploring vibe coding and the critical role of human reviewers when AI generates code.</p>
+                </li>
+            </ul>
         </section>
 
-        <!-- Education -->
-        <section class="section">
-            <h2 class="section-title">Education</h2>
-            <div class="education-item">
-                <strong>Bachelor of Engineering in Computer Engineering</strong><br>
-                <span style="color: var(--text-muted);">Kathmandu University, 2015</span>
-            </div>
+        <!-- ============ EDUCATION ============ -->
+        <section class="section" id="education" aria-labelledby="education-title">
+            <p class="cv-kicker mono" data-reveal>Education</p>
+            <h2 class="section-title" id="education-title" data-reveal>Education<span class="accent-dot">.</span></h2>
+            <p class="cred-line" data-reveal>Bachelor of Engineering in Computer Engineering <span class="cred-year mono">Kathmandu University · 2015</span></p>
         </section>
 
-        <!-- Footer -->
-        <footer class="cv-footer">
-            <div class="actions">
-                <a href="/data/AmitJ_CV.pdf" class="btn btn-primary" download>📥 Download PDF</a>
-                <a href="https://linkedin.com/in/oneamitj" class="btn" target="_blank" rel="noopener">💼 Connect on LinkedIn</a>
-                <a href="/" class="btn">🖥️ Interactive Portfolio</a>
+        <!-- ============ RESUME & CONTACT ============ -->
+        <section class="section" id="downloads" aria-labelledby="downloads-title">
+            <p class="cv-kicker mono" data-reveal>Resume</p>
+            <h2 class="section-title" id="downloads-title" data-reveal>Full Resume &amp; Contact<span class="accent-dot">.</span></h2>
+            <p class="cv-lead-note" data-reveal>References and recommendations available on request.</p>
+            <div class="cv-footer-actions" data-reveal>
+                <a class="btn btn-primary btn-lg" href="/data/AmitJ_CV.pdf" download>Download PDF</a>
+                <a class="btn btn-ghost btn-lg" href="https://linkedin.com/in/oneamitj" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                <a class="btn btn-ghost btn-lg" href="/">Interactive Portfolio</a>
             </div>
-            <p>References and recommendations available upon request.</p>
-        </footer>
-    </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p class="mono">© <span id="footer-year">2026</span> Amit Joshi · Melbourne, Australia</p>
+        <p class="mono"><a href="/">amitj.me</a></p>
+    </footer>
+
+    <script src="/cv/cv.js" defer></script>
 </body>
 </html>
