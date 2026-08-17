@@ -58,3 +58,5 @@ Disallow: /sw.js
 Disallow: /browserconfig.xml
 
 Sitemap: https://amitj.me/sitemap.xml
+# oneread runs on a subdomain and serves its own sitemap.
+Sitemap: https://oneread.amitj.me/sitemap.xml

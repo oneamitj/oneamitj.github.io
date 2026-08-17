@@ -52,6 +52,23 @@
         <priority>0.5</priority>
     </url>
 
+    <!-- oneread — self-hosted text-to-speech (subdomain; also publishes its own
+         sitemap at https://oneread.amitj.me/sitemap.xml). /about is the
+         server-rendered page that explains the app; / is the React shell. -->
+    <url>
+        <loc>https://oneread.amitj.me/about</loc>
+        <lastmod>2026-08-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://oneread.amitj.me/</loc>
+        <lastmod>2026-08-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
     <!-- CV / Resume Page -->
     <url>
         <loc>https://amitj.me/cv/</loc>

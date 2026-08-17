@@ -35,7 +35,7 @@ Known online as "oneamitj". Architected 10+ production GenAI solutions and scale
 
 - [DevOps learning path](https://amitj.me/career/): 10-stage curriculum for becoming a DevOps engineer, written by Amit
 - [Claude Architect prep](https://amitj.me/claude/): Free self-study guides and practice exams for the Anthropic Claude Certified Architect certification
-- [oneread](https://oneread.amitj.me): Free, open-source, self-hosted text-to-speech app — text or documents into audio with sample-accurate subtitles, running a local ONNX model with no API keys ([source](https://github.com/oneamitj/oneread))
+- [oneread](https://oneread.amitj.me/about): Free, open-source, self-hosted text-to-speech app — text or documents into audio with sample-accurate subtitles, running a local ONNX model with no API keys. The app itself is at https://oneread.amitj.me/ ([source](https://github.com/oneamitj/oneread))
 - [iJobber](https://amitj.me/ijobber/): Chrome extension for AI-powered cover letters and CV tailoring
 - [ArchMentor](https://amitj.me/archmentor/): Interactive solution-architecture training app
 
