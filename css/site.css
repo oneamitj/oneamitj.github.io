@@ -707,6 +707,13 @@ img, svg, canvas { max-width: 100%; }
     font-size: var(--text-mono-sm);
 }
 .project-metrics li::before { content: "▸ "; color: var(--phosphor-soft); }
+.project-metrics a {
+    text-decoration: underline;
+    text-decoration-color: var(--phosphor-soft);
+    text-underline-offset: 3px;
+    transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+.project-metrics a:hover { text-decoration-color: var(--phosphor); }
 .project-flagship .project-metrics { gap: 0.7rem; font-size: var(--text-mono); }
 
 .project-grid {

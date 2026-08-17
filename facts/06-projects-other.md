@@ -94,3 +94,25 @@
 - **Platforms:** iOS (Apple App Store), Android (Google Play), Web app, and Chrome extension
 - **URL:** https://timezonetracker.app (details at https://timezonetracker.app/about)
 - **Significance:** Demonstrates hands-on, full product ownership outside client work: one person taking a product from idea to published apps across four platforms.
+
+## 14. oneread — Self-Hosted Text-to-Speech (Personal Project, Open Source)
+- **Period:** 2026 – Present
+- **Description:** A free, comprehensive, fully open-source text-to-speech library you host yourself. Paste text or upload a document and get back a wav with subtitles timed to the audio. Speech comes from Supertonic 3 running as ONNX inside the app, so there are no API keys, nothing leaves the machine, and there is no per-character billing.
+- **URL:** https://oneread.amitj.me
+- **Source:** https://github.com/oneamitj/oneread
+- **Technologies:** Python 3.12, FastAPI, SQLite (with FTS5 full-text search), ONNX Runtime, Supertonic 3 TTS, React, TypeScript, Vite, Docker Compose, Nginx, Certbot, argon2
+- **Features:**
+  - Entries with title, text, tags and voice settings; plain or markdown input, markdown flattened into speakable lines (headings, list items, link labels, tables read as rows, symbols spoken as words)
+  - Full-text search over title, text and tags via SQLite FTS5
+  - File upload and text extraction: Word, slides, spreadsheets, CSV, PDF (text layer), markdown, plain text, OpenDocument, RTF, saved web pages; no OCR, so image-only PDFs are refused with a reason
+  - Readings per entry: a 1/3/5-minute sample, a chosen sentence range, or the whole document, each with its own player, subtitles and download
+  - Sample-accurate SRT/VTT subtitles, with cue boundaries taken from the sample count of the audio actually written rather than a duration predictor, plus a follow-along highlight in the player
+  - Reading-length and wall-clock estimates calibrated from renditions the machine has already completed
+  - Stoppable full readings that keep what was already read and resume rather than restart
+  - Per-user accounts, argon2 passwords, signed HttpOnly session cookies, CSRF header check, rate limiting, CSP blocking remote scripts
+  - Opt-in, revocable analytics
+- **Engineering notes:**
+  - Audio is streamed to disk a sentence at a time, so a two-hour entry costs no more memory than a two-minute one; measured 3,120 characters into 231 s of audio in 53 s on an M-series laptop with under 100 MB of process growth
+  - Production stack ships as Docker Compose with nginx terminating TLS and certbot renewing certificates; the app runs on an `internal: true` network with no outbound access, read-only root filesystems and dropped capabilities
+  - Dependencies pinned with hashes under `pip --require-hashes`; 169 tests run in about a second against a fake synthesis engine
+- **Significance:** A complete, self-hostable product given away free and open source: full-stack build plus production hardening and deployment tooling, all owned solo.

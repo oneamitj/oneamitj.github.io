@@ -914,11 +914,13 @@ Kathmandu University, 2015
                 ],
                 files: [
                     'archmentor           # Next-Gen Solution Architect Training',
-                    'career               # DevOps Learning Path'
+                    'career               # DevOps Learning Path',
+                    'oneread              # Self-hosted text-to-speech (open source)'
                 ],
                 examples: [
                     'launch archmentor    # Open ArchMentor training platform',
                     'launch career        # Open DevOps Learning Path',
+                    'launch oneread       # Open oneread text-to-speech app',
                     'launch --help        # Show this help message'
                 ]
             }
@@ -1036,8 +1038,8 @@ Available Commands:
                     Available: aug.ppt
 
 🚀 Launch & Learn:
-   launch <file> - Open training platforms
-                   Available: archmentor, career
+   launch <file> - Open training platforms & apps
+                   Available: archmentor, career, oneread
    roadmap      - Open DevOps Learning Path
 
 🎯 Special:
@@ -1251,6 +1253,7 @@ the highest standards of security and compliance.
                     projectText += `${index + 1}. ${project.name} (${project.period})\n`;
                     projectText += `   ${project.description}\n`;
                     if (project.url) projectText += `   🔗 ${project.url}\n`;
+                    if (project.repository) projectText += `   ⌥ source: ${project.repository}\n`;
                     projectText += `   Tech: ${project.technologies.join(', ')}\n\n`;
                 });
             }
@@ -1881,6 +1884,13 @@ Note: Some repositories may be private due to client confidentiality
                 path: 'career/index.html',
                 description: 'A 10-stage guided curriculum from foundations to GenAI',
                 type: 'Learning Path'
+            },
+            'oneread': {
+                title: 'oneread',
+                subtitle: 'Self-Hosted Text-to-Speech, Free & Open Source',
+                path: 'https://oneread.amitj.me',
+                description: 'Text or documents into audio with timed subtitles, no API keys',
+                type: 'Open Source App'
             }
         };
 

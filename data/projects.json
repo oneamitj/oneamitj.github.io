@@ -134,6 +134,23 @@
   ],
   "personal_projects": [
     {
+      "name": "oneread",
+      "description": "Free, open-source, self-hosted text-to-speech library. Paste text or upload a document (Word, slides, spreadsheets, PDF, markdown) and get a wav back with subtitles timed to the audio. Supertonic runs as ONNX inside the app, so there are no API keys, nothing leaves the machine, and there is no per-character billing.",
+      "technologies": ["Python", "FastAPI", "SQLite FTS5", "ONNX", "React", "TypeScript", "Docker", "Nginx", "Self-hosted TTS"],
+      "period": "2026 - Present",
+      "url": "https://oneread.amitj.me",
+      "repository": "https://github.com/oneamitj/oneread",
+      "achievements": [
+        "Fully local speech synthesis with no third-party API and no per-character cost",
+        "Sample-accurate subtitles: SRT/VTT cues derived from written audio samples, not a duration predictor",
+        "Streams audio to disk a sentence at a time, so a two-hour document costs no more memory than a two-minute one",
+        "Hardened production stack: internal-only app network, TLS via certbot, read-only root filesystems, edge rate limits",
+        "Reading-time estimates calibrated from renditions the machine has already finished"
+      ],
+      "category": "Open Source/AI",
+      "open_source": true
+    },
+    {
       "name": "TimezoneTracker",
       "description": "Compare time across cities instantly. A timezone management app designed, built, and deployed end-to-end on every platform: iOS (App Store), Android (Google Play), web, and a Chrome extension.",
       "technologies": ["iOS", "Android", "Web App", "Chrome Extension", "Cross-platform"],
